@@ -1,0 +1,19 @@
+plugins {
+    id 'java-library'
+}
+
+group 'org.citygml4j'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven {
+        url  "https://dl.bintray.com/clausnagel/maven"
+    }
+    jcenter()
+}
+
+dependencies {
+    api 'org.xml-objects:xml-objects:0.1'
+}
