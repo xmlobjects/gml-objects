@@ -8,9 +8,6 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-    maven {
-        url  "https://dl.bintray.com/clausnagel/maven"
-    }
     jcenter()
 }
 
