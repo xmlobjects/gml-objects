@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.model.basicTypes;
 
-import org.xmlobjects.gml.model.common.ModelObject;
+import org.xmlobjects.gml.model.GMLObject;
 
-public class NilReason extends ModelObject {
+public class NilReason extends GMLObject {
     private String value;
 
     public NilReason() {

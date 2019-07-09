@@ -2,11 +2,11 @@ package org.xmlobjects.gml.model.deprecatedTypes;
 
 import org.xmlobjects.gml.model.base.AssociationAttributes;
 import org.xmlobjects.gml.model.basicTypes.NilReason;
-import org.xmlobjects.gml.model.common.ModelObject;
+import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 
-public class StringOrRef extends ModelObject implements AssociationAttributes {
+public class StringOrRef extends GMLObject implements AssociationAttributes {
     private String value;
     private String href;
     private String role;

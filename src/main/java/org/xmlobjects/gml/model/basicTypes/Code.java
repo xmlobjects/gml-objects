@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.model.basicTypes;
 
-import org.xmlobjects.gml.model.common.ModelObject;
+import org.xmlobjects.gml.model.GMLObject;
 
-public class Code extends ModelObject {
+public class Code extends GMLObject {
     private String value;
     private String codeSpace;
 

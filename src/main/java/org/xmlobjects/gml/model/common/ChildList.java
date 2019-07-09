@@ -1,22 +1,24 @@
 package org.xmlobjects.gml.model.common;
 
+import org.xmlobjects.gml.model.GMLObject;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ChildList<T extends ModelObject> extends ArrayList<T> {
-    private final ModelObject parent;
+public class ChildList<T extends GMLObject> extends ArrayList<T> {
+    private final GMLObject parent;
 
-    public ChildList(ModelObject parent) {
+    public ChildList(GMLObject parent) {
         this.parent = parent;
     }
 
-    public ChildList(Collection<? extends T> c, ModelObject parent) {
+    public ChildList(Collection<? extends T> c, GMLObject parent) {
         super(c);
         this.parent = parent;
         setParent(c);
     }
 
-    public ChildList(int initialCapacity, ModelObject parent) {
+    public ChildList(int initialCapacity, GMLObject parent) {
         super(initialCapacity);
         this.parent = parent;
     }

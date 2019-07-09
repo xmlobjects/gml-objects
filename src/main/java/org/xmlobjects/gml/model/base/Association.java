@@ -2,11 +2,11 @@ package org.xmlobjects.gml.model.base;
 
 import org.xmlobjects.gml.model.basicTypes.NilReason;
 import org.xmlobjects.gml.model.common.LocalProperties;
-import org.xmlobjects.gml.model.common.ModelObject;
+import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 
-public abstract class Association<T extends ModelObject> extends ModelObject implements AssociationAttributes, OwnershipAttributes {
+public abstract class Association<T extends GMLObject> extends GMLObject implements AssociationAttributes, OwnershipAttributes {
     private T object;
     private String href;
     private String role;

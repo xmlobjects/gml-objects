@@ -1,9 +1,9 @@
 package org.xmlobjects.gml.model.base;
 
 import org.xmlobjects.gml.model.common.LocalProperties;
-import org.xmlobjects.gml.model.common.ModelObject;
+import org.xmlobjects.gml.model.GMLObject;
 
-public abstract class InlineProperty<T extends ModelObject> extends ModelObject implements OwnershipAttributes {
+public abstract class InlineProperty<T extends GMLObject> extends GMLObject implements OwnershipAttributes {
     private T object;
     private Boolean owns;
     private LocalProperties localProperties;
