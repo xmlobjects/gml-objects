@@ -1,7 +1,7 @@
-package org.citygml4j.gmlobjects.model.base;
+package org.xmlobjects.gml.model.base;
 
-import org.citygml4j.gmlobjects.model.common.LocalProperties;
-import org.citygml4j.gmlobjects.model.common.ModelObject;
+import org.xmlobjects.gml.model.common.LocalProperties;
+import org.xmlobjects.gml.model.common.ModelObject;
 
 public abstract class InlineProperty<T extends ModelObject> extends ModelObject implements OwnershipAttributes {
     private T object;

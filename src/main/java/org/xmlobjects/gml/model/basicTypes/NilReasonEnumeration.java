@@ -1,6 +1,6 @@
-package org.citygml4j.gmlobjects.model.basicTypes;
+package org.xmlobjects.gml.model.basicTypes;
 
-import org.citygml4j.gmlobjects.model.common.Enumeration;
+import org.xmlobjects.gml.model.common.Enumeration;
 
 public enum NilReasonEnumeration implements Enumeration {
     INAPPLICABLE("inapplicable"),

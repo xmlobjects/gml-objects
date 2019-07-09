@@ -1,4 +1,4 @@
-package org.citygml4j.gmlobjects.model.basicTypes;
+package org.xmlobjects.gml.model.basicTypes;
 
 public class CodeWithAuthority extends Code {
 

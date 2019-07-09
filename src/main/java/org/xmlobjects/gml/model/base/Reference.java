@@ -1,13 +1,12 @@
-package org.citygml4j.gmlobjects.model.deprecatedTypes;
+package org.xmlobjects.gml.model.base;
 
-import org.citygml4j.gmlobjects.model.base.AssociationAttributes;
-import org.citygml4j.gmlobjects.model.basicTypes.NilReason;
-import org.citygml4j.gmlobjects.model.common.ModelObject;
-import org.citygml4j.gmlobjects.model.xlink.ActuateType;
-import org.citygml4j.gmlobjects.model.xlink.ShowType;
+import org.xmlobjects.gml.model.basicTypes.NilReason;
+import org.xmlobjects.gml.model.common.LocalProperties;
+import org.xmlobjects.gml.model.common.ModelObject;
+import org.xmlobjects.gml.model.xlink.ActuateType;
+import org.xmlobjects.gml.model.xlink.ShowType;
 
-public class StringOrRef extends ModelObject implements AssociationAttributes {
-    private String value;
+public class Reference extends ModelObject implements AssociationAttributes, OwnershipAttributes {
     private String href;
     private String role;
     private String arcRole;
@@ -16,27 +15,14 @@ public class StringOrRef extends ModelObject implements AssociationAttributes {
     private ActuateType actuate;
     private NilReason nilReason;
     private String remoteSchema;
+    private Boolean owns;
+    private LocalProperties localProperties;
 
-    public StringOrRef() {
+    public Reference() {
     }
 
-    public StringOrRef(String value) {
-        this.value = value;
-    }
-
-    public static StringOrRef ofReference(String href) {
-        StringOrRef stringOrRef = new StringOrRef();
-        stringOrRef.setHref(href);
-        return stringOrRef;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-        href = null;
+    public Reference(String href) {
+        this.href = href;
     }
 
     @Override
@@ -52,7 +38,6 @@ public class StringOrRef extends ModelObject implements AssociationAttributes {
     @Override
     public void setHref(String href) {
         this.href = href;
-        value = null;
     }
 
     @Override
@@ -112,7 +97,7 @@ public class StringOrRef extends ModelObject implements AssociationAttributes {
 
     @Override
     public void setNilReason(NilReason nilReason) {
-        this.nilReason = nilReason;
+        this.nilReason = asChild(nilReason);
     }
 
     @Override
@@ -123,5 +108,22 @@ public class StringOrRef extends ModelObject implements AssociationAttributes {
     @Override
     public void setRemoteSchema(String remoteSchema) {
         this.remoteSchema = remoteSchema;
+    }
+
+    @Override
+    public Boolean getOwns() {
+        return owns;
+    }
+
+    @Override
+    public void setOwns(Boolean owns) {
+        this.owns = owns;
+    }
+
+    public LocalProperties getLocalProperties() {
+        if (localProperties == null)
+            localProperties = new LocalProperties();
+
+        return localProperties;
     }
 }

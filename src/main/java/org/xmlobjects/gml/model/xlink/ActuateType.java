@@ -1,17 +1,16 @@
-package org.citygml4j.gmlobjects.model.xlink;
+package org.xmlobjects.gml.model.xlink;
 
-import org.citygml4j.gmlobjects.model.common.Enumeration;
+import org.xmlobjects.gml.model.common.Enumeration;
 
-public enum ShowType implements Enumeration {
-    NEW("new"),
-    REPLACE("replace"),
-    EMBED("embed"),
+public enum ActuateType implements Enumeration {
+    ON_LOAD("onLoad"),
+    ON_REQUEST("onRequest"),
     OTHER("other"),
     NONE("none");
 
     private final String value;
 
-    ShowType(String value) {
+    ActuateType(String value) {
         this.value = value;
     }
 
@@ -21,8 +20,8 @@ public enum ShowType implements Enumeration {
     }
 
     @Override
-    public ShowType fromValue(String value) {
-        for (ShowType v : ShowType.values()) {
+    public ActuateType fromValue(String value) {
+        for (ActuateType v : ActuateType.values()) {
             if (v.value.equals(value))
                 return v;
         }

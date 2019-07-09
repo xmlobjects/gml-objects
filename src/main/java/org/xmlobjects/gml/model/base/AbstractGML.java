@@ -1,10 +1,10 @@
-package org.citygml4j.gmlobjects.model.base;
+package org.xmlobjects.gml.model.base;
 
-import org.citygml4j.gmlobjects.model.basicTypes.Code;
-import org.citygml4j.gmlobjects.model.basicTypes.CodeWithAuthority;
-import org.citygml4j.gmlobjects.model.common.ModelObject;
-import org.citygml4j.gmlobjects.model.deprecatedTypes.MetaDataProperty;
-import org.citygml4j.gmlobjects.model.deprecatedTypes.StringOrRef;
+import org.xmlobjects.gml.model.basicTypes.Code;
+import org.xmlobjects.gml.model.basicTypes.CodeWithAuthority;
+import org.xmlobjects.gml.model.common.ModelObject;
+import org.xmlobjects.gml.model.deprecatedTypes.MetaDataProperty;
+import org.xmlobjects.gml.model.deprecatedTypes.StringOrRef;
 
 import java.util.ArrayList;
 import java.util.List;

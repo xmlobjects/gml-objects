@@ -1,4 +1,4 @@
-package org.citygml4j.gmlobjects.model.deprecatedTypes;
+package org.xmlobjects.gml.model.deprecatedTypes;
 
 import org.w3c.dom.Element;
 

@@ -1,4 +1,4 @@
-package org.citygml4j.gmlobjects.model.common;
+package org.xmlobjects.gml.model.common;
 
 import java.util.ArrayList;
 import java.util.Collection;

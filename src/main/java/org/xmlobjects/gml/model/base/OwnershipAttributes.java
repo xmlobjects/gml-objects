@@ -1,4 +1,4 @@
-package org.citygml4j.gmlobjects.model.base;
+package org.xmlobjects.gml.model.base;
 
 public interface OwnershipAttributes {
     Boolean getOwns();

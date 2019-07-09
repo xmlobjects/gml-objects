@@ -1,6 +1,6 @@
-package org.citygml4j.gmlobjects.model.deprecatedTypes;
+package org.xmlobjects.gml.model.deprecatedTypes;
 
-import org.citygml4j.gmlobjects.model.base.Association;
+import org.xmlobjects.gml.model.base.Association;
 
 public class MetaDataProperty<T extends AbstractMetaData> extends Association<T> {
     private String about;

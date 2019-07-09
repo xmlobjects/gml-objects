@@ -1,6 +1,6 @@
-package org.citygml4j.gmlobjects.model.deprecatedTypes;
+package org.xmlobjects.gml.model.deprecatedTypes;
 
-import org.citygml4j.gmlobjects.model.common.ModelObject;
+import org.xmlobjects.gml.model.common.ModelObject;
 
 public abstract class AbstractMetaData extends ModelObject {
     private String id;
