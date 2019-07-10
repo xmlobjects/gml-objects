@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.model.base;
 
+import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.basicTypes.NilReason;
 import org.xmlobjects.gml.model.common.LocalProperties;
-import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 

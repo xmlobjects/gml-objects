@@ -3,15 +3,15 @@ package org.xmlobjects.gml.model.base;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.common.LocalProperties;
 
-public abstract class InlineProperty<T extends GMLObject> extends GMLObject implements OwnershipAttributes {
+public abstract class AbstractMember<T extends GMLObject> extends GMLObject implements OwnershipAttributes {
     private T object;
     private Boolean owns;
     private LocalProperties localProperties;
 
-    protected InlineProperty() {
+    protected AbstractMember() {
     }
 
-    protected InlineProperty(T object) {
+    protected AbstractMember(T object) {
         setObject(object);
     }
 

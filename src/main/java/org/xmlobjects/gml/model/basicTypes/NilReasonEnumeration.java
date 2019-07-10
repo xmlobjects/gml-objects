@@ -2,7 +2,7 @@ package org.xmlobjects.gml.model.basicTypes;
 
 import org.xmlobjects.gml.model.common.Enumeration;
 
-public enum NilReasonEnumeration implements Enumeration {
+public enum NilReasonEnumeration implements Enumeration<NilReasonEnumeration> {
     INAPPLICABLE("inapplicable"),
     MISSING("missing"),
     TEMPLATE("template"),

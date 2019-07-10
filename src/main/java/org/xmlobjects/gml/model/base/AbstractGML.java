@@ -1,8 +1,9 @@
 package org.xmlobjects.gml.model.base;
 
+import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.basicTypes.Code;
 import org.xmlobjects.gml.model.basicTypes.CodeWithAuthority;
-import org.xmlobjects.gml.model.GMLObject;
+import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.deprecatedTypes.MetaDataProperty;
 import org.xmlobjects.gml.model.deprecatedTypes.StringOrRef;
 
@@ -17,6 +18,13 @@ public abstract class AbstractGML extends GMLObject implements StandardObjectPro
     private CodeWithAuthority identifier;
     private List<Code> names;
 
+    protected AbstractGML() {
+    }
+
+    protected AbstractGML(String id) {
+        this.id = id;
+    }
+
     public String getId() {
         return id;
     }
@@ -28,7 +36,7 @@ public abstract class AbstractGML extends GMLObject implements StandardObjectPro
     @Override
     public List<MetaDataProperty> getMetaDataProperties() {
         if (metaDataProperties == null)
-            metaDataProperties = asChild(new ArrayList<>());
+            metaDataProperties = new ChildList<>(this);
 
         return metaDataProperties;
     }

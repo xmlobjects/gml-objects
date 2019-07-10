@@ -2,7 +2,7 @@ package org.xmlobjects.gml.model.xlink;
 
 import org.xmlobjects.gml.model.common.Enumeration;
 
-public enum ActuateType implements Enumeration {
+public enum ActuateType implements Enumeration<ActuateType> {
     ON_LOAD("onLoad"),
     ON_REQUEST("onRequest"),
     OTHER("other"),

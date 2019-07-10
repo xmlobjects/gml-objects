@@ -1,0 +1,33 @@
+package org.xmlobjects.gml.model.basicTypes;
+
+import org.xmlobjects.gml.model.GMLObject;
+
+import java.util.List;
+
+public class CodeList extends GMLObject {
+    private List<String> value;
+    private String codeSpace;
+
+    public CodeList() {
+    }
+
+    public CodeList(List<String> value) {
+        this.value = value;
+    }
+
+    public List<String> getValue() {
+        return value;
+    }
+
+    public void setValue(List<String> value) {
+        this.value = value;
+    }
+
+    public String getCodeSpace() {
+        return codeSpace;
+    }
+
+    public void setCodeSpace(String codeSpace) {
+        this.codeSpace = codeSpace;
+    }
+}

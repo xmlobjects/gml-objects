@@ -1,17 +1,14 @@
-package org.xmlobjects.gml.model.xlink;
+package org.xmlobjects.gml.model.basicTypes;
 
 import org.xmlobjects.gml.model.common.Enumeration;
 
-public enum ShowType implements Enumeration<ShowType> {
-    NEW("new"),
-    REPLACE("replace"),
-    EMBED("embed"),
-    OTHER("other"),
-    NONE("none");
+public enum Sign implements Enumeration<Sign> {
+    PLUS("+"),
+    MINUS("-");
 
     private final String value;
 
-    ShowType(String value) {
+    Sign(String value) {
         this.value = value;
     }
 
@@ -21,13 +18,13 @@ public enum ShowType implements Enumeration<ShowType> {
     }
 
     @Override
-    public ShowType fromValue(String value) {
-        for (ShowType v : ShowType.values()) {
+    public Sign fromValue(String value) {
+        for (Sign v : Sign.values()) {
             if (v.value.equals(value))
                 return v;
         }
 
-        return null;
+        return PLUS;
     }
 
     @Override

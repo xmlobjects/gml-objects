@@ -19,4 +19,12 @@ public class NilReason extends GMLObject {
     public String getValue() {
         return value;
     }
+
+    public void setValue(NilReasonEnumeration value) {
+        this.value = value != null ? value.toValue() : null;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 }

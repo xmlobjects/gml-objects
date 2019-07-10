@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.model.deprecatedTypes;
 
+import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.base.AssociationAttributes;
 import org.xmlobjects.gml.model.basicTypes.NilReason;
-import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 

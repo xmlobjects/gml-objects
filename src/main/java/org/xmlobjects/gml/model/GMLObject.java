@@ -17,7 +17,11 @@ public abstract class GMLObject implements Serializable {
     }
 
     protected final <T extends GMLObject> List<T> asChild(List<T> child) {
-        return child != null ? new ChildList<>(child, this) : null;
+        if (child instanceof ChildList) {
+            ((ChildList<T>) child).setParent(this);
+            return child;
+        } else
+            return child != null ? new ChildList<>(child, this) : null;
     }
 
     public final GMLObject getParent() {
