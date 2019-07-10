@@ -1,13 +1,14 @@
 package org.xmlobjects.gml.model.basicTypes;
 
 import org.xmlobjects.gml.model.GMLObject;
+import org.xmlobjects.gml.model.common.CoordinateListProvider;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class Coordinates extends GMLObject implements PosListProvider {
+public class Coordinates extends GMLObject implements CoordinateListProvider {
     private String value;
     private String decimal;
     private String cs;
@@ -53,8 +54,8 @@ public class Coordinates extends GMLObject implements PosListProvider {
     }
 
     @Override
-    public List<Double> toPosList3D() {
-        Double[] posList = null;
+    public List<Double> toCoordinateList3D() {
+        Double[] coordinates = null;
         boolean isValid = true;
 
         if (value != null) {
@@ -64,7 +65,7 @@ public class Coordinates extends GMLObject implements PosListProvider {
 
             String content = value.trim().replaceAll("\\R+", getTupleSeparator());
             String[] tuples = content.split(tsPattern);
-            posList = new Double[tuples.length * 3];
+            coordinates = new Double[tuples.length * 3];
             int i = 0;
 
             for (int j = 0; j < tuples.length && isValid; j++) {
@@ -72,16 +73,16 @@ public class Coordinates extends GMLObject implements PosListProvider {
                 for (int k = 0; k < 3 && isValid; k++) {
                     if (k < coords.length) {
                         try {
-                            posList[i++] = Double.parseDouble(coords[k].replaceAll(decimalPattern, "."));
+                            coordinates[i++] = Double.parseDouble(coords[k].replaceAll(decimalPattern, "."));
                         } catch (Throwable e) {
                             isValid = false;
                         }
                     } else
-                        posList[i++] = 0d;
+                        coordinates[i++] = 0d;
                 }
             }
         }
 
-        return posList != null && isValid ? Arrays.asList(posList) : Collections.emptyList();
+        return coordinates != null && isValid ? Arrays.asList(coordinates) : Collections.emptyList();
     }
 }

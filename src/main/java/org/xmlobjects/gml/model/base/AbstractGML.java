@@ -18,13 +18,6 @@ public abstract class AbstractGML extends GMLObject implements StandardObjectPro
     private CodeWithAuthority identifier;
     private List<Code> names;
 
-    protected AbstractGML() {
-    }
-
-    protected AbstractGML(String id) {
-        this.id = id;
-    }
-
     public String getId() {
         return id;
     }

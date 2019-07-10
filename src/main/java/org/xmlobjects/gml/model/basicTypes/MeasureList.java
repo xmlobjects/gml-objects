@@ -2,6 +2,7 @@ package org.xmlobjects.gml.model.basicTypes;
 
 import org.xmlobjects.gml.model.GMLObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MeasureList extends GMLObject {
@@ -12,6 +13,9 @@ public class MeasureList extends GMLObject {
     }
 
     public MeasureList(List<Double> value) {
+        if (value == null)
+            value = new ArrayList<>();
+
         this.value = value;
     }
 

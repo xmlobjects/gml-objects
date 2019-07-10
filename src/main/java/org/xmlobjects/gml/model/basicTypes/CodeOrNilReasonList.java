@@ -2,6 +2,7 @@ package org.xmlobjects.gml.model.basicTypes;
 
 import org.xmlobjects.gml.model.GMLObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CodeOrNilReasonList extends GMLObject {
@@ -16,6 +17,9 @@ public class CodeOrNilReasonList extends GMLObject {
     }
 
     public List<NameOrNilReason> getValue() {
+        if (value == null)
+            value = new ArrayList<>();
+
         return value;
     }
 

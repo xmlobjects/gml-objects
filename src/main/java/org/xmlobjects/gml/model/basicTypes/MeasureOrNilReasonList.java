@@ -1,5 +1,6 @@
 package org.xmlobjects.gml.model.basicTypes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MeasureOrNilReasonList {
@@ -19,6 +20,9 @@ public class MeasureOrNilReasonList {
     }
 
     public List<DoubleOrNilReason> getValue() {
+        if (value == null)
+            value = new ArrayList<>();
+
         return value;
     }
 
