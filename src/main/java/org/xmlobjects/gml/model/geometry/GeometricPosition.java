@@ -2,6 +2,7 @@ package org.xmlobjects.gml.model.geometry;
 
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
+import org.xmlobjects.gml.model.geometry.primitives.Point;
 import org.xmlobjects.gml.model.geometry.primitives.PointProperty;
 
 import java.util.Collections;
@@ -20,6 +21,10 @@ public class GeometricPosition extends GMLObject implements CoordinateListProvid
 
     public GeometricPosition(PointProperty pointProperty) {
         setPointProperty(pointProperty);
+    }
+
+    public GeometricPosition(Point point) {
+        this(new PointProperty(point));
     }
 
     public DirectPosition getPos() {

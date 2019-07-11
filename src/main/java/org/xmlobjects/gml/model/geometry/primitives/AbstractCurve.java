@@ -1,4 +1,6 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
-public abstract class AbstractCurve extends AbstractGeometricPrimitive {
+import org.xmlobjects.gml.model.common.CoordinateListProvider;
+
+public abstract class AbstractCurve extends AbstractGeometricPrimitive implements CoordinateListProvider {
 }

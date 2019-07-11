@@ -1,23 +1,22 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
-import org.xmlobjects.gml.model.common.CoordinateListProvider;
 import org.xmlobjects.gml.model.geometry.DirectPositionList;
 import org.xmlobjects.gml.model.geometry.GeometricPositionList;
 
 import java.util.Collections;
 import java.util.List;
 
-public class LineString extends AbstractCurve implements CoordinateListProvider {
+public class LineStringSegment extends AbstractCurveSegment {
     private GeometricPositionList controlPoints;
 
-    public LineString() {
+    public LineStringSegment() {
     }
 
-    public LineString(GeometricPositionList controlPoints) {
+    public LineStringSegment(GeometricPositionList controlPoints) {
         setControlPoints(controlPoints);
     }
 
-    public LineString(DirectPositionList posList) {
+    public LineStringSegment(DirectPositionList posList) {
         this(new GeometricPositionList(posList));
     }
 
@@ -27,6 +26,10 @@ public class LineString extends AbstractCurve implements CoordinateListProvider 
 
     public void setControlPoints(GeometricPositionList controlPoints) {
         this.controlPoints = asChild(controlPoints);
+    }
+
+    public CurveInterpolation getInterpolation() {
+        return CurveInterpolation.LINEAR;
     }
 
     @Override
