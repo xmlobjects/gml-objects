@@ -1,12 +1,12 @@
 package org.xmlobjects.gml.model.basicTypes;
 
-public class StringOrNilReason extends PrimitiveOrNilReason<String> {
+public class StringOrNilReason extends ValueOrNilReason<String> {
 
     public StringOrNilReason() {
     }
 
     public StringOrNilReason(String value) {
-        setPrimitive(value);
+        setValue(value);
     }
 
     public StringOrNilReason(NilReasonEnumeration nilReason) {
@@ -14,6 +14,6 @@ public class StringOrNilReason extends PrimitiveOrNilReason<String> {
     }
 
     public void setString(String value) {
-        setPrimitive(value);
+        setValue(value);
     }
 }

@@ -1,6 +1,6 @@
 package org.xmlobjects.gml.model.basicTypes;
 
-public class BooleanOrNilReason extends PrimitiveOrNilReason<Boolean> {
+public class BooleanOrNilReason extends ValueOrNilReason<Boolean> {
 
     public BooleanOrNilReason() {
     }
@@ -18,6 +18,6 @@ public class BooleanOrNilReason extends PrimitiveOrNilReason<Boolean> {
     }
 
     public void setBoolean(Boolean value) {
-        setPrimitive(value);
+        setValue(value);
     }
 }

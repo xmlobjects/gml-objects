@@ -2,31 +2,35 @@ package org.xmlobjects.gml.model.basicTypes;
 
 import org.xmlobjects.gml.model.GMLObject;
 
-public abstract class PrimitiveOrNilReason<T> extends GMLObject {
+public abstract class ValueOrNilReason<T> extends GMLObject {
     private T value;
     private NilReasonEnumeration nilReason;
     private String anyURI;
 
-    PrimitiveOrNilReason() {
+    ValueOrNilReason() {
     }
 
-    PrimitiveOrNilReason(T value) {
+    ValueOrNilReason(T value) {
         this.value = value;
     }
 
-    PrimitiveOrNilReason(NilReasonEnumeration nilReason) {
+    ValueOrNilReason(NilReasonEnumeration nilReason) {
         this.nilReason = nilReason;
     }
 
-    PrimitiveOrNilReason(String anyURI) {
+    ValueOrNilReason(String anyURI) {
         this.anyURI = anyURI;
     }
 
-    public T getPrimitive() {
+    public T getValue() {
         return value;
     }
 
-    void setPrimitive(T value) {
+    public boolean isSetValue() {
+        return value != null;
+    }
+
+    void setValue(T value) {
         this.value = value;
         nilReason = null;
         anyURI = null;
@@ -34,6 +38,10 @@ public abstract class PrimitiveOrNilReason<T> extends GMLObject {
 
     public NilReasonEnumeration getNilReason() {
         return nilReason;
+    }
+
+    public boolean isSetNilReason() {
+        return nilReason != null;
     }
 
     public void setNilReason(NilReasonEnumeration nilReason) {
@@ -44,6 +52,10 @@ public abstract class PrimitiveOrNilReason<T> extends GMLObject {
 
     public String getAnyURI() {
         return anyURI;
+    }
+
+    public boolean isSetAnyURI() {
+        return anyURI != null;
     }
 
     public void setAnyURI(String anyURI) {

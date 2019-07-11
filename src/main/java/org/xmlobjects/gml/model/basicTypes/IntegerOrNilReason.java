@@ -1,6 +1,6 @@
 package org.xmlobjects.gml.model.basicTypes;
 
-public class IntegerOrNilReason extends PrimitiveOrNilReason<Integer> {
+public class IntegerOrNilReason extends ValueOrNilReason<Integer> {
 
     public IntegerOrNilReason() {
     }
@@ -18,6 +18,6 @@ public class IntegerOrNilReason extends PrimitiveOrNilReason<Integer> {
     }
 
     public void setInteger(Integer value) {
-        setPrimitive(value);
+        setValue(value);
     }
 }

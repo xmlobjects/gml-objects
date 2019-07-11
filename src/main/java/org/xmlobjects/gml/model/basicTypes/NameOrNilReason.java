@@ -1,6 +1,6 @@
 package org.xmlobjects.gml.model.basicTypes;
 
-public class NameOrNilReason extends PrimitiveOrNilReason<String> {
+public class NameOrNilReason extends ValueOrNilReason<String> {
 
     public NameOrNilReason() {
     }
@@ -10,6 +10,6 @@ public class NameOrNilReason extends PrimitiveOrNilReason<String> {
     }
 
     public void setName(String value) {
-        super.setPrimitive(value);
+        super.setValue(value);
     }
 }
