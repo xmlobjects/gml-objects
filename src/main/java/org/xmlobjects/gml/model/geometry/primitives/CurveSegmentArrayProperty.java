@@ -10,7 +10,7 @@ public class CurveSegmentArrayProperty extends ArrayProperty<AbstractCurveSegmen
     }
 
     public CurveSegmentArrayProperty(List<AbstractCurveSegment> objects) {
-        setObjects(objects);
+        super(objects);
     }
 
     @Override

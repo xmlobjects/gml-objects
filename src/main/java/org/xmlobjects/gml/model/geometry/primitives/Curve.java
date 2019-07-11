@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.geometry.primitives;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Curve extends AbstractCurve {
@@ -27,6 +28,7 @@ public class Curve extends AbstractCurve {
     public List<Double> toCoordinateList3D() {
         if (segments != null)
             return segments.getObjects().stream()
+                    .filter(Objects::nonNull)
                     .map(AbstractCurveSegment::toCoordinateList3D)
                     .flatMap(Collection::stream)
                     .collect(Collectors.toList());

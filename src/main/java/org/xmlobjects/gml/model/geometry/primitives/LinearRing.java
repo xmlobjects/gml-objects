@@ -28,10 +28,6 @@ public class LinearRing extends AbstractRing {
         this.controlPoints = asChild(controlPoints);
     }
 
-    public CurveInterpolation getInterpolation() {
-        return CurveInterpolation.LINEAR;
-    }
-
     @Override
     public List<Double> toCoordinateList3D() {
         return controlPoints != null ? controlPoints.toCoordinateList3D() : Collections.emptyList();

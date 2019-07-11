@@ -2,6 +2,9 @@ package org.xmlobjects.gml.model.geometry.primitives;
 
 import org.xmlobjects.gml.model.basicTypes.Sign;
 
+import java.util.Collections;
+import java.util.List;
+
 public class OrientableCurve extends AbstractCurve {
     private CurveProperty baseCurve;
     private Sign orientation;
@@ -31,5 +34,12 @@ public class OrientableCurve extends AbstractCurve {
 
     public void setOrientation(Sign orientation) {
         this.orientation = orientation;
+    }
+
+    @Override
+    public List<Double> toCoordinateList3D() {
+        return baseCurve != null && baseCurve.getObject() != null ?
+                baseCurve.getObject().toCoordinateList3D(getOrientation() == Sign.MINUS) :
+                Collections.emptyList();
     }
 }
