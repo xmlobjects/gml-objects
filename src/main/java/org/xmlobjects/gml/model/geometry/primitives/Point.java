@@ -9,6 +9,13 @@ import java.util.List;
 public class Point extends AbstractGeometricPrimitive implements CoordinateListProvider {
     private DirectPosition pos;
 
+    public Point() {
+    }
+
+    public Point(DirectPosition pos) {
+        setPos(pos);
+    }
+
     public DirectPosition getPos() {
         return pos;
     }

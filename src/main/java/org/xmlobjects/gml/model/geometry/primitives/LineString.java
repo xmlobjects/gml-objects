@@ -13,7 +13,7 @@ public class LineString extends AbstractCurve implements CoordinateListProvider 
     }
 
     public LineString(GeometricPositionList controlPoints) {
-        this.controlPoints = controlPoints;
+        setControlPoints(controlPoints);
     }
 
     public GeometricPositionList getControlPoints() {

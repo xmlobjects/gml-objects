@@ -19,8 +19,8 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     }
 
     public Envelope(DirectPosition lowerCorner, DirectPosition upperCorner) {
-        this.lowerCorner = lowerCorner;
-        this.upperCorner = upperCorner;
+        setLowerCorner(lowerCorner);
+        setUpperCorner(upperCorner);
     }
 
     public DirectPosition getLowerCorner() {

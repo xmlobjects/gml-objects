@@ -17,7 +17,7 @@ public class GeometricPositionList extends GMLObject implements CoordinateListPr
     }
 
     public GeometricPositionList(DirectPositionList posList) {
-        this.posList = posList;
+        setPosList(posList);
     }
 
     public GeometricPositionList(List<GeometricPosition> geometricPositions) {

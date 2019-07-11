@@ -15,11 +15,11 @@ public class GeometricPosition extends GMLObject implements CoordinateListProvid
     }
 
     public GeometricPosition(DirectPosition pos) {
-        this.pos = asChild(pos);
+        setPos(pos);
     }
 
     public GeometricPosition(PointProperty pointProperty) {
-        this.pointProperty = pointProperty;
+        setPointProperty(pointProperty);
     }
 
     public DirectPosition getPos() {
@@ -31,7 +31,7 @@ public class GeometricPosition extends GMLObject implements CoordinateListProvid
     }
 
     public void setPos(DirectPosition pos) {
-        this.pos = pos;
+        this.pos = asChild(pos);
         pointProperty = null;
     }
 
