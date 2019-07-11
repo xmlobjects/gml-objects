@@ -1,12 +1,10 @@
 package org.xmlobjects.gml.model.base;
 
 import org.xmlobjects.gml.model.GMLObject;
-import org.xmlobjects.gml.model.common.LocalProperties;
 
-public abstract class InlineProperty<T extends GMLObject> extends GMLObject implements OwnershipAttributes {
+public abstract class InlineProperty<T extends GMLObject> extends Association<T> implements OwnershipAttributes {
     private T object;
     private Boolean owns;
-    private LocalProperties localProperties;
 
     protected InlineProperty() {
     }
@@ -14,8 +12,6 @@ public abstract class InlineProperty<T extends GMLObject> extends GMLObject impl
     protected InlineProperty(T object) {
         setObject(object);
     }
-
-    public abstract Class<T> getTargetType();
 
     public T getObject() {
         return object;
@@ -33,12 +29,5 @@ public abstract class InlineProperty<T extends GMLObject> extends GMLObject impl
     @Override
     public void setOwns(Boolean owns) {
         this.owns = owns;
-    }
-
-    public LocalProperties getLocalProperties() {
-        if (localProperties == null)
-            localProperties = new LocalProperties();
-
-        return localProperties;
     }
 }

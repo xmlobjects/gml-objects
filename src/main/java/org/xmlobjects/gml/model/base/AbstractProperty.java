@@ -2,11 +2,10 @@ package org.xmlobjects.gml.model.base;
 
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.basicTypes.NilReason;
-import org.xmlobjects.gml.model.common.LocalProperties;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 
-public abstract class Association<T extends GMLObject> extends GMLObject implements AssociationAttributes, OwnershipAttributes {
+public abstract class AbstractProperty<T extends GMLObject> extends Association<T> implements AssociationAttributes, OwnershipAttributes {
     private T object;
     private String href;
     private String role;
@@ -17,20 +16,17 @@ public abstract class Association<T extends GMLObject> extends GMLObject impleme
     private NilReason nilReason;
     private String remoteSchema;
     private Boolean owns;
-    private LocalProperties localProperties;
 
-    protected Association() {
+    protected AbstractProperty() {
     }
 
-    protected Association(T object) {
+    protected AbstractProperty(T object) {
         setObject(object);
     }
 
-    protected Association(String href) {
+    protected AbstractProperty(String href) {
         this.href = href;
     }
-
-    public abstract Class<T> getTargetType();
 
     public T getObject() {
         return object;
@@ -133,12 +129,5 @@ public abstract class Association<T extends GMLObject> extends GMLObject impleme
     @Override
     public void setOwns(Boolean owns) {
         this.owns = owns;
-    }
-
-    public LocalProperties getLocalProperties() {
-        if (localProperties == null)
-            localProperties = new LocalProperties();
-
-        return localProperties;
     }
 }

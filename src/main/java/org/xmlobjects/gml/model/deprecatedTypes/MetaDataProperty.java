@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.model.deprecatedTypes;
 
-import org.xmlobjects.gml.model.base.Association;
+import org.xmlobjects.gml.model.base.AbstractProperty;
 
-public class MetaDataProperty<T extends AbstractMetaData> extends Association<T> {
+public class MetaDataProperty<T extends AbstractMetaData> extends AbstractProperty<T> {
     private String about;
 
     public MetaDataProperty() {

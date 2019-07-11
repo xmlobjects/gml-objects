@@ -2,14 +2,12 @@ package org.xmlobjects.gml.model.base;
 
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.common.ChildList;
-import org.xmlobjects.gml.model.common.LocalProperties;
 
 import java.util.List;
 
-public abstract class ArrayProperty<T extends GMLObject> extends GMLObject implements OwnershipAttributes {
+public abstract class ArrayProperty<T extends GMLObject> extends Association<T> implements OwnershipAttributes {
     private List<T> objects;
     private Boolean owns;
-    private LocalProperties localProperties;
 
     protected ArrayProperty() {
     }
@@ -17,8 +15,6 @@ public abstract class ArrayProperty<T extends GMLObject> extends GMLObject imple
     protected ArrayProperty(List<T> objects) {
         setObjects(objects);
     }
-
-    public abstract Class<T> getTargetType();
 
     public List<T> getObjects() {
         if (objects == null)
@@ -39,12 +35,5 @@ public abstract class ArrayProperty<T extends GMLObject> extends GMLObject imple
     @Override
     public void setOwns(Boolean owns) {
         this.owns = owns;
-    }
-
-    public LocalProperties getLocalProperties() {
-        if (localProperties == null)
-            localProperties = new LocalProperties();
-
-        return localProperties;
     }
 }

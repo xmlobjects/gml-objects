@@ -1,12 +1,10 @@
 package org.xmlobjects.gml.model.base;
 
-import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.basicTypes.NilReason;
-import org.xmlobjects.gml.model.common.LocalProperties;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 
-public class Reference extends GMLObject implements AssociationAttributes, OwnershipAttributes {
+public class Reference extends Association<AbstractGML> implements AssociationAttributes, OwnershipAttributes {
     private String href;
     private String role;
     private String arcRole;
@@ -16,13 +14,21 @@ public class Reference extends GMLObject implements AssociationAttributes, Owner
     private NilReason nilReason;
     private String remoteSchema;
     private Boolean owns;
-    private LocalProperties localProperties;
 
     public Reference() {
     }
 
     public Reference(String href) {
         this.href = href;
+    }
+
+    public Reference(AbstractGML object) {
+        this('#' + object.getId());
+    }
+
+    @Override
+    public Class<AbstractGML> getTargetType() {
+        return AbstractGML.class;
     }
 
     @Override
@@ -118,12 +124,5 @@ public class Reference extends GMLObject implements AssociationAttributes, Owner
     @Override
     public void setOwns(Boolean owns) {
         this.owns = owns;
-    }
-
-    public LocalProperties getLocalProperties() {
-        if (localProperties == null)
-            localProperties = new LocalProperties();
-
-        return localProperties;
     }
 }
