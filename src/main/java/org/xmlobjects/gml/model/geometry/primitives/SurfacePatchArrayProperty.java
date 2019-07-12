@@ -4,17 +4,18 @@ import org.xmlobjects.gml.model.base.ArrayProperty;
 
 import java.util.List;
 
-public class SurfacePatchArrayProperty extends ArrayProperty<AbstractSurfacePatch> {
+public class SurfacePatchArrayProperty<T extends AbstractSurfacePatch> extends ArrayProperty<T> {
 
     public SurfacePatchArrayProperty() {
     }
 
-    public SurfacePatchArrayProperty(List<AbstractSurfacePatch> objects) {
+    public SurfacePatchArrayProperty(List<T> objects) {
         super(objects);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public Class<AbstractSurfacePatch> getTargetType() {
-        return AbstractSurfacePatch.class;
+    public Class<T> getTargetType() {
+        return (Class<T>) AbstractSurfacePatch.class;
     }
 }
