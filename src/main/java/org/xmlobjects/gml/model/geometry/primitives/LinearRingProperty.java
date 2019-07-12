@@ -4,10 +4,10 @@ import org.xmlobjects.gml.model.geometry.InlineGeometryProperty;
 
 public class LinearRingProperty extends InlineGeometryProperty<LinearRing> {
 
-    protected LinearRingProperty() {
+    public LinearRingProperty() {
     }
 
-    protected LinearRingProperty(LinearRing linearRing) {
+    public LinearRingProperty(LinearRing linearRing) {
         super(linearRing);
     }
 
