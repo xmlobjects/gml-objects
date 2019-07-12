@@ -93,7 +93,7 @@ public class DirectPositionList extends GMLObject implements SRSReference, Coord
     @Override
     public List<Double> toCoordinateList3D() {
         Double[] coordinates = null;
-        if (value != null) {
+        if (value != null && !value.isEmpty()) {
             int dim = srsDimension != null && srsDimension == 2 ? 2 : 3;
             int padding = dim - value.size() % dim;
             int length = value.size() + (padding != dim ? padding : 0);

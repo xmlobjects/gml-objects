@@ -83,7 +83,7 @@ public class DirectPosition extends GMLObject implements SRSReference, Coordinat
     @Override
     public List<Double> toCoordinateList3D() {
         Double[] coordinates = null;
-        if (value != null) {
+        if (value != null && !value.isEmpty()) {
             coordinates = new Double[3];
             for (int i = 0; i < coordinates.length; i++)
                 coordinates[i] = i < value.size() ? value.get(i) : 0d;
