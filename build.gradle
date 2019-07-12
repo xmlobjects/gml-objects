@@ -12,5 +12,5 @@ repositories {
 }
 
 dependencies {
-    api 'org.xml-objects:xml-objects:0.1'
+    api 'org.xml-objects:xml-objects:0.1.1'
 }
