@@ -1,8 +1,10 @@
-package org.xmlobjects.gml.model.geometry.primitives;
+package org.xmlobjects.gml.model.geometry.complexes;
 
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.common.ChildList;
+import org.xmlobjects.gml.model.geometry.primitives.AbstractCurve;
+import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -10,15 +12,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Ring extends AbstractRing implements AggregationAttributes {
+public class CompositeCurve extends AbstractCurve implements AggregationAttributes {
     private List<CurveProperty> curveMembers;
     private AggregationType aggregationType;
 
-    public Ring() {
+    public CompositeCurve() {
     }
 
-    public Ring(List<CurveProperty> curveMembers) {
-        setCurveMembers(curveMembers);
+    public CompositeCurve(List<CurveProperty> curveMember) {
+        setCurveMembers(curveMember);
     }
 
     public List<CurveProperty> getCurveMembers() {
