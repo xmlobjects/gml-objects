@@ -22,7 +22,7 @@ public abstract class ArrayProperty<T extends GMLObject> extends Association<T> 
         return objects;
     }
 
-    public void setObjects(List<T> object) {
+    public void setObjects(List<T> objects) {
         this.objects = asChild(objects);
     }
 }
