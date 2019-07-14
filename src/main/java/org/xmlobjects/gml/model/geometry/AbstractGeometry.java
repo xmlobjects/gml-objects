@@ -1,11 +1,12 @@
 package org.xmlobjects.gml.model.geometry;
 
 import org.xmlobjects.gml.model.GMLObject;
+import org.xmlobjects.gml.model.base.AbstractGML;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractGeometry extends GMLObject implements SRSReference {
+public abstract class AbstractGeometry extends AbstractGML implements SRSReference {
     private String srsName;
     private Integer srsDimension;
     private List<String> axisLabels;
