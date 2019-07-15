@@ -1,8 +1,6 @@
 package org.xmlobjects.gml.model.xlink;
 
-import org.xmlobjects.gml.model.common.Enumeration;
-
-public enum ShowType implements Enumeration<ShowType> {
+public enum ShowType {
     NEW("new"),
     REPLACE("replace"),
     EMBED("embed"),
@@ -15,13 +13,11 @@ public enum ShowType implements Enumeration<ShowType> {
         this.value = value;
     }
 
-    @Override
     public String toValue() {
         return value;
     }
 
-    @Override
-    public ShowType fromValue(String value) {
+    public static ShowType fromValue(String value) {
         for (ShowType v : ShowType.values()) {
             if (v.value.equals(value))
                 return v;

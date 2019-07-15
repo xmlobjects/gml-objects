@@ -1,8 +1,6 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
-import org.xmlobjects.gml.model.common.Enumeration;
-
-public enum SurfaceInterpolation implements Enumeration<SurfaceInterpolation> {
+public enum SurfaceInterpolation {
     NONE("none"),
     PLANAR("planar"),
     SPHERICAL("spherical"),
@@ -20,13 +18,11 @@ public enum SurfaceInterpolation implements Enumeration<SurfaceInterpolation> {
         this.value = value;
     }
 
-    @Override
     public String toValue() {
         return value;
     }
 
-    @Override
-    public SurfaceInterpolation fromValue(String value) {
+    public static SurfaceInterpolation fromValue(String value) {
         for (SurfaceInterpolation v : SurfaceInterpolation.values()) {
             if (v.value.equals(value))
                 return v;

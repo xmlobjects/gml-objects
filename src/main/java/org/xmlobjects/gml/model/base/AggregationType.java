@@ -1,8 +1,6 @@
 package org.xmlobjects.gml.model.base;
 
-import org.xmlobjects.gml.model.common.Enumeration;
-
-public enum AggregationType implements Enumeration<AggregationType> {
+public enum AggregationType {
     SET("set"),
     BAG("bag"),
     SEQUENCE("sequence"),
@@ -16,13 +14,11 @@ public enum AggregationType implements Enumeration<AggregationType> {
         this.value = value;
     }
 
-    @Override
     public String toValue() {
         return value;
     }
 
-    @Override
-    public AggregationType fromValue(String value) {
+    public static AggregationType fromValue(String value) {
         for (AggregationType v : AggregationType.values()) {
             if (v.value.equals(value))
                 return v;

@@ -1,8 +1,6 @@
 package org.xmlobjects.gml.model.basicTypes;
 
-import org.xmlobjects.gml.model.common.Enumeration;
-
-public enum NilReasonEnumeration implements Enumeration<NilReasonEnumeration> {
+public enum NilReasonEnumeration {
     INAPPLICABLE("inapplicable"),
     MISSING("missing"),
     TEMPLATE("template"),
@@ -15,13 +13,11 @@ public enum NilReasonEnumeration implements Enumeration<NilReasonEnumeration> {
         this.value = value;
     }
 
-    @Override
     public String toValue() {
         return value;
     }
 
-    @Override
-    public NilReasonEnumeration fromValue(String value) {
+    public static NilReasonEnumeration fromValue(String value) {
         for (NilReasonEnumeration v : NilReasonEnumeration.values()) {
             if (v.value.equals(value))
                 return v;

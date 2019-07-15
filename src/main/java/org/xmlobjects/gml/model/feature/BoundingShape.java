@@ -1,12 +1,11 @@
 package org.xmlobjects.gml.model.feature;
 
 import org.xmlobjects.gml.model.GMLObject;
-import org.xmlobjects.gml.model.basicTypes.NilReason;
 import org.xmlobjects.gml.model.geometry.Envelope;
 
 public class BoundingShape extends GMLObject {
     private Envelope envelope;
-    private NilReason nilReason;
+    private String nilReason;
 
     public BoundingShape() {
     }
@@ -23,11 +22,11 @@ public class BoundingShape extends GMLObject {
         this.envelope = asChild(envelope);
     }
 
-    public NilReason getNilReason() {
+    public String getNilReason() {
         return nilReason;
     }
 
-    public void setNilReason(NilReason nilReason) {
-        this.nilReason = asChild(nilReason);
+    public void setNilReason(String nilReason) {
+        this.nilReason = nilReason;
     }
 }

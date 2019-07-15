@@ -1,14 +1,13 @@
 package org.xmlobjects.gml.model.deprecatedTypes;
 
 import org.xmlobjects.gml.model.basicTypes.Code;
-import org.xmlobjects.gml.model.basicTypes.NilReason;
 import org.xmlobjects.gml.model.geometry.AbstractGeometry;
 import org.xmlobjects.gml.model.geometry.GeometryProperty;
 
 public class LocationProperty extends GeometryProperty<AbstractGeometry> {
     private Code locationKeyWord;
     private StringOrRef locationString;
-    private NilReason nullReason;
+    private String nullReason;
 
     public LocationProperty() {
     }
@@ -25,12 +24,14 @@ public class LocationProperty extends GeometryProperty<AbstractGeometry> {
         setLocationString(locationString);
     }
 
-    public LocationProperty(NilReason nullReason) {
-        setNull(nullReason);
-    }
-
     public LocationProperty(String href) {
         super(href);
+    }
+
+    public static LocationProperty ofNull(String nullReason) {
+        LocationProperty locationProperty = new LocationProperty();
+        locationProperty.setNull(nullReason);
+        return locationProperty;
     }
 
     public boolean isSetObject() {
@@ -75,7 +76,7 @@ public class LocationProperty extends GeometryProperty<AbstractGeometry> {
         nullReason = null;
     }
 
-    public NilReason getNull() {
+    public String getNull() {
         return nullReason;
     }
 
@@ -83,8 +84,8 @@ public class LocationProperty extends GeometryProperty<AbstractGeometry> {
         return nullReason != null;
     }
 
-    public void setNull(NilReason nullReason) {
-        this.nullReason = asChild(nullReason);
+    public void setNull(String nullReason) {
+        this.nullReason = nullReason;
         super.setObject(null);
         locationKeyWord = null;
         locationString = null;
