@@ -1,22 +1,20 @@
 package org.xmlobjects.gml.model.deprecatedTypes;
 
-import org.w3c.dom.Element;
-
 public class GenericMetaData extends AbstractMetaData {
-    private Element content;
+    private String anyContent;
 
     public GenericMetaData() {
     }
 
-    public GenericMetaData(Element content) {
-        this.content = content;
+    public GenericMetaData(String anyContent) {
+        this.anyContent = anyContent;
     }
 
-    public Element getContent() {
-        return content;
+    public String getAnyContent() {
+        return anyContent;
     }
 
-    public void setContent(Element content) {
-        this.content = content;
+    public void setAnyContent(String anyContent) {
+        this.anyContent = anyContent;
     }
 }
