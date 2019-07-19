@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class CurveSegmentArrayPropertyBuilder extends ArrayPropertyBuilder<CurveSegmentArrayProperty> {
 
     @Override
-    public CurveSegmentArrayProperty createObject(QName name) throws ObjectBuildException {
+    public CurveSegmentArrayProperty createObject(QName name) {
         return new CurveSegmentArrayProperty();
     }
 }

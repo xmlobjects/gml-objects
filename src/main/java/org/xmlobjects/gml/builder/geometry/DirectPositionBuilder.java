@@ -13,7 +13,7 @@ import javax.xml.namespace.QName;
 public class DirectPositionBuilder implements ObjectBuilder<DirectPosition> {
 
     @Override
-    public DirectPosition createObject(QName name) throws ObjectBuildException {
+    public DirectPosition createObject(QName name) {
         return new DirectPosition();
     }
 

@@ -13,7 +13,7 @@ import javax.xml.namespace.QName;
 public class VectorBuilder implements ObjectBuilder<Vector> {
 
     @Override
-    public Vector createObject(QName name) throws ObjectBuildException {
+    public Vector createObject(QName name) {
         return new Vector();
     }
 

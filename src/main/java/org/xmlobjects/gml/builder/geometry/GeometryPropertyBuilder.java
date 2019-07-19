@@ -10,7 +10,7 @@ public class GeometryPropertyBuilder<T extends GeometryProperty> extends Abstrac
 
     @SuppressWarnings("unchecked")
     @Override
-    public T createObject(QName name) throws ObjectBuildException {
+    public T createObject(QName name) {
         return (T) new GeometryProperty<>();
     }
 }

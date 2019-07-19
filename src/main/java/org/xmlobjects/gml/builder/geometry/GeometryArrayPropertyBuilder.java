@@ -14,7 +14,7 @@ public class GeometryArrayPropertyBuilder<T extends GeometryArrayProperty> exten
 
     @SuppressWarnings("unchecked")
     @Override
-    public T createObject(QName name) throws ObjectBuildException {
+    public T createObject(QName name) {
         return (T) new GeometryArrayProperty<>();
     }
 

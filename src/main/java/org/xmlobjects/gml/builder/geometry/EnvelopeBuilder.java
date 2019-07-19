@@ -25,7 +25,7 @@ import java.util.List;
 public class EnvelopeBuilder implements ObjectBuilder<Envelope> {
 
     @Override
-    public Envelope createObject(QName name) throws ObjectBuildException {
+    public Envelope createObject(QName name) {
         return new Envelope();
     }
 

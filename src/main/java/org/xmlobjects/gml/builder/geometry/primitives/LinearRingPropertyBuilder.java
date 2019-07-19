@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class LinearRingPropertyBuilder extends InlineGeometryPropertyBuilder<LinearRingProperty> {
 
     @Override
-    public LinearRingProperty createObject(QName name) throws ObjectBuildException {
+    public LinearRingProperty createObject(QName name) {
         return new LinearRingProperty();
     }
 }
