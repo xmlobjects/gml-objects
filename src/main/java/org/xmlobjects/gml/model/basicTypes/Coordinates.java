@@ -2,8 +2,9 @@ package org.xmlobjects.gml.model.basicTypes;
 
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
+import org.xmlobjects.gml.model.geometry.DirectPosition;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -18,7 +19,7 @@ public class Coordinates extends GMLObject implements CoordinateListProvider {
     }
 
     public Coordinates(String value) {
-        this.value = value;
+        setValue(value);
     }
 
     public String getValue() {
@@ -26,7 +27,7 @@ public class Coordinates extends GMLObject implements CoordinateListProvider {
     }
 
     public void setValue(String value) {
-        this.value = value;
+        this.value = value != null ? value.trim().replaceAll("\\R+", getTupleSeparator()) : null;
     }
 
     public String getDecimal() {
@@ -53,9 +54,28 @@ public class Coordinates extends GMLObject implements CoordinateListProvider {
         this.ts = ts;
     }
 
+    public DirectPosition toDirectPosition() {
+        List<List<Double>> coordinates = toCoordinateList(false);
+        return new DirectPosition(!coordinates.isEmpty() ? coordinates.get(0) : new ArrayList<>());
+    }
+
+    public List<DirectPosition> toDirectPositions() {
+        List<List<Double>> coordinates = toCoordinateList(false);
+        List<DirectPosition> positions = new ArrayList<>(coordinates.size());
+        coordinates.stream().map(DirectPosition::new).forEach(positions::add);
+        return positions;
+    }
+
     @Override
     public List<Double> toCoordinateList3D() {
-        Double[] coordinates = null;
+        List<List<Double>> coordinates = toCoordinateList(true);
+        List<Double> flatList = new ArrayList<>(coordinates.size() * 3);
+        coordinates.forEach(flatList::addAll);
+        return flatList;
+    }
+
+    private List<List<Double>> toCoordinateList(boolean force3D) {
+        List<List<Double>> coordinates = null;
         boolean isValid = true;
 
         if (value != null) {
@@ -63,26 +83,29 @@ public class Coordinates extends GMLObject implements CoordinateListProvider {
             String csPattern = Pattern.quote(getCoordinateSeparator()) + "+";
             String tsPattern = Pattern.quote(getTupleSeparator()) + "+";
 
-            String content = value.trim().replaceAll("\\R+", getTupleSeparator());
-            String[] tuples = content.split(tsPattern);
-            coordinates = new Double[tuples.length * 3];
-            int i = 0;
+            String[] tuples = value.split(tsPattern);
+            coordinates = new ArrayList<>(tuples.length);
 
-            for (int j = 0; j < tuples.length && isValid; j++) {
-                String[] coords = tuples[j].split(csPattern);
-                for (int k = 0; k < 3 && isValid; k++) {
-                    if (k < coords.length) {
+            for (int i = 0; i < tuples.length && isValid; i++) {
+                String[] coords = tuples[i].split(csPattern);
+                int size = force3D ? 3 : coords.length;
+                List<Double> pos = new ArrayList<>(size);
+
+                for (int j = 0; j < size && isValid; j++) {
+                    if (j < coords.length) {
                         try {
-                            coordinates[i++] = Double.parseDouble(coords[k].replaceAll(decimalPattern, "."));
+                            pos.add(Double.parseDouble(coords[j].replaceAll(decimalPattern, ".")));
                         } catch (Throwable e) {
                             isValid = false;
                         }
                     } else
-                        coordinates[i++] = 0d;
+                        pos.add(0d);
                 }
+
+                coordinates.add(pos);
             }
         }
 
-        return coordinates != null && isValid ? Arrays.asList(coordinates) : Collections.emptyList();
+        return coordinates != null && isValid ? coordinates : Collections.emptyList();
     }
 }
