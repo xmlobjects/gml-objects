@@ -21,6 +21,9 @@ public class LinearRing extends AbstractRing {
     }
 
     public GeometricPositionList getControlPoints() {
+        if (controlPoints == null)
+            controlPoints = asChild(new GeometricPositionList());
+
         return controlPoints;
     }
 

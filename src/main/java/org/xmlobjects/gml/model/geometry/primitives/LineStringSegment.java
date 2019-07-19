@@ -21,6 +21,9 @@ public class LineStringSegment extends AbstractCurveSegment {
     }
 
     public GeometricPositionList getControlPoints() {
+        if (controlPoints == null)
+            controlPoints = asChild(new GeometricPositionList());
+
         return controlPoints;
     }
 

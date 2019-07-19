@@ -22,6 +22,9 @@ public class LineString extends AbstractCurve implements CoordinateListProvider 
     }
 
     public GeometricPositionList getControlPoints() {
+        if (controlPoints == null)
+            controlPoints = asChild(new GeometricPositionList());
+
         return controlPoints;
     }
 
