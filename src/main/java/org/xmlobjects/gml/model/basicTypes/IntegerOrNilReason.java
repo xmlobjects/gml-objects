@@ -9,12 +9,12 @@ public class IntegerOrNilReason extends ValueOrNilReason<Integer> {
         super(value);
     }
 
-    public IntegerOrNilReason(NilReasonEnumeration nilReason) {
+    public IntegerOrNilReason(NilReason nilReason) {
         super(nilReason);
     }
 
-    public IntegerOrNilReason(String anyURI) {
-        super(anyURI);
+    public IntegerOrNilReason(NilReasonEnumeration nilReason) {
+        super(nilReason);
     }
 
     public void setInteger(Integer value) {

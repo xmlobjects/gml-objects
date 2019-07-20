@@ -9,6 +9,10 @@ public class StringOrNilReason extends ValueOrNilReason<String> {
         setValue(value);
     }
 
+    public StringOrNilReason(NilReason nilReason) {
+        super(nilReason);
+    }
+
     public StringOrNilReason(NilReasonEnumeration nilReason) {
         super(nilReason);
     }

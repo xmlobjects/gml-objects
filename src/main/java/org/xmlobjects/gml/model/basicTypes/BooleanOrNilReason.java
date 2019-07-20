@@ -9,12 +9,12 @@ public class BooleanOrNilReason extends ValueOrNilReason<Boolean> {
         super(value);
     }
 
-    public BooleanOrNilReason(NilReasonEnumeration nilReason) {
+    public BooleanOrNilReason(NilReason nilReason) {
         super(nilReason);
     }
 
-    public BooleanOrNilReason(String anyURI) {
-        super(anyURI);
+    public BooleanOrNilReason(NilReasonEnumeration nilReason) {
+        super(nilReason);
     }
 
     public void setBoolean(Boolean value) {

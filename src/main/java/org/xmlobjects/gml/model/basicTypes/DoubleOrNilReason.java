@@ -9,12 +9,12 @@ public class DoubleOrNilReason extends ValueOrNilReason<Double> {
         super(value);
     }
 
-    public DoubleOrNilReason(NilReasonEnumeration nilReason) {
+    public DoubleOrNilReason(NilReason nilReason) {
         super(nilReason);
     }
 
-    public DoubleOrNilReason(String anyURI) {
-        super(anyURI);
+    public DoubleOrNilReason(NilReasonEnumeration nilReason) {
+        super(nilReason);
     }
 
     public void setDouble(Double value) {

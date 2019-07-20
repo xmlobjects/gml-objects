@@ -4,8 +4,7 @@ import org.xmlobjects.gml.model.GMLObject;
 
 public abstract class ValueOrNilReason<T> extends GMLObject {
     private T value;
-    private NilReasonEnumeration nilReason;
-    private String anyURI;
+    private NilReason nilReason;
 
     ValueOrNilReason() {
     }
@@ -14,12 +13,12 @@ public abstract class ValueOrNilReason<T> extends GMLObject {
         this.value = value;
     }
 
-    ValueOrNilReason(NilReasonEnumeration nilReason) {
-        this.nilReason = nilReason;
+    ValueOrNilReason(NilReason nilReason) {
+        setNilReason(nilReason);
     }
 
-    ValueOrNilReason(String anyURI) {
-        this.anyURI = anyURI;
+    ValueOrNilReason(NilReasonEnumeration nilReason) {
+        setNilReason(new NilReason(nilReason));
     }
 
     public T getValue() {
@@ -33,10 +32,9 @@ public abstract class ValueOrNilReason<T> extends GMLObject {
     void setValue(T value) {
         this.value = value;
         nilReason = null;
-        anyURI = null;
     }
 
-    public NilReasonEnumeration getNilReason() {
+    public NilReason getNilReason() {
         return nilReason;
     }
 
@@ -44,23 +42,8 @@ public abstract class ValueOrNilReason<T> extends GMLObject {
         return nilReason != null;
     }
 
-    public void setNilReason(NilReasonEnumeration nilReason) {
-        this.nilReason = nilReason;
+    public void setNilReason(NilReason nilReason) {
+        this.nilReason = asChild(nilReason);
         value = null;
-        anyURI = null;
-    }
-
-    public String getAnyURI() {
-        return anyURI;
-    }
-
-    public boolean isSetAnyURI() {
-        return anyURI != null;
-    }
-
-    public void setAnyURI(String anyURI) {
-        this.anyURI = anyURI;
-        value = null;
-        nilReason = null;
     }
 }
