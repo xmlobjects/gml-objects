@@ -14,8 +14,8 @@ import org.xmlobjects.xml.Attributes;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "MultiPoint", namespaceURI = Constants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "MultiPoint", namespaceURI = Constants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "MultiCurve", namespaceURI = Constants.GML_3_2_NAMESPACE_URI),
+        @XMLElement(name = "MultiCurve", namespaceURI = Constants.GML_3_1_NAMESPACE_URI)
 })
 public class MultiCurveBuilder extends AbstractGeometricAggregateBuilder<MultiCurve> {
 
