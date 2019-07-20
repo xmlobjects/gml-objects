@@ -1,5 +1,7 @@
 package org.xmlobjects.gml.builder.common;
 
+import org.xmlobjects.gml.model.base.AggregationAttributes;
+import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.base.AssociationAttributes;
 import org.xmlobjects.gml.model.base.OwnershipAttributes;
 import org.xmlobjects.gml.model.common.Constants;
@@ -25,6 +27,10 @@ public class AttributesBuilder {
 
     public static void buildOwnershipAttributes(OwnershipAttributes object, Attributes attributes) {
         attributes.getValue("owns").ifBoolean(object::setOwns);
+    }
+
+    public static void buildAggregationAttributes(AggregationAttributes object, Attributes attributes) {
+        attributes.getValue("aggregationType").ifPresent(v -> object.setAggregationType(AggregationType.fromValue(v)));
     }
 
     public static void buildSRSReference(SRSReference object, Attributes attributes) {

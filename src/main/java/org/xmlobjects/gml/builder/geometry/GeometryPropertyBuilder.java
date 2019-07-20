@@ -1,6 +1,5 @@
 package org.xmlobjects.gml.builder.geometry;
 
-import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.base.AbstractPropertyBuilder;
 import org.xmlobjects.gml.model.geometry.GeometryProperty;
 
