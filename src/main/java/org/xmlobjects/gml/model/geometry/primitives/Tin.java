@@ -2,13 +2,14 @@ package org.xmlobjects.gml.model.geometry.primitives;
 
 import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.geometry.GeometricPositionList;
+import org.xmlobjects.gml.model.measures.Length;
 
 import java.util.List;
 
 public class Tin extends TriangulatedSurface {
     private List<LineStringSegmentArrayProperty> stopLines;
     private List<LineStringSegmentArrayProperty> breakLines;
-    private List<LineStringSegmentArrayProperty> maxLength;
+    private Length maxLength;
     private GeometricPositionList controlPoints;
 
     public List<LineStringSegmentArrayProperty> getStopLines() {
@@ -33,14 +34,11 @@ public class Tin extends TriangulatedSurface {
         this.breakLines = asChild(breakLines);
     }
 
-    public List<LineStringSegmentArrayProperty> getMaxLength() {
-        if (maxLength == null)
-            maxLength = new ChildList<>(this);
-
+    public Length getMaxLength() {
         return maxLength;
     }
 
-    public void setMaxLength(List<LineStringSegmentArrayProperty> maxLength) {
+    public void setMaxLength(Length maxLength) {
         this.maxLength = asChild(maxLength);
     }
 
