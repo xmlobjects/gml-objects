@@ -22,8 +22,4 @@ public class ReferenceBuilder implements ObjectBuilder<Reference> {
         AttributesBuilder.buildAssociationAttributes(object, attributes);
         AttributesBuilder.buildOwnershipAttributes(object, attributes);
     }
-
-    @Override
-    public void buildNestedObject(Reference object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

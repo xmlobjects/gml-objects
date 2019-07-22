@@ -63,6 +63,7 @@ public class EnvelopeBuilder implements ObjectBuilder<Envelope> {
                     object.setLowerCorner(coord.toDirectPosition());
                 else if (object.getUpperCorner() == null)
                     object.setUpperCorner(coord.toDirectPosition());
+                break;
         }
     }
 }

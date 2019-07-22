@@ -21,8 +21,4 @@ public class CodeBuilder implements ObjectBuilder<Code> {
         reader.getTextContent().ifPresent(object::setValue);
         attributes.getValue("codeSpace").ifPresent(object::setCodeSpace);
     }
-
-    @Override
-    public void buildNestedObject(Code object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

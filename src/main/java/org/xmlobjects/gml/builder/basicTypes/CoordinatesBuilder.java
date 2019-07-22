@@ -23,8 +23,4 @@ public class CoordinatesBuilder implements ObjectBuilder<Coordinates> {
         attributes.getValue("cs").ifPresent(object::setCoordinateSeparator);
         attributes.getValue("ts").ifPresent(object::setTupleSeparator);
     }
-
-    @Override
-    public void buildNestedObject(Coordinates object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

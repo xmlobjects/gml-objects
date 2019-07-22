@@ -13,10 +13,6 @@ import javax.xml.namespace.QName;
 
 public abstract class ArrayPropertyBuilder<T extends ArrayProperty> implements ObjectBuilder<T> {
 
-    @Override
-    public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
-
     @SuppressWarnings("unchecked")
     @Override
     public void buildNestedObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {

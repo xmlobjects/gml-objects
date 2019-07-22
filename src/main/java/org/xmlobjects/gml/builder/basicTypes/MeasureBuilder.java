@@ -22,8 +22,4 @@ public class MeasureBuilder<T extends Measure> implements ObjectBuilder<T> {
         reader.getTextContent().ifDouble(object::setValue);
         attributes.getValue("uom").ifPresent(object::setUom);
     }
-
-    @Override
-    public void buildNestedObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

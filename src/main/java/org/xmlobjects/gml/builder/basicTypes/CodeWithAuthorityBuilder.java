@@ -21,8 +21,4 @@ public class CodeWithAuthorityBuilder implements ObjectBuilder<CodeWithAuthority
         reader.getTextContent().ifPresent(object::setValue);
         attributes.getValue("codeSpace").ifPresent(object::setCodeSpace);
     }
-
-    @Override
-    public void buildNestedObject(CodeWithAuthority object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

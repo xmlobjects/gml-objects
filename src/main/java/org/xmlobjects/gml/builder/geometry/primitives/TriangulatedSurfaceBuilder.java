@@ -30,6 +30,7 @@ public class TriangulatedSurfaceBuilder extends AbstractSurfaceBuilder<Triangula
             case "patches":
             case "trianglePatches":
                 object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyBuilder.class));
+                break;
         }
     }
 }

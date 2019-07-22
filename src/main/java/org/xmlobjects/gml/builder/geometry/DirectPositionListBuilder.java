@@ -23,8 +23,4 @@ public class DirectPositionListBuilder implements ObjectBuilder<DirectPositionLi
         attributes.getValue("count").ifInteger(object::setCount);
         AttributesBuilder.buildSRSReference(object, attributes);
     }
-
-    @Override
-    public void buildNestedObject(DirectPositionList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

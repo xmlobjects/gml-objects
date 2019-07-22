@@ -22,8 +22,4 @@ public class VectorBuilder implements ObjectBuilder<Vector> {
         reader.getTextContent().ifDoubleList(object::setValue);
         AttributesBuilder.buildSRSReference(object, attributes);
     }
-
-    @Override
-    public void buildNestedObject(Vector object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

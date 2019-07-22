@@ -18,10 +18,6 @@ public class AbstractRingPropertyBuilder implements ObjectBuilder<AbstractRingPr
     }
 
     @Override
-    public void initializeObject(AbstractRingProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
-
-    @Override
     public void buildNestedObject(AbstractRingProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         reader.getObject(AbstractRing.class).ifObject(object::setObject);
     }

@@ -27,8 +27,4 @@ public class GenericMetaDataBuilder extends AbstractMetaDataBuilder<GenericMetaD
         super.initializeObject(object, name, attributes, reader);
         object.setAnyContent(reader.getMixedContent());
     }
-
-    @Override
-    public void buildNestedObject(GenericMetaData object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

@@ -22,8 +22,4 @@ public class DirectPositionBuilder implements ObjectBuilder<DirectPosition> {
         reader.getTextContent().ifDoubleList(object::setValue);
         AttributesBuilder.buildSRSReference(object, attributes);
     }
-
-    @Override
-    public void buildNestedObject(DirectPosition object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

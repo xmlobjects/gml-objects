@@ -27,8 +27,4 @@ public class StringOrNilReasonBuilder implements ObjectBuilder<StringOrNilReason
         else
             object.setString(content.get());
     }
-
-    @Override
-    public void buildNestedObject(StringOrNilReason object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

@@ -30,6 +30,7 @@ public class PolyhedralSurfaceBuilder extends AbstractSurfaceBuilder<PolyhedralS
             case "patches":
             case "polygonPatches":
                 object.setPatches(reader.getObjectUsingBuilder(PolygonPatchArrayPropertyBuilder.class));
+                break;
         }
     }
 }

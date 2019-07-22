@@ -20,10 +20,6 @@ public class TinControlPointsBuilder implements ObjectBuilder<GeometricPositionL
     }
 
     @Override
-    public void initializeObject(GeometricPositionList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
-
-    @Override
     public void buildNestedObject(GeometricPositionList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         switch (name.getLocalPart()) {
             case "posList":

@@ -13,8 +13,8 @@ import javax.xml.namespace.QName;
 public abstract class AbstractGeometricAggregateBuilder<T extends AbstractGeometricAggregate> extends AbstractGeometryBuilder<T> {
 
     @Override
-    public void buildNestedObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.initializeObject(object, name, attributes, reader);
         AttributesBuilder.buildAggregationAttributes(object, attributes);
     }
 }

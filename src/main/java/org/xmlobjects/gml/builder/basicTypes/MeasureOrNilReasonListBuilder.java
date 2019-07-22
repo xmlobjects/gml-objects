@@ -32,8 +32,4 @@ public class MeasureOrNilReasonListBuilder implements ObjectBuilder<MeasureOrNil
 
         attributes.getValue("uom").ifPresent(object::setUom);
     }
-
-    @Override
-    public void buildNestedObject(MeasureOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

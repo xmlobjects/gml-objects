@@ -21,8 +21,4 @@ public class CodeListBuilder implements ObjectBuilder<CodeList> {
         reader.getTextContent().ifList(object::setValue);
         attributes.getValue("codeSpace").ifPresent(object::setCodeSpace);
     }
-
-    @Override
-    public void buildNestedObject(CodeList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

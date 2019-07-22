@@ -21,8 +21,4 @@ public class MeasureListBuilder implements ObjectBuilder<MeasureList> {
         reader.getTextContent().ifDoubleList(object::setValue);
         attributes.getValue("uom").ifPresent(object::setUom);
     }
-
-    @Override
-    public void buildNestedObject(MeasureList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

@@ -17,10 +17,6 @@ public class CoordBuilder implements ObjectBuilder<Coord> {
     }
 
     @Override
-    public void initializeObject(Coord object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
-
-    @Override
     public void buildNestedObject(Coord object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         switch (name.getLocalPart()) {
             case "X":

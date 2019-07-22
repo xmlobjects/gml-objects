@@ -20,8 +20,4 @@ public class NilReasonBuilder implements ObjectBuilder<NilReason> {
     public void initializeObject(NilReason object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         reader.getTextContent().ifPresent(object::setValue);
     }
-
-    @Override
-    public void buildNestedObject(NilReason object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

@@ -32,8 +32,4 @@ public class CodeOrNilReasonListBuilder implements ObjectBuilder<CodeOrNilReason
 
         attributes.getValue("codeSpace").ifPresent(object::setCodeSpace);
     }
-
-    @Override
-    public void buildNestedObject(CodeOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

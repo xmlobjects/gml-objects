@@ -27,8 +27,4 @@ public class NameOrNilReasonBuilder implements ObjectBuilder<NameOrNilReason> {
         else
             object.setNilReason(new NilReason(content.get()));
     }
-
-    @Override
-    public void buildNestedObject(NameOrNilReason object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }

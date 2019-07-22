@@ -22,8 +22,4 @@ public class StringOrRefBuilder implements ObjectBuilder<StringOrRef> {
         reader.getTextContent().ifPresent(object::setValue);
         AttributesBuilder.buildAssociationAttributes(object, attributes);
     }
-
-    @Override
-    public void buildNestedObject(StringOrRef object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-    }
 }
