@@ -5,8 +5,8 @@ import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.geometry.primitives.CurveArrayPropertyBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.CurvePropertyBuilder;
-import org.xmlobjects.gml.model.common.Constants;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiCurve;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.xml.Attributes;
@@ -14,8 +14,8 @@ import org.xmlobjects.xml.Attributes;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "MultiCurve", namespaceURI = Constants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "MultiCurve", namespaceURI = Constants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "MultiCurve", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
+        @XMLElement(name = "MultiCurve", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
 })
 public class MultiCurveBuilder extends AbstractGeometricAggregateBuilder<MultiCurve> {
 

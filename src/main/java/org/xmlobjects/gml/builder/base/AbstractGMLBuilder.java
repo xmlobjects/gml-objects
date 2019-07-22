@@ -7,7 +7,7 @@ import org.xmlobjects.gml.builder.basicTypes.CodeWithAuthorityBuilder;
 import org.xmlobjects.gml.builder.deprecatedTypes.MetaDataPropertyBuilder;
 import org.xmlobjects.gml.builder.deprecatedTypes.StringOrRefBuilder;
 import org.xmlobjects.gml.model.base.AbstractGML;
-import org.xmlobjects.gml.model.common.Constants;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.xml.Attributes;
@@ -18,8 +18,8 @@ public abstract class AbstractGMLBuilder<T extends AbstractGML> implements Objec
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        attributes.getValue(Constants.GML_3_1_NAMESPACE_URI, "id").ifPresent(object::setId);
-        attributes.getValue(Constants.GML_3_2_NAMESPACE_URI, "id").ifPresent(object::setId);
+        attributes.getValue(GMLConstants.GML_3_1_NAMESPACE_URI, "id").ifPresent(object::setId);
+        attributes.getValue(GMLConstants.GML_3_2_NAMESPACE_URI, "id").ifPresent(object::setId);
     }
 
     @Override

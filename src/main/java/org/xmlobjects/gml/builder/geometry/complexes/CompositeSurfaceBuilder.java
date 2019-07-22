@@ -6,8 +6,8 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.common.AttributesBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.AbstractSurfaceBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.SurfacePropertyBuilder;
-import org.xmlobjects.gml.model.common.Constants;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeSurface;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.xml.Attributes;
@@ -15,8 +15,8 @@ import org.xmlobjects.xml.Attributes;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "CompositeSurface", namespaceURI = Constants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "CompositeSurface", namespaceURI = Constants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "CompositeSurface", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
+        @XMLElement(name = "CompositeSurface", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
 })
 public class CompositeSurfaceBuilder extends AbstractSurfaceBuilder<CompositeSurface> {
 

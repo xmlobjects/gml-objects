@@ -5,8 +5,8 @@ import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.geometry.primitives.SolidArrayPropertyBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.SolidPropertyBuilder;
-import org.xmlobjects.gml.model.common.Constants;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiSolid;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.xml.Attributes;
@@ -14,8 +14,8 @@ import org.xmlobjects.xml.Attributes;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "MultiSolid", namespaceURI = Constants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "MultiSolid", namespaceURI = Constants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "MultiSolid", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
+        @XMLElement(name = "MultiSolid", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
 })
 public class MultiSolidBuilder extends AbstractGeometricAggregateBuilder<MultiSolid> {
 

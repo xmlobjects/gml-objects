@@ -6,8 +6,8 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.basicTypes.CoordinatesBuilder;
 import org.xmlobjects.gml.builder.deprecatedTypes.CoordBuilder;
 import org.xmlobjects.gml.builder.geometry.DirectPositionBuilder;
-import org.xmlobjects.gml.model.common.Constants;
 import org.xmlobjects.gml.model.geometry.primitives.Point;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.xml.Attributes;
@@ -15,8 +15,8 @@ import org.xmlobjects.xml.Attributes;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Point", namespaceURI = Constants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "Point", namespaceURI = Constants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "Point", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
+        @XMLElement(name = "Point", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
 })
 public class PointBuilder extends AbstractGeometricPrimitiveBuilder<Point> {
 

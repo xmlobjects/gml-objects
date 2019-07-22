@@ -7,10 +7,10 @@ import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.builder.basicTypes.CoordinatesBuilder;
 import org.xmlobjects.gml.builder.common.AttributesBuilder;
 import org.xmlobjects.gml.builder.deprecatedTypes.CoordBuilder;
-import org.xmlobjects.gml.model.common.Constants;
 import org.xmlobjects.gml.model.deprecatedTypes.Coord;
 import org.xmlobjects.gml.model.geometry.DirectPosition;
 import org.xmlobjects.gml.model.geometry.Envelope;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.xml.Attributes;
@@ -19,8 +19,8 @@ import javax.xml.namespace.QName;
 import java.util.List;
 
 @XMLElements({
-        @XMLElement(name = "Envelope", namespaceURI = Constants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "Envelope", namespaceURI = Constants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "Envelope", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
+        @XMLElement(name = "Envelope", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
 })
 public class EnvelopeBuilder implements ObjectBuilder<Envelope> {
 

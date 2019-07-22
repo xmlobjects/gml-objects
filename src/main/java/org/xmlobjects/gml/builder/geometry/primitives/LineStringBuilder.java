@@ -7,9 +7,9 @@ import org.xmlobjects.gml.builder.basicTypes.CoordinatesBuilder;
 import org.xmlobjects.gml.builder.deprecatedTypes.CoordBuilder;
 import org.xmlobjects.gml.builder.geometry.DirectPositionBuilder;
 import org.xmlobjects.gml.builder.geometry.DirectPositionListBuilder;
-import org.xmlobjects.gml.model.common.Constants;
 import org.xmlobjects.gml.model.geometry.GeometricPosition;
 import org.xmlobjects.gml.model.geometry.primitives.LineString;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.xml.Attributes;
@@ -17,8 +17,8 @@ import org.xmlobjects.xml.Attributes;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "LineString", namespaceURI = Constants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "LineString", namespaceURI = Constants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "LineString", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
+        @XMLElement(name = "LineString", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
 })
 public class LineStringBuilder extends AbstractCurveBuilder<LineString> {
 
