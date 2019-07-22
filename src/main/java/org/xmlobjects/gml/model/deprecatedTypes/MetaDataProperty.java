@@ -31,7 +31,7 @@ public class MetaDataProperty<T extends AbstractMetaData> extends AbstractProper
     }
 
     public void setGenericElement(GenericElement genericElement) {
-        this.genericElement = genericElement;
+        this.genericElement = asChild(genericElement);
     }
 
     @SuppressWarnings("unchecked")

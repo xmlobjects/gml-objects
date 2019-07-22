@@ -1,8 +1,10 @@
 package org.xmlobjects.gml.model.feature;
 
 import org.xmlobjects.gml.model.base.AbstractProperty;
+import org.xmlobjects.gml.model.common.GenericElement;
 
 public class FeatureProperty<T extends AbstractFeature> extends AbstractProperty<T> {
+    private GenericElement genericElement;
 
     public FeatureProperty() {
     }
@@ -13,6 +15,22 @@ public class FeatureProperty<T extends AbstractFeature> extends AbstractProperty
 
     public FeatureProperty(String href) {
         super(href);
+    }
+
+    public boolean isSetObject() {
+        return getObject() != null;
+    }
+
+    public GenericElement getGenericElement() {
+        return genericElement;
+    }
+
+    public boolean isSetGenericElement() {
+        return genericElement != null;
+    }
+
+    public void setGenericElement(GenericElement genericElement) {
+        this.genericElement = asChild(genericElement);
     }
 
     @SuppressWarnings("unchecked")
