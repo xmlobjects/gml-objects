@@ -32,8 +32,8 @@ public class CompositeCurveBuilder extends AbstractCurveBuilder<CompositeCurve> 
     }
 
     @Override
-    public void buildNestedObject(CompositeCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(CompositeCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         if ("curveMember".equals(name.getLocalPart()))
             object.getCurveMembers().add(reader.getObjectUsingBuilder(CurvePropertyBuilder.class));

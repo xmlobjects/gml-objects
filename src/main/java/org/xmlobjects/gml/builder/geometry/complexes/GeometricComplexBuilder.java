@@ -32,8 +32,8 @@ public class GeometricComplexBuilder extends AbstractGeometryBuilder<GeometricCo
     }
 
     @Override
-    public void buildNestedObject(GeometricComplex object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(GeometricComplex object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         if ("element".equals(name.getLocalPart()))
             object.getElements().add(reader.getObjectUsingBuilder(GeometricPrimitivePropertyBuilder.class));

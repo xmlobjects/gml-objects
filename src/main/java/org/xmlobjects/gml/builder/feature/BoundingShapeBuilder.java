@@ -25,7 +25,7 @@ public class BoundingShapeBuilder implements ObjectBuilder<BoundingShape> {
     }
 
     @Override
-    public void buildNestedObject(BoundingShape object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(BoundingShape object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         switch (name.getLocalPart()) {
             case "Envelope":
                 object.setEnvelope(reader.getObjectUsingBuilder(EnvelopeBuilder.class));

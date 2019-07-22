@@ -24,8 +24,8 @@ public class TinBuilder extends AbstractSurfaceBuilder<Tin> {
     }
 
     @Override
-    public void buildNestedObject(Tin object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(Tin object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         switch (name.getLocalPart()) {
             case "patches":

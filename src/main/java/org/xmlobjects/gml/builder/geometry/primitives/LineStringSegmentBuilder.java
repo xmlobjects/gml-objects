@@ -27,7 +27,7 @@ public class LineStringSegmentBuilder extends AbstractCurveSegmentBuilder<LineSt
     }
 
     @Override
-    public void buildNestedObject(LineStringSegment object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(LineStringSegment object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         switch (name.getLocalPart()) {
             case "posList":
                 object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListBuilder.class));

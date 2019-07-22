@@ -23,7 +23,7 @@ public abstract class AbstractGMLBuilder<T extends AbstractGML> implements Objec
     }
 
     @Override
-    public void buildNestedObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         switch (name.getLocalPart()) {
             case "description":
                 object.setDescription(reader.getObjectUsingBuilder(StringOrRefBuilder.class));

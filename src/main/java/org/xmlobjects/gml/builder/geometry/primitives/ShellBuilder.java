@@ -26,8 +26,8 @@ public class ShellBuilder extends AbstractSurfaceBuilder<Shell> {
     }
 
     @Override
-    public void buildNestedObject(Shell object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(Shell object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         if ("surfaceMember".equals(name.getLocalPart()))
             object.getSurfaceMembers().add(reader.getObjectUsingBuilder(SurfacePropertyBuilder.class));

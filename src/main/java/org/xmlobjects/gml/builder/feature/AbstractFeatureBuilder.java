@@ -13,8 +13,8 @@ import javax.xml.namespace.QName;
 public abstract class AbstractFeatureBuilder<T extends AbstractFeature> extends AbstractGMLBuilder<T> {
 
     @Override
-    public void buildNestedObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         switch (name.getLocalPart()) {
             case "boundedBy":

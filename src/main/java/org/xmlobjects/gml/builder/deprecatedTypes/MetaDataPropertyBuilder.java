@@ -27,7 +27,7 @@ public class MetaDataPropertyBuilder extends AbstractPropertyBuilder<MetaDataPro
 
     @SuppressWarnings("unchecked")
     @Override
-    public void buildNestedObject(MetaDataProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(MetaDataProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         BuildResult<AbstractMetaData> result = reader.getObject(AbstractMetaData.class);
         if (result.isSetObject())
             object.setObject(result.getObject());

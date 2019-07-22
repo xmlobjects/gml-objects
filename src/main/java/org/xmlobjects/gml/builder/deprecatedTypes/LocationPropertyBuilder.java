@@ -19,7 +19,7 @@ public class LocationPropertyBuilder extends GeometryPropertyBuilder<LocationPro
     }
 
     @Override
-    public void buildNestedObject(LocationProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(LocationProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if ("LocationKeyWord".equals(name.getLocalPart()))
             object.setLocationKeyWord(reader.getObjectUsingBuilder(CodeBuilder.class));
         else if ("LocationString".equals(name.getLocalPart()))
@@ -27,6 +27,6 @@ public class LocationPropertyBuilder extends GeometryPropertyBuilder<LocationPro
         else if ("Null".equals(name.getLocalPart()))
             object.setNull(reader.getObjectUsingBuilder(NilReasonBuilder.class));
         else
-            super.buildNestedObject(object, name, attributes, reader);
+            super.buildChildObject(object, name, attributes, reader);
     }
 }

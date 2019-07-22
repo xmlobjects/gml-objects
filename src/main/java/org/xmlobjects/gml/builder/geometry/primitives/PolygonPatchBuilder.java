@@ -23,7 +23,7 @@ public class PolygonPatchBuilder extends AbstractSurfacePatchBuilder<PolygonPatc
     }
 
     @Override
-    public void buildNestedObject(PolygonPatch object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(PolygonPatch object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         switch (name.getLocalPart()) {
             case "exterior":
                 object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyBuilder.class));

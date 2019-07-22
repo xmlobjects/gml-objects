@@ -23,8 +23,8 @@ public class CurveBuilder extends AbstractCurveBuilder<Curve> {
     }
 
     @Override
-    public void buildNestedObject(Curve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(Curve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         if ("segments".equals(name.getLocalPart()))
             object.setSegments(reader.getObjectUsingBuilder(CurveSegmentArrayPropertyBuilder.class));

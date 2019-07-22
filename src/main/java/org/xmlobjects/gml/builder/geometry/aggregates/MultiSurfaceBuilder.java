@@ -25,8 +25,8 @@ public class MultiSurfaceBuilder extends AbstractGeometricAggregateBuilder<Multi
     }
 
     @Override
-    public void buildNestedObject(MultiSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(MultiSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         switch (name.getLocalPart()) {
             case "surfaceMember":

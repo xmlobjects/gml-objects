@@ -32,8 +32,8 @@ public class CompositeSolidBuilder extends AbstractSolidBuilder<CompositeSolid> 
     }
 
     @Override
-    public void buildNestedObject(CompositeSolid object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(CompositeSolid object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         if ("solidMember".equals(name.getLocalPart()))
             object.getSolidMembers().add(reader.getObjectUsingBuilder(SolidPropertyBuilder.class));

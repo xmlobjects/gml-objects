@@ -25,8 +25,8 @@ public class MultiPointBuilder extends AbstractGeometricAggregateBuilder<MultiPo
     }
 
     @Override
-    public void buildNestedObject(MultiPoint object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(MultiPoint object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         switch (name.getLocalPart()) {
             case "pointMember":

@@ -27,8 +27,8 @@ public class SolidBuilder extends AbstractSolidBuilder<Solid> {
     }
 
     @Override
-    public void buildNestedObject(Solid object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(Solid object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         switch (name.getLocalPart()) {
             case "exterior":

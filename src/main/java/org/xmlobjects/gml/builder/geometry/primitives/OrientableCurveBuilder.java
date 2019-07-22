@@ -30,8 +30,8 @@ public class OrientableCurveBuilder extends AbstractCurveBuilder<OrientableCurve
     }
 
     @Override
-    public void buildNestedObject(OrientableCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(OrientableCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         if ("baseCurve".equals(name.getLocalPart()))
             object.setBaseCurve(reader.getObjectUsingBuilder(CurvePropertyBuilder.class));

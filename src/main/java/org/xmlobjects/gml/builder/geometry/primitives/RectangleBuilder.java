@@ -23,7 +23,7 @@ public class RectangleBuilder extends AbstractSurfacePatchBuilder<Rectangle> {
     }
 
     @Override
-    public void buildNestedObject(Rectangle object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(Rectangle object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if ("exterior".equals(name.getLocalPart()))
             object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyBuilder.class));
     }

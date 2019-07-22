@@ -15,7 +15,7 @@ public abstract class ArrayPropertyBuilder<T extends ArrayProperty> implements O
 
     @SuppressWarnings("unchecked")
     @Override
-    public void buildNestedObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         BuildResult<GMLObject> result = reader.getObject(object.getTargetType());
         if (result.isSetObject())
             object.getObjects().add(result.getObject());

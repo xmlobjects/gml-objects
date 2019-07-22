@@ -25,8 +25,8 @@ public class MultiCurveBuilder extends AbstractGeometricAggregateBuilder<MultiCu
     }
 
     @Override
-    public void buildNestedObject(MultiCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(MultiCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         switch (name.getLocalPart()) {
             case "curveMember":

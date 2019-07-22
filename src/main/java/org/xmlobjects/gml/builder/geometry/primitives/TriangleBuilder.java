@@ -23,7 +23,7 @@ public class TriangleBuilder extends AbstractSurfacePatchBuilder<Triangle> {
     }
 
     @Override
-    public void buildNestedObject(Triangle object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(Triangle object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if ("exterior".equals(name.getLocalPart()))
             object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyBuilder.class));
     }

@@ -32,8 +32,8 @@ public class CompositeSurfaceBuilder extends AbstractSurfaceBuilder<CompositeSur
     }
 
     @Override
-    public void buildNestedObject(CompositeSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(CompositeSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         if ("surfaceMember".equals(name.getLocalPart()))
             object.getSurfaceMembers().add(reader.getObjectUsingBuilder(SurfacePropertyBuilder.class));

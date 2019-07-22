@@ -23,8 +23,8 @@ public class SurfaceBuilder extends AbstractSurfaceBuilder<Surface> {
     }
 
     @Override
-    public void buildNestedObject(Surface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(Surface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         if ("patches".equals(name.getLocalPart()))
             object.setPatches(reader.getObjectUsingBuilder(SurfacePatchArrayPropertyBuilder.class));

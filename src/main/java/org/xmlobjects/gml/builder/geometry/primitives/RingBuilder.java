@@ -30,8 +30,8 @@ public class RingBuilder extends AbstractRingBuilder<Ring> {
     }
 
     @Override
-    public void buildNestedObject(Ring object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(Ring object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         if ("curveMember".equals(name.getLocalPart()))
             object.getCurveMembers().add(reader.getObjectUsingBuilder(CurvePropertyBuilder.class));

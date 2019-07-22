@@ -35,7 +35,7 @@ public class EnvelopeBuilder implements ObjectBuilder<Envelope> {
     }
 
     @Override
-    public void buildNestedObject(Envelope object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(Envelope object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         switch (name.getLocalPart()) {
             case "lowerCorner":
                 object.setLowerCorner(reader.getObjectUsingBuilder(DirectPositionBuilder.class));

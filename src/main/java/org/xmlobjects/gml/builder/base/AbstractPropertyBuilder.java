@@ -22,7 +22,7 @@ public abstract class AbstractPropertyBuilder<T extends AbstractProperty> implem
 
     @SuppressWarnings("unchecked")
     @Override
-    public void buildNestedObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         BuildResult<GMLObject> result = reader.getObject(object.getTargetType());
         if (result.isSetObject())
             object.setObject(result.getObject());

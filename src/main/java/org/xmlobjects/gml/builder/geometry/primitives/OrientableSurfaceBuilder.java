@@ -30,8 +30,8 @@ public class OrientableSurfaceBuilder extends AbstractSurfaceBuilder<OrientableS
     }
 
     @Override
-    public void buildNestedObject(OrientableSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(OrientableSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         if ("baseSurface".equals(name.getLocalPart()))
             object.setBaseSurface(reader.getObjectUsingBuilder(SurfacePropertyBuilder.class));

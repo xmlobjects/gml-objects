@@ -23,8 +23,8 @@ public class PolyhedralSurfaceBuilder extends AbstractSurfaceBuilder<PolyhedralS
     }
 
     @Override
-    public void buildNestedObject(PolyhedralSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildNestedObject(object, name, attributes, reader);
+    public void buildChildObject(PolyhedralSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
 
         switch (name.getLocalPart()) {
             case "patches":
