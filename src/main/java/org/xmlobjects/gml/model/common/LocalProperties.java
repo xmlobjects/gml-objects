@@ -1,9 +1,10 @@
 package org.xmlobjects.gml.model.common;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LocalProperties {
+public class LocalProperties implements Serializable {
     private Map<String, Object> properties;
 
     public Object get(String name) {
