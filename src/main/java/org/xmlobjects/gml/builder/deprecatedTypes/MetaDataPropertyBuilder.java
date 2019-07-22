@@ -2,6 +2,7 @@ package org.xmlobjects.gml.builder.deprecatedTypes;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.base.AbstractPropertyBuilder;
+import org.xmlobjects.gml.model.common.GenericElement;
 import org.xmlobjects.gml.model.deprecatedTypes.AbstractMetaData;
 import org.xmlobjects.gml.model.deprecatedTypes.MetaDataProperty;
 import org.xmlobjects.stream.BuildResult;
@@ -31,6 +32,6 @@ public class MetaDataPropertyBuilder extends AbstractPropertyBuilder<MetaDataPro
         if (result.isSetObject())
             object.setObject(result.getObject());
         else if (result.isSetDOMElement())
-            object.setGenericElement(result.getDOMElement());
+            object.setGenericElement(GenericElement.of(result.getDOMElement()));
     }
 }

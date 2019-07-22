@@ -4,6 +4,7 @@ import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.basicTypes.Code;
 import org.xmlobjects.gml.model.basicTypes.CodeWithAuthority;
 import org.xmlobjects.gml.model.common.ChildList;
+import org.xmlobjects.gml.model.common.LocalProperties;
 import org.xmlobjects.gml.model.deprecatedTypes.MetaDataProperty;
 import org.xmlobjects.gml.model.deprecatedTypes.StringOrRef;
 
@@ -17,6 +18,7 @@ public abstract class AbstractGML extends GMLObject implements StandardObjectPro
     private Reference descriptionReference;
     private CodeWithAuthority identifier;
     private List<Code> names;
+    private LocalProperties localProperties;
 
     public String getId() {
         return id;
@@ -80,5 +82,12 @@ public abstract class AbstractGML extends GMLObject implements StandardObjectPro
     @Override
     public void setNames(List<Code> names) {
         this.names = asChild(names);
+    }
+
+    public LocalProperties getLocalProperties() {
+        if (localProperties == null)
+            localProperties = new LocalProperties();
+
+        return localProperties;
     }
 }

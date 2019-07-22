@@ -1,10 +1,10 @@
 package org.xmlobjects.gml.model.deprecatedTypes;
 
-import org.w3c.dom.Element;
 import org.xmlobjects.gml.model.base.AbstractProperty;
+import org.xmlobjects.gml.model.common.GenericElement;
 
 public class MetaDataProperty<T extends AbstractMetaData> extends AbstractProperty<T> {
-    private Element genericElement;
+    private GenericElement genericElement;
     private String about;
 
     public MetaDataProperty() {
@@ -22,7 +22,7 @@ public class MetaDataProperty<T extends AbstractMetaData> extends AbstractProper
         return getObject() != null;
     }
 
-    public Element getGenericElement() {
+    public GenericElement getGenericElement() {
         return genericElement;
     }
 
@@ -30,7 +30,7 @@ public class MetaDataProperty<T extends AbstractMetaData> extends AbstractProper
         return genericElement != null;
     }
 
-    public void setGenericElement(Element genericElement) {
+    public void setGenericElement(GenericElement genericElement) {
         this.genericElement = genericElement;
     }
 

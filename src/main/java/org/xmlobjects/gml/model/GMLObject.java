@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public abstract class GMLObject implements Serializable {
-    private static final long serialVersionUID = 8038430725115673854L;
     private GMLObject parent;
 
     protected final <T extends GMLObject> T asChild(T child) {
