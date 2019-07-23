@@ -20,13 +20,19 @@ public class LocationPropertyBuilder extends GeometryPropertyBuilder<LocationPro
 
     @Override
     public void buildChildObject(LocationProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if ("LocationKeyWord".equals(name.getLocalPart()))
-            object.setLocationKeyWord(reader.getObjectUsingBuilder(CodeBuilder.class));
-        else if ("LocationString".equals(name.getLocalPart()))
-            object.setLocationString(reader.getObjectUsingBuilder(StringOrRefBuilder.class));
-        else if ("Null".equals(name.getLocalPart()))
-            object.setNull(reader.getObjectUsingBuilder(NilReasonBuilder.class));
-        else
-            super.buildChildObject(object, name, attributes, reader);
+        switch (name.getLocalPart()) {
+            case "LocationKeyWord":
+                object.setLocationKeyWord(reader.getObjectUsingBuilder(CodeBuilder.class));
+                break;
+            case "LocationString":
+                object.setLocationString(reader.getObjectUsingBuilder(StringOrRefBuilder.class));
+                break;
+            case "Null":
+                object.setNull(reader.getObjectUsingBuilder(NilReasonBuilder.class));
+                break;
+            default:
+                super.buildChildObject(object, name, attributes, reader);
+                break;
+        }
     }
 }
