@@ -13,6 +13,8 @@ import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
+import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
@@ -51,5 +53,12 @@ public class LineStringBuilder extends AbstractCurveBuilder<LineString> {
                 object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(CoordBuilder.class).toDirectPosition()));
                 break;
         }
+    }
+
+    @Override
+    public Element createElement(LineString object, Namespaces namespaces) {
+        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "LineString") :
+                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "LineString");
     }
 }

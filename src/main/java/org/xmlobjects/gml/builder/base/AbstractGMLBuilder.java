@@ -8,13 +8,19 @@ import org.xmlobjects.gml.builder.deprecatedTypes.MetaDataPropertyBuilder;
 import org.xmlobjects.gml.builder.deprecatedTypes.StringOrRefBuilder;
 import org.xmlobjects.gml.model.base.AbstractGML;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
+import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
+import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
-public abstract class AbstractGMLBuilder<T extends AbstractGML> implements ObjectBuilder<T> {
+public abstract class AbstractGMLBuilder<T extends AbstractGML> implements ObjectBuilder<T>, ObjectSerializer<T> {
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
@@ -41,5 +47,10 @@ public abstract class AbstractGMLBuilder<T extends AbstractGML> implements Objec
                 object.getMetaDataProperties().add(reader.getObjectUsingBuilder(MetaDataPropertyBuilder.class));
                 break;
         }
+    }
+
+    @Override
+    public void serializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+
     }
 }

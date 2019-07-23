@@ -9,6 +9,8 @@ import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
+import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
@@ -35,5 +37,12 @@ public class RingBuilder extends AbstractRingBuilder<Ring> {
 
         if ("curveMember".equals(name.getLocalPart()))
             object.getCurveMembers().add(reader.getObjectUsingBuilder(CurvePropertyBuilder.class));
+    }
+
+    @Override
+    public Element createElement(Ring object, Namespaces namespaces) {
+        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "Ring") :
+                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "Ring");
     }
 }

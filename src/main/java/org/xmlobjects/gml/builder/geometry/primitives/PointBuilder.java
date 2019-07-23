@@ -11,6 +11,8 @@ import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
+import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
@@ -40,5 +42,12 @@ public class PointBuilder extends AbstractGeometricPrimitiveBuilder<Point> {
                 object.setPos(reader.getObjectUsingBuilder(CoordBuilder.class).toDirectPosition());
                 break;
         }
+    }
+
+    @Override
+    public Element createElement(Point object, Namespaces namespaces) {
+        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "Point") :
+                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "Point");
     }
 }

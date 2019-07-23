@@ -8,6 +8,8 @@ import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
+import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
@@ -31,5 +33,10 @@ public class ShellBuilder extends AbstractSurfaceBuilder<Shell> {
 
         if ("surfaceMember".equals(name.getLocalPart()))
             object.getSurfaceMembers().add(reader.getObjectUsingBuilder(SurfacePropertyBuilder.class));
+    }
+
+    @Override
+    public Element createElement(Shell object, Namespaces namespaces) {
+        return Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "Shell");
     }
 }

@@ -8,6 +8,8 @@ import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
+import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
@@ -32,5 +34,12 @@ public class TriangulatedSurfaceBuilder extends AbstractSurfaceBuilder<Triangula
                 object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyBuilder.class));
                 break;
         }
+    }
+
+    @Override
+    public Element createElement(TriangulatedSurface object, Namespaces namespaces) {
+        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "TriangulatedSurface") :
+                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "TriangulatedSurface");
     }
 }
