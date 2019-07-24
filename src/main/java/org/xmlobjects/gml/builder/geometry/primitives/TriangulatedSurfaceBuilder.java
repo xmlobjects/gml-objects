@@ -38,7 +38,7 @@ public class TriangulatedSurfaceBuilder extends AbstractSurfaceBuilder<Triangula
 
     @Override
     public Element createElement(TriangulatedSurface object, Namespaces namespaces) {
-        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
                 Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "TriangulatedSurface") :
                 Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "TriangulatedSurface");
     }

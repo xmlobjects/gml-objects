@@ -38,7 +38,7 @@ public class PolyhedralSurfaceBuilder extends AbstractSurfaceBuilder<PolyhedralS
 
     @Override
     public Element createElement(PolyhedralSurface object, Namespaces namespaces) {
-        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
                 Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "PolyhedralSurface") :
                 Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "PolyhedralSurface");
     }

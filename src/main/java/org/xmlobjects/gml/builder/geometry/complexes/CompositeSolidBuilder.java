@@ -43,7 +43,7 @@ public class CompositeSolidBuilder extends AbstractSolidBuilder<CompositeSolid> 
 
     @Override
     public Element createElement(CompositeSolid object, Namespaces namespaces) {
-        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
                 Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "CompositeSolid") :
                 Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "CompositeSolid");
     }

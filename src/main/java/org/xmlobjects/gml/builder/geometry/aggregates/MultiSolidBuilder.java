@@ -42,7 +42,7 @@ public class MultiSolidBuilder extends AbstractGeometricAggregateBuilder<MultiSo
 
     @Override
     public Element createElement(MultiSolid object, Namespaces namespaces) {
-        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
                 Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "MultiSolid") :
                 Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "MultiSolid");
     }

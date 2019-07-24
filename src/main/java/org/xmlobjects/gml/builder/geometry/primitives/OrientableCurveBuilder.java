@@ -41,7 +41,7 @@ public class OrientableCurveBuilder extends AbstractCurveBuilder<OrientableCurve
 
     @Override
     public Element createElement(OrientableCurve object, Namespaces namespaces) {
-        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
                 Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "OrientableCurve") :
                 Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "OrientableCurve");
     }

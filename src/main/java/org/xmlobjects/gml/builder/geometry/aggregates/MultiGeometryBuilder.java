@@ -42,7 +42,7 @@ public class MultiGeometryBuilder extends AbstractGeometricAggregateBuilder<Mult
 
     @Override
     public Element createElement(MultiGeometry object, Namespaces namespaces) {
-        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
                 Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "MultiGeometry") :
                 Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "MultiGeometry");
     }

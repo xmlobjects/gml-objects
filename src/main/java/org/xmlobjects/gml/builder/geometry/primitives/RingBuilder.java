@@ -41,7 +41,7 @@ public class RingBuilder extends AbstractRingBuilder<Ring> {
 
     @Override
     public Element createElement(Ring object, Namespaces namespaces) {
-        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
                 Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "Ring") :
                 Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "Ring");
     }

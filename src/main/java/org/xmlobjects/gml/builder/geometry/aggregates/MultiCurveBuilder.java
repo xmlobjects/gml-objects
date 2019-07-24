@@ -42,7 +42,7 @@ public class MultiCurveBuilder extends AbstractGeometricAggregateBuilder<MultiCu
 
     @Override
     public Element createElement(MultiCurve object, Namespaces namespaces) {
-        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
                 Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "MultiCurve") :
                 Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "MultiCurve");
     }

@@ -57,7 +57,7 @@ public class LinearRingBuilder extends AbstractRingBuilder<LinearRing> {
 
     @Override
     public Element createElement(LinearRing object, Namespaces namespaces) {
-        return (namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI)) ?
+        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
                 Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "LinearRing") :
                 Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "LinearRing");
     }
