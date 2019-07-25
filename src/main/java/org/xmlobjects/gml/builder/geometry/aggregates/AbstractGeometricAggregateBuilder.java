@@ -1,7 +1,7 @@
 package org.xmlobjects.gml.builder.geometry.aggregates;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.BuilderHelper;
 import org.xmlobjects.gml.builder.geometry.AbstractGeometryBuilder;
 import org.xmlobjects.gml.model.geometry.aggregates.AbstractGeometricAggregate;
 import org.xmlobjects.stream.XMLReadException;
@@ -15,6 +15,6 @@ public abstract class AbstractGeometricAggregateBuilder<T extends AbstractGeomet
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         super.initializeObject(object, name, attributes, reader);
-        AttributesBuilder.buildAggregationAttributes(object, attributes);
+        BuilderHelper.buildAggregationAttributes(object, attributes);
     }
 }

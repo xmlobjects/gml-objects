@@ -2,7 +2,7 @@ package org.xmlobjects.gml.builder.geometry.primitives;
 
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.BuilderHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Shell;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
@@ -24,7 +24,7 @@ public class ShellBuilder extends AbstractSurfaceBuilder<Shell> {
     @Override
     public void initializeObject(Shell object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         super.initializeObject(object, name, attributes, reader);
-        AttributesBuilder.buildAggregationAttributes(object, attributes);
+        BuilderHelper.buildAggregationAttributes(object, attributes);
     }
 
     @Override

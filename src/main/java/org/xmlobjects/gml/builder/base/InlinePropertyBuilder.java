@@ -2,7 +2,7 @@ package org.xmlobjects.gml.builder.base;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.BuilderHelper;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.base.InlineProperty;
 import org.xmlobjects.stream.BuildResult;
@@ -16,7 +16,7 @@ public abstract class InlinePropertyBuilder<T extends InlineProperty> implements
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        AttributesBuilder.buildOwnershipAttributes(object, attributes);
+        BuilderHelper.buildOwnershipAttributes(object, attributes);
     }
 
     @SuppressWarnings("unchecked")

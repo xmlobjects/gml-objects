@@ -5,7 +5,7 @@ import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.builder.basicTypes.CoordinatesBuilder;
-import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.BuilderHelper;
 import org.xmlobjects.gml.builder.deprecatedTypes.CoordBuilder;
 import org.xmlobjects.gml.model.deprecatedTypes.Coord;
 import org.xmlobjects.gml.model.geometry.DirectPosition;
@@ -31,7 +31,7 @@ public class EnvelopeBuilder implements ObjectBuilder<Envelope> {
 
     @Override
     public void initializeObject(Envelope object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        AttributesBuilder.buildSRSReference(object, attributes);
+        BuilderHelper.buildSRSReference(object, attributes);
     }
 
     @Override

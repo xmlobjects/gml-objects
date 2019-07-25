@@ -3,7 +3,7 @@ package org.xmlobjects.gml.builder.geometry.complexes;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.BuilderHelper;
 import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.primitives.AbstractSurfaceBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.SurfacePropertyBuilder;
@@ -31,7 +31,7 @@ public class CompositeSurfaceBuilder extends AbstractSurfaceBuilder<CompositeSur
     @Override
     public void initializeObject(CompositeSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         super.initializeObject(object, name, attributes, reader);
-        AttributesBuilder.buildAggregationAttributes(object, attributes);
+        BuilderHelper.buildAggregationAttributes(object, attributes);
     }
 
     @Override

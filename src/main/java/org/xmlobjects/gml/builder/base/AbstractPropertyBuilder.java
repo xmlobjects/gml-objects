@@ -2,7 +2,7 @@ package org.xmlobjects.gml.builder.base;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.BuilderHelper;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.base.AbstractProperty;
 import org.xmlobjects.stream.BuildResult;
@@ -16,8 +16,8 @@ public abstract class AbstractPropertyBuilder<T extends AbstractProperty> implem
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        AttributesBuilder.buildAssociationAttributes(object, attributes);
-        AttributesBuilder.buildOwnershipAttributes(object, attributes);
+        BuilderHelper.buildAssociationAttributes(object, attributes);
+        BuilderHelper.buildOwnershipAttributes(object, attributes);
     }
 
     @SuppressWarnings("unchecked")

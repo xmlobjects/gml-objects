@@ -2,7 +2,7 @@ package org.xmlobjects.gml.builder.geometry;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.base.AbstractGMLBuilder;
-import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.BuilderHelper;
 import org.xmlobjects.gml.model.geometry.AbstractGeometry;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -15,6 +15,6 @@ public abstract class AbstractGeometryBuilder<T extends AbstractGeometry> extend
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         super.initializeObject(object, name, attributes, reader);
-        AttributesBuilder.buildSRSReference(object, attributes);
+        BuilderHelper.buildSRSReference(object, attributes);
     }
 }

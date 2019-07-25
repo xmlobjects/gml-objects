@@ -11,7 +11,7 @@ import org.xmlobjects.gml.model.xlink.ShowType;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.xml.Attributes;
 
-public class AttributesBuilder {
+public class BuilderHelper {
 
     public static void buildAssociationAttributes(AssociationAttributes object, Attributes attributes) {
         attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "href").ifPresent(object::setHref);

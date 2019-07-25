@@ -2,7 +2,7 @@ package org.xmlobjects.gml.builder.geometry;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.base.ArrayPropertyBuilder;
-import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.BuilderHelper;
 import org.xmlobjects.gml.model.geometry.GeometryArrayProperty;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -20,6 +20,6 @@ public class GeometryArrayPropertyBuilder<T extends GeometryArrayProperty> exten
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        AttributesBuilder.buildOwnershipAttributes(object, attributes);
+        BuilderHelper.buildOwnershipAttributes(object, attributes);
     }
 }

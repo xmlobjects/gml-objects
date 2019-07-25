@@ -2,7 +2,7 @@ package org.xmlobjects.gml.builder.geometry;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.BuilderHelper;
 import org.xmlobjects.gml.model.geometry.DirectPositionList;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -21,6 +21,6 @@ public class DirectPositionListBuilder implements ObjectBuilder<DirectPositionLi
     public void initializeObject(DirectPositionList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         reader.getTextContent().ifDoubleList(object::setValue);
         attributes.getValue("count").ifInteger(object::setCount);
-        AttributesBuilder.buildSRSReference(object, attributes);
+        BuilderHelper.buildSRSReference(object, attributes);
     }
 }

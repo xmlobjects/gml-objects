@@ -3,7 +3,7 @@ package org.xmlobjects.gml.builder.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.BuilderHelper;
 import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Ring;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -29,7 +29,7 @@ public class RingBuilder extends AbstractRingBuilder<Ring> {
     @Override
     public void initializeObject(Ring object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         super.initializeObject(object, name, attributes, reader);
-        AttributesBuilder.buildAggregationAttributes(object, attributes);
+        BuilderHelper.buildAggregationAttributes(object, attributes);
     }
 
     @Override
