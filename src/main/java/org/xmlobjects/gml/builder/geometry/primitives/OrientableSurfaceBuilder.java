@@ -3,6 +3,7 @@ package org.xmlobjects.gml.builder.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.model.basicTypes.Sign;
 import org.xmlobjects.gml.model.geometry.primitives.OrientableSurface;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -41,8 +42,6 @@ public class OrientableSurfaceBuilder extends AbstractSurfaceBuilder<OrientableS
 
     @Override
     public Element createElement(OrientableSurface object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "OrientableSurface") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "OrientableSurface");
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "OrientableSurface");
     }
 }

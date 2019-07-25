@@ -4,6 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Ring;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
@@ -41,8 +42,6 @@ public class RingBuilder extends AbstractRingBuilder<Ring> {
 
     @Override
     public Element createElement(Ring object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "Ring") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "Ring");
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Ring");
     }
 }

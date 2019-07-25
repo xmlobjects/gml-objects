@@ -3,6 +3,7 @@ package org.xmlobjects.gml.builder.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.primitives.SolidArrayPropertyBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.SolidPropertyBuilder;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiSolid;
@@ -42,8 +43,6 @@ public class MultiSolidBuilder extends AbstractGeometricAggregateBuilder<MultiSo
 
     @Override
     public Element createElement(MultiSolid object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "MultiSolid") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "MultiSolid");
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "MultiSolid");
     }
 }

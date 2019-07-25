@@ -3,6 +3,7 @@ package org.xmlobjects.gml.builder.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.GeometryArrayPropertyBuilder;
 import org.xmlobjects.gml.builder.geometry.GeometryPropertyBuilder;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiGeometry;
@@ -42,8 +43,6 @@ public class MultiGeometryBuilder extends AbstractGeometricAggregateBuilder<Mult
 
     @Override
     public Element createElement(MultiGeometry object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "MultiGeometry") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "MultiGeometry");
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "MultiGeometry");
     }
 }

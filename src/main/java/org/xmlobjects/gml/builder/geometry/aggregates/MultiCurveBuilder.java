@@ -3,6 +3,7 @@ package org.xmlobjects.gml.builder.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.primitives.CurveArrayPropertyBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.CurvePropertyBuilder;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiCurve;
@@ -42,8 +43,6 @@ public class MultiCurveBuilder extends AbstractGeometricAggregateBuilder<MultiCu
 
     @Override
     public Element createElement(MultiCurve object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "MultiCurve") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "MultiCurve");
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "MultiCurve");
     }
 }

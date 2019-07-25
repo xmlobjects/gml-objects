@@ -4,6 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.primitives.AbstractSurfaceBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.SurfacePropertyBuilder;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeSurface;
@@ -43,8 +44,6 @@ public class CompositeSurfaceBuilder extends AbstractSurfaceBuilder<CompositeSur
 
     @Override
     public Element createElement(CompositeSurface object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "CompositeSurface") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "CompositeSurface");
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "CompositeSurface");
     }
 }

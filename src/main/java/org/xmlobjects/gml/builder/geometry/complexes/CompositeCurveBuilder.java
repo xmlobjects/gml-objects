@@ -4,6 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.primitives.AbstractCurveBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.CurvePropertyBuilder;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeCurve;
@@ -43,8 +44,6 @@ public class CompositeCurveBuilder extends AbstractCurveBuilder<CompositeCurve> 
 
     @Override
     public Element createElement(CompositeCurve object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "CompositeCurve") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "CompositeCurve");
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "CompositeCurve");
     }
 }

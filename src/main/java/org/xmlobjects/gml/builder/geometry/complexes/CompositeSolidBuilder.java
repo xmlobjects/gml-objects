@@ -4,6 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.common.AttributesBuilder;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.primitives.AbstractSolidBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.SolidPropertyBuilder;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeSolid;
@@ -43,8 +44,6 @@ public class CompositeSolidBuilder extends AbstractSolidBuilder<CompositeSolid> 
 
     @Override
     public Element createElement(CompositeSolid object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "CompositeSolid") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "CompositeSolid");
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "CompositeSolid");
     }
 }

@@ -3,6 +3,7 @@ package org.xmlobjects.gml.builder.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.primitives.PointArrayPropertyBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.PointPropertyBuilder;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiPoint;
@@ -42,8 +43,6 @@ public class MultiPointBuilder extends AbstractGeometricAggregateBuilder<MultiPo
 
     @Override
     public Element createElement(MultiPoint object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "MultiPoint") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "MultiPoint");
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "MultiPoint");
     }
 }

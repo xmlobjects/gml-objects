@@ -3,6 +3,7 @@ package org.xmlobjects.gml.builder.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.PolyhedralSurface;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
@@ -38,8 +39,6 @@ public class PolyhedralSurfaceBuilder extends AbstractSurfaceBuilder<PolyhedralS
 
     @Override
     public Element createElement(PolyhedralSurface object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "PolyhedralSurface") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "PolyhedralSurface");
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "PolyhedralSurface");
     }
 }

@@ -3,6 +3,7 @@ package org.xmlobjects.gml.builder.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Polygon;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -45,8 +46,6 @@ public class PolygonBuilder extends AbstractSurfaceBuilder<Polygon> {
 
     @Override
     public Element createElement(Polygon object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "Polygon") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "Polygon");
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Polygon");
     }
 }

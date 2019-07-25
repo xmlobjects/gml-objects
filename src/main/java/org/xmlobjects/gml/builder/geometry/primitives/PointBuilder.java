@@ -4,6 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.basicTypes.CoordinatesBuilder;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.deprecatedTypes.CoordBuilder;
 import org.xmlobjects.gml.builder.geometry.DirectPositionBuilder;
 import org.xmlobjects.gml.model.geometry.primitives.Point;
@@ -46,8 +47,6 @@ public class PointBuilder extends AbstractGeometricPrimitiveBuilder<Point> {
 
     @Override
     public Element createElement(Point object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "Point") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "Point");
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Point");
     }
 }

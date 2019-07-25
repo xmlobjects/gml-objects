@@ -37,6 +37,8 @@ public class ShellBuilder extends AbstractSurfaceBuilder<Shell> {
 
     @Override
     public Element createElement(Shell object, Namespaces namespaces) {
-        return Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "Shell");
+        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
+                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "CompositeSurface") :
+                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "Shell");
     }
 }
