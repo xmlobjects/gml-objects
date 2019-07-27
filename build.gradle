@@ -12,5 +12,6 @@ repositories {
 }
 
 dependencies {
-    api 'org.xml-objects:xml-objects:0.1.1'
+    annotationProcessor 'org.atteo.classindex:classindex:3.6'
+    api 'org.xml-objects:xml-objects:0.2.0'
 }
