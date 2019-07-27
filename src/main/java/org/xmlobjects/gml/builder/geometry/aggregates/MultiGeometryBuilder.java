@@ -6,10 +6,15 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.GeometryArrayPropertyBuilder;
 import org.xmlobjects.gml.builder.geometry.GeometryPropertyBuilder;
+import org.xmlobjects.gml.model.geometry.GeometryArrayProperty;
+import org.xmlobjects.gml.model.geometry.GeometryProperty;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiGeometry;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -21,6 +26,8 @@ import javax.xml.namespace.QName;
         @XMLElement(name = "MultiGeometry", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
 })
 public class MultiGeometryBuilder extends AbstractGeometricAggregateBuilder<MultiGeometry> {
+    private final GeometryPropertyBuilder<GeometryProperty> propertyBuilder = new GeometryPropertyBuilder<>();
+    private final GeometryArrayPropertyBuilder<GeometryArrayProperty> arrayPropertyBuilder = new GeometryArrayPropertyBuilder<>();
 
     @Override
     public MultiGeometry createObject(QName name) {
@@ -33,10 +40,10 @@ public class MultiGeometryBuilder extends AbstractGeometricAggregateBuilder<Mult
 
         switch (name.getLocalPart()) {
             case "geometryMember":
-                object.getGeometryMember().add(reader.getObjectUsingBuilder(new GeometryPropertyBuilder<>()));
+                object.getGeometryMember().add(reader.getObjectUsingBuilder(propertyBuilder));
                 break;
             case "geometryMembers":
-                object.setGeometryMembers(reader.getObjectUsingBuilder((new GeometryArrayPropertyBuilder<>())));
+                object.setGeometryMembers(reader.getObjectUsingBuilder(arrayPropertyBuilder));
                 break;
         }
     }
@@ -44,5 +51,17 @@ public class MultiGeometryBuilder extends AbstractGeometricAggregateBuilder<Mult
     @Override
     public Element createElement(MultiGeometry object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getTargetNamespace(namespaces), "MultiGeometry");
+    }
+
+    @Override
+    public void writeChildElements(MultiGeometry object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+
+        for (GeometryProperty property : object.getGeometryMember())
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "geometryMember"), property, propertyBuilder, namespaces);
+
+        if (object.getGeometryMembers() != null)
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "geometryMembers"), object.getGeometryMembers(), arrayPropertyBuilder, namespaces);
     }
 }

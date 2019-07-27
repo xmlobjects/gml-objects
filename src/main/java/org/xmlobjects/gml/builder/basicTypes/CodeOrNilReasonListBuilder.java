@@ -1,19 +1,24 @@
 package org.xmlobjects.gml.builder.basicTypes;
 
-import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.model.basicTypes.CodeOrNilReasonList;
 import org.xmlobjects.gml.model.basicTypes.NameOrNilReason;
 import org.xmlobjects.gml.model.basicTypes.NilReason;
+import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.util.XMLPatterns;
 import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
+import org.xmlobjects.xml.Namespaces;
 import org.xmlobjects.xml.TextContent;
 
 import javax.xml.namespace.QName;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
-public class CodeOrNilReasonListBuilder implements ObjectBuilder<CodeOrNilReasonList> {
+public class CodeOrNilReasonListBuilder implements ObjectBuilder<CodeOrNilReasonList>, ObjectSerializer<CodeOrNilReasonList> {
 
     @Override
     public CodeOrNilReasonList createObject(QName name) {
@@ -21,7 +26,7 @@ public class CodeOrNilReasonListBuilder implements ObjectBuilder<CodeOrNilReason
     }
 
     @Override
-    public void initializeObject(CodeOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void initializeObject(CodeOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         TextContent content = reader.getTextContent();
         for (String item : content.getAsList()) {
             if (XMLPatterns.NAME.matcher(item).matches())
@@ -31,5 +36,21 @@ public class CodeOrNilReasonListBuilder implements ObjectBuilder<CodeOrNilReason
         }
 
         attributes.getValue("codeSpace").ifPresent(object::setCodeSpace);
+    }
+
+    @Override
+    public void initializeElement(Element element, CodeOrNilReasonList object, Namespaces namespaces, XMLWriter writer) {
+        element.addTextContent(TextContent.ofList(object.getValue().stream()
+                .filter(Objects::nonNull)
+                .map(v -> {
+                    if (v.isSetValue())
+                        return v.getValue();
+                    else if (v.isSetNilReason())
+                        return v.getNilReason().getValue();
+                    else
+                        return null;
+                }).collect(Collectors.toList())));
+
+        element.addAttribute("codeSpace", object.getCodeSpace());
     }
 }

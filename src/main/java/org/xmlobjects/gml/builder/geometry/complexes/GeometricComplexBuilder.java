@@ -8,9 +8,13 @@ import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.AbstractGeometryBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.GeometricPrimitivePropertyBuilder;
 import org.xmlobjects.gml.model.geometry.complexes.GeometricComplex;
+import org.xmlobjects.gml.model.geometry.primitives.GeometricPrimitiveProperty;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -45,5 +49,20 @@ public class GeometricComplexBuilder extends AbstractGeometryBuilder<GeometricCo
     @Override
     public Element createElement(GeometricComplex object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getTargetNamespace(namespaces), "GeometricComplex");
+    }
+
+    @Override
+    public void initializeElement(Element element, GeometricComplex object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.initializeElement(element, object, namespaces, writer);
+        SerializerHelper.serializeAggregationAttributes(element, object, namespaces);
+    }
+
+    @Override
+    public void writeChildElements(GeometricComplex object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+
+        for (GeometricPrimitiveProperty property : object.getElements())
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "element"), property, GeometricPrimitivePropertyBuilder.class, namespaces);
     }
 }

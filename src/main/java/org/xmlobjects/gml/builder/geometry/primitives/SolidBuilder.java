@@ -10,8 +10,11 @@ import org.xmlobjects.gml.model.geometry.primitives.ShellProperty;
 import org.xmlobjects.gml.model.geometry.primitives.Solid;
 import org.xmlobjects.gml.model.geometry.primitives.SurfaceProperty;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -43,6 +46,24 @@ public class SolidBuilder extends AbstractSolidBuilder<Solid> {
         }
     }
 
+    @Override
+    public Element createElement(Solid object, Namespaces namespaces) {
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Solid");
+    }
+
+    @Override
+    public void writeChildElements(Solid object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+
+        if (object.getExterior() != null)
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "exterior"), object.getExterior(), ShellPropertyBuilder.class, namespaces);
+
+        for (ShellProperty property : object.getInterior())
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "interior"), property, ShellPropertyBuilder.class, namespaces);
+
+    }
+
     private ShellProperty getShellProperty(XMLReader reader) throws ObjectBuildException, XMLReadException {
         Shell shell = null;
 
@@ -53,10 +74,5 @@ public class SolidBuilder extends AbstractSolidBuilder<Solid> {
             shell = new Shell(((CompositeSurface) surfaceProperty.getObject()).getSurfaceMembers());
 
         return new ShellProperty(shell);
-    }
-
-    @Override
-    public Element createElement(Solid object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Solid");
     }
 }

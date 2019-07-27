@@ -7,9 +7,13 @@ import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.primitives.PointArrayPropertyBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.PointPropertyBuilder;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiPoint;
+import org.xmlobjects.gml.model.geometry.primitives.PointProperty;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -44,5 +48,17 @@ public class MultiPointBuilder extends AbstractGeometricAggregateBuilder<MultiPo
     @Override
     public Element createElement(MultiPoint object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getTargetNamespace(namespaces), "MultiPoint");
+    }
+
+    @Override
+    public void writeChildElements(MultiPoint object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+
+        for (PointProperty property : object.getPointMember())
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "pointMember"), property, PointPropertyBuilder.class, namespaces);
+
+        if (object.getPointMembers() != null)
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "pointMembers"), object.getPointMembers(), PointArrayPropertyBuilder.class, namespaces);
     }
 }

@@ -7,8 +7,11 @@ import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.model.basicTypes.Sign;
 import org.xmlobjects.gml.model.geometry.primitives.OrientableSurface;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -43,5 +46,21 @@ public class OrientableSurfaceBuilder extends AbstractSurfaceBuilder<OrientableS
     @Override
     public Element createElement(OrientableSurface object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getTargetNamespace(namespaces), "OrientableSurface");
+    }
+
+    @Override
+    public void initializeElement(Element element, OrientableSurface object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.initializeElement(element, object, namespaces, writer);
+
+        if (object.getOrientation() != Sign.PLUS)
+            element.addAttribute("orientation", object.getOrientation().toValue());
+    }
+
+    @Override
+    public void writeChildElements(OrientableSurface object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+
+        if (object.getBaseSurface() != null)
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "baseSurface"), object.getBaseSurface(), SurfacePropertyBuilder.class, namespaces);
     }
 }

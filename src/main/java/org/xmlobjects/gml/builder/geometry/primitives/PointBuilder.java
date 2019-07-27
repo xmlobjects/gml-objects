@@ -9,8 +9,11 @@ import org.xmlobjects.gml.builder.deprecatedTypes.CoordBuilder;
 import org.xmlobjects.gml.builder.geometry.DirectPositionBuilder;
 import org.xmlobjects.gml.model.geometry.primitives.Point;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -48,5 +51,13 @@ public class PointBuilder extends AbstractGeometricPrimitiveBuilder<Point> {
     @Override
     public Element createElement(Point object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Point");
+    }
+
+    @Override
+    public void writeChildElements(Point object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+
+        if (object.getPos() != null)
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "pos"), object.getPos(), DirectPositionBuilder.class, namespaces);
     }
 }

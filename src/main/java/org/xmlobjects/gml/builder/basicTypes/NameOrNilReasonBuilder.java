@@ -1,18 +1,21 @@
 package org.xmlobjects.gml.builder.basicTypes;
 
-import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.model.basicTypes.NameOrNilReason;
 import org.xmlobjects.gml.model.basicTypes.NilReason;
+import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.util.XMLPatterns;
 import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
+import org.xmlobjects.xml.Namespaces;
 import org.xmlobjects.xml.TextContent;
 
 import javax.xml.namespace.QName;
 
-public class NameOrNilReasonBuilder implements ObjectBuilder<NameOrNilReason> {
+public class NameOrNilReasonBuilder implements ObjectBuilder<NameOrNilReason>, ObjectSerializer<NameOrNilReason> {
 
     @Override
     public NameOrNilReason createObject(QName name) {
@@ -20,11 +23,19 @@ public class NameOrNilReasonBuilder implements ObjectBuilder<NameOrNilReason> {
     }
 
     @Override
-    public void initializeObject(NameOrNilReason object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void initializeObject(NameOrNilReason object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         TextContent content = reader.getTextContent();
         if (XMLPatterns.NAME.matcher(content.get()).matches())
             object.setName(content.get());
         else
             object.setNilReason(new NilReason(content.get()));
+    }
+
+    @Override
+    public void initializeElement(Element element, NameOrNilReason object, Namespaces namespaces, XMLWriter writer) {
+        if (object.isSetValue())
+            element.addTextContent(object.getValue());
+        else if (object.isSetNilReason())
+            element.addTextContent(object.getNilReason().getValue());
     }
 }

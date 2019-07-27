@@ -5,10 +5,14 @@ import org.xmlobjects.gml.builder.base.AbstractMemberBuilder;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.common.GenericElement;
 import org.xmlobjects.gml.model.feature.AbstractFeatureMember;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.BuildResult;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
@@ -22,5 +26,13 @@ public abstract class AbstractFeatureMemberBuilder<T extends AbstractFeatureMemb
             object.setObject(result.getObject());
         else if (result.isSetDOMElement())
             object.setGenericElement(GenericElement.of(result.getDOMElement()));
+    }
+
+    @Override
+    public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        if (object.getObject() != null)
+            writer.writeObject(object.getObject(), namespaces);
+        else if (object.isSetGenericElement())
+            writer.writeDOMElement(object.getGenericElement().getContent());
     }
 }

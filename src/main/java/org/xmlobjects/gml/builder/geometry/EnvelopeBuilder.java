@@ -6,14 +6,21 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.builder.basicTypes.CoordinatesBuilder;
 import org.xmlobjects.gml.builder.common.BuilderHelper;
+import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.deprecatedTypes.CoordBuilder;
 import org.xmlobjects.gml.model.deprecatedTypes.Coord;
 import org.xmlobjects.gml.model.geometry.DirectPosition;
 import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
+import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
+import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 import java.util.List;
@@ -22,7 +29,7 @@ import java.util.List;
         @XMLElement(name = "Envelope", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
         @XMLElement(name = "Envelope", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
 })
-public class EnvelopeBuilder implements ObjectBuilder<Envelope> {
+public class EnvelopeBuilder implements ObjectBuilder<Envelope>, ObjectSerializer<Envelope> {
 
     @Override
     public Envelope createObject(QName name) {
@@ -30,7 +37,7 @@ public class EnvelopeBuilder implements ObjectBuilder<Envelope> {
     }
 
     @Override
-    public void initializeObject(Envelope object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void initializeObject(Envelope object, QName name, Attributes attributes, XMLReader reader) {
         BuilderHelper.buildSRSReference(object, attributes);
     }
 
@@ -65,5 +72,26 @@ public class EnvelopeBuilder implements ObjectBuilder<Envelope> {
                     object.setUpperCorner(coord.toDirectPosition());
                 break;
         }
+    }
+
+    @Override
+    public Element createElement(Envelope object, Namespaces namespaces) {
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Envelope");
+    }
+
+    @Override
+    public void initializeElement(Element element, Envelope object, Namespaces namespaces, XMLWriter writer) {
+        SerializerHelper.serializeSRSReference(element, object, namespaces);
+    }
+
+    @Override
+    public void writeChildElements(Envelope object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+
+        if (object.getLowerCorner() != null)
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "lowerCorner"), object.getLowerCorner(), DirectPositionBuilder.class, namespaces);
+
+        if (object.getUpperCorner() != null)
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "upperCorner"), object.getUpperCorner(), DirectPositionBuilder.class, namespaces);
     }
 }

@@ -1,15 +1,19 @@
 package org.xmlobjects.gml.builder.basicTypes;
 
-import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.model.basicTypes.CodeList;
+import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
+import org.xmlobjects.xml.Namespaces;
+import org.xmlobjects.xml.TextContent;
 
 import javax.xml.namespace.QName;
 
-public class CodeListBuilder implements ObjectBuilder<CodeList> {
+public class CodeListBuilder implements ObjectBuilder<CodeList>, ObjectSerializer<CodeList> {
 
     @Override
     public CodeList createObject(QName name) {
@@ -17,8 +21,14 @@ public class CodeListBuilder implements ObjectBuilder<CodeList> {
     }
 
     @Override
-    public void initializeObject(CodeList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void initializeObject(CodeList object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         reader.getTextContent().ifList(object::setValue);
         attributes.getValue("codeSpace").ifPresent(object::setCodeSpace);
+    }
+
+    @Override
+    public void initializeElement(Element element, CodeList object, Namespaces namespaces, XMLWriter writer) {
+        element.addTextContent(TextContent.ofList(object.getValue()));
+        element.addAttribute("codeSpace", object.getCodeSpace());
     }
 }

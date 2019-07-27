@@ -8,9 +8,13 @@ import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.primitives.AbstractSurfaceBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.SurfacePropertyBuilder;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeSurface;
+import org.xmlobjects.gml.model.geometry.primitives.SurfaceProperty;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -45,5 +49,20 @@ public class CompositeSurfaceBuilder extends AbstractSurfaceBuilder<CompositeSur
     @Override
     public Element createElement(CompositeSurface object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getTargetNamespace(namespaces), "CompositeSurface");
+    }
+
+    @Override
+    public void initializeElement(Element element, CompositeSurface object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.initializeElement(element, object, namespaces, writer);
+        SerializerHelper.serializeAggregationAttributes(element, object, namespaces);
+    }
+
+    @Override
+    public void writeChildElements(CompositeSurface object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+
+        for (SurfaceProperty property : object.getSurfaceMembers())
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "surfaceMember"), property, SurfacePropertyBuilder.class, namespaces);
     }
 }

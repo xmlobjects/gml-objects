@@ -5,10 +5,14 @@ import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.common.BuilderHelper;
 import org.xmlobjects.gml.builder.common.SerializerHelper;
+import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
 import org.xmlobjects.gml.model.geometry.primitives.Ring;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -43,5 +47,14 @@ public class RingBuilder extends AbstractRingBuilder<Ring> {
     @Override
     public Element createElement(Ring object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Ring");
+    }
+
+    @Override
+    public void writeChildElements(Ring object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+
+        for (CurveProperty property : object.getCurveMembers())
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "curveMember"), property, CurvePropertyBuilder.class, namespaces);
     }
 }

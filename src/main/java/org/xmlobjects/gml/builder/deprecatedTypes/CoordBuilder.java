@@ -1,6 +1,5 @@
 package org.xmlobjects.gml.builder.deprecatedTypes;
 
-import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.model.deprecatedTypes.Coord;
 import org.xmlobjects.stream.XMLReadException;
@@ -17,7 +16,7 @@ public class CoordBuilder implements ObjectBuilder<Coord> {
     }
 
     @Override
-    public void buildChildObject(Coord object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void buildChildObject(Coord object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         switch (name.getLocalPart()) {
             case "X":
                 reader.getTextContent().ifDouble(object::setX);

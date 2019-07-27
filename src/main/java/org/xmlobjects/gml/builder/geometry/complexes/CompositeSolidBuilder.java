@@ -8,9 +8,13 @@ import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.primitives.AbstractSolidBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.SolidPropertyBuilder;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeSolid;
+import org.xmlobjects.gml.model.geometry.primitives.SolidProperty;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -45,5 +49,20 @@ public class CompositeSolidBuilder extends AbstractSolidBuilder<CompositeSolid> 
     @Override
     public Element createElement(CompositeSolid object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getTargetNamespace(namespaces), "CompositeSolid");
+    }
+
+    @Override
+    public void initializeElement(Element element, CompositeSolid object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.initializeElement(element, object, namespaces, writer);
+        SerializerHelper.serializeAggregationAttributes(element, object, namespaces);
+    }
+
+    @Override
+    public void writeChildElements(CompositeSolid object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+
+        for (SolidProperty property : object.getSolidMembers())
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "solidMember"), property, SolidPropertyBuilder.class, namespaces);
     }
 }

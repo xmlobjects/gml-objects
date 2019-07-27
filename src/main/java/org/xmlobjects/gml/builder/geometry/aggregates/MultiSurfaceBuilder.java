@@ -7,9 +7,13 @@ import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.primitives.SurfaceArrayPropertyBuilder;
 import org.xmlobjects.gml.builder.geometry.primitives.SurfacePropertyBuilder;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiSurface;
+import org.xmlobjects.gml.model.geometry.primitives.SurfaceProperty;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -44,5 +48,17 @@ public class MultiSurfaceBuilder extends AbstractGeometricAggregateBuilder<Multi
     @Override
     public Element createElement(MultiSurface object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getTargetNamespace(namespaces), "MultiSurface");
+    }
+
+    @Override
+    public void writeChildElements(MultiSurface object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+
+        for (SurfaceProperty property : object.getSurfaceMember())
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "surfaceMember"), property, SurfacePropertyBuilder.class, namespaces);
+
+        if (object.getSurfaceMembers() != null)
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "surfaceMembers"), object.getSurfaceMembers(), SurfaceArrayPropertyBuilder.class, namespaces);
     }
 }

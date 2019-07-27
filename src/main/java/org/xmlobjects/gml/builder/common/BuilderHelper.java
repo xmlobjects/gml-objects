@@ -16,7 +16,7 @@ public class BuilderHelper {
     public static void buildAssociationAttributes(AssociationAttributes object, Attributes attributes) {
         attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "href").ifPresent(object::setHref);
         attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "role").ifPresent(object::setRole);
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "arcRole").ifPresent(object::setArcRole);
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "arcrole").ifPresent(object::setArcRole);
         attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "title").ifPresent(object::setTitle);
         attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "show").ifPresent(v -> object.setShow(ShowType.fromValue(v)));
         attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "actuate").ifPresent(v -> object.setActuate(ActuateType.fromValue(v)));

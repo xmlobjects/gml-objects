@@ -6,8 +6,11 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.PolyhedralSurface;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -40,5 +43,13 @@ public class PolyhedralSurfaceBuilder extends AbstractSurfaceBuilder<PolyhedralS
     @Override
     public Element createElement(PolyhedralSurface object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getTargetNamespace(namespaces), "PolyhedralSurface");
+    }
+
+    @Override
+    public void writeChildElements(PolyhedralSurface object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+
+        if (object.getPatches() != null)
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "polygonPatches"), object.getPatches(), PolygonPatchArrayPropertyBuilder.class, namespaces);
     }
 }

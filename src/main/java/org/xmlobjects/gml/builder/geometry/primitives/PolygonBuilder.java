@@ -4,6 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.common.SerializerHelper;
+import org.xmlobjects.gml.model.geometry.primitives.AbstractRingProperty;
 import org.xmlobjects.gml.model.geometry.primitives.Polygon;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -47,5 +48,17 @@ public class PolygonBuilder extends AbstractSurfaceBuilder<Polygon> {
     @Override
     public Element createElement(Polygon object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Polygon");
+    }
+
+    @Override
+    public void writeChildElements(Polygon object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+
+        if (object.getExterior() != null)
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "exterior"), object.getExterior(), AbstractRingPropertyBuilder.class, namespaces);
+
+        for (AbstractRingProperty property : object.getInterior())
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "interior"), property, AbstractRingPropertyBuilder.class, namespaces);
     }
 }
