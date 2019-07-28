@@ -1,6 +1,8 @@
 package org.xmlobjects.gml.model.geometry;
 
+import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.base.AbstractGML;
+import org.xmlobjects.gml.model.feature.AbstractFeature;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,5 +58,26 @@ public abstract class AbstractGeometry extends AbstractGML implements SRSReferen
     @Override
     public void setUomLabels(List<String> uomLabels) {
         this.uomLabels = uomLabels;
+    }
+
+    @Override
+    public SRSReference getInheritedSRSReference() {
+        if (srsName == null) {
+            GMLObject parent = this;
+
+            while ((parent = parent.getParent()) != null) {
+                if (parent instanceof AbstractGeometry)
+                    return ((AbstractGeometry) parent).getInheritedSRSReference();
+                else if (parent instanceof AbstractFeature) {
+                    AbstractFeature feature = (AbstractFeature) parent;
+                    if (feature.getBoundedBy() != null
+                            && feature.getBoundedBy().getEnvelope() != null
+                            && feature.getBoundedBy().getEnvelope().getSrsName() != null)
+                        return feature.getBoundedBy().getEnvelope();
+                }
+            }
+        }
+
+        return this;
     }
 }

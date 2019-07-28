@@ -5,4 +5,5 @@ public interface SRSReference extends SRSInformation {
     void setSrsName(String srsName);
     Integer getSrsDimension();
     void setSrsDimension(Integer srsDimension);
+    SRSReference getInheritedSRSReference();
 }
