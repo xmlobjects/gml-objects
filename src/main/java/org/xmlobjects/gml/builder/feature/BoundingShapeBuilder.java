@@ -2,10 +2,10 @@ package org.xmlobjects.gml.builder.feature;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.builder.basicTypes.NilReasonBuilder;
+import org.xmlobjects.gml.builder.basictypes.NilReasonBuilder;
 import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.EnvelopeBuilder;
-import org.xmlobjects.gml.model.basicTypes.NilReason;
+import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.feature.BoundingShape;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -47,7 +47,7 @@ public class BoundingShapeBuilder implements ObjectBuilder<BoundingShape>, Objec
 
     @Override
     public void initializeElement(Element element, BoundingShape object, Namespaces namespaces, XMLWriter writer) {
-        if (object.getNilReason() != null && GMLConstants.GML_3_2_NAMESPACE_URI.equals(SerializerHelper.getTargetNamespace(namespaces)))
+        if (object.getNilReason() != null && GMLConstants.GML_3_2_NAMESPACE.equals(SerializerHelper.getTargetNamespace(namespaces)))
             element.addAttribute("nilReason", object.getNilReason().getValue());
     }
 
@@ -58,7 +58,7 @@ public class BoundingShapeBuilder implements ObjectBuilder<BoundingShape>, Objec
         if (object.getEnvelope() != null)
             writer.writeElementUsingSerializer(Element.of(targetNamespace, "Envelope"), object.getEnvelope(), EnvelopeBuilder.class, namespaces);
 
-        if (object.getNilReason() != null && GMLConstants.GML_3_1_NAMESPACE_URI.equals(targetNamespace))
+        if (object.getNilReason() != null && GMLConstants.GML_3_1_NAMESPACE.equals(targetNamespace))
             writer.writeElementUsingSerializer(Element.of(targetNamespace, "Null"), object.getNilReason(), NilReasonBuilder.class, namespaces);
     }
 }

@@ -2,14 +2,14 @@ package org.xmlobjects.gml.builder.base;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.builder.basicTypes.CodeBuilder;
-import org.xmlobjects.gml.builder.basicTypes.CodeWithAuthorityBuilder;
+import org.xmlobjects.gml.builder.basictypes.CodeBuilder;
+import org.xmlobjects.gml.builder.basictypes.CodeWithAuthorityBuilder;
 import org.xmlobjects.gml.builder.common.SerializerHelper;
-import org.xmlobjects.gml.builder.deprecatedTypes.MetaDataPropertyBuilder;
-import org.xmlobjects.gml.builder.deprecatedTypes.StringOrRefBuilder;
+import org.xmlobjects.gml.builder.deprecated.MetaDataPropertyBuilder;
+import org.xmlobjects.gml.builder.deprecated.StringOrRefBuilder;
 import org.xmlobjects.gml.model.base.AbstractGML;
-import org.xmlobjects.gml.model.basicTypes.Code;
-import org.xmlobjects.gml.model.deprecatedTypes.MetaDataProperty;
+import org.xmlobjects.gml.model.basictypes.Code;
+import org.xmlobjects.gml.model.deprecated.MetaDataProperty;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
@@ -27,8 +27,8 @@ public abstract class AbstractGMLBuilder<T extends AbstractGML> implements Objec
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        attributes.getValue(GMLConstants.GML_3_1_NAMESPACE_URI, "id").ifPresent(object::setId);
-        attributes.getValue(GMLConstants.GML_3_2_NAMESPACE_URI, "id").ifPresent(object::setId);
+        attributes.getValue(GMLConstants.GML_3_1_NAMESPACE, "id").ifPresent(object::setId);
+        attributes.getValue(GMLConstants.GML_3_2_NAMESPACE, "id").ifPresent(object::setId);
     }
 
     @Override
@@ -67,7 +67,7 @@ public abstract class AbstractGMLBuilder<T extends AbstractGML> implements Objec
         if (object.getDescription() != null)
             writer.writeElementUsingSerializer(Element.of(targetNamespace, "description"), object.getDescription(), StringOrRefBuilder.class, namespaces);
 
-        if (GMLConstants.GML_3_2_NAMESPACE_URI.equals(targetNamespace)) {
+        if (GMLConstants.GML_3_2_NAMESPACE.equals(targetNamespace)) {
             if (object.getDescriptionReference() != null)
                 writer.writeElementUsingSerializer(Element.of(targetNamespace, "descriptionReference"), object.getDescriptionReference(), ReferenceBuilder.class, namespaces);
 

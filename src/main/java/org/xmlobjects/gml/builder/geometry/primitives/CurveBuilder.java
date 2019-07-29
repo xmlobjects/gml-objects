@@ -18,8 +18,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Curve", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "Curve", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "Curve", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Curve", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class CurveBuilder extends AbstractCurveBuilder<Curve> {
 

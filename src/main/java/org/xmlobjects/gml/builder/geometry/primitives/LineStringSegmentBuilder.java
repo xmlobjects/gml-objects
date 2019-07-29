@@ -3,7 +3,7 @@ package org.xmlobjects.gml.builder.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.builder.basicTypes.CoordinatesBuilder;
+import org.xmlobjects.gml.builder.basictypes.CoordinatesBuilder;
 import org.xmlobjects.gml.builder.common.SerializerHelper;
 import org.xmlobjects.gml.builder.geometry.DirectPositionBuilder;
 import org.xmlobjects.gml.builder.geometry.DirectPositionListBuilder;
@@ -22,8 +22,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "LineStringSegment", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "LineStringSegment", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "LineStringSegment", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "LineStringSegment", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class LineStringSegmentBuilder extends AbstractCurveSegmentBuilder<LineStringSegment> {
 

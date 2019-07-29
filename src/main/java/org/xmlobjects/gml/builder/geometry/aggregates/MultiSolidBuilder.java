@@ -21,8 +21,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "MultiSolid", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "MultiSolid", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "MultiSolid", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "MultiSolid", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class MultiSolidBuilder extends AbstractGeometricAggregateBuilder<MultiSolid> {
 

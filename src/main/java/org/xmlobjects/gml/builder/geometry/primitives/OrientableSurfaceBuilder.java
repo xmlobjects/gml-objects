@@ -4,7 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.common.SerializerHelper;
-import org.xmlobjects.gml.model.basicTypes.Sign;
+import org.xmlobjects.gml.model.basictypes.Sign;
 import org.xmlobjects.gml.model.geometry.primitives.OrientableSurface;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -19,8 +19,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "OrientableSurface", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "OrientableSurface", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "OrientableSurface", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "OrientableSurface", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class OrientableSurfaceBuilder extends AbstractSurfaceBuilder<OrientableSurface> {
 

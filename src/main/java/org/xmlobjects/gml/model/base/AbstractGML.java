@@ -1,12 +1,12 @@
 package org.xmlobjects.gml.model.base;
 
 import org.xmlobjects.gml.model.GMLObject;
-import org.xmlobjects.gml.model.basicTypes.Code;
-import org.xmlobjects.gml.model.basicTypes.CodeWithAuthority;
+import org.xmlobjects.gml.model.basictypes.Code;
+import org.xmlobjects.gml.model.basictypes.CodeWithAuthority;
 import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.common.LocalProperties;
-import org.xmlobjects.gml.model.deprecatedTypes.MetaDataProperty;
-import org.xmlobjects.gml.model.deprecatedTypes.StringOrRef;
+import org.xmlobjects.gml.model.deprecated.MetaDataProperty;
+import org.xmlobjects.gml.model.deprecated.StringOrRef;
 
 import java.util.ArrayList;
 import java.util.List;

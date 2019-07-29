@@ -14,14 +14,14 @@ import org.xmlobjects.xml.Attributes;
 public class BuilderHelper {
 
     public static void buildAssociationAttributes(AssociationAttributes object, Attributes attributes) {
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "href").ifPresent(object::setHref);
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "role").ifPresent(object::setRole);
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "arcrole").ifPresent(object::setArcRole);
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "title").ifPresent(object::setTitle);
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "show").ifPresent(v -> object.setShow(ShowType.fromValue(v)));
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE_URI, "actuate").ifPresent(v -> object.setActuate(ActuateType.fromValue(v)));
-        attributes.getValue(GMLConstants.GML_3_1_NAMESPACE_URI, "remoteSchema").ifPresent(object::setRemoteSchema);
-        attributes.getValue(GMLConstants.GML_3_2_NAMESPACE_URI, "remoteSchema").ifPresent(object::setRemoteSchema);
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "href").ifPresent(object::setHref);
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "role").ifPresent(object::setRole);
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "arcrole").ifPresent(object::setArcRole);
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "title").ifPresent(object::setTitle);
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "show").ifPresent(v -> object.setShow(ShowType.fromValue(v)));
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "actuate").ifPresent(v -> object.setActuate(ActuateType.fromValue(v)));
+        attributes.getValue(GMLConstants.GML_3_1_NAMESPACE, "remoteSchema").ifPresent(object::setRemoteSchema);
+        attributes.getValue(GMLConstants.GML_3_2_NAMESPACE, "remoteSchema").ifPresent(object::setRemoteSchema);
         attributes.getValue("nilReason").ifPresent(object::setNilReason);
     }
 

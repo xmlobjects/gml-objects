@@ -19,8 +19,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Polygon", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "Polygon", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "Polygon", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Polygon", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class PolygonBuilder extends AbstractSurfaceBuilder<Polygon> {
 

@@ -1,6 +1,6 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
-import org.xmlobjects.gml.model.basicTypes.Sign;
+import org.xmlobjects.gml.model.basictypes.Sign;
 
 import java.util.Collections;
 import java.util.List;

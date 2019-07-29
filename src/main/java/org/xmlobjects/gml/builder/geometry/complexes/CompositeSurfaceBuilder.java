@@ -22,8 +22,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "CompositeSurface", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "CompositeSurface", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "CompositeSurface", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "CompositeSurface", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class CompositeSurfaceBuilder extends AbstractSurfaceBuilder<CompositeSurface> {
 

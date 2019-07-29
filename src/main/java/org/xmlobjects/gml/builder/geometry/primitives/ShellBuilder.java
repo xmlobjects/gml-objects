@@ -21,8 +21,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Shell", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "Shell", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "Shell", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Shell", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class ShellBuilder extends AbstractSurfaceBuilder<Shell> {
 
@@ -47,9 +47,9 @@ public class ShellBuilder extends AbstractSurfaceBuilder<Shell> {
 
     @Override
     public Element createElement(Shell object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE_URI) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE_URI, "CompositeSurface") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE_URI, "Shell");
+        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE) ?
+                Element.of(GMLConstants.GML_3_1_NAMESPACE, "CompositeSurface") :
+                Element.of(GMLConstants.GML_3_2_NAMESPACE, "Shell");
     }
 
     @Override

@@ -1,6 +1,6 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
-import org.xmlobjects.gml.model.basicTypes.Sign;
+import org.xmlobjects.gml.model.basictypes.Sign;
 
 public class OrientableSurface extends AbstractSurface {
     private SurfaceProperty baseSurface;

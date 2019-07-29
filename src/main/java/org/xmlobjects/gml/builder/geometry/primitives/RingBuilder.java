@@ -20,8 +20,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Ring", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "Ring", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "Ring", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Ring", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class RingBuilder extends AbstractRingBuilder<Ring> {
 

@@ -3,7 +3,7 @@ package org.xmlobjects.gml.builder.feature;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.builder.base.AbstractGMLBuilder;
 import org.xmlobjects.gml.builder.common.SerializerHelper;
-import org.xmlobjects.gml.builder.deprecatedTypes.LocationPropertyBuilder;
+import org.xmlobjects.gml.builder.deprecated.LocationPropertyBuilder;
 import org.xmlobjects.gml.model.feature.AbstractFeature;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;

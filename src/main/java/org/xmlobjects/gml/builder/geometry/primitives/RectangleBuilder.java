@@ -18,8 +18,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Rectangle", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "Rectangle", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "Rectangle", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Rectangle", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class RectangleBuilder extends AbstractSurfacePatchBuilder<Rectangle> {
 

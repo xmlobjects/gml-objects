@@ -4,11 +4,11 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.builder.basicTypes.CoordinatesBuilder;
+import org.xmlobjects.gml.builder.basictypes.CoordinatesBuilder;
 import org.xmlobjects.gml.builder.common.BuilderHelper;
 import org.xmlobjects.gml.builder.common.SerializerHelper;
-import org.xmlobjects.gml.builder.deprecatedTypes.CoordBuilder;
-import org.xmlobjects.gml.model.deprecatedTypes.Coord;
+import org.xmlobjects.gml.builder.deprecated.CoordBuilder;
+import org.xmlobjects.gml.model.deprecated.Coord;
 import org.xmlobjects.gml.model.geometry.DirectPosition;
 import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -26,8 +26,8 @@ import javax.xml.namespace.QName;
 import java.util.List;
 
 @XMLElements({
-        @XMLElement(name = "Envelope", namespaceURI = GMLConstants.GML_3_2_NAMESPACE_URI),
-        @XMLElement(name = "Envelope", namespaceURI = GMLConstants.GML_3_1_NAMESPACE_URI)
+        @XMLElement(name = "Envelope", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Envelope", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class EnvelopeBuilder implements ObjectBuilder<Envelope>, ObjectSerializer<Envelope> {
 
