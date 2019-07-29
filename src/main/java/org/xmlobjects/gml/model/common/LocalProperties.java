@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.common;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class LocalProperties implements Serializable {
     private Map<String, Object> properties;
@@ -17,6 +18,10 @@ public class LocalProperties implements Serializable {
             return value != null && typeOfT.isAssignableFrom(value.getClass()) ? typeOfT.cast(value) : null;
         } else
             return null;
+    }
+
+    public boolean getAndCompare(String name, Object expectedValue) {
+        return Objects.equals(get(name), expectedValue);
     }
 
     public void set(String name, Object value) {
