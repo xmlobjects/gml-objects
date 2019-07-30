@@ -38,10 +38,12 @@ public class RingAdapter extends AbstractRingAdapter<Ring> {
 
     @Override
     public void buildChildObject(Ring object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if ("curveMember".equals(name.getLocalPart()))
-            object.getCurveMembers().add(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
-        else
-            super.buildChildObject(object, name, attributes, reader);
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            if ("curveMember".equals(name.getLocalPart()))
+                object.getCurveMembers().add(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
+            else
+                super.buildChildObject(object, name, attributes, reader);
+        }
     }
 
     @Override

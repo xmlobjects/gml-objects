@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.primitives.PointArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.PointPropertyAdapter;
@@ -33,16 +34,18 @@ public class MultiPointAdapter extends AbstractGeometricAggregateAdapter<MultiPo
 
     @Override
     public void buildChildObject(MultiPoint object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "pointMember":
-                object.getPointMember().add(reader.getObjectUsingBuilder(PointPropertyAdapter.class));
-                break;
-            case "pointMembers":
-                object.setPointMembers(reader.getObjectUsingBuilder(PointArrayPropertyAdapter.class));
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "pointMember":
+                    object.getPointMember().add(reader.getObjectUsingBuilder(PointPropertyAdapter.class));
+                    break;
+                case "pointMembers":
+                    object.setPointMembers(reader.getObjectUsingBuilder(PointArrayPropertyAdapter.class));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Curve;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -30,10 +31,12 @@ public class CurveAdapter extends AbstractCurveAdapter<Curve> {
 
     @Override
     public void buildChildObject(Curve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if ("segments".equals(name.getLocalPart()))
-            object.setSegments(reader.getObjectUsingBuilder(CurveSegmentArrayPropertyAdapter.class));
-        else
-            super.buildChildObject(object, name, attributes, reader);
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            if ("segments".equals(name.getLocalPart()))
+                object.setSegments(reader.getObjectUsingBuilder(CurveSegmentArrayPropertyAdapter.class));
+            else
+                super.buildChildObject(object, name, attributes, reader);
+        }
     }
 
     @Override

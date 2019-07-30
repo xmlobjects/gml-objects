@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.TriangulatedSurface;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -30,14 +31,16 @@ public class TriangulatedSurfaceAdapter extends AbstractSurfaceAdapter<Triangula
 
     @Override
     public void buildChildObject(TriangulatedSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "patches":
-            case "trianglePatches":
-                object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "patches":
+                case "trianglePatches":
+                    object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

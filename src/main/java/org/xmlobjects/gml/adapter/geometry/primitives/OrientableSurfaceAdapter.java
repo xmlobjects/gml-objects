@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.model.basictypes.Sign;
 import org.xmlobjects.gml.model.geometry.primitives.OrientableSurface;
@@ -37,10 +38,12 @@ public class OrientableSurfaceAdapter extends AbstractSurfaceAdapter<OrientableS
 
     @Override
     public void buildChildObject(OrientableSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if ("baseSurface".equals(name.getLocalPart()))
-            object.setBaseSurface(reader.getObjectUsingBuilder(SurfacePropertyAdapter.class));
-        else
-            super.buildChildObject(object, name, attributes, reader);
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            if ("baseSurface".equals(name.getLocalPart()))
+                object.setBaseSurface(reader.getObjectUsingBuilder(SurfacePropertyAdapter.class));
+            else
+                super.buildChildObject(object, name, attributes, reader);
+        }
     }
 
     @Override

@@ -4,6 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.basictypes.CoordinatesAdapter;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.deprecated.CoordAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
@@ -35,28 +36,30 @@ public class LinearRingAdapter extends AbstractRingAdapter<LinearRing> {
 
     @Override
     public void buildChildObject(LinearRing object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "posList":
-                object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
-                break;
-            case "pos":
-                object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
-                break;
-            case "pointProperty":
-            case "pointRep":
-                object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
-                break;
-            case "coordinates":
-                reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPositions().stream()
-                        .map(GeometricPosition::new)
-                        .forEach(object.getControlPoints().getGeometricPositions()::add);
-                break;
-            case "coord":
-                object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(CoordAdapter.class).toDirectPosition()));
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "posList":
+                    object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
+                    break;
+                case "pos":
+                    object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
+                    break;
+                case "pointProperty":
+                case "pointRep":
+                    object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
+                    break;
+                case "coordinates":
+                    reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPositions().stream()
+                            .map(GeometricPosition::new)
+                            .forEach(object.getControlPoints().getGeometricPositions()::add);
+                    break;
+                case "coord":
+                    object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(CoordAdapter.class).toDirectPosition()));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

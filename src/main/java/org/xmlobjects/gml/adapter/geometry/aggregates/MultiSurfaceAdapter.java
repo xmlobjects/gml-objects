@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.primitives.SurfaceArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.SurfacePropertyAdapter;
@@ -33,16 +34,18 @@ public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<Multi
 
     @Override
     public void buildChildObject(MultiSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "surfaceMember":
-                object.getSurfaceMember().add(reader.getObjectUsingBuilder(SurfacePropertyAdapter.class));
-                break;
-            case "surfaceMembers":
-                object.setSurfaceMembers(reader.getObjectUsingBuilder(SurfaceArrayPropertyAdapter.class));
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "surfaceMember":
+                    object.getSurfaceMember().add(reader.getObjectUsingBuilder(SurfacePropertyAdapter.class));
+                    break;
+                case "surfaceMembers":
+                    object.setSurfaceMembers(reader.getObjectUsingBuilder(SurfaceArrayPropertyAdapter.class));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

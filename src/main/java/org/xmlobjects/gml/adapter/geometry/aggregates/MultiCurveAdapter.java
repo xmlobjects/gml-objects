@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.primitives.CurveArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.CurvePropertyAdapter;
@@ -33,16 +34,18 @@ public class MultiCurveAdapter extends AbstractGeometricAggregateAdapter<MultiCu
 
     @Override
     public void buildChildObject(MultiCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "curveMember":
-                object.getCurveMember().add(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
-                break;
-            case "curveMembers":
-                object.setCurveMembers(reader.getObjectUsingBuilder(CurveArrayPropertyAdapter.class));
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "curveMember":
+                    object.getCurveMember().add(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
+                    break;
+                case "curveMembers":
+                    object.setCurveMembers(reader.getObjectUsingBuilder(CurveArrayPropertyAdapter.class));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

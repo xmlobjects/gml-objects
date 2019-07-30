@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.AbstractRingProperty;
 import org.xmlobjects.gml.model.geometry.primitives.PolygonPatch;
@@ -31,13 +32,15 @@ public class PolygonPatchAdapter extends AbstractSurfacePatchAdapter<PolygonPatc
 
     @Override
     public void buildChildObject(PolygonPatch object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "exterior":
-                object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
-                break;
-            case "interior":
-                object.getInterior().add(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "exterior":
+                    object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
+                    break;
+                case "interior":
+                    object.getInterior().add(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
+                    break;
+            }
         }
     }
 

@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.PolyhedralSurface;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -30,14 +31,16 @@ public class PolyhedralSurfaceAdapter extends AbstractSurfaceAdapter<PolyhedralS
 
     @Override
     public void buildChildObject(PolyhedralSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "patches":
-            case "polygonPatches":
-                object.setPatches(reader.getObjectUsingBuilder(PolygonPatchArrayPropertyAdapter.class));
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "patches":
+                case "polygonPatches":
+                    object.setPatches(reader.getObjectUsingBuilder(PolygonPatchArrayPropertyAdapter.class));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

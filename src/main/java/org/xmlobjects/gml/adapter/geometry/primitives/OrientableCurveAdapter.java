@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.model.basictypes.Sign;
 import org.xmlobjects.gml.model.geometry.primitives.OrientableCurve;
@@ -37,10 +38,12 @@ public class OrientableCurveAdapter extends AbstractCurveAdapter<OrientableCurve
 
     @Override
     public void buildChildObject(OrientableCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if ("baseCurve".equals(name.getLocalPart()))
-            object.setBaseCurve(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
-        else
-            super.buildChildObject(object, name, attributes, reader);
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            if ("baseCurve".equals(name.getLocalPart()))
+                object.setBaseCurve(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
+            else
+                super.buildChildObject(object, name, attributes, reader);
+        }
     }
 
     @Override

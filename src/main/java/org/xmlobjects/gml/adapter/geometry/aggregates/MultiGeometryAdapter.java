@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.GeometryArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.GeometryPropertyAdapter;
@@ -36,16 +37,18 @@ public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<Mult
 
     @Override
     public void buildChildObject(MultiGeometry object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "geometryMember":
-                object.getGeometryMember().add(reader.getObjectUsingBuilder(propertyAdapter));
-                break;
-            case "geometryMembers":
-                object.setGeometryMembers(reader.getObjectUsingBuilder(arrayPropertyAdapter));
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "geometryMember":
+                    object.getGeometryMember().add(reader.getObjectUsingBuilder(propertyAdapter));
+                    break;
+                case "geometryMembers":
+                    object.setGeometryMembers(reader.getObjectUsingBuilder(arrayPropertyAdapter));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

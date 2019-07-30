@@ -4,6 +4,7 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
 import org.xmlobjects.gml.adapter.basictypes.CodeWithAuthorityAdapter;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.deprecated.MetaDataPropertyAdapter;
 import org.xmlobjects.gml.adapter.deprecated.StringOrRefAdapter;
@@ -33,22 +34,24 @@ public abstract class AbstractGMLAdapter<T extends AbstractGML> implements Objec
 
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "description":
-                object.setDescription(reader.getObjectUsingBuilder(StringOrRefAdapter.class));
-                break;
-            case "descriptionReference":
-                object.setDescriptionReference(reader.getObjectUsingBuilder(ReferenceAdapter.class));
-                break;
-            case "identifier":
-                object.setIdentifier(reader.getObjectUsingBuilder(CodeWithAuthorityAdapter.class));
-                break;
-            case "name":
-                object.getNames().add(reader.getObjectUsingBuilder(CodeAdapter.class));
-                break;
-            case "metaDataProperty":
-                object.getMetaDataProperties().add(reader.getObjectUsingBuilder(MetaDataPropertyAdapter.class));
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "description":
+                    object.setDescription(reader.getObjectUsingBuilder(StringOrRefAdapter.class));
+                    break;
+                case "descriptionReference":
+                    object.setDescriptionReference(reader.getObjectUsingBuilder(ReferenceAdapter.class));
+                    break;
+                case "identifier":
+                    object.setIdentifier(reader.getObjectUsingBuilder(CodeWithAuthorityAdapter.class));
+                    break;
+                case "name":
+                    object.getNames().add(reader.getObjectUsingBuilder(CodeAdapter.class));
+                    break;
+                case "metaDataProperty":
+                    object.getMetaDataProperties().add(reader.getObjectUsingBuilder(MetaDataPropertyAdapter.class));
+                    break;
+            }
         }
     }
 

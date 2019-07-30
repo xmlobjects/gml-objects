@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.AbstractRingProperty;
 import org.xmlobjects.gml.model.geometry.primitives.Polygon;
@@ -31,18 +32,20 @@ public class PolygonAdapter extends AbstractSurfaceAdapter<Polygon> {
 
     @Override
     public void buildChildObject(Polygon object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "exterior":
-            case "outerBoundaryIs":
-                object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
-                break;
-            case "interior":
-            case "innerBoundaryIs":
-                object.getInterior().add(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "exterior":
+                case "outerBoundaryIs":
+                    object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
+                    break;
+                case "interior":
+                case "innerBoundaryIs":
+                    object.getInterior().add(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

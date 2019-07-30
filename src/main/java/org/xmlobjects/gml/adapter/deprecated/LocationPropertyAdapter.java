@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.deprecated;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
 import org.xmlobjects.gml.adapter.basictypes.NilReasonAdapter;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.GeometryPropertyAdapter;
 import org.xmlobjects.gml.model.deprecated.LocationProperty;
@@ -26,19 +27,21 @@ public class LocationPropertyAdapter extends GeometryPropertyAdapter<LocationPro
 
     @Override
     public void buildChildObject(LocationProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "LocationKeyWord":
-                object.setLocationKeyWord(reader.getObjectUsingBuilder(CodeAdapter.class));
-                break;
-            case "LocationString":
-                object.setLocationString(reader.getObjectUsingBuilder(StringOrRefAdapter.class));
-                break;
-            case "Null":
-                object.setNull(reader.getObjectUsingBuilder(NilReasonAdapter.class));
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "LocationKeyWord":
+                    object.setLocationKeyWord(reader.getObjectUsingBuilder(CodeAdapter.class));
+                    break;
+                case "LocationString":
+                    object.setLocationString(reader.getObjectUsingBuilder(StringOrRefAdapter.class));
+                    break;
+                case "Null":
+                    object.setNull(reader.getObjectUsingBuilder(NilReasonAdapter.class));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

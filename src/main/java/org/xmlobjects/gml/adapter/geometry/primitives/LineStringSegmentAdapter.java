@@ -4,6 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.basictypes.CoordinatesAdapter;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionListAdapter;
@@ -34,22 +35,24 @@ public class LineStringSegmentAdapter extends AbstractCurveSegmentAdapter<LineSt
 
     @Override
     public void buildChildObject(LineStringSegment object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "posList":
-                object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
-                break;
-            case "pos":
-                object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
-                break;
-            case "pointProperty":
-            case "pointRep":
-                object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
-                break;
-            case "coordinates":
-                reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPositions().stream()
-                        .map(GeometricPosition::new)
-                        .forEach(object.getControlPoints().getGeometricPositions()::add);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "posList":
+                    object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
+                    break;
+                case "pos":
+                    object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
+                    break;
+                case "pointProperty":
+                case "pointRep":
+                    object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
+                    break;
+                case "coordinates":
+                    reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPositions().stream()
+                            .map(GeometricPosition::new)
+                            .forEach(object.getControlPoints().getGeometricPositions()::add);
+                    break;
+            }
         }
     }
 

@@ -2,6 +2,7 @@ package org.xmlobjects.gml.adapter.feature;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.base.AbstractGMLAdapter;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.deprecated.LocationPropertyAdapter;
 import org.xmlobjects.gml.model.feature.AbstractFeature;
@@ -20,16 +21,18 @@ public abstract class AbstractFeatureAdapter<T extends AbstractFeature> extends 
 
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "boundedBy":
-                object.setBoundedBy(reader.getObjectUsingBuilder(BoundingShapeAdapter.class));
-                break;
-            case "location":
-                object.setLocation(reader.getObjectUsingBuilder(LocationPropertyAdapter.class));
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "boundedBy":
+                    object.setBoundedBy(reader.getObjectUsingBuilder(BoundingShapeAdapter.class));
+                    break;
+                case "location":
+                    object.setLocation(reader.getObjectUsingBuilder(LocationPropertyAdapter.class));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

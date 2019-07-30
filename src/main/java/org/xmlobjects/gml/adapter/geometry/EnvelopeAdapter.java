@@ -43,34 +43,36 @@ public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerialize
 
     @Override
     public void buildChildObject(Envelope object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "lowerCorner":
-                object.setLowerCorner(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
-                break;
-            case "upperCorner":
-                object.setUpperCorner(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
-                break;
-            case "pos":
-                DirectPosition pos = reader.getObjectUsingBuilder(DirectPositionAdapter.class);
-                if (object.getLowerCorner() == null)
-                    object.setLowerCorner(pos);
-                else if (object.getUpperCorner() == null)
-                    object.setUpperCorner(pos);
-                break;
-            case "coordinates":
-                List<DirectPosition> positions = reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPositions();
-                if (positions.size() > 1) {
-                    object.setLowerCorner(positions.get(0));
-                    object.setUpperCorner(positions.get(1));
-                }
-                break;
-            case "coord":
-                Coord coord = reader.getObjectUsingBuilder(CoordAdapter.class);
-                if (object.getLowerCorner() == null)
-                    object.setLowerCorner(coord.toDirectPosition());
-                else if (object.getUpperCorner() == null)
-                    object.setUpperCorner(coord.toDirectPosition());
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "lowerCorner":
+                    object.setLowerCorner(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
+                    break;
+                case "upperCorner":
+                    object.setUpperCorner(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
+                    break;
+                case "pos":
+                    DirectPosition pos = reader.getObjectUsingBuilder(DirectPositionAdapter.class);
+                    if (object.getLowerCorner() == null)
+                        object.setLowerCorner(pos);
+                    else if (object.getUpperCorner() == null)
+                        object.setUpperCorner(pos);
+                    break;
+                case "coordinates":
+                    List<DirectPosition> positions = reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPositions();
+                    if (positions.size() > 1) {
+                        object.setLowerCorner(positions.get(0));
+                        object.setUpperCorner(positions.get(1));
+                    }
+                    break;
+                case "coord":
+                    Coord coord = reader.getObjectUsingBuilder(CoordAdapter.class);
+                    if (object.getLowerCorner() == null)
+                        object.setLowerCorner(coord.toDirectPosition());
+                    else if (object.getUpperCorner() == null)
+                        object.setUpperCorner(coord.toDirectPosition());
+                    break;
+            }
         }
     }
 

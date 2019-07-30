@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionListAdapter;
@@ -35,26 +36,28 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
 
     @Override
     public void buildChildObject(Tin object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "patches":
-            case "trianglePatches":
-                object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
-                break;
-            case "stopLines":
-                object.getStopLines().add(reader.getObjectUsingBuilder(LineStringSegmentArrayPropertyAdapter.class));
-                break;
-            case "breakLines":
-                object.getBreakLines().add(reader.getObjectUsingBuilder(LineStringSegmentArrayPropertyAdapter.class));
-                break;
-            case "maxLength":
-                object.setMaxLength(reader.getObjectUsingBuilder(LengthAdapter.class));
-                break;
-            case "controlPoint":
-                object.setControlPoints(reader.getObjectUsingBuilder(TinControlPointsAdapter.class));
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "patches":
+                case "trianglePatches":
+                    object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
+                    break;
+                case "stopLines":
+                    object.getStopLines().add(reader.getObjectUsingBuilder(LineStringSegmentArrayPropertyAdapter.class));
+                    break;
+                case "breakLines":
+                    object.getBreakLines().add(reader.getObjectUsingBuilder(LineStringSegmentArrayPropertyAdapter.class));
+                    break;
+                case "maxLength":
+                    object.setMaxLength(reader.getObjectUsingBuilder(LengthAdapter.class));
+                    break;
+                case "controlPoint":
+                    object.setControlPoints(reader.getObjectUsingBuilder(TinControlPointsAdapter.class));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

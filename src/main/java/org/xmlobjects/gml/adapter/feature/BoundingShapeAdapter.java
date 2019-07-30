@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.feature;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.basictypes.NilReasonAdapter;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.EnvelopeAdapter;
 import org.xmlobjects.gml.model.basictypes.NilReason;
@@ -34,14 +35,16 @@ public class BoundingShapeAdapter implements ObjectBuilder<BoundingShape>, Objec
 
     @Override
     public void buildChildObject(BoundingShape object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "Envelope":
-                object.setEnvelope(reader.getObjectUsingBuilder(EnvelopeAdapter.class));
-                break;
-            case "Null":
-                if (object.getNilReason() == null || object.getNilReason().getValue() == null)
-                    object.setNilReason(reader.getObjectUsingBuilder(NilReasonAdapter.class));
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "Envelope":
+                    object.setEnvelope(reader.getObjectUsingBuilder(EnvelopeAdapter.class));
+                    break;
+                case "Null":
+                    if (object.getNilReason() == null || object.getNilReason().getValue() == null)
+                        object.setNilReason(reader.getObjectUsingBuilder(NilReasonAdapter.class));
+                    break;
+            }
         }
     }
 

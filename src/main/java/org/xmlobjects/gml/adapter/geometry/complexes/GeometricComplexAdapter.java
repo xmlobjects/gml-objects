@@ -40,10 +40,12 @@ public class GeometricComplexAdapter extends AbstractGeometryAdapter<GeometricCo
 
     @Override
     public void buildChildObject(GeometricComplex object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if ("element".equals(name.getLocalPart()))
-            object.getElements().add(reader.getObjectUsingBuilder(GeometricPrimitivePropertyAdapter.class));
-        else
-            super.buildChildObject(object, name, attributes, reader);
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            if ("element".equals(name.getLocalPart()))
+                object.getElements().add(reader.getObjectUsingBuilder(GeometricPrimitivePropertyAdapter.class));
+            else
+                super.buildChildObject(object, name, attributes, reader);
+        }
     }
 
     @Override

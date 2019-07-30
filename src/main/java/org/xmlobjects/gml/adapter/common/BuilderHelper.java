@@ -13,6 +13,11 @@ import org.xmlobjects.xml.Attributes;
 
 public class BuilderHelper {
 
+    public static boolean isGMLBaseNamespace(String namespaceURI) {
+        return GMLConstants.GML_3_2_NAMESPACE.equals(namespaceURI)
+                || GMLConstants.GML_3_1_NAMESPACE.equals(namespaceURI);
+    }
+
     public static void buildAssociationAttributes(AssociationAttributes object, Attributes attributes) {
         attributes.getValue(GMLConstants.XLINK_NAMESPACE, "href").ifPresent(object::setHref);
         attributes.getValue(GMLConstants.XLINK_NAMESPACE, "role").ifPresent(object::setRole);

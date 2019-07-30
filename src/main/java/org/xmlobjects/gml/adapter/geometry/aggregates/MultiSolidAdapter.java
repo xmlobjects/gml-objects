@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.primitives.SolidArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.SolidPropertyAdapter;
@@ -33,16 +34,18 @@ public class MultiSolidAdapter extends AbstractGeometricAggregateAdapter<MultiSo
 
     @Override
     public void buildChildObject(MultiSolid object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "solidMember":
-                object.getSolidMember().add(reader.getObjectUsingBuilder(SolidPropertyAdapter.class));
-                break;
-            case "solidMembers":
-                object.setSolidMembers(reader.getObjectUsingBuilder(SolidArrayPropertyAdapter.class));
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "solidMember":
+                    object.getSolidMember().add(reader.getObjectUsingBuilder(SolidPropertyAdapter.class));
+                    break;
+                case "solidMembers":
+                    object.setSolidMembers(reader.getObjectUsingBuilder(SolidArrayPropertyAdapter.class));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

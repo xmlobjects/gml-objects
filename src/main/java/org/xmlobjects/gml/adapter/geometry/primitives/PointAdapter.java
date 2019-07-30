@@ -4,6 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.basictypes.CoordinatesAdapter;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.deprecated.CoordAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
@@ -33,19 +34,21 @@ public class PointAdapter extends AbstractGeometricPrimitiveAdapter<Point> {
 
     @Override
     public void buildChildObject(Point object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        switch (name.getLocalPart()) {
-            case "pos":
-                object.setPos(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
-                break;
-            case "coordinates":
-                object.setPos(reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPosition());
-                break;
-            case "coord":
-                object.setPos(reader.getObjectUsingBuilder(CoordAdapter.class).toDirectPosition());
-                break;
-            default:
-                super.buildChildObject(object, name, attributes, reader);
-                break;
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "pos":
+                    object.setPos(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
+                    break;
+                case "coordinates":
+                    object.setPos(reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPosition());
+                    break;
+                case "coord":
+                    object.setPos(reader.getObjectUsingBuilder(CoordAdapter.class).toDirectPosition());
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
         }
     }
 

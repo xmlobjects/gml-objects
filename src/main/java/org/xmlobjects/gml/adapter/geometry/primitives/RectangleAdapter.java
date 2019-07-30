@@ -3,6 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Rectangle;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -30,7 +31,7 @@ public class RectangleAdapter extends AbstractSurfacePatchAdapter<Rectangle> {
 
     @Override
     public void buildChildObject(Rectangle object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if ("exterior".equals(name.getLocalPart()))
+        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI()) && "exterior".equals(name.getLocalPart()))
             object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
     }
 
