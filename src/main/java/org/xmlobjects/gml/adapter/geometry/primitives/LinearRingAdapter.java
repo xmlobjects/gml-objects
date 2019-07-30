@@ -1,0 +1,83 @@
+package org.xmlobjects.gml.adapter.geometry.primitives;
+
+import org.xmlobjects.annotation.XMLElement;
+import org.xmlobjects.annotation.XMLElements;
+import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.basictypes.CoordinatesAdapter;
+import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.deprecated.CoordAdapter;
+import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
+import org.xmlobjects.gml.adapter.geometry.DirectPositionListAdapter;
+import org.xmlobjects.gml.model.geometry.GeometricPosition;
+import org.xmlobjects.gml.model.geometry.primitives.LinearRing;
+import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
+import org.xmlobjects.stream.XMLReadException;
+import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
+import org.xmlobjects.xml.Namespaces;
+
+import javax.xml.namespace.QName;
+
+@XMLElements({
+        @XMLElement(name = "LinearRing", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "LinearRing", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+})
+public class LinearRingAdapter extends AbstractRingAdapter<LinearRing> {
+
+    @Override
+    public LinearRing createObject(QName name) {
+        return new LinearRing();
+    }
+
+    @Override
+    public void buildChildObject(LinearRing object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        super.buildChildObject(object, name, attributes, reader);
+
+        switch (name.getLocalPart()) {
+            case "posList":
+                object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
+                break;
+            case "pos":
+                object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
+                break;
+            case "pointProperty":
+            case "pointRep":
+                object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
+                break;
+            case "coordinates":
+                reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPositions().stream()
+                        .map(GeometricPosition::new)
+                        .forEach(object.getControlPoints().getGeometricPositions()::add);
+                break;
+            case "coord":
+                object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(CoordAdapter.class).toDirectPosition()));
+                break;
+        }
+    }
+
+    @Override
+    public Element createElement(LinearRing object, Namespaces namespaces) {
+        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "LinearRing");
+    }
+
+    @Override
+    public void writeChildElements(LinearRing object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+
+        if (object.getControlPoints().isSetPosList())
+            writer.writeElementUsingSerializer(Element.of(targetNamespace, "posList"), object.getControlPoints().getPosList(), DirectPositionListAdapter.class, namespaces);
+        else if (object.getControlPoints().isSetGeometricPositions()) {
+            for (GeometricPosition pos : object.getControlPoints().getGeometricPositions()) {
+                if (pos.isSetPos())
+                    writer.writeElementUsingSerializer(Element.of(targetNamespace, "pos"), pos.getPos(), DirectPositionAdapter.class, namespaces);
+                else if (pos.isSetPointProperty())
+                    writer.writeElementUsingSerializer(Element.of(targetNamespace, "pointProperty"), pos.getPointProperty(), PointPropertyAdapter.class, namespaces);
+            }
+        }
+    }
+}
