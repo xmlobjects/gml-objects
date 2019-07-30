@@ -116,17 +116,23 @@ public class DirectPositionList extends GMLObject implements SRSReference, Coord
     public List<Double> toCoordinateList3D() {
         Double[] coordinates = null;
         if (value != null && !value.isEmpty()) {
-            int dim = srsDimension != null && srsDimension == 2 ? 2 : 3;
-            int padding = dim - value.size() % dim;
-            int length = value.size() + (padding != dim ? padding : 0);
-            if (dim == 2)
-                length = length / 2 * 3;
+            int dim = 3;
 
-            coordinates = new Double[length];
-            for (int i = 0, j = 0; i < value.size(); i += dim, j += 3) {
+            if (srsDimension != null)
+                dim = srsDimension;
+            else if (count != null)
+                dim = value.size() / count;
+            else {
+                SRSReference srsReference = getInheritedSRSReference();
+                if (srsReference.getSrsDimension() != null)
+                    dim = srsReference.getSrsDimension();
+            }
+
+            coordinates = new Double[(value.size() / dim) * 3];
+            for (int i = 0, j = 0; j < coordinates.length; i += dim, j += 3) {
                 coordinates[j] = value.get(i);
-                coordinates[j + 1] = i + 1 < value.size() ? value.get(i + 1) : 0d;
-                coordinates[j + 2] = dim == 3 && i + 2 < value.size() ? value.get(i + 2) : 0d;
+                coordinates[j + 1] = dim > 1 && i + 1 < value.size() ? value.get(i + 1) : 0d;
+                coordinates[j + 2] = dim > 2 && i + 2 < value.size() ? value.get(i + 2) : 0d;
             }
         }
 
