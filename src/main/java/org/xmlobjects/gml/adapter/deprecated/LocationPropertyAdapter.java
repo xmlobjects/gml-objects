@@ -1,10 +1,10 @@
 package org.xmlobjects.gml.adapter.deprecated;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
-import org.xmlobjects.gml.adapter.basictypes.NilReasonAdapter;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
+import org.xmlobjects.gml.adapter.basictypes.NilReasonAdapter;
 import org.xmlobjects.gml.adapter.geometry.GeometryPropertyAdapter;
 import org.xmlobjects.gml.model.deprecated.LocationProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;

@@ -2,7 +2,6 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.model.geometry.primitives.AbstractRing;
 import org.xmlobjects.gml.model.geometry.primitives.AbstractRingProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
@@ -24,7 +23,7 @@ public class AbstractRingPropertyAdapter implements ObjectBuilder<AbstractRingPr
 
     @Override
     public void buildChildObject(AbstractRingProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        reader.getObject(AbstractRing.class).ifObject(object::setObject);
+        object.setObject(reader.getObject(object.getTargetType()));
     }
 
     @Override

@@ -8,7 +8,6 @@ import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.base.InlineProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
-import org.xmlobjects.stream.BuildResult;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
@@ -29,9 +28,7 @@ public abstract class InlinePropertyAdapter<T extends InlineProperty> implements
     @SuppressWarnings("unchecked")
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        BuildResult<GMLObject> result = reader.getObject(object.getTargetType());
-        if (result.isSetObject())
-            object.setObject(result.getObject());
+        object.setObject((GMLObject) reader.getObject(object.getTargetType()));
     }
 
     @Override

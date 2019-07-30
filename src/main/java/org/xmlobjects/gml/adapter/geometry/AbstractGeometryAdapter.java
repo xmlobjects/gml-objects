@@ -1,9 +1,9 @@
 package org.xmlobjects.gml.adapter.geometry;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.base.AbstractGMLAdapter;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.base.AbstractGMLAdapter;
 import org.xmlobjects.gml.model.geometry.AbstractGeometry;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;

@@ -2,10 +2,10 @@ package org.xmlobjects.gml.adapter.base;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
-import org.xmlobjects.gml.adapter.basictypes.CodeWithAuthorityAdapter;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
+import org.xmlobjects.gml.adapter.basictypes.CodeWithAuthorityAdapter;
 import org.xmlobjects.gml.adapter.deprecated.MetaDataPropertyAdapter;
 import org.xmlobjects.gml.adapter.deprecated.StringOrRefAdapter;
 import org.xmlobjects.gml.model.base.AbstractGML;
