@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Triangle;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -37,12 +37,12 @@ public class TriangleAdapter extends AbstractSurfacePatchAdapter<Triangle> {
 
     @Override
     public Element createElement(Triangle object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Triangle");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Triangle");
     }
 
     @Override
     public void writeChildElements(Triangle object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.getExterior() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "exterior"), object.getExterior(), AbstractRingPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "exterior"), object.getExterior(), AbstractRingPropertyAdapter.class, namespaces);
     }
 }

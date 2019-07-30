@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Rectangle;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -37,12 +37,12 @@ public class RectangleAdapter extends AbstractSurfacePatchAdapter<Rectangle> {
 
     @Override
     public Element createElement(Rectangle object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Rectangle");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Rectangle");
     }
 
     @Override
     public void writeChildElements(Rectangle object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.getExterior() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "exterior"), object.getExterior(), AbstractRingPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "exterior"), object.getExterior(), AbstractRingPropertyAdapter.class, namespaces);
     }
 }

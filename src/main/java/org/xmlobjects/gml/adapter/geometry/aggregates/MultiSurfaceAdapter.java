@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.primitives.SurfaceArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.SurfacePropertyAdapter;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiSurface;
@@ -51,18 +51,18 @@ public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<Multi
 
     @Override
     public Element createElement(MultiSurface object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "MultiSurface");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "MultiSurface");
     }
 
     @Override
     public void writeChildElements(MultiSurface object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (SurfaceProperty property : object.getSurfaceMember())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "surfaceMember"), property, SurfacePropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "surfaceMember"), property, SurfacePropertyAdapter.class, namespaces);
 
         if (object.getSurfaceMembers() != null)
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "surfaceMembers"), object.getSurfaceMembers(), SurfaceArrayPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "surfaceMembers"), object.getSurfaceMembers(), SurfaceArrayPropertyAdapter.class, namespaces);
     }
 }

@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Surface;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -41,7 +41,7 @@ public class SurfaceAdapter extends AbstractSurfaceAdapter<Surface> {
 
     @Override
     public Element createElement(Surface object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Surface");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Surface");
     }
 
     @Override
@@ -49,6 +49,6 @@ public class SurfaceAdapter extends AbstractSurfaceAdapter<Surface> {
         super.writeChildElements(object, namespaces, writer);
 
         if (object.getPatches() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "patches"), object.getPatches(), SurfacePatchArrayPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "patches"), object.getPatches(), SurfacePatchArrayPropertyAdapter.class, namespaces);
     }
 }

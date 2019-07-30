@@ -4,8 +4,8 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.basictypes.CoordinatesAdapter;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.deprecated.CoordAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
 import org.xmlobjects.gml.model.geometry.primitives.Point;
@@ -54,7 +54,7 @@ public class PointAdapter extends AbstractGeometricPrimitiveAdapter<Point> {
 
     @Override
     public Element createElement(Point object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Point");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Point");
     }
 
     @Override
@@ -62,6 +62,6 @@ public class PointAdapter extends AbstractGeometricPrimitiveAdapter<Point> {
         super.writeChildElements(object, namespaces, writer);
 
         if (object.getPos() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "pos"), object.getPos(), DirectPositionAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "pos"), object.getPos(), DirectPositionAdapter.class, namespaces);
     }
 }

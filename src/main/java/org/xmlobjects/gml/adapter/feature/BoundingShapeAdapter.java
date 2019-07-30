@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.feature;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.basictypes.NilReasonAdapter;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.EnvelopeAdapter;
 import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.feature.BoundingShape;
@@ -50,18 +50,18 @@ public class BoundingShapeAdapter implements ObjectBuilder<BoundingShape>, Objec
 
     @Override
     public void initializeElement(Element element, BoundingShape object, Namespaces namespaces, XMLWriter writer) {
-        if (object.getNilReason() != null && GMLConstants.GML_3_2_NAMESPACE.equals(SerializerHelper.getTargetNamespace(namespaces)))
+        if (object.getNilReason() != null && GMLConstants.GML_3_2_NAMESPACE.equals(SerializerHelper.getGMLBaseNamespace(namespaces)))
             element.addAttribute("nilReason", object.getNilReason().getValue());
     }
 
     @Override
     public void writeChildElements(BoundingShape object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getEnvelope() != null)
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "Envelope"), object.getEnvelope(), EnvelopeAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "Envelope"), object.getEnvelope(), EnvelopeAdapter.class, namespaces);
 
-        if (object.getNilReason() != null && GMLConstants.GML_3_1_NAMESPACE.equals(targetNamespace))
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "Null"), object.getNilReason(), NilReasonAdapter.class, namespaces);
+        if (object.getNilReason() != null && GMLConstants.GML_3_1_NAMESPACE.equals(baseNamespace))
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "Null"), object.getNilReason(), NilReasonAdapter.class, namespaces);
     }
 }

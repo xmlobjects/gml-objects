@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.adapter.geometry;
 
 import org.xmlobjects.gml.adapter.base.ArrayPropertyAdapter;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.GeometryArrayProperty;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriter;

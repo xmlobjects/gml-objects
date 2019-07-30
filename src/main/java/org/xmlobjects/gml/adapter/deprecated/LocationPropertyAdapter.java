@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.deprecated;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
 import org.xmlobjects.gml.adapter.basictypes.NilReasonAdapter;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.GeometryPropertyAdapter;
 import org.xmlobjects.gml.model.deprecated.LocationProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -50,10 +50,10 @@ public class LocationPropertyAdapter extends GeometryPropertyAdapter<LocationPro
         if (object.isSetObject())
             super.writeChildElements(object, namespaces, writer);
         else if (object.isSetLocationKeyWord())
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "LocationKeyWord"), object.getLocationKeyWord(), CodeAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "LocationKeyWord"), object.getLocationKeyWord(), CodeAdapter.class, namespaces);
         else if (object.isSetLocationString())
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "LocationString"), object.getLocationString(), StringOrRefAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "LocationString"), object.getLocationString(), StringOrRefAdapter.class, namespaces);
         else if (object.isSetNull())
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "Null"), object.getNull(), NilReasonAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Null"), object.getNull(), NilReasonAdapter.class, namespaces);
     }
 }

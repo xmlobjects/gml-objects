@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.geometry.primitives.Shell;
 import org.xmlobjects.gml.model.geometry.primitives.SurfaceProperty;
@@ -65,9 +65,9 @@ public class ShellAdapter extends AbstractSurfaceAdapter<Shell> {
     @Override
     public void writeChildElements(Shell object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (SurfaceProperty property : object.getSurfaceMembers())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "surfaceMember"), property, SurfacePropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "surfaceMember"), property, SurfacePropertyAdapter.class, namespaces);
     }
 }

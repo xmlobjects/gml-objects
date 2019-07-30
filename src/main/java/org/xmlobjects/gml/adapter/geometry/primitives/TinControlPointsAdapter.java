@@ -2,7 +2,7 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionListAdapter;
 import org.xmlobjects.gml.model.geometry.GeometricPosition;

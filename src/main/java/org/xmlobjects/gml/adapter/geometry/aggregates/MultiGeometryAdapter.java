@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.GeometryArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.GeometryPropertyAdapter;
 import org.xmlobjects.gml.model.geometry.GeometryArrayProperty;
@@ -54,18 +54,18 @@ public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<Mult
 
     @Override
     public Element createElement(MultiGeometry object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "MultiGeometry");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "MultiGeometry");
     }
 
     @Override
     public void writeChildElements(MultiGeometry object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (GeometryProperty property : object.getGeometryMember())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "geometryMember"), property, propertyAdapter, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "geometryMember"), property, propertyAdapter, namespaces);
 
         if (object.getGeometryMembers() != null)
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "geometryMembers"), object.getGeometryMembers(), arrayPropertyAdapter, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "geometryMembers"), object.getGeometryMembers(), arrayPropertyAdapter, namespaces);
     }
 }

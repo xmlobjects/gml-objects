@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.complexes;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.primitives.AbstractSolidAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.SolidPropertyAdapter;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeSolid;
@@ -50,7 +50,7 @@ public class CompositeSolidAdapter extends AbstractSolidAdapter<CompositeSolid> 
 
     @Override
     public Element createElement(CompositeSolid object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "CompositeSolid");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "CompositeSolid");
     }
 
     @Override
@@ -62,9 +62,9 @@ public class CompositeSolidAdapter extends AbstractSolidAdapter<CompositeSolid> 
     @Override
     public void writeChildElements(CompositeSolid object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (SolidProperty property : object.getSolidMembers())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "solidMember"), property, SolidPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "solidMember"), property, SolidPropertyAdapter.class, namespaces);
     }
 }

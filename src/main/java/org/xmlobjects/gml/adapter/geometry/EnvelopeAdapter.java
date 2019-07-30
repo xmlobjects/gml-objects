@@ -5,8 +5,8 @@ import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.basictypes.CoordinatesAdapter;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.deprecated.CoordAdapter;
 import org.xmlobjects.gml.model.deprecated.Coord;
 import org.xmlobjects.gml.model.geometry.DirectPosition;
@@ -78,7 +78,7 @@ public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerialize
 
     @Override
     public Element createElement(Envelope object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Envelope");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Envelope");
     }
 
     @Override
@@ -88,12 +88,12 @@ public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerialize
 
     @Override
     public void writeChildElements(Envelope object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getLowerCorner() != null)
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "lowerCorner"), object.getLowerCorner(), DirectPositionAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "lowerCorner"), object.getLowerCorner(), DirectPositionAdapter.class, namespaces);
 
         if (object.getUpperCorner() != null)
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "upperCorner"), object.getUpperCorner(), DirectPositionAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "upperCorner"), object.getUpperCorner(), DirectPositionAdapter.class, namespaces);
     }
 }

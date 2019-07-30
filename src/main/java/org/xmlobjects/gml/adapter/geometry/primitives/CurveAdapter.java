@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Curve;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -41,7 +41,7 @@ public class CurveAdapter extends AbstractCurveAdapter<Curve> {
 
     @Override
     public Element createElement(Curve object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "Curve");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Curve");
     }
 
     @Override
@@ -49,6 +49,6 @@ public class CurveAdapter extends AbstractCurveAdapter<Curve> {
         super.writeChildElements(object, namespaces, writer);
 
         if (object.getSegments() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "segments"), object.getSegments(), CurveSegmentArrayPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "segments"), object.getSegments(), CurveSegmentArrayPropertyAdapter.class, namespaces);
     }
 }

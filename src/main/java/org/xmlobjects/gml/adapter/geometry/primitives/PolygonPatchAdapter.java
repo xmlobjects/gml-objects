@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.AbstractRingProperty;
 import org.xmlobjects.gml.model.geometry.primitives.PolygonPatch;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -46,17 +46,17 @@ public class PolygonPatchAdapter extends AbstractSurfacePatchAdapter<PolygonPatc
 
     @Override
     public Element createElement(PolygonPatch object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "PolygonPatch");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "PolygonPatch");
     }
 
     @Override
     public void writeChildElements(PolygonPatch object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getExterior() != null)
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "exterior"), object.getExterior(), AbstractRingPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "exterior"), object.getExterior(), AbstractRingPropertyAdapter.class, namespaces);
 
         for (AbstractRingProperty property : object.getInterior())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "interior"), property, AbstractRingPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "interior"), property, AbstractRingPropertyAdapter.class, namespaces);
     }
 }

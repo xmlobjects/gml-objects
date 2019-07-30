@@ -1,7 +1,7 @@
 package org.xmlobjects.gml.adapter.deprecated;
 
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.model.deprecated.Coord;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;

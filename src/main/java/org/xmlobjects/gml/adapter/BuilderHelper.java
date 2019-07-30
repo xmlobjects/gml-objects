@@ -1,4 +1,4 @@
-package org.xmlobjects.gml.adapter.common;
+package org.xmlobjects.gml.adapter;
 
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;

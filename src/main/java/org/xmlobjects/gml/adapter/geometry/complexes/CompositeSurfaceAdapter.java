@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.complexes;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.primitives.AbstractSurfaceAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.SurfacePropertyAdapter;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeSurface;
@@ -50,7 +50,7 @@ public class CompositeSurfaceAdapter extends AbstractSurfaceAdapter<CompositeSur
 
     @Override
     public Element createElement(CompositeSurface object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "CompositeSurface");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "CompositeSurface");
     }
 
     @Override
@@ -62,9 +62,9 @@ public class CompositeSurfaceAdapter extends AbstractSurfaceAdapter<CompositeSur
     @Override
     public void writeChildElements(CompositeSurface object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (SurfaceProperty property : object.getSurfaceMembers())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "surfaceMember"), property, SurfacePropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "surfaceMember"), property, SurfacePropertyAdapter.class, namespaces);
     }
 }

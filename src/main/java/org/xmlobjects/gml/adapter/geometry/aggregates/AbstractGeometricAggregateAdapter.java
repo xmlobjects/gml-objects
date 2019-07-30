@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.adapter.geometry.aggregates;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.AbstractGeometryAdapter;
 import org.xmlobjects.gml.model.geometry.aggregates.AbstractGeometricAggregate;
 import org.xmlobjects.serializer.ObjectSerializeException;

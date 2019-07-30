@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.basictypes.Sign;
 import org.xmlobjects.gml.model.geometry.primitives.OrientableSurface;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -48,7 +48,7 @@ public class OrientableSurfaceAdapter extends AbstractSurfaceAdapter<OrientableS
 
     @Override
     public Element createElement(OrientableSurface object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "OrientableSurface");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "OrientableSurface");
     }
 
     @Override
@@ -64,6 +64,6 @@ public class OrientableSurfaceAdapter extends AbstractSurfaceAdapter<OrientableS
         super.writeChildElements(object, namespaces, writer);
 
         if (object.getBaseSurface() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "baseSurface"), object.getBaseSurface(), SurfacePropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "baseSurface"), object.getBaseSurface(), SurfacePropertyAdapter.class, namespaces);
     }
 }

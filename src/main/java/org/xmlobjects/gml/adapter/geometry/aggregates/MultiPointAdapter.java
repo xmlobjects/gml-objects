@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.primitives.PointArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.PointPropertyAdapter;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiPoint;
@@ -51,18 +51,18 @@ public class MultiPointAdapter extends AbstractGeometricAggregateAdapter<MultiPo
 
     @Override
     public Element createElement(MultiPoint object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "MultiPoint");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "MultiPoint");
     }
 
     @Override
     public void writeChildElements(MultiPoint object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (PointProperty property : object.getPointMember())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "pointMember"), property, PointPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "pointMember"), property, PointPropertyAdapter.class, namespaces);
 
         if (object.getPointMembers() != null)
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "pointMembers"), object.getPointMembers(), PointArrayPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "pointMembers"), object.getPointMembers(), PointArrayPropertyAdapter.class, namespaces);
     }
 }

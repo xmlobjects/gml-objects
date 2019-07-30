@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.complexes;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.primitives.AbstractCurveAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.CurvePropertyAdapter;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeCurve;
@@ -50,7 +50,7 @@ public class CompositeCurveAdapter extends AbstractCurveAdapter<CompositeCurve> 
 
     @Override
     public Element createElement(CompositeCurve object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "CompositeCurve");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "CompositeCurve");
     }
 
     @Override
@@ -62,9 +62,9 @@ public class CompositeCurveAdapter extends AbstractCurveAdapter<CompositeCurve> 
     @Override
     public void writeChildElements(CompositeCurve object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (CurveProperty property : object.getCurveMembers())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "curveMember"), property, CurvePropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "curveMember"), property, CurvePropertyAdapter.class, namespaces);
     }
 }

@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.basictypes.Sign;
 import org.xmlobjects.gml.model.geometry.primitives.OrientableCurve;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -48,7 +48,7 @@ public class OrientableCurveAdapter extends AbstractCurveAdapter<OrientableCurve
 
     @Override
     public Element createElement(OrientableCurve object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "OrientableCurve");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "OrientableCurve");
     }
 
     @Override
@@ -64,6 +64,6 @@ public class OrientableCurveAdapter extends AbstractCurveAdapter<OrientableCurve
         super.writeChildElements(object, namespaces, writer);
 
         if (object.getBaseCurve() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "baseCurve"), object.getBaseCurve(), CurvePropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "baseCurve"), object.getBaseCurve(), CurvePropertyAdapter.class, namespaces);
     }
 }

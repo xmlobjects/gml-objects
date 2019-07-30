@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.primitives.SolidArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.SolidPropertyAdapter;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiSolid;
@@ -51,18 +51,18 @@ public class MultiSolidAdapter extends AbstractGeometricAggregateAdapter<MultiSo
 
     @Override
     public Element createElement(MultiSolid object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "MultiSolid");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "MultiSolid");
     }
 
     @Override
     public void writeChildElements(MultiSolid object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (SolidProperty property : object.getSolidMember())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "solidMember"), property, SolidPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "solidMember"), property, SolidPropertyAdapter.class, namespaces);
 
         if (object.getSolidMembers() != null)
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "solidMembers"), object.getSolidMembers(), SolidArrayPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "solidMembers"), object.getSolidMembers(), SolidArrayPropertyAdapter.class, namespaces);
     }
 }

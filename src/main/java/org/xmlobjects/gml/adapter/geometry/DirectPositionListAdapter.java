@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.adapter.geometry;
 
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.DirectPositionList;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;

@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.complexes;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.AbstractGeometryAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.GeometricPrimitivePropertyAdapter;
 import org.xmlobjects.gml.model.geometry.complexes.GeometricComplex;
@@ -50,7 +50,7 @@ public class GeometricComplexAdapter extends AbstractGeometryAdapter<GeometricCo
 
     @Override
     public Element createElement(GeometricComplex object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "GeometricComplex");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "GeometricComplex");
     }
 
     @Override
@@ -62,9 +62,9 @@ public class GeometricComplexAdapter extends AbstractGeometryAdapter<GeometricCo
     @Override
     public void writeChildElements(GeometricComplex object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (GeometricPrimitiveProperty property : object.getElements())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "element"), property, GeometricPrimitivePropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "element"), property, GeometricPrimitivePropertyAdapter.class, namespaces);
     }
 }

@@ -2,8 +2,8 @@ package org.xmlobjects.gml.adapter.feature;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.base.AbstractGMLAdapter;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.deprecated.LocationPropertyAdapter;
 import org.xmlobjects.gml.model.common.GenericElement;
 import org.xmlobjects.gml.model.feature.AbstractFeature;
@@ -45,12 +45,12 @@ public abstract class AbstractFeatureAdapter<T extends AbstractFeature> extends 
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getBoundedBy() != null)
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "boundedBy"), object.getBoundedBy(), BoundingShapeAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "boundedBy"), object.getBoundedBy(), BoundingShapeAdapter.class, namespaces);
 
         if (object.getLocation() != null)
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "location"), object.getLocation(), LocationPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "location"), object.getLocation(), LocationPropertyAdapter.class, namespaces);
     }
 }

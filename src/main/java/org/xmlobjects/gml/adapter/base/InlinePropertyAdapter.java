@@ -2,8 +2,8 @@ package org.xmlobjects.gml.adapter.base;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.base.InlineProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;

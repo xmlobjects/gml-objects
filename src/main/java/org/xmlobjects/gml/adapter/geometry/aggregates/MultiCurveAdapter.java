@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.primitives.CurveArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.CurvePropertyAdapter;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiCurve;
@@ -51,18 +51,18 @@ public class MultiCurveAdapter extends AbstractGeometricAggregateAdapter<MultiCu
 
     @Override
     public Element createElement(MultiCurve object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "MultiCurve");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "MultiCurve");
     }
 
     @Override
     public void writeChildElements(MultiCurve object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (CurveProperty property : object.getCurveMember())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "curveMember"), property, CurvePropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "curveMember"), property, CurvePropertyAdapter.class, namespaces);
 
         if (object.getCurveMembers() != null)
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "curveMembers"), object.getCurveMembers(), CurveArrayPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "curveMembers"), object.getCurveMembers(), CurveArrayPropertyAdapter.class, namespaces);
     }
 }

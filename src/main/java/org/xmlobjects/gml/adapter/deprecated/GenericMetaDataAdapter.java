@@ -3,7 +3,7 @@ package org.xmlobjects.gml.adapter.deprecated;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.deprecated.GenericMetaData;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.stream.XMLReadException;
@@ -35,7 +35,7 @@ public class GenericMetaDataAdapter extends AbstractMetaDataAdapter<GenericMetaD
 
     @Override
     public Element createElement(GenericMetaData object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "GenericMetaData");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "GenericMetaData");
     }
 
     @Override

@@ -3,8 +3,8 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.TriangulatedSurface;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -46,7 +46,7 @@ public class TriangulatedSurfaceAdapter extends AbstractSurfaceAdapter<Triangula
 
     @Override
     public Element createElement(TriangulatedSurface object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "TriangulatedSurface");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "TriangulatedSurface");
     }
 
     @Override
@@ -54,6 +54,6 @@ public class TriangulatedSurfaceAdapter extends AbstractSurfaceAdapter<Triangula
         super.writeChildElements(object, namespaces, writer);
 
         if (object.getPatches() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getTargetNamespace(namespaces), "trianglePatches"), object.getPatches(), TriangleArrayPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "trianglePatches"), object.getPatches(), TriangleArrayPropertyAdapter.class, namespaces);
     }
 }

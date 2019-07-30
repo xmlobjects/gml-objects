@@ -4,8 +4,8 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
 import org.xmlobjects.gml.adapter.basictypes.CodeWithAuthorityAdapter;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.deprecated.MetaDataPropertyAdapter;
 import org.xmlobjects.gml.adapter.deprecated.StringOrRefAdapter;
 import org.xmlobjects.gml.model.base.AbstractGML;
@@ -57,28 +57,28 @@ public abstract class AbstractGMLAdapter<T extends AbstractGML> implements Objec
 
     @Override
     public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        element.addAttribute(SerializerHelper.getTargetNamespace(namespaces), "id", object.getId());
+        element.addAttribute(SerializerHelper.getGMLBaseNamespace(namespaces), "id", object.getId());
     }
 
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (MetaDataProperty property : object.getMetaDataProperties())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "metaDataProperty"), property, MetaDataPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "metaDataProperty"), property, MetaDataPropertyAdapter.class, namespaces);
 
         if (object.getDescription() != null)
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "description"), object.getDescription(), StringOrRefAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "description"), object.getDescription(), StringOrRefAdapter.class, namespaces);
 
-        if (GMLConstants.GML_3_2_NAMESPACE.equals(targetNamespace)) {
+        if (GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace)) {
             if (object.getDescriptionReference() != null)
-                writer.writeElementUsingSerializer(Element.of(targetNamespace, "descriptionReference"), object.getDescriptionReference(), ReferenceAdapter.class, namespaces);
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "descriptionReference"), object.getDescriptionReference(), ReferenceAdapter.class, namespaces);
 
             if (object.getIdentifier() != null)
-                writer.writeElementUsingSerializer(Element.of(targetNamespace, "identifier"), object.getIdentifier(), CodeWithAuthorityAdapter.class, namespaces);
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "identifier"), object.getIdentifier(), CodeWithAuthorityAdapter.class, namespaces);
         }
 
         for (Code name : object.getNames())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "name"), name, CodeAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "name"), name, CodeAdapter.class, namespaces);
     }
 }

@@ -4,8 +4,8 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.basictypes.CoordinatesAdapter;
-import org.xmlobjects.gml.adapter.common.BuilderHelper;
-import org.xmlobjects.gml.adapter.common.SerializerHelper;
+import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionListAdapter;
 import org.xmlobjects.gml.model.geometry.GeometricPosition;
@@ -58,21 +58,21 @@ public class LineStringSegmentAdapter extends AbstractCurveSegmentAdapter<LineSt
 
     @Override
     public Element createElement(LineStringSegment object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getTargetNamespace(namespaces), "LineStringSegment");
+        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "LineStringSegment");
     }
 
     @Override
     public void writeChildElements(LineStringSegment object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        String targetNamespace = SerializerHelper.getTargetNamespace(namespaces);
+        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getControlPoints().isSetPosList())
-            writer.writeElementUsingSerializer(Element.of(targetNamespace, "posList"), object.getControlPoints().getPosList(), DirectPositionListAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "posList"), object.getControlPoints().getPosList(), DirectPositionListAdapter.class, namespaces);
         else if (object.getControlPoints().isSetGeometricPositions()) {
             for (GeometricPosition pos : object.getControlPoints().getGeometricPositions()) {
                 if (pos.isSetPos())
-                    writer.writeElementUsingSerializer(Element.of(targetNamespace, "pos"), pos.getPos(), DirectPositionAdapter.class, namespaces);
+                    writer.writeElementUsingSerializer(Element.of(baseNamespace, "pos"), pos.getPos(), DirectPositionAdapter.class, namespaces);
                 else if (pos.isSetPointProperty())
-                    writer.writeElementUsingSerializer(Element.of(targetNamespace, "pointProperty"), pos.getPointProperty(), PointPropertyAdapter.class, namespaces);
+                    writer.writeElementUsingSerializer(Element.of(baseNamespace, "pointProperty"), pos.getPointProperty(), PointPropertyAdapter.class, namespaces);
             }
         }
     }
