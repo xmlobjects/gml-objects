@@ -34,14 +34,15 @@ public class SolidAdapter extends AbstractSolidAdapter<Solid> {
 
     @Override
     public void buildChildObject(Solid object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildChildObject(object, name, attributes, reader);
-
         switch (name.getLocalPart()) {
             case "exterior":
                 object.setExterior(getShellProperty(reader));
                 break;
             case "interior":
                 object.getInterior().add(getShellProperty(reader));
+                break;
+            default:
+                super.buildChildObject(object, name, attributes, reader);
                 break;
         }
     }

@@ -30,10 +30,10 @@ public class CurveAdapter extends AbstractCurveAdapter<Curve> {
 
     @Override
     public void buildChildObject(Curve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildChildObject(object, name, attributes, reader);
-
         if ("segments".equals(name.getLocalPart()))
             object.setSegments(reader.getObjectUsingBuilder(CurveSegmentArrayPropertyAdapter.class));
+        else
+            super.buildChildObject(object, name, attributes, reader);
     }
 
     @Override

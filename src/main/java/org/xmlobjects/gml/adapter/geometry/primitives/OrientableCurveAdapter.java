@@ -37,10 +37,10 @@ public class OrientableCurveAdapter extends AbstractCurveAdapter<OrientableCurve
 
     @Override
     public void buildChildObject(OrientableCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildChildObject(object, name, attributes, reader);
-
         if ("baseCurve".equals(name.getLocalPart()))
             object.setBaseCurve(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
+        else
+            super.buildChildObject(object, name, attributes, reader);
     }
 
     @Override

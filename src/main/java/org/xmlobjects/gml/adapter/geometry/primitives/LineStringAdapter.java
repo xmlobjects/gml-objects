@@ -35,8 +35,6 @@ public class LineStringAdapter extends AbstractCurveAdapter<LineString> {
 
     @Override
     public void buildChildObject(LineString object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildChildObject(object, name, attributes, reader);
-
         switch (name.getLocalPart()) {
             case "posList":
                 object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
@@ -55,6 +53,9 @@ public class LineStringAdapter extends AbstractCurveAdapter<LineString> {
                 break;
             case "coord":
                 object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(CoordAdapter.class).toDirectPosition()));
+                break;
+            default:
+                super.buildChildObject(object, name, attributes, reader);
                 break;
         }
     }

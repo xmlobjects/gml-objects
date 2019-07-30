@@ -20,14 +20,15 @@ public abstract class AbstractFeatureAdapter<T extends AbstractFeature> extends 
 
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildChildObject(object, name, attributes, reader);
-
         switch (name.getLocalPart()) {
             case "boundedBy":
                 object.setBoundedBy(reader.getObjectUsingBuilder(BoundingShapeAdapter.class));
                 break;
             case "location":
                 object.setLocation(reader.getObjectUsingBuilder(LocationPropertyAdapter.class));
+                break;
+            default:
+                super.buildChildObject(object, name, attributes, reader);
                 break;
         }
     }

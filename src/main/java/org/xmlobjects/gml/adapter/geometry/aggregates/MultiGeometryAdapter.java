@@ -36,14 +36,15 @@ public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<Mult
 
     @Override
     public void buildChildObject(MultiGeometry object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildChildObject(object, name, attributes, reader);
-
         switch (name.getLocalPart()) {
             case "geometryMember":
                 object.getGeometryMember().add(reader.getObjectUsingBuilder(propertyAdapter));
                 break;
             case "geometryMembers":
                 object.setGeometryMembers(reader.getObjectUsingBuilder(arrayPropertyAdapter));
+                break;
+            default:
+                super.buildChildObject(object, name, attributes, reader);
                 break;
         }
     }

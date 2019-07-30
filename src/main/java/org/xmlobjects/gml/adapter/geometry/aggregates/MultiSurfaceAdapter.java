@@ -33,14 +33,15 @@ public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<Multi
 
     @Override
     public void buildChildObject(MultiSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildChildObject(object, name, attributes, reader);
-
         switch (name.getLocalPart()) {
             case "surfaceMember":
                 object.getSurfaceMember().add(reader.getObjectUsingBuilder(SurfacePropertyAdapter.class));
                 break;
             case "surfaceMembers":
                 object.setSurfaceMembers(reader.getObjectUsingBuilder(SurfaceArrayPropertyAdapter.class));
+                break;
+            default:
+                super.buildChildObject(object, name, attributes, reader);
                 break;
         }
     }

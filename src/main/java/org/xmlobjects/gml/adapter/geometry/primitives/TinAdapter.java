@@ -35,8 +35,6 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
 
     @Override
     public void buildChildObject(Tin object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildChildObject(object, name, attributes, reader);
-
         switch (name.getLocalPart()) {
             case "patches":
             case "trianglePatches":
@@ -53,6 +51,9 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
                 break;
             case "controlPoint":
                 object.setControlPoints(reader.getObjectUsingBuilder(TinControlPointsAdapter.class));
+                break;
+            default:
+                super.buildChildObject(object, name, attributes, reader);
                 break;
         }
     }

@@ -31,8 +31,6 @@ public class PolygonAdapter extends AbstractSurfaceAdapter<Polygon> {
 
     @Override
     public void buildChildObject(Polygon object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildChildObject(object, name, attributes, reader);
-
         switch (name.getLocalPart()) {
             case "exterior":
             case "outerBoundaryIs":
@@ -41,6 +39,9 @@ public class PolygonAdapter extends AbstractSurfaceAdapter<Polygon> {
             case "interior":
             case "innerBoundaryIs":
                 object.getInterior().add(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
+                break;
+            default:
+                super.buildChildObject(object, name, attributes, reader);
                 break;
         }
     }

@@ -39,10 +39,10 @@ public class ShellAdapter extends AbstractSurfaceAdapter<Shell> {
 
     @Override
     public void buildChildObject(Shell object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildChildObject(object, name, attributes, reader);
-
         if ("surfaceMember".equals(name.getLocalPart()))
             object.getSurfaceMembers().add(reader.getObjectUsingBuilder(SurfacePropertyAdapter.class));
+        else
+            super.buildChildObject(object, name, attributes, reader);
     }
 
     @Override

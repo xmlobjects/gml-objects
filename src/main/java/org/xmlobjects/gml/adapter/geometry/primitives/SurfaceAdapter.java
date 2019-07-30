@@ -30,10 +30,10 @@ public class SurfaceAdapter extends AbstractSurfaceAdapter<Surface> {
 
     @Override
     public void buildChildObject(Surface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildChildObject(object, name, attributes, reader);
-
         if ("patches".equals(name.getLocalPart()))
             object.setPatches(reader.getObjectUsingBuilder(SurfacePatchArrayPropertyAdapter.class));
+        else
+            super.buildChildObject(object, name, attributes, reader);
     }
 
     @Override

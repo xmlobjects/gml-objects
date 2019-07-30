@@ -30,12 +30,13 @@ public class TriangulatedSurfaceAdapter extends AbstractSurfaceAdapter<Triangula
 
     @Override
     public void buildChildObject(TriangulatedSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        super.buildChildObject(object, name, attributes, reader);
-
         switch (name.getLocalPart()) {
             case "patches":
             case "trianglePatches":
                 object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
+                break;
+            default:
+                super.buildChildObject(object, name, attributes, reader);
                 break;
         }
     }
