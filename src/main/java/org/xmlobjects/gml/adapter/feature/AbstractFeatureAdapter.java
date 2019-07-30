@@ -5,6 +5,7 @@ import org.xmlobjects.gml.adapter.base.AbstractGMLAdapter;
 import org.xmlobjects.gml.adapter.common.BuilderHelper;
 import org.xmlobjects.gml.adapter.common.SerializerHelper;
 import org.xmlobjects.gml.adapter.deprecated.LocationPropertyAdapter;
+import org.xmlobjects.gml.model.common.GenericElement;
 import org.xmlobjects.gml.model.feature.AbstractFeature;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
@@ -33,6 +34,11 @@ public abstract class AbstractFeatureAdapter<T extends AbstractFeature> extends 
                     super.buildChildObject(object, name, attributes, reader);
                     break;
             }
+        } else if (reader.isCreateDOMasFallback()) {
+            // catch all unknown feature properties as generic DOM elements
+            org.w3c.dom.Element element = reader.getObjectAsDOMElement();
+            if (element != null)
+                object.getGenericProperties().add(GenericElement.of(element));
         }
     }
 
