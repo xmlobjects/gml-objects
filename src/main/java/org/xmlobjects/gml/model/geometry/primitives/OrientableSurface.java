@@ -1,6 +1,7 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
 import org.xmlobjects.gml.model.basictypes.Sign;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 public class OrientableSurface extends AbstractSurface {
     private SurfaceProperty baseSurface;
@@ -31,5 +32,10 @@ public class OrientableSurface extends AbstractSurface {
 
     public void setOrientation(Sign orientation) {
         this.orientation = orientation;
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

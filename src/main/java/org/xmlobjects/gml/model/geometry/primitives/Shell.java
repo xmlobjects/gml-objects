@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.geometry.primitives;
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.common.ChildList;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 import java.util.List;
 
@@ -35,5 +36,10 @@ public class Shell extends AbstractSurface implements AggregationAttributes {
     @Override
     public void setAggregationType(AggregationType aggregationType) {
         //
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

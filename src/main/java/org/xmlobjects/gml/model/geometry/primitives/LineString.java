@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.geometry.primitives;
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
 import org.xmlobjects.gml.model.geometry.DirectPositionList;
 import org.xmlobjects.gml.model.geometry.GeometricPositionList;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 import java.util.Collections;
 import java.util.List;
@@ -35,5 +36,10 @@ public class LineString extends AbstractCurve implements CoordinateListProvider 
     @Override
     public List<Double> toCoordinateList3D() {
         return controlPoints != null ? controlPoints.toCoordinateList3D() : Collections.emptyList();
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

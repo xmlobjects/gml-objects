@@ -5,6 +5,7 @@ import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.geometry.primitives.AbstractSolid;
 import org.xmlobjects.gml.model.geometry.primitives.SolidProperty;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 import java.util.List;
 
@@ -38,5 +39,10 @@ public class CompositeSolid extends AbstractSolid implements AggregationAttribut
     @Override
     public void setAggregationType(AggregationType aggregationType) {
         this.aggregationType = aggregationType;
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

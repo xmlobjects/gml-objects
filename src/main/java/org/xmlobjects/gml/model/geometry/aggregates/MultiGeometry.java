@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.geometry.aggregates;
 import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.geometry.GeometryArrayProperty;
 import org.xmlobjects.gml.model.geometry.GeometryProperty;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 import java.util.List;
 
@@ -34,5 +35,10 @@ public class MultiGeometry extends AbstractGeometricAggregate {
 
     public void setGeometryMembers(GeometryArrayProperty geometryMembers) {
         this.geometryMembers = asChild(geometryMembers);
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

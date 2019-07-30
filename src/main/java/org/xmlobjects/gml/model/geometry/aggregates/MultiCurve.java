@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.geometry.aggregates;
 import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.geometry.primitives.CurveArrayProperty;
 import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 import java.util.List;
 
@@ -34,5 +35,10 @@ public class MultiCurve extends AbstractGeometricAggregate {
 
     public void setCurveMembers(CurveArrayProperty curveMembers) {
         this.curveMembers = asChild(curveMembers);
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

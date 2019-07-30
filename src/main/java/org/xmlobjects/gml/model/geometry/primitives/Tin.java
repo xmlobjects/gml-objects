@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.geometry.primitives;
 import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.geometry.GeometricPositionList;
 import org.xmlobjects.gml.model.measures.Length;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 import java.util.List;
 
@@ -51,5 +52,10 @@ public class Tin extends TriangulatedSurface {
 
     public void setControlPoints(GeometricPositionList controlPoints) {
         this.controlPoints = asChild(controlPoints);
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

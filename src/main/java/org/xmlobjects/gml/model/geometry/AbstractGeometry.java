@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.geometry;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.base.AbstractGML;
 import org.xmlobjects.gml.model.feature.AbstractFeature;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,8 @@ public abstract class AbstractGeometry extends AbstractGML implements SRSReferen
     private Integer srsDimension;
     private List<String> axisLabels;
     private List<String> uomLabels;
+
+    public abstract void accept(GeometryVisitor visitor);
 
     @Override
     public String getSrsName() {

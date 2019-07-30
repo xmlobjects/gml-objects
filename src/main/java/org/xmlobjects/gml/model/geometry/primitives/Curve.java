@@ -1,5 +1,7 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
+import org.xmlobjects.gml.visitor.GeometryVisitor;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -34,5 +36,10 @@ public class Curve extends AbstractCurve {
                     .collect(Collectors.toList());
         else
             return Collections.emptyList();
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

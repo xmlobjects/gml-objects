@@ -5,6 +5,7 @@ import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.geometry.primitives.AbstractCurve;
 import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -55,5 +56,10 @@ public class CompositeCurve extends AbstractCurve implements AggregationAttribut
                     .collect(Collectors.toList());
         else
             return Collections.emptyList();
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

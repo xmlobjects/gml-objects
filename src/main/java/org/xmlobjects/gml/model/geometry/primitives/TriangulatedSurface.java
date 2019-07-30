@@ -1,5 +1,7 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
+import org.xmlobjects.gml.visitor.GeometryVisitor;
+
 public class TriangulatedSurface extends Surface {
 
     public TriangulatedSurface() {
@@ -24,5 +26,10 @@ public class TriangulatedSurface extends Surface {
 
     public void setPatches(TriangleArrayProperty patches) {
         super.setPatches(patches);
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

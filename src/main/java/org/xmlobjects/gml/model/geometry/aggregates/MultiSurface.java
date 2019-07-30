@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.geometry.aggregates;
 import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.geometry.primitives.SurfaceArrayProperty;
 import org.xmlobjects.gml.model.geometry.primitives.SurfaceProperty;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 import java.util.List;
 
@@ -34,5 +35,10 @@ public class MultiSurface extends AbstractGeometricAggregate {
 
     public void setSurfaceMembers(SurfaceArrayProperty surfaceMembers) {
         this.surfaceMembers = asChild(surfaceMembers);
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

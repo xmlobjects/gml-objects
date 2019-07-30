@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.geometry.aggregates;
 import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.geometry.primitives.SolidArrayProperty;
 import org.xmlobjects.gml.model.geometry.primitives.SolidProperty;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 import java.util.List;
 
@@ -34,5 +35,10 @@ public class MultiSolid extends AbstractGeometricAggregate {
 
     public void setSolidMembers(SolidArrayProperty solidMembers) {
         this.solidMembers = asChild(solidMembers);
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

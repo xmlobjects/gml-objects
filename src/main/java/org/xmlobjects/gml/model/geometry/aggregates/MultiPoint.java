@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.geometry.aggregates;
 import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.geometry.primitives.PointArrayProperty;
 import org.xmlobjects.gml.model.geometry.primitives.PointProperty;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 import java.util.List;
 
@@ -34,5 +35,10 @@ public class MultiPoint extends AbstractGeometricAggregate {
 
     public void setPointMembers(PointArrayProperty pointMembers) {
         this.pointMembers = asChild(pointMembers);
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

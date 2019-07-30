@@ -1,5 +1,7 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
+import org.xmlobjects.gml.visitor.GeometryVisitor;
+
 public class PolyhedralSurface extends Surface {
 
     public PolyhedralSurface() {
@@ -24,5 +26,10 @@ public class PolyhedralSurface extends Surface {
 
     public void setPatches(PolygonPatchArrayProperty patches) {
         super.setPatches(patches);
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

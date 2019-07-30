@@ -1,0 +1,51 @@
+package org.xmlobjects.gml.visitor;
+
+import org.xmlobjects.gml.model.geometry.aggregates.MultiCurve;
+import org.xmlobjects.gml.model.geometry.aggregates.MultiGeometry;
+import org.xmlobjects.gml.model.geometry.aggregates.MultiPoint;
+import org.xmlobjects.gml.model.geometry.aggregates.MultiSolid;
+import org.xmlobjects.gml.model.geometry.aggregates.MultiSurface;
+import org.xmlobjects.gml.model.geometry.complexes.CompositeCurve;
+import org.xmlobjects.gml.model.geometry.complexes.CompositeSolid;
+import org.xmlobjects.gml.model.geometry.complexes.CompositeSurface;
+import org.xmlobjects.gml.model.geometry.complexes.GeometricComplex;
+import org.xmlobjects.gml.model.geometry.primitives.Curve;
+import org.xmlobjects.gml.model.geometry.primitives.LineString;
+import org.xmlobjects.gml.model.geometry.primitives.LinearRing;
+import org.xmlobjects.gml.model.geometry.primitives.OrientableCurve;
+import org.xmlobjects.gml.model.geometry.primitives.OrientableSurface;
+import org.xmlobjects.gml.model.geometry.primitives.Point;
+import org.xmlobjects.gml.model.geometry.primitives.Polygon;
+import org.xmlobjects.gml.model.geometry.primitives.PolyhedralSurface;
+import org.xmlobjects.gml.model.geometry.primitives.Ring;
+import org.xmlobjects.gml.model.geometry.primitives.Shell;
+import org.xmlobjects.gml.model.geometry.primitives.Solid;
+import org.xmlobjects.gml.model.geometry.primitives.Surface;
+import org.xmlobjects.gml.model.geometry.primitives.Tin;
+import org.xmlobjects.gml.model.geometry.primitives.TriangulatedSurface;
+
+public interface GeometryVisitor {
+    void visit(CompositeCurve compositeCurve);
+    void visit(CompositeSolid compositeSolid);
+    void visit(CompositeSurface compositeSurface);
+    void visit(Curve curve);
+    void visit(GeometricComplex geometricComplex);
+    void visit(LinearRing linearRing);
+    void visit(LineString lineString);
+    void visit(MultiCurve multiCurve);
+    void visit(MultiGeometry multiGeometry);
+    void visit(MultiPoint multiPoint);
+    void visit(MultiSolid multiSolid);
+    void visit(MultiSurface multiSurface);
+    void visit(OrientableCurve orientableCurve);
+    void visit(OrientableSurface orientableSurface);
+    void visit(Point point);
+    void visit(Polygon polygon);
+    void visit(PolyhedralSurface polyhedralSurface);
+    void visit(Ring ring);
+    void visit(Shell shell);
+    void visit(Solid solid);
+    void visit(Surface surface);
+    void visit(Tin tin);
+    void visit(TriangulatedSurface triangulatedSurface);
+}
