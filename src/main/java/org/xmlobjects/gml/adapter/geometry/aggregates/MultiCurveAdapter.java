@@ -23,7 +23,8 @@ import javax.xml.namespace.QName;
 
 @XMLElements({
         @XMLElement(name = "MultiCurve", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "MultiCurve", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "MultiCurve", namespaceURI = GMLConstants.GML_3_1_NAMESPACE),
+        @XMLElement(name = "MultiLineString", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class MultiCurveAdapter extends AbstractGeometricAggregateAdapter<MultiCurve> {
 
@@ -37,6 +38,7 @@ public class MultiCurveAdapter extends AbstractGeometricAggregateAdapter<MultiCu
         if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "curveMember":
+                case "lineStringMember":
                     object.getCurveMember().add(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
                     break;
                 case "curveMembers":

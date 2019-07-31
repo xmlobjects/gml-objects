@@ -23,7 +23,8 @@ import javax.xml.namespace.QName;
 
 @XMLElements({
         @XMLElement(name = "MultiSurface", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "MultiSurface", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "MultiSurface", namespaceURI = GMLConstants.GML_3_1_NAMESPACE),
+        @XMLElement(name = "MultiPolygon", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<MultiSurface> {
 
@@ -37,6 +38,7 @@ public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<Multi
         if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "surfaceMember":
+                case "polygonMember":
                     object.getSurfaceMember().add(reader.getObjectUsingBuilder(SurfacePropertyAdapter.class));
                     break;
                 case "surfaceMembers":
