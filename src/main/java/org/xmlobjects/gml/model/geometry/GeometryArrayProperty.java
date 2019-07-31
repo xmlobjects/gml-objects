@@ -15,12 +15,6 @@ public class GeometryArrayProperty<T extends AbstractGeometry> extends ArrayProp
         super(objects);
     }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public Class<T> getTargetType() {
-        return (Class<T>) AbstractGeometry.class;
-    }
-
     @Override
     public Boolean getOwns() {
         return owns;
@@ -29,5 +23,11 @@ public class GeometryArrayProperty<T extends AbstractGeometry> extends ArrayProp
     @Override
     public void setOwns(Boolean owns) {
         this.owns = owns;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Class<T> getTargetType() {
+        return (Class<T>) AbstractGeometry.class;
     }
 }
