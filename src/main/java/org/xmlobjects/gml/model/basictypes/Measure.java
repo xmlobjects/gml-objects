@@ -3,26 +3,26 @@ package org.xmlobjects.gml.model.basictypes;
 import org.xmlobjects.gml.model.GMLObject;
 
 public class Measure extends GMLObject {
-    private double value;
+    private Double value;
     private String uom;
 
     public Measure() {
     }
 
-    public Measure(double value) {
+    public Measure(Double value) {
         this.value = value;
     }
 
-    public Measure(double value, String uom) {
+    public Measure(Double value, String uom) {
         this.value = value;
         this.uom = uom;
     }
 
-    public double getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 

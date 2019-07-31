@@ -13,6 +13,11 @@ public class Code extends GMLObject {
         this.value = value;
     }
 
+    public Code(String value, String codeSpace) {
+        this.value = value;
+        this.codeSpace = codeSpace;
+    }
+
     public String getValue() {
         return value;
     }
