@@ -42,7 +42,7 @@ public class BoundingShapeAdapter implements ObjectBuilder<BoundingShape>, Objec
                     object.setEnvelope(reader.getObjectUsingBuilder(EnvelopeAdapter.class));
                     break;
                 case "Null":
-                    if (object.getNilReason() == null || object.getNilReason().getValue() == null)
+                    if (!object.isSetNilReason() || object.getNilReason().getValue() == null)
                         object.setNilReason(reader.getObjectUsingBuilder(NilReasonAdapter.class));
                     break;
             }
