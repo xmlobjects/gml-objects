@@ -19,15 +19,25 @@ public class BoundingShape extends GMLObject {
         return envelope;
     }
 
+    public boolean isSetEnvelope() {
+        return envelope != null;
+    }
+
     public void setEnvelope(Envelope envelope) {
         this.envelope = asChild(envelope);
+        nilReason = null;
     }
 
     public NilReason getNilReason() {
         return nilReason;
     }
 
+    public boolean isSetNilReason() {
+        return nilReason != null;
+    }
+
     public void setNilReason(NilReason nilReason) {
         this.nilReason = asChild(nilReason);
+        envelope = null;
     }
 }

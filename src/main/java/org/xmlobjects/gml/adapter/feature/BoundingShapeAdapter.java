@@ -19,6 +19,7 @@ import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
 
+import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 
 public class BoundingShapeAdapter implements ObjectBuilder<BoundingShape>, ObjectSerializer<BoundingShape> {
@@ -50,18 +51,20 @@ public class BoundingShapeAdapter implements ObjectBuilder<BoundingShape>, Objec
 
     @Override
     public void initializeElement(Element element, BoundingShape object, Namespaces namespaces, XMLWriter writer) {
-        if (object.getNilReason() != null && GMLConstants.GML_3_2_NAMESPACE.equals(SerializerHelper.getGMLBaseNamespace(namespaces)))
+        if (object.isSetNilReason() && GMLConstants.GML_3_2_NAMESPACE.equals(SerializerHelper.getGMLBaseNamespace(namespaces))) {
             element.addAttribute("nilReason", object.getNilReason().getValue());
+            element.addAttribute(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI, "nil", "true");
+        }
     }
 
     @Override
     public void writeChildElements(BoundingShape object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
-        if (object.getEnvelope() != null)
+        if (object.isSetEnvelope())
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "Envelope"), object.getEnvelope(), EnvelopeAdapter.class, namespaces);
 
-        if (object.getNilReason() != null && GMLConstants.GML_3_1_NAMESPACE.equals(baseNamespace))
+        if (object.isSetNilReason() && GMLConstants.GML_3_1_NAMESPACE.equals(baseNamespace))
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "Null"), object.getNilReason(), NilReasonAdapter.class, namespaces);
     }
 }
