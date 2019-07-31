@@ -1,30 +1,20 @@
 package org.xmlobjects.gml.model.basictypes;
 
-import org.xmlobjects.gml.model.GMLObject;
-import org.xmlobjects.gml.model.common.ChildList;
-
 import java.util.List;
 
-public class CodeOrNilReasonList extends GMLObject {
-    private List<NameOrNilReason> value;
+public class CodeOrNilReasonList extends NameOrNilReasonList {
     private String codeSpace;
 
     public CodeOrNilReasonList() {
     }
 
     public CodeOrNilReasonList(List<NameOrNilReason> value) {
-        setValue(value);
+        super(value);
     }
 
-    public List<NameOrNilReason> getValue() {
-        if (value == null)
-            value = new ChildList<>(this);
-
-        return value;
-    }
-
-    public void setValue(List<NameOrNilReason> value) {
-        this.value = asChild(value);
+    public CodeOrNilReasonList(List<NameOrNilReason> value, String codeSpace) {
+        this(value);
+        this.codeSpace = codeSpace;
     }
 
     public String getCodeSpace() {
