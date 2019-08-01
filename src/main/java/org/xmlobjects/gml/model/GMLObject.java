@@ -1,21 +1,21 @@
 package org.xmlobjects.gml.model;
 
+import org.xmlobjects.gml.model.common.Child;
 import org.xmlobjects.gml.model.common.ChildList;
 
-import java.io.Serializable;
 import java.util.List;
 
-public abstract class GMLObject implements Serializable {
+public abstract class GMLObject implements Child {
     private GMLObject parent;
 
-    protected final <T extends GMLObject> T asChild(T child) {
+    protected final <T extends Child> T asChild(T child) {
         if (child != null)
             child.setParent(this);
 
         return child;
     }
 
-    protected final <T extends GMLObject> List<T> asChild(List<T> child) {
+    protected final <T extends Child> List<T> asChild(List<T> child) {
         if (child instanceof ChildList) {
             ((ChildList<T>) child).setParent(this);
             return child;
@@ -23,10 +23,12 @@ public abstract class GMLObject implements Serializable {
             return child != null ? new ChildList<>(child, this) : null;
     }
 
+    @Override
     public final GMLObject getParent() {
         return parent;
     }
 
+    @Override
     public final void setParent(GMLObject parent) {
         this.parent = parent;
     }

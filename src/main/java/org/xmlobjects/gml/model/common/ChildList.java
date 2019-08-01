@@ -5,7 +5,7 @@ import org.xmlobjects.gml.model.GMLObject;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ChildList<T extends GMLObject> extends ArrayList<T> {
+public class ChildList<T extends Child> extends ArrayList<T> {
     private GMLObject parent;
 
     public ChildList(GMLObject parent) {
