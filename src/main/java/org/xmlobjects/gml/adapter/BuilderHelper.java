@@ -4,6 +4,7 @@ import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.base.AssociationAttributes;
 import org.xmlobjects.gml.model.base.OwnershipAttributes;
+import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.geometry.SRSInformation;
 import org.xmlobjects.gml.model.geometry.SRSReference;
 import org.xmlobjects.gml.model.xlink.ActuateType;
@@ -27,7 +28,7 @@ public class BuilderHelper {
         attributes.getValue(GMLConstants.XLINK_NAMESPACE, "actuate").ifPresent(v -> object.setActuate(ActuateType.fromValue(v)));
         attributes.getValue(GMLConstants.GML_3_1_NAMESPACE, "remoteSchema").ifPresent(object::setRemoteSchema);
         attributes.getValue(GMLConstants.GML_3_2_NAMESPACE, "remoteSchema").ifPresent(object::setRemoteSchema);
-        attributes.getValue("nilReason").ifPresent(object::setNilReason);
+        attributes.getValue("nilReason").ifPresent(v -> object.setNilReason(new NilReason(v)));
     }
 
     public static void buildOwnershipAttributes(OwnershipAttributes object, Attributes attributes) {

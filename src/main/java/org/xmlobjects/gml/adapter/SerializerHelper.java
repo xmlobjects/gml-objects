@@ -32,8 +32,8 @@ public class SerializerHelper {
         if (object.getActuate() != null)
             element.addAttribute(GMLConstants.XLINK_NAMESPACE, "actuate", object.getActuate().toValue());
 
-        if (GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace))
-            element.addAttribute("nilReason", object.getNilReason());
+        if (object.getNilReason() != null && GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace))
+            element.addAttribute("nilReason", object.getNilReason().getValue());
     }
 
     public static void serializeOwnershipAttributes(Element element, OwnershipAttributes object, Namespaces namespaces) {

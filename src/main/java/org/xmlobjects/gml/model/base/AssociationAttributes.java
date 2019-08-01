@@ -1,5 +1,6 @@
 package org.xmlobjects.gml.model.base;
 
+import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 
@@ -17,8 +18,8 @@ public interface AssociationAttributes {
     void setShow(ShowType show);
     ActuateType getActuate();
     void setActuate(ActuateType actuate);
-    String getNilReason();
-    void setNilReason(String nilReason);
+    NilReason getNilReason();
+    void setNilReason(NilReason nilReason);
     String getRemoteSchema();
     void setRemoteSchema(String remoteSchema);
 }

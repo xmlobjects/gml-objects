@@ -1,5 +1,6 @@
 package org.xmlobjects.gml.model.base;
 
+import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 
@@ -10,7 +11,7 @@ public class Reference extends Association<AbstractGML> implements AssociationAt
     private String title;
     private ShowType show;
     private ActuateType actuate;
-    private String nilReason;
+    private NilReason nilReason;
     private String remoteSchema;
     private Boolean owns;
 
@@ -96,13 +97,13 @@ public class Reference extends Association<AbstractGML> implements AssociationAt
     }
 
     @Override
-    public String getNilReason() {
+    public NilReason getNilReason() {
         return nilReason;
     }
 
     @Override
-    public void setNilReason(String nilReason) {
-        this.nilReason = nilReason;
+    public void setNilReason(NilReason nilReason) {
+        this.nilReason = asChild(nilReason);
     }
 
     @Override

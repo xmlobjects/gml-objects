@@ -2,6 +2,7 @@ package org.xmlobjects.gml.model.deprecated;
 
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.base.AssociationAttributes;
+import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 
@@ -13,7 +14,7 @@ public class StringOrRef extends GMLObject implements AssociationAttributes {
     private String title;
     private ShowType show;
     private ActuateType actuate;
-    private String nilReason;
+    private NilReason nilReason;
     private String remoteSchema;
 
     public StringOrRef() {
@@ -103,13 +104,13 @@ public class StringOrRef extends GMLObject implements AssociationAttributes {
     }
 
     @Override
-    public String getNilReason() {
+    public NilReason getNilReason() {
         return nilReason;
     }
 
     @Override
-    public void setNilReason(String nilReason) {
-        this.nilReason = nilReason;
+    public void setNilReason(NilReason nilReason) {
+        this.nilReason = asChild(nilReason);
     }
 
     @Override

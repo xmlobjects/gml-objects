@@ -2,7 +2,6 @@ package org.xmlobjects.gml.model.deprecated;
 
 import org.xmlobjects.gml.model.basictypes.Code;
 import org.xmlobjects.gml.model.basictypes.NilReason;
-import org.xmlobjects.gml.model.basictypes.NilReasonEnumeration;
 import org.xmlobjects.gml.model.geometry.AbstractGeometry;
 import org.xmlobjects.gml.model.geometry.GeometryProperty;
 
@@ -28,18 +27,6 @@ public class LocationProperty extends GeometryProperty<AbstractGeometry> {
 
     public LocationProperty(String href) {
         super(href);
-    }
-
-    public static LocationProperty ofNull(NilReason nullReason) {
-        LocationProperty locationProperty = new LocationProperty();
-        locationProperty.setNull(nullReason);
-        return locationProperty;
-    }
-
-    public static LocationProperty ofNull(NilReasonEnumeration nullReason) {
-        LocationProperty locationProperty = new LocationProperty();
-        locationProperty.setNull(new NilReason(nullReason));
-        return locationProperty;
     }
 
     public boolean isSetObject() {
