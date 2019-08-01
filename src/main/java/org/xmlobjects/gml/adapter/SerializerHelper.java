@@ -5,6 +5,7 @@ import org.xmlobjects.gml.model.base.AssociationAttributes;
 import org.xmlobjects.gml.model.base.OwnershipAttributes;
 import org.xmlobjects.gml.model.geometry.SRSInformation;
 import org.xmlobjects.gml.model.geometry.SRSReference;
+import org.xmlobjects.gml.model.valueobjects.ReferenceSystem;
 import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -55,5 +56,10 @@ public class SerializerHelper {
     public static void serializeSRSInformation(Element element, SRSInformation object, Namespaces namespaces) {
         element.addAttribute("axisLabels", TextContent.ofList(object.getAxisLabels()));
         element.addAttribute("uomLabels", TextContent.ofList(object.getUomLabels()));
+    }
+
+    public static void serializeReferenceSystem(Element element, ReferenceSystem object, Namespaces namespaces) {
+        element.addAttribute("codeSpace", object.getCodeSpace());
+        element.addAttribute("uom", object.getUom());
     }
 }

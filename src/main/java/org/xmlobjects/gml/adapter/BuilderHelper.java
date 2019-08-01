@@ -7,6 +7,7 @@ import org.xmlobjects.gml.model.base.OwnershipAttributes;
 import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.geometry.SRSInformation;
 import org.xmlobjects.gml.model.geometry.SRSReference;
+import org.xmlobjects.gml.model.valueobjects.ReferenceSystem;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -48,5 +49,10 @@ public class BuilderHelper {
     public static void buildSRSInformation(SRSInformation object, Attributes attributes) {
         attributes.getValue("axisLabels").ifList(object::setAxisLabels);
         attributes.getValue("uomLabels").ifList(object::setAxisLabels);
+    }
+
+    public static void buildReferenceSystem(ReferenceSystem object, Attributes attributes) {
+        attributes.getValue("codeSpace").ifPresent(object::setCodeSpace);
+        attributes.getValue("uom").ifPresent(object::setUom);
     }
 }
