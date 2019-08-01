@@ -4,6 +4,8 @@ import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.model.basictypes.NameOrNilReason;
 import org.xmlobjects.gml.model.basictypes.NameOrNilReasonList;
 import org.xmlobjects.gml.model.basictypes.NilReason;
+import org.xmlobjects.gml.model.basictypes.NilReasonEnumeration;
+import org.xmlobjects.gml.util.GMLPatterns;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -29,10 +31,12 @@ public class NameOrNilReasonListAdapter implements ObjectBuilder<NameOrNilReason
     public void initializeObject(NameOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         TextContent content = reader.getTextContent();
         for (String item : content.getAsList()) {
-            if (XMLPatterns.NAME.matcher(item).matches())
-                object.getValue().add(new NameOrNilReason(item));
-            else
+            if (NilReasonEnumeration.fromValue(item) != null
+                    || GMLPatterns.OTHER_VALUE.matcher(item).matches()
+                    || !XMLPatterns.NAME.matcher(item).matches())
                 object.getValue().add(new NameOrNilReason(new NilReason(item)));
+            else
+                object.getValue().add(new NameOrNilReason(item));
         }
     }
 
