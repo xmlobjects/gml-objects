@@ -25,7 +25,7 @@ public class IntegerOrNilReasonAdapter implements ObjectBuilder<IntegerOrNilReas
     public void initializeObject(IntegerOrNilReason object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         TextContent content = reader.getTextContent();
         if (content.isInteger())
-            object.setInteger(content.getAsInteger());
+            object.setValue(content.getAsInteger());
         else
             object.setNilReason(new NilReason(content.get()));
     }

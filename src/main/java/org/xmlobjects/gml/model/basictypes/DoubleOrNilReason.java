@@ -16,8 +16,4 @@ public class DoubleOrNilReason extends ValueOrNilReason<Double> {
     public DoubleOrNilReason(NilReasonEnumeration nilReason) {
         super(nilReason);
     }
-
-    public void setDouble(Double value) {
-        setValue(value);
-    }
 }

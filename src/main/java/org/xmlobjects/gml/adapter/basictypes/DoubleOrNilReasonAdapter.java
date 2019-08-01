@@ -25,7 +25,7 @@ public class DoubleOrNilReasonAdapter implements ObjectBuilder<DoubleOrNilReason
     public void initializeObject(DoubleOrNilReason object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         TextContent content = reader.getTextContent();
         if (content.isDouble())
-            object.setDouble(content.getAsDouble());
+            object.setValue(content.getAsDouble());
         else
             object.setNilReason(new NilReason(content.get()));
     }

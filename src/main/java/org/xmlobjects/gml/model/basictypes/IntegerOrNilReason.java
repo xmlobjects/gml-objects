@@ -16,8 +16,4 @@ public class IntegerOrNilReason extends ValueOrNilReason<Integer> {
     public IntegerOrNilReason(NilReasonEnumeration nilReason) {
         super(nilReason);
     }
-
-    public void setInteger(Integer value) {
-        setValue(value);
-    }
 }

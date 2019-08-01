@@ -26,7 +26,7 @@ public class NameOrNilReasonAdapter implements ObjectBuilder<NameOrNilReason>, O
     public void initializeObject(NameOrNilReason object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         TextContent content = reader.getTextContent();
         if (XMLPatterns.NAME.matcher(content.get()).matches())
-            object.setName(content.get());
+            object.setValue(content.get());
         else
             object.setNilReason(new NilReason(content.get()));
     }

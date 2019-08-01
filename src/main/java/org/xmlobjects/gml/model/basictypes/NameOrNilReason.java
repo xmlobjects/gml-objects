@@ -16,8 +16,4 @@ public class NameOrNilReason extends ValueOrNilReason<String> {
     public NameOrNilReason(NilReasonEnumeration nilReason) {
         super(nilReason);
     }
-
-    public void setName(String value) {
-        setValue(value);
-    }
 }

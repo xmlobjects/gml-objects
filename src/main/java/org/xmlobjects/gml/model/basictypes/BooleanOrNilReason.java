@@ -16,8 +16,4 @@ public class BooleanOrNilReason extends ValueOrNilReason<Boolean> {
     public BooleanOrNilReason(NilReasonEnumeration nilReason) {
         super(nilReason);
     }
-
-    public void setBoolean(Boolean value) {
-        setValue(value);
-    }
 }

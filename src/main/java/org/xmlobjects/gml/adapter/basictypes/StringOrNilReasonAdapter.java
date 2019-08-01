@@ -28,7 +28,7 @@ public class StringOrNilReasonAdapter implements ObjectBuilder<StringOrNilReason
         if (nilReason.getValue() != null)
             object.setNilReason(nilReason);
         else
-            object.setString(content.get());
+            object.setValue(content.get());
     }
 
     @Override

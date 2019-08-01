@@ -25,7 +25,7 @@ public class BooleanOrNilReasonAdapter implements ObjectBuilder<BooleanOrNilReas
     public void initializeObject(BooleanOrNilReason object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         TextContent content = reader.getTextContent();
         if (content.isBoolean())
-            object.setBoolean(content.getAsBoolean());
+            object.setValue(content.getAsBoolean());
         else
             object.setNilReason(new NilReason(content.get()));
     }
