@@ -17,15 +17,16 @@ import javax.xml.namespace.QName;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class IntegerOrNilReasonListAdapter implements ObjectBuilder<IntegerOrNilReasonList>, ObjectSerializer<IntegerOrNilReasonList> {
+public class IntegerOrNilReasonListAdapter<T extends IntegerOrNilReasonList> implements ObjectBuilder<T>, ObjectSerializer<T> {
 
+    @SuppressWarnings("unchecked")
     @Override
-    public IntegerOrNilReasonList createObject(QName name) {
-        return new IntegerOrNilReasonList();
+    public T createObject(QName name) {
+        return (T) new IntegerOrNilReasonList();
     }
 
     @Override
-    public void initializeObject(IntegerOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
+    public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         TextContent content = reader.getTextContent();
         for (String item : content.getAsList()) {
             try {
@@ -37,7 +38,7 @@ public class IntegerOrNilReasonListAdapter implements ObjectBuilder<IntegerOrNil
     }
 
     @Override
-    public void initializeElement(Element element, IntegerOrNilReasonList object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) {
         element.addTextContent(TextContent.ofList(object.getValue().stream()
                 .filter(Objects::nonNull)
                 .map(v -> {

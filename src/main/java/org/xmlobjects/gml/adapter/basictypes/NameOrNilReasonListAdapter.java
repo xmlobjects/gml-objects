@@ -20,15 +20,16 @@ import javax.xml.namespace.QName;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class NameOrNilReasonListAdapter implements ObjectBuilder<NameOrNilReasonList>, ObjectSerializer<NameOrNilReasonList> {
+public class NameOrNilReasonListAdapter<T extends NameOrNilReasonList> implements ObjectBuilder<T>, ObjectSerializer<T> {
 
+    @SuppressWarnings("unchecked")
     @Override
-    public NameOrNilReasonList createObject(QName name) {
-        return new NameOrNilReasonList();
+    public T createObject(QName name) {
+        return (T) new NameOrNilReasonList();
     }
 
     @Override
-    public void initializeObject(NameOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
+    public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         TextContent content = reader.getTextContent();
         for (String item : content.getAsList()) {
             if (NilReasonEnumeration.fromValue(item) != null
@@ -41,7 +42,7 @@ public class NameOrNilReasonListAdapter implements ObjectBuilder<NameOrNilReason
     }
 
     @Override
-    public void initializeElement(Element element, NameOrNilReasonList object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) {
         element.addTextContent(TextContent.ofList(object.getValue().stream()
                 .filter(Objects::nonNull)
                 .map(v -> {
