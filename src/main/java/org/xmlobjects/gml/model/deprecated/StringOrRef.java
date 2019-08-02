@@ -38,6 +38,17 @@ public class StringOrRef extends GMLObject implements AssociationAttributes {
         this.value = value;
     }
 
+    public void setReference(AssociationAttributes reference) {
+        href = reference.getHref();
+        role = reference.getRole();
+        arcRole = reference.getArcRole();
+        title = reference.getTitle();
+        show = reference.getShow();
+        actuate = reference.getActuate();
+        nilReason = reference.getNilReason();
+        remoteSchema = reference.getRemoteSchema();
+    }
+
     @Override
     public final String getType() {
         return "simple";
