@@ -6,6 +6,7 @@ import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.NilReasonAdapter;
 import org.xmlobjects.gml.model.GMLObject;
+import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.geometry.AbstractGeometry;
 import org.xmlobjects.gml.model.valueobjects.AbstractValue;
 import org.xmlobjects.gml.model.valueobjects.Value;
@@ -30,15 +31,13 @@ public class ValueAdapter implements ObjectBuilder<Value>, ObjectSerializer<Valu
 
     @Override
     public void buildChildObject(Value object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if ("Null".equals(name.getLocalPart()) && BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI()))
-            object.setNull(reader.getObjectUsingBuilder(NilReasonAdapter.class));
-        else {
-            GMLObject child = reader.getObject(GMLObject.class);
-            if (child instanceof AbstractValue)
-                object.setValue((AbstractValue) child);
-            else if (child instanceof AbstractGeometry)
-                object.setGeometry((AbstractGeometry) child);
-        }
+        GMLObject child = reader.getObject(GMLObject.class);
+        if (child instanceof AbstractValue)
+            object.setValue((AbstractValue) child);
+        else if (child instanceof AbstractGeometry)
+            object.setGeometry((AbstractGeometry) child);
+        else if (child instanceof NilReason)
+            object.setNull((NilReason) child);
     }
 
     @Override
