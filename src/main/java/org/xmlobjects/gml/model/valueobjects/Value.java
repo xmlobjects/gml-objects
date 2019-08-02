@@ -2,12 +2,14 @@ package org.xmlobjects.gml.model.valueobjects;
 
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.basictypes.NilReason;
+import org.xmlobjects.gml.model.common.GenericElement;
 import org.xmlobjects.gml.model.geometry.AbstractGeometry;
 
 public class Value extends GMLObject {
     private AbstractValue value;
     private AbstractGeometry geometry;
     private NilReason nullReason;
+    private GenericElement genericElement;
 
     public Value() {
     }
@@ -32,6 +34,7 @@ public class Value extends GMLObject {
         this.value = asChild(value);
         geometry = null;
         nullReason = null;
+        genericElement = null;
     }
 
 
@@ -47,6 +50,7 @@ public class Value extends GMLObject {
         this.geometry = asChild(geometry);
         value = null;
         nullReason = null;
+        genericElement = null;
     }
 
     public NilReason getNull() {
@@ -61,5 +65,21 @@ public class Value extends GMLObject {
         this.nullReason = asChild(nullReason);
         value = null;
         geometry = null;
+        genericElement = null;
+    }
+
+    public GenericElement getGenericElement() {
+        return genericElement;
+    }
+
+    public boolean isSetGenericElement() {
+        return genericElement != null;
+    }
+
+    public void setGenericElement(GenericElement genericElement) {
+        this.genericElement = asChild(genericElement);
+        value = null;
+        geometry = null;
+        nullReason = null;
     }
 }

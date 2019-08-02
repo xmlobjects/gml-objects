@@ -6,6 +6,7 @@ import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.NilReasonAdapter;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.basictypes.NilReason;
+import org.xmlobjects.gml.model.common.GenericElement;
 import org.xmlobjects.gml.model.geometry.AbstractGeometry;
 import org.xmlobjects.gml.model.valueobjects.AbstractValue;
 import org.xmlobjects.gml.model.valueobjects.Value;
@@ -37,6 +38,8 @@ public class ValueAdapter implements ObjectBuilder<Value>, ObjectSerializer<Valu
             object.setGeometry((AbstractGeometry) child);
         else if (child instanceof NilReason)
             object.setNull((NilReason) child);
+        else
+            object.setGenericElement(GenericElement.of(reader.getDOMElement()));
     }
 
     @Override
@@ -47,5 +50,7 @@ public class ValueAdapter implements ObjectBuilder<Value>, ObjectSerializer<Valu
             writer.writeObject(object.getGeometry(), namespaces);
         else if (object.isSetNull())
             writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Null"), object.getNull(), NilReasonAdapter.class, namespaces);
+        else if (object.isSetGenericElement())
+            writer.writeDOMElement(object.getGenericElement().getContent());
     }
 }
