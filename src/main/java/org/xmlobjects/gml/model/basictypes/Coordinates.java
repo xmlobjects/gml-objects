@@ -10,6 +10,10 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Coordinates extends GMLObject implements CoordinateListProvider {
+    public static final String DEFAULT_DECIMAL = ".";
+    public static final String DEFAULT_COORDINATE_SEPARATOR = ",";
+    public static final String DEFAULT_TUPLE_SEPARATOR = " ";
+
     private String value;
     private String decimal;
     private String cs;
@@ -31,7 +35,7 @@ public class Coordinates extends GMLObject implements CoordinateListProvider {
     }
 
     public String getDecimal() {
-        return decimal != null ? decimal : ".";
+        return decimal != null ? decimal : DEFAULT_DECIMAL;
     }
 
     public void setDecimal(String decimal) {
@@ -39,7 +43,7 @@ public class Coordinates extends GMLObject implements CoordinateListProvider {
     }
 
     public String getCoordinateSeparator() {
-        return cs != null ? cs : ",";
+        return cs != null ? cs : DEFAULT_COORDINATE_SEPARATOR;
     }
 
     public void setCoordinateSeparator(String cs) {
@@ -47,7 +51,7 @@ public class Coordinates extends GMLObject implements CoordinateListProvider {
     }
 
     public String getTupleSeparator() {
-        return ts != null ? ts : " ";
+        return ts != null ? ts : DEFAULT_TUPLE_SEPARATOR;
     }
 
     public void setTupleSeparator(String ts) {

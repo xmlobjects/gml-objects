@@ -57,7 +57,7 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
 
     @Override
     public void setSrsDimension(Integer srsDimension) {
-        if (srsDimension != null && srsDimension > 0)
+        if (srsDimension == null || srsDimension > 0)
             this.srsDimension = srsDimension;
     }
 

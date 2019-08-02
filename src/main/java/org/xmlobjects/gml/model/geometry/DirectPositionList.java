@@ -40,7 +40,7 @@ public class DirectPositionList extends GMLObject implements SRSReference, Coord
     }
 
     public void setCount(Integer count) {
-        if (count != null && count > 0)
+        if (count == null || count > 0)
             this.count = count;
     }
 
@@ -61,7 +61,7 @@ public class DirectPositionList extends GMLObject implements SRSReference, Coord
 
     @Override
     public void setSrsDimension(Integer srsDimension) {
-        if (srsDimension != null && srsDimension > 0)
+        if (srsDimension == null || srsDimension > 0)
             this.srsDimension = srsDimension;
     }
 

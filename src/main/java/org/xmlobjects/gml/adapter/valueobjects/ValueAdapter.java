@@ -2,7 +2,6 @@ package org.xmlobjects.gml.adapter.valueobjects;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.NilReasonAdapter;
 import org.xmlobjects.gml.model.GMLObject;

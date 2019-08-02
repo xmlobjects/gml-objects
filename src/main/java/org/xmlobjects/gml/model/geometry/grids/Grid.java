@@ -15,7 +15,7 @@ public class Grid extends AbstractGeometry {
     }
 
     public Grid(Integer dimension) {
-        this.dimension = dimension;
+        setDimension(dimension);
     }
 
     public GridLimits getLimits() {
@@ -42,7 +42,8 @@ public class Grid extends AbstractGeometry {
     }
 
     public void setDimension(Integer dimension) {
-        this.dimension = dimension;
+        if (dimension != null && dimension > 0)
+            this.dimension = dimension;
     }
 
     @Override

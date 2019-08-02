@@ -51,7 +51,7 @@ public class DirectPosition extends GMLObject implements SRSReference, Coordinat
 
     @Override
     public void setSrsDimension(Integer srsDimension) {
-        if (srsDimension != null && srsDimension > 0)
+        if (srsDimension == null || srsDimension > 0)
             this.srsDimension = srsDimension;
     }
 
