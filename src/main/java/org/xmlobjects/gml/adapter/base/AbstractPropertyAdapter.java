@@ -33,7 +33,7 @@ public abstract class AbstractPropertyAdapter<T extends AbstractProperty> implem
     }
 
     @Override
-    public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         SerializerHelper.serializeAssociationAttributes(element, object, namespaces);
         SerializerHelper.serializeOwnershipAttributes(element, object, namespaces);
     }

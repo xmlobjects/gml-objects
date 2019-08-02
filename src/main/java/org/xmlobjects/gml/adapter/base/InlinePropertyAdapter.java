@@ -21,7 +21,7 @@ import javax.xml.namespace.QName;
 public abstract class InlinePropertyAdapter<T extends InlineProperty> implements ObjectBuilder<T>, ObjectSerializer<T> {
 
     @Override
-    public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) {
+    public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         BuilderHelper.buildOwnershipAttributes(object, attributes);
     }
 
@@ -32,7 +32,7 @@ public abstract class InlinePropertyAdapter<T extends InlineProperty> implements
     }
 
     @Override
-    public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         SerializerHelper.serializeOwnershipAttributes(element, object, namespaces);
     }
 

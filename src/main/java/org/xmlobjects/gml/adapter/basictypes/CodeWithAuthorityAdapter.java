@@ -1,10 +1,13 @@
 package org.xmlobjects.gml.adapter.basictypes;
 
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.model.basictypes.CodeWithAuthority;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
@@ -20,14 +23,12 @@ public class CodeWithAuthorityAdapter implements ObjectBuilder<CodeWithAuthority
     }
 
     @Override
-    public void initializeObject(CodeWithAuthority object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
-        reader.getTextContent().ifPresent(object::setValue);
-        attributes.getValue("codeSpace").ifPresent(object::setCodeSpace);
+    public void initializeObject(CodeWithAuthority object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        reader.getOrCreateBuilder(CodeAdapter.class).initializeObject(object, name, attributes, reader);
     }
 
     @Override
-    public void initializeElement(Element element, CodeWithAuthority object, Namespaces namespaces, XMLWriter writer) {
-        element.addTextContent(object.getValue());
-        element.addAttribute("codeSpace", object.getCodeSpace());
+    public void initializeElement(Element element, CodeWithAuthority object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        writer.getOrCreateSerializer(CodeAdapter.class).initializeElement(element, object, namespaces, writer);
     }
 }
