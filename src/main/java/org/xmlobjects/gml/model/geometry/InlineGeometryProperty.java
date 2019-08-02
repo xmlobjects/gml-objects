@@ -6,10 +6,10 @@ import org.xmlobjects.gml.model.base.Association;
 public abstract class InlineGeometryProperty<T extends GMLObject> extends Association<T> {
     private T object;
 
-    protected InlineGeometryProperty() {
+    public InlineGeometryProperty() {
     }
 
-    protected InlineGeometryProperty(T object) {
+    public InlineGeometryProperty(T object) {
         setObject(object);
     }
 

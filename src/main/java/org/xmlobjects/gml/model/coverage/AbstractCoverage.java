@@ -6,10 +6,10 @@ public abstract class AbstractCoverage<T extends AbstractDomainSet> extends Abst
     private T domainSet;
     private RangeSet rangeSet;
 
-    AbstractCoverage() {
+    public AbstractCoverage() {
     }
 
-    AbstractCoverage(T domainSet, RangeSet rangeSet) {
+    public AbstractCoverage(T domainSet, RangeSet rangeSet) {
         setDomainSet(domainSet);
         setRangeSet(rangeSet);
     }

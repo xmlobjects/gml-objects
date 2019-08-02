@@ -6,10 +6,10 @@ import org.xmlobjects.gml.model.common.GenericElement;
 public abstract class AbstractFeatureMember<T extends AbstractFeature> extends AbstractMember<T> {
     private GenericElement genericElement;
 
-    protected AbstractFeatureMember() {
+    public AbstractFeatureMember() {
     }
 
-    protected AbstractFeatureMember(T object) {
+    public AbstractFeatureMember(T object) {
         super(object);
     }
 

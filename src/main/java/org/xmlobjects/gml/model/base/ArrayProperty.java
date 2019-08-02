@@ -8,10 +8,10 @@ import java.util.List;
 public abstract class ArrayProperty<T extends GMLObject> extends Association<T> {
     private List<T> objects;
 
-    protected ArrayProperty() {
+    public ArrayProperty() {
     }
 
-    protected ArrayProperty(List<T> objects) {
+    public ArrayProperty(List<T> objects) {
         setObjects(objects);
     }
 

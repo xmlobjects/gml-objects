@@ -6,14 +6,14 @@ public abstract class ValueOrNilReason<T> extends GMLObject {
     private T value;
     private NilReason nilReason;
 
-    ValueOrNilReason() {
+    public ValueOrNilReason() {
     }
 
-    ValueOrNilReason(T value) {
+    public ValueOrNilReason(T value) {
         this.value = value;
     }
 
-    ValueOrNilReason(NilReason nilReason) {
+    public ValueOrNilReason(NilReason nilReason) {
         setNilReason(nilReason);
     }
 

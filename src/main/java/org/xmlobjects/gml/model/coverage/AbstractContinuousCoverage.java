@@ -3,14 +3,14 @@ package org.xmlobjects.gml.model.coverage;
 public abstract class AbstractContinuousCoverage<T extends AbstractDomainSet> extends AbstractCoverage<T> {
     private CoverageFunction coverageFunction;
 
-    AbstractContinuousCoverage() {
+    public AbstractContinuousCoverage() {
     }
 
-    AbstractContinuousCoverage(T domainSet, RangeSet rangeSet) {
+    public AbstractContinuousCoverage(T domainSet, RangeSet rangeSet) {
         super(domainSet, rangeSet);
     }
 
-    AbstractContinuousCoverage(CoverageFunction coverageFunction) {
+    public AbstractContinuousCoverage(CoverageFunction coverageFunction) {
         setCoverageFunction(coverageFunction);
     }
 

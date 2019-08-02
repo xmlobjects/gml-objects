@@ -17,14 +17,14 @@ public abstract class AbstractProperty<T extends GMLObject> extends Association<
     private String remoteSchema;
     private Boolean owns;
 
-    protected AbstractProperty() {
+    public AbstractProperty() {
     }
 
-    protected AbstractProperty(T object) {
+    public AbstractProperty(T object) {
         setObject(object);
     }
 
-    protected AbstractProperty(String href) {
+    public AbstractProperty(String href) {
         this.href = href;
     }
 

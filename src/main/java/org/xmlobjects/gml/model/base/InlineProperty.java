@@ -6,10 +6,10 @@ public abstract class InlineProperty<T extends GMLObject> extends Association<T>
     private T object;
     private Boolean owns;
 
-    protected InlineProperty() {
+    public InlineProperty() {
     }
 
-    protected InlineProperty(T object) {
+    public InlineProperty(T object) {
         setObject(object);
     }
 

@@ -6,10 +6,10 @@ public abstract class AbstractMember<T extends GMLObject> extends Association<T>
     private T object;
     private Boolean owns;
 
-    protected AbstractMember() {
+    public AbstractMember() {
     }
 
-    protected AbstractMember(T object) {
+    public AbstractMember(T object) {
         setObject(object);
     }
 

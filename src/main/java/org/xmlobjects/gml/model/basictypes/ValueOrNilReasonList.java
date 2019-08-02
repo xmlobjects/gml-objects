@@ -8,10 +8,10 @@ import java.util.List;
 public abstract class ValueOrNilReasonList<T extends ValueOrNilReason> extends GMLObject {
     private List<T> value;
 
-    ValueOrNilReasonList() {
+    public ValueOrNilReasonList() {
     }
 
-    ValueOrNilReasonList(List<T> value) {
+    public ValueOrNilReasonList(List<T> value) {
         setValue(value);
     }
 
