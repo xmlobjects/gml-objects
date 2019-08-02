@@ -2,6 +2,7 @@ package org.xmlobjects.gml.adapter.valueobjects;
 
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.MeasureAdapter;
@@ -9,9 +10,11 @@ import org.xmlobjects.gml.model.basictypes.Measure;
 import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.valueobjects.Quantity;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
@@ -33,7 +36,7 @@ public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerialize
     }
 
     @Override
-    public void initializeObject(Quantity object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
+    public void initializeObject(Quantity object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         adapter.initializeObject(object, name, attributes, reader);
         if (!object.isSetValue())
             attributes.getValue("nilReason").ifPresent(v -> object.setNilReason(new NilReason(v)));
@@ -45,7 +48,7 @@ public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerialize
     }
 
     @Override
-    public void initializeElement(Element element, Quantity object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, Quantity object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.isSetValue())
             adapter.initializeElement(element, object, namespaces, writer);
         else if (object.isSetNilReason() && GMLConstants.GML_3_2_NAMESPACE.equals(SerializerHelper.getGMLBaseNamespace(namespaces))) {
