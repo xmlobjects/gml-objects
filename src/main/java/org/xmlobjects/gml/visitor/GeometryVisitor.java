@@ -9,6 +9,8 @@ import org.xmlobjects.gml.model.geometry.complexes.CompositeCurve;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeSolid;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeSurface;
 import org.xmlobjects.gml.model.geometry.complexes.GeometricComplex;
+import org.xmlobjects.gml.model.geometry.grids.Grid;
+import org.xmlobjects.gml.model.geometry.grids.RectifiedGrid;
 import org.xmlobjects.gml.model.geometry.primitives.Curve;
 import org.xmlobjects.gml.model.geometry.primitives.LineString;
 import org.xmlobjects.gml.model.geometry.primitives.LinearRing;
@@ -30,6 +32,7 @@ public interface GeometryVisitor {
     void visit(CompositeSurface compositeSurface);
     void visit(Curve curve);
     void visit(GeometricComplex geometricComplex);
+    void visit(Grid grid);
     void visit(LinearRing linearRing);
     void visit(LineString lineString);
     void visit(MultiCurve multiCurve);
@@ -42,6 +45,7 @@ public interface GeometryVisitor {
     void visit(Point point);
     void visit(Polygon polygon);
     void visit(PolyhedralSurface polyhedralSurface);
+    void visit(RectifiedGrid rectifiedGrid);
     void visit(Ring ring);
     void visit(Shell shell);
     void visit(Solid solid);
