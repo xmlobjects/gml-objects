@@ -22,7 +22,7 @@ import javax.xml.namespace.QName;
         @XMLElement(name = "ValueArray", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
         @XMLElement(name = "ValueArray", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
-public class ValueArrayAdapter extends CompositeValueAdapter<ValueArray> {
+public class ValueArrayAdapter extends AbstractCompositeValueAdapter<ValueArray> {
 
     @Override
     public ValueArray createObject(QName name) {

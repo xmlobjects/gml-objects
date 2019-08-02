@@ -13,22 +13,21 @@ import org.xmlobjects.xml.TextContent;
 
 import javax.xml.namespace.QName;
 
-public class MeasureListAdapter<T extends MeasureList> implements ObjectBuilder<T>, ObjectSerializer<T> {
+public class MeasureListAdapter implements ObjectBuilder<MeasureList>, ObjectSerializer<MeasureList> {
 
-    @SuppressWarnings("unchecked")
     @Override
-    public T createObject(QName name) {
-        return (T) new MeasureList();
+    public MeasureList createObject(QName name) {
+        return new MeasureList();
     }
 
     @Override
-    public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
+    public void initializeObject(MeasureList object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         reader.getTextContent().ifDoubleList(object::setValue);
         attributes.getValue("uom").ifPresent(object::setUom);
     }
 
     @Override
-    public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, MeasureList object, Namespaces namespaces, XMLWriter writer) {
         element.addTextContent(TextContent.ofDoubleList(object.getValue()));
         element.addAttribute("uom", object.getUom());
     }

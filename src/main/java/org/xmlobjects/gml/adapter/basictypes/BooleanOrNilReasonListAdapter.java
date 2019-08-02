@@ -17,16 +17,15 @@ import javax.xml.namespace.QName;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class BooleanOrNilReasonListAdapter<T extends BooleanOrNilReasonList> implements ObjectBuilder<T>, ObjectSerializer<T> {
+public class BooleanOrNilReasonListAdapter implements ObjectBuilder<BooleanOrNilReasonList>, ObjectSerializer<BooleanOrNilReasonList> {
 
-    @SuppressWarnings("unchecked")
     @Override
-    public T createObject(QName name) {
-        return (T) new BooleanOrNilReasonList();
+    public BooleanOrNilReasonList createObject(QName name) {
+        return new BooleanOrNilReasonList();
     }
 
     @Override
-    public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
+    public void initializeObject(BooleanOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         TextContent content = reader.getTextContent();
         for (String item : content.getAsList()) {
             TextContent value = TextContent.of(item);
@@ -38,7 +37,7 @@ public class BooleanOrNilReasonListAdapter<T extends BooleanOrNilReasonList> imp
     }
 
     @Override
-    public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, BooleanOrNilReasonList object, Namespaces namespaces, XMLWriter writer) {
         element.addTextContent(TextContent.ofList(object.getValue().stream()
                 .filter(Objects::nonNull)
                 .map(v -> {
