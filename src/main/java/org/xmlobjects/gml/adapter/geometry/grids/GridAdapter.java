@@ -4,15 +4,15 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.grids.Grid;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Grid", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "Grid", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "Grid", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Grid", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class GridAdapter extends AbstractGridAdapter<Grid> {
 

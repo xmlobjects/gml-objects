@@ -7,7 +7,7 @@ import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.IntegerOrNilReasonListAdapter;
 import org.xmlobjects.gml.model.valueobjects.CountExtent;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -21,8 +21,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "CountExtent", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "CountExtent", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "CountExtent", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "CountExtent", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class CountExtentAdapter implements ObjectBuilder<CountExtent>, ObjectSerializer<CountExtent> {
 

@@ -5,7 +5,7 @@ import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.deprecated.GenericMetaData;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
@@ -17,8 +17,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "GenericMetaData", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "GenericMetaData", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "GenericMetaData", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "GenericMetaData", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class GenericMetaDataAdapter extends AbstractMetaDataAdapter<GenericMetaData> {
 

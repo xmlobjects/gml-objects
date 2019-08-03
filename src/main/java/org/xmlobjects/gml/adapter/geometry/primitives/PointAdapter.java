@@ -9,7 +9,7 @@ import org.xmlobjects.gml.adapter.basictypes.CoordinatesAdapter;
 import org.xmlobjects.gml.adapter.deprecated.CoordAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
 import org.xmlobjects.gml.model.geometry.primitives.Point;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -22,8 +22,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Point", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "Point", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "Point", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Point", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class PointAdapter extends AbstractGeometricPrimitiveAdapter<Point> {
 

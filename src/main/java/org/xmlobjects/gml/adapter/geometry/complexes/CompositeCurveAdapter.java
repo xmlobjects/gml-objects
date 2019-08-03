@@ -9,7 +9,7 @@ import org.xmlobjects.gml.adapter.geometry.primitives.AbstractCurveAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.CurvePropertyAdapter;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeCurve;
 import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -22,8 +22,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "CompositeCurve", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "CompositeCurve", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "CompositeCurve", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "CompositeCurve", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class CompositeCurveAdapter extends AbstractCurveAdapter<CompositeCurve> {
 

@@ -11,7 +11,7 @@ import org.xmlobjects.gml.adapter.deprecated.StringOrRefAdapter;
 import org.xmlobjects.gml.model.base.AbstractGML;
 import org.xmlobjects.gml.model.basictypes.Code;
 import org.xmlobjects.gml.model.deprecated.MetaDataProperty;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -28,8 +28,8 @@ public abstract class AbstractGMLAdapter<T extends AbstractGML> implements Objec
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        attributes.getValue(GMLConstants.GML_3_1_NAMESPACE, "id").ifPresent(object::setId);
-        attributes.getValue(GMLConstants.GML_3_2_NAMESPACE, "id").ifPresent(object::setId);
+        attributes.getValue(GMLObjects.GML_3_1_NAMESPACE, "id").ifPresent(object::setId);
+        attributes.getValue(GMLObjects.GML_3_2_NAMESPACE, "id").ifPresent(object::setId);
     }
 
     @Override
@@ -70,7 +70,7 @@ public abstract class AbstractGMLAdapter<T extends AbstractGML> implements Objec
         if (object.getDescription() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "description"), object.getDescription(), StringOrRefAdapter.class, namespaces);
 
-        if (GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace)) {
+        if (GMLObjects.GML_3_2_NAMESPACE.equals(baseNamespace)) {
             if (object.getDescriptionReference() != null)
                 writer.writeElementUsingSerializer(Element.of(baseNamespace, "descriptionReference"), object.getDescriptionReference(), ReferenceAdapter.class, namespaces);
 

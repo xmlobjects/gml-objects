@@ -4,15 +4,15 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.valueobjects.CompositeValue;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "CompositeValue", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "CompositeValue", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "CompositeValue", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "CompositeValue", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class CompositeValueAdapter extends AbstractCompositeValueAdapter<CompositeValue> {
 

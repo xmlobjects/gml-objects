@@ -9,7 +9,7 @@ import org.xmlobjects.gml.adapter.geometry.VectorAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.PointPropertyAdapter;
 import org.xmlobjects.gml.model.geometry.Vector;
 import org.xmlobjects.gml.model.geometry.grids.RectifiedGrid;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -22,8 +22,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "RectifiedGrid", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "RectifiedGrid", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "RectifiedGrid", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "RectifiedGrid", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class RectifiedGridAdapter extends AbstractGridAdapter<RectifiedGrid> {
 

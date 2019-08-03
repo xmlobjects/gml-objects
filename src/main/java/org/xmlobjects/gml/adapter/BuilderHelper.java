@@ -10,25 +10,25 @@ import org.xmlobjects.gml.model.geometry.SRSReference;
 import org.xmlobjects.gml.model.valueobjects.ReferenceSystem;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.xml.Attributes;
 
 public class BuilderHelper {
 
     public static boolean isGMLBaseNamespace(String namespaceURI) {
-        return GMLConstants.GML_3_2_NAMESPACE.equals(namespaceURI)
-                || GMLConstants.GML_3_1_NAMESPACE.equals(namespaceURI);
+        return GMLObjects.GML_3_2_NAMESPACE.equals(namespaceURI)
+                || GMLObjects.GML_3_1_NAMESPACE.equals(namespaceURI);
     }
 
     public static void buildAssociationAttributes(AssociationAttributes object, Attributes attributes) {
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "href").ifPresent(object::setHref);
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "role").ifPresent(object::setRole);
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "arcrole").ifPresent(object::setArcRole);
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "title").ifPresent(object::setTitle);
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "show").ifPresent(v -> object.setShow(ShowType.fromValue(v)));
-        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "actuate").ifPresent(v -> object.setActuate(ActuateType.fromValue(v)));
-        attributes.getValue(GMLConstants.GML_3_1_NAMESPACE, "remoteSchema").ifPresent(object::setRemoteSchema);
-        attributes.getValue(GMLConstants.GML_3_2_NAMESPACE, "remoteSchema").ifPresent(object::setRemoteSchema);
+        attributes.getValue(GMLObjects.XLINK_NAMESPACE, "href").ifPresent(object::setHref);
+        attributes.getValue(GMLObjects.XLINK_NAMESPACE, "role").ifPresent(object::setRole);
+        attributes.getValue(GMLObjects.XLINK_NAMESPACE, "arcrole").ifPresent(object::setArcRole);
+        attributes.getValue(GMLObjects.XLINK_NAMESPACE, "title").ifPresent(object::setTitle);
+        attributes.getValue(GMLObjects.XLINK_NAMESPACE, "show").ifPresent(v -> object.setShow(ShowType.fromValue(v)));
+        attributes.getValue(GMLObjects.XLINK_NAMESPACE, "actuate").ifPresent(v -> object.setActuate(ActuateType.fromValue(v)));
+        attributes.getValue(GMLObjects.GML_3_1_NAMESPACE, "remoteSchema").ifPresent(object::setRemoteSchema);
+        attributes.getValue(GMLObjects.GML_3_2_NAMESPACE, "remoteSchema").ifPresent(object::setRemoteSchema);
         attributes.getValue("nilReason").ifPresent(v -> object.setNilReason(new NilReason(v)));
     }
 

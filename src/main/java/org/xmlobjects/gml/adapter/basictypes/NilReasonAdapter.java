@@ -5,7 +5,7 @@ import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.basictypes.NilReason;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -17,8 +17,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Null", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "Null", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "Null", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Null", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class NilReasonAdapter implements ObjectBuilder<NilReason>, ObjectSerializer<NilReason> {
 

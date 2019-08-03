@@ -11,7 +11,7 @@ import org.xmlobjects.gml.adapter.deprecated.CoordAdapter;
 import org.xmlobjects.gml.model.deprecated.Coord;
 import org.xmlobjects.gml.model.geometry.DirectPosition;
 import org.xmlobjects.gml.model.geometry.Envelope;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -26,8 +26,8 @@ import javax.xml.namespace.QName;
 import java.util.List;
 
 @XMLElements({
-        @XMLElement(name = "Envelope", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "Envelope", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "Envelope", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Envelope", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerializer<Envelope> {
 

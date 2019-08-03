@@ -9,7 +9,7 @@ import org.xmlobjects.gml.adapter.geometry.primitives.SurfaceArrayPropertyAdapte
 import org.xmlobjects.gml.adapter.geometry.primitives.SurfacePropertyAdapter;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiSurface;
 import org.xmlobjects.gml.model.geometry.primitives.SurfaceProperty;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -22,9 +22,9 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "MultiSurface", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "MultiSurface", namespaceURI = GMLConstants.GML_3_1_NAMESPACE),
-        @XMLElement(name = "MultiPolygon", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "MultiSurface", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "MultiSurface", namespaceURI = GMLObjects.GML_3_1_NAMESPACE),
+        @XMLElement(name = "MultiPolygon", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<MultiSurface> {
 

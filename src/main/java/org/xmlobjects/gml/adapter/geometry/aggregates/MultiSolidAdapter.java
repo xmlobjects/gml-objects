@@ -9,7 +9,7 @@ import org.xmlobjects.gml.adapter.geometry.primitives.SolidArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.SolidPropertyAdapter;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiSolid;
 import org.xmlobjects.gml.model.geometry.primitives.SolidProperty;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -22,8 +22,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "MultiSolid", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "MultiSolid", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "MultiSolid", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "MultiSolid", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class MultiSolidAdapter extends AbstractGeometricAggregateAdapter<MultiSolid> {
 

@@ -9,7 +9,7 @@ import org.xmlobjects.gml.adapter.geometry.primitives.CurveArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.CurvePropertyAdapter;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiCurve;
 import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -22,9 +22,9 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "MultiCurve", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "MultiCurve", namespaceURI = GMLConstants.GML_3_1_NAMESPACE),
-        @XMLElement(name = "MultiLineString", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "MultiCurve", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "MultiCurve", namespaceURI = GMLObjects.GML_3_1_NAMESPACE),
+        @XMLElement(name = "MultiLineString", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class MultiCurveAdapter extends AbstractGeometricAggregateAdapter<MultiCurve> {
 

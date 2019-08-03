@@ -4,7 +4,7 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.deprecated.AbstractMetaData;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -21,8 +21,8 @@ public abstract class AbstractMetaDataAdapter<T extends AbstractMetaData> implem
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        attributes.getValue(GMLConstants.GML_3_1_NAMESPACE, "id").ifPresent(object::setId);
-        attributes.getValue(GMLConstants.GML_3_2_NAMESPACE, "id").ifPresent(object::setId);
+        attributes.getValue(GMLObjects.GML_3_1_NAMESPACE, "id").ifPresent(object::setId);
+        attributes.getValue(GMLObjects.GML_3_2_NAMESPACE, "id").ifPresent(object::setId);
     }
 
     @Override

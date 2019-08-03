@@ -11,7 +11,7 @@ import org.xmlobjects.gml.adapter.measures.LengthAdapter;
 import org.xmlobjects.gml.model.geometry.GeometricPosition;
 import org.xmlobjects.gml.model.geometry.primitives.LineStringSegmentArrayProperty;
 import org.xmlobjects.gml.model.geometry.primitives.Tin;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -24,8 +24,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Tin", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "Tin", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "Tin", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Tin", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
 

@@ -10,7 +10,7 @@ import org.xmlobjects.gml.adapter.geometry.GeometryPropertyAdapter;
 import org.xmlobjects.gml.model.geometry.GeometryArrayProperty;
 import org.xmlobjects.gml.model.geometry.GeometryProperty;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiGeometry;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -23,8 +23,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "MultiGeometry", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "MultiGeometry", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "MultiGeometry", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "MultiGeometry", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<MultiGeometry> {
     private final GeometryPropertyAdapter<GeometryProperty> propertyAdapter = new GeometryPropertyAdapter<>();

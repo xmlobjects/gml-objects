@@ -6,7 +6,7 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.valueobjects.ValueArray;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -19,8 +19,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "ValueArray", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "ValueArray", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "ValueArray", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "ValueArray", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class ValueArrayAdapter extends AbstractCompositeValueAdapter<ValueArray> {
 

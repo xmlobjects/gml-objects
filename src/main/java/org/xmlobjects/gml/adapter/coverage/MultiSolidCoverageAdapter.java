@@ -7,7 +7,7 @@ import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.feature.AbstractFeatureAdapter;
 import org.xmlobjects.gml.model.coverage.MultiSolidCoverage;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -20,8 +20,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "MultiSolidCoverage", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "MultiSolidCoverage", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "MultiSolidCoverage", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "MultiSolidCoverage", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class MultiSolidCoverageAdapter extends AbstractFeatureAdapter<MultiSolidCoverage> {
 
@@ -62,7 +62,7 @@ public class MultiSolidCoverageAdapter extends AbstractFeatureAdapter<MultiSolid
         String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getDomainSet() != null) {
-            String localName = GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace) ? "domainSet" : "multiSolidDomain";
+            String localName = GMLObjects.GML_3_2_NAMESPACE.equals(baseNamespace) ? "domainSet" : "multiSolidDomain";
             writer.writeElementUsingSerializer(Element.of(baseNamespace, localName), object.getDomainSet(), MultiSolidDomainAdapter.class, namespaces);
         }
 

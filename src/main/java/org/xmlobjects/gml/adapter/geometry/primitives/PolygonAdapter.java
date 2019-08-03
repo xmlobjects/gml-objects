@@ -7,7 +7,7 @@ import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.AbstractRingProperty;
 import org.xmlobjects.gml.model.geometry.primitives.Polygon;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -20,8 +20,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Polygon", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "Polygon", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "Polygon", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Polygon", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class PolygonAdapter extends AbstractSurfaceAdapter<Polygon> {
 

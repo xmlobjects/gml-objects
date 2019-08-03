@@ -9,7 +9,7 @@ import org.xmlobjects.gml.adapter.basictypes.MeasureAdapter;
 import org.xmlobjects.gml.model.basictypes.Measure;
 import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.valueobjects.Quantity;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -24,8 +24,8 @@ import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Quantity", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "Quantity", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "Quantity", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Quantity", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerializer<Quantity> {
     private final MeasureAdapter<Measure> adapter = new MeasureAdapter<>();
@@ -51,7 +51,7 @@ public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerialize
     public void initializeElement(Element element, Quantity object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.isSetValue())
             adapter.initializeElement(element, object, namespaces, writer);
-        else if (object.isSetNilReason() && GMLConstants.GML_3_2_NAMESPACE.equals(SerializerHelper.getGMLBaseNamespace(namespaces))) {
+        else if (object.isSetNilReason() && GMLObjects.GML_3_2_NAMESPACE.equals(SerializerHelper.getGMLBaseNamespace(namespaces))) {
             element.addAttribute("nilReason", object.getNilReason().getValue());
             element.addAttribute(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI, "nil", "true");
         }

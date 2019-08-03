@@ -8,7 +8,7 @@ import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.geometry.primitives.Shell;
 import org.xmlobjects.gml.model.geometry.primitives.SurfaceProperty;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -21,8 +21,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Shell", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "Shell", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "Shell", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Shell", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class ShellAdapter extends AbstractSurfaceAdapter<Shell> {
 
@@ -49,9 +49,9 @@ public class ShellAdapter extends AbstractSurfaceAdapter<Shell> {
 
     @Override
     public Element createElement(Shell object, Namespaces namespaces) {
-        return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE) ?
-                Element.of(GMLConstants.GML_3_1_NAMESPACE, "CompositeSurface") :
-                Element.of(GMLConstants.GML_3_2_NAMESPACE, "Shell");
+        return namespaces.contains(GMLObjects.GML_3_1_NAMESPACE) ?
+                Element.of(GMLObjects.GML_3_1_NAMESPACE, "CompositeSurface") :
+                Element.of(GMLObjects.GML_3_2_NAMESPACE, "Shell");
     }
 
     @Override

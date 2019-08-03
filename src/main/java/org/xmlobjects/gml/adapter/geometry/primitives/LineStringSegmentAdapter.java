@@ -10,7 +10,7 @@ import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionListAdapter;
 import org.xmlobjects.gml.model.geometry.GeometricPosition;
 import org.xmlobjects.gml.model.geometry.primitives.LineStringSegment;
-import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -23,8 +23,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "LineStringSegment", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
-        @XMLElement(name = "LineStringSegment", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+        @XMLElement(name = "LineStringSegment", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "LineStringSegment", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
 })
 public class LineStringSegmentAdapter extends AbstractCurveSegmentAdapter<LineStringSegment> {
 
