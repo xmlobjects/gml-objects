@@ -34,7 +34,7 @@ public abstract class AbstractFeatureAdapter<T extends AbstractFeature> extends 
                     super.buildChildObject(object, name, attributes, reader);
                     break;
             }
-        } else if (reader.isCreateDOMasFallback()) {
+        } else if (reader.isCreateDOMAsFallback()) {
             // catch all unknown feature properties as generic DOM elements
             org.w3c.dom.Element element = reader.getDOMElement();
             if (element != null)

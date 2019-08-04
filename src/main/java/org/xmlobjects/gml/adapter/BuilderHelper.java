@@ -1,5 +1,6 @@
 package org.xmlobjects.gml.adapter;
 
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.base.AssociationAttributes;
@@ -10,7 +11,6 @@ import org.xmlobjects.gml.model.geometry.SRSReference;
 import org.xmlobjects.gml.model.valueobjects.ReferenceSystem;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
-import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.xml.Attributes;
 
 public class BuilderHelper {

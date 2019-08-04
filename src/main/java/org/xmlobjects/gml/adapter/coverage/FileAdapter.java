@@ -2,12 +2,12 @@ package org.xmlobjects.gml.adapter.coverage;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
 import org.xmlobjects.gml.model.coverage.File;
 import org.xmlobjects.gml.model.coverage.FileValueModel;
-import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;

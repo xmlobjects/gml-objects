@@ -2,6 +2,7 @@ package org.xmlobjects.gml.adapter.coverage;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.deprecated.StringOrRefAdapter;
@@ -9,7 +10,6 @@ import org.xmlobjects.gml.model.base.Reference;
 import org.xmlobjects.gml.model.coverage.CoverageFunction;
 import org.xmlobjects.gml.model.coverage.CoverageMappingRule;
 import org.xmlobjects.gml.model.deprecated.StringOrRef;
-import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;

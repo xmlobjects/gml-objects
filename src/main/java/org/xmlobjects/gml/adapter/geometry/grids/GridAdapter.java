@@ -2,9 +2,9 @@ package org.xmlobjects.gml.adapter.geometry.grids;
 
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.grids.Grid;
-import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
 

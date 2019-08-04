@@ -2,9 +2,9 @@ package org.xmlobjects.gml.adapter.deprecated;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
+import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.deprecated.AbstractMetaData;
-import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
