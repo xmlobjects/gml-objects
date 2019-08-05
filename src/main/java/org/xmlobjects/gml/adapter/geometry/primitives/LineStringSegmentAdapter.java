@@ -9,6 +9,7 @@ import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.CoordinatesAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionListAdapter;
+import org.xmlobjects.gml.adapter.geometry.GeometricPositionListAdapter;
 import org.xmlobjects.gml.model.geometry.GeometricPosition;
 import org.xmlobjects.gml.model.geometry.primitives.LineStringSegment;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -63,17 +64,6 @@ public class LineStringSegmentAdapter extends AbstractCurveSegmentAdapter<LineSt
 
     @Override
     public void writeChildElements(LineStringSegment object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
-
-        if (object.getControlPoints().isSetPosList())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "posList"), object.getControlPoints().getPosList(), DirectPositionListAdapter.class, namespaces);
-        else if (object.getControlPoints().isSetGeometricPositions()) {
-            for (GeometricPosition pos : object.getControlPoints().getGeometricPositions()) {
-                if (pos.isSetPos())
-                    writer.writeElementUsingSerializer(Element.of(baseNamespace, "pos"), pos.getPos(), DirectPositionAdapter.class, namespaces);
-                else if (pos.isSetPointProperty())
-                    writer.writeElementUsingSerializer(Element.of(baseNamespace, "pointProperty"), pos.getPointProperty(), PointPropertyAdapter.class, namespaces);
-            }
-        }
+        writer.getOrCreateSerializer(GeometricPositionListAdapter.class).writeChildElements(object.getControlPoints(), namespaces, writer);
     }
 }

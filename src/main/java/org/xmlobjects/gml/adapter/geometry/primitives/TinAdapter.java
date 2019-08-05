@@ -6,10 +6,8 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
-import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
-import org.xmlobjects.gml.adapter.geometry.DirectPositionListAdapter;
+import org.xmlobjects.gml.adapter.geometry.GeometricPositionListAdapter;
 import org.xmlobjects.gml.adapter.measures.LengthAdapter;
-import org.xmlobjects.gml.model.geometry.GeometricPosition;
 import org.xmlobjects.gml.model.geometry.primitives.LineStringSegmentArrayProperty;
 import org.xmlobjects.gml.model.geometry.primitives.Tin;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -52,7 +50,7 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
                     object.setMaxLength(reader.getObjectUsingBuilder(LengthAdapter.class));
                     break;
                 case "controlPoint":
-                    object.setControlPoints(reader.getObjectUsingBuilder(TinControlPointsAdapter.class));
+                    object.setControlPoints(reader.getObjectUsingBuilder(GeometricPositionListAdapter.class));
                     break;
                 default:
                     super.buildChildObject(object, name, attributes, reader);
@@ -83,15 +81,7 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
         if (object.getMaxLength() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "maxLength"), object.getMaxLength(), LengthAdapter.class, namespaces);
 
-        if (object.getControlPoints().isSetPosList())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "posList"), object.getControlPoints().getPosList(), DirectPositionListAdapter.class, namespaces);
-        else if (object.getControlPoints().isSetGeometricPositions()) {
-            for (GeometricPosition pos : object.getControlPoints().getGeometricPositions()) {
-                if (pos.isSetPos())
-                    writer.writeElementUsingSerializer(Element.of(baseNamespace, "pos"), pos.getPos(), DirectPositionAdapter.class, namespaces);
-                else if (pos.isSetPointProperty())
-                    writer.writeElementUsingSerializer(Element.of(baseNamespace, "pointProperty"), pos.getPointProperty(), PointPropertyAdapter.class, namespaces);
-            }
-        }
+        if (object.getControlPoints().isSetPosList() || object.getControlPoints().isSetGeometricPositions())
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "controlPoint"), object.getControlPoints(), GeometricPositionListAdapter.class, namespaces);
     }
 }
