@@ -1,8 +1,9 @@
 package org.xmlobjects.gml.model.geometry.aggregates;
 
 import org.xmlobjects.gml.model.geometry.GeometryProperty;
+import org.xmlobjects.gml.model.geometry.compact.SimpleMultiPoint;
 
-public class MultiPointProperty extends GeometryProperty<MultiPoint> {
+public class MultiPointProperty extends GeometryProperty<AbstractMultiPoint> {
 
     public MultiPointProperty() {
     }
@@ -11,12 +12,16 @@ public class MultiPointProperty extends GeometryProperty<MultiPoint> {
         super(multiPoint);
     }
 
+    public MultiPointProperty(SimpleMultiPoint multiPoint) {
+        super(multiPoint);
+    }
+
     public MultiPointProperty(String href) {
         super(href);
     }
 
     @Override
-    public Class<MultiPoint> getTargetType() {
-        return MultiPoint.class;
+    public Class<AbstractMultiPoint> getTargetType() {
+        return AbstractMultiPoint.class;
     }
 }

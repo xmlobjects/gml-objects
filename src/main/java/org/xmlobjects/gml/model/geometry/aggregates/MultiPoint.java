@@ -7,7 +7,7 @@ import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 import java.util.List;
 
-public class MultiPoint extends AbstractGeometricAggregate {
+public class MultiPoint extends AbstractMultiPoint {
     private List<PointProperty> pointMember;
     private PointArrayProperty pointMembers;
 
