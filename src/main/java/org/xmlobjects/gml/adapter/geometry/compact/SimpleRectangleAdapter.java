@@ -1,15 +1,24 @@
 package org.xmlobjects.gml.adapter.geometry.compact;
 
 import org.xmlobjects.annotation.XMLElement;
+import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.converter.SimpleRectangleConverter;
 import org.xmlobjects.gml.model.geometry.compact.SimpleRectangle;
+import org.xmlobjects.serializer.ObjectSerializeException;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
-@XMLElement(name = "SimpleRectangle", namespaceURI = GMLObjects.GML_3_3_CE_NAMESPACE)
+@XMLElements({
+        @XMLElement(name = "SimpleRectangle", namespaceURI = GMLObjects.GML_3_3_CE_NAMESPACE),
+        @XMLElement(name = "SimpleRectangle", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
+        @XMLElement(name = "SimpleRectangle", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
+})
 public class SimpleRectangleAdapter extends AbstractSimplePolygonAdapter<SimpleRectangle> {
 
     @Override
@@ -19,6 +28,18 @@ public class SimpleRectangleAdapter extends AbstractSimplePolygonAdapter<SimpleR
 
     @Override
     public Element createElement(SimpleRectangle object, Namespaces namespaces, Properties properties) {
-        return Element.of(GMLObjects.GML_3_3_CE_NAMESPACE, "SimpleRectangle");
+        return namespaces.contains(GMLObjects.GML_3_3_CE_NAMESPACE) ?
+                Element.of(GMLObjects.GML_3_3_CE_NAMESPACE, "SimpleRectangle") : null;
+    }
+
+    @Override
+    public void writeChildElements(SimpleRectangle object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        if (namespaces.contains(GMLObjects.GML_3_3_CE_NAMESPACE))
+            super.writeChildElements(object, namespaces, writer);
+        else {
+            SimpleRectangleConverter converter = writer.getProperties().get(SimpleRectangleConverter.class.getName(), SimpleRectangleConverter.class);
+            if (converter != null)
+                writer.writeObject(converter.convert(object), namespaces);
+        }
     }
 }
