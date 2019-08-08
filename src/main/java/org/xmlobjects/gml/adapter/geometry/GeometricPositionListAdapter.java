@@ -28,7 +28,7 @@ public class GeometricPositionListAdapter implements ObjectBuilder<GeometricPosi
 
     @Override
     public void buildChildObject(GeometricPositionList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "posList":
                     object.setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));

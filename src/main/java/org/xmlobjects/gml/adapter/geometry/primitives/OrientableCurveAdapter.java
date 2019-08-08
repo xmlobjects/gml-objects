@@ -38,7 +38,7 @@ public class OrientableCurveAdapter extends AbstractCurveAdapter<OrientableCurve
 
     @Override
     public void buildChildObject(OrientableCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             if ("baseCurve".equals(name.getLocalPart()))
                 object.setBaseCurve(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
             else

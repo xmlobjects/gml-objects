@@ -36,7 +36,7 @@ public class BoundingShapeAdapter implements ObjectBuilder<BoundingShape>, Objec
 
     @Override
     public void buildChildObject(BoundingShape object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "Envelope":
                     object.setEnvelope(reader.getObjectUsingBuilder(EnvelopeAdapter.class));

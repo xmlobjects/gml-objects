@@ -40,7 +40,7 @@ public class CompositeCurveAdapter extends AbstractCurveAdapter<CompositeCurve> 
 
     @Override
     public void buildChildObject(CompositeCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             if ("curveMember".equals(name.getLocalPart()))
                 object.getCurveMembers().add(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
             else

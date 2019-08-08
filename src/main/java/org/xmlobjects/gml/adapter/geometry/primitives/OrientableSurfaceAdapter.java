@@ -38,7 +38,7 @@ public class OrientableSurfaceAdapter extends AbstractSurfaceAdapter<OrientableS
 
     @Override
     public void buildChildObject(OrientableSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             if ("baseSurface".equals(name.getLocalPart()))
                 object.setBaseSurface(reader.getObjectUsingBuilder(SurfacePropertyAdapter.class));
             else

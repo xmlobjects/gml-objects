@@ -28,7 +28,7 @@ public class DataBlockAdapter implements ObjectBuilder<DataBlock>, ObjectSeriali
 
     @Override
     public void buildChildObject(DataBlock object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "rangeParameters":
                     object.setRangeParameters(reader.getObjectUsingBuilder(RangeParametersAdapter.class));

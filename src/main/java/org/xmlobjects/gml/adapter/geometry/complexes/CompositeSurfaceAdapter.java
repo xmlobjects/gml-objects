@@ -40,7 +40,7 @@ public class CompositeSurfaceAdapter extends AbstractSurfaceAdapter<CompositeSur
 
     @Override
     public void buildChildObject(CompositeSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             if ("surfaceMember".equals(name.getLocalPart()))
                 object.getSurfaceMembers().add(reader.getObjectUsingBuilder(SurfacePropertyAdapter.class));
             else

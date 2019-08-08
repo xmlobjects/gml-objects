@@ -31,7 +31,7 @@ public class TriangulatedSurfaceAdapter extends AbstractSurfaceAdapter<Triangula
 
     @Override
     public void buildChildObject(TriangulatedSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "patches":
                 case "trianglePatches":

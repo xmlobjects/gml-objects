@@ -15,7 +15,7 @@ import org.xmlobjects.xml.Attributes;
 
 public class BuilderHelper {
 
-    public static boolean isGMLBaseNamespace(String namespaceURI) {
+    public static boolean isGMLNamespace(String namespaceURI) {
         return GMLObjects.GML_3_2_NAMESPACE.equals(namespaceURI)
                 || GMLObjects.GML_3_1_NAMESPACE.equals(namespaceURI)
                 || GMLObjects.GML_3_3_XBT_NAMESPACE.equals(namespaceURI)

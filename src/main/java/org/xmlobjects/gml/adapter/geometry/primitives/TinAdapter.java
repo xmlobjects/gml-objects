@@ -34,7 +34,7 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
 
     @Override
     public void buildChildObject(Tin object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "patches":
                 case "trianglePatches":

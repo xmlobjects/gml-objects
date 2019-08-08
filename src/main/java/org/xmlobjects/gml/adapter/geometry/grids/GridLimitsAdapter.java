@@ -26,7 +26,7 @@ public class GridLimitsAdapter implements ObjectBuilder<GridLimits>, ObjectSeria
 
     @Override
     public void buildChildObject(GridLimits object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if ("GridEnvelope".equals(name.getLocalPart()) && BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI()))
+        if ("GridEnvelope".equals(name.getLocalPart()) && BuilderHelper.isGMLNamespace(name.getNamespaceURI()))
             object.setGridEnvelope(reader.getObjectUsingBuilder(GridEnvelopeAdapter.class));
     }
 

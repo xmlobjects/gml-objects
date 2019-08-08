@@ -31,7 +31,7 @@ public class CoverageFunctionAdapter implements ObjectBuilder<CoverageFunction>,
 
     @Override
     public void buildChildObject(CoverageFunction object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "MappingRule":
                     StringOrRef value = reader.getObjectUsingBuilder(StringOrRefAdapter.class);

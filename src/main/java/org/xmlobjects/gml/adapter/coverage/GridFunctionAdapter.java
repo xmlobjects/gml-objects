@@ -28,7 +28,7 @@ public class GridFunctionAdapter implements ObjectBuilder<GridFunction>, ObjectS
 
     @Override
     public void buildChildObject(GridFunction object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "sequenceRule":
                     object.setSequenceRule(reader.getObjectUsingBuilder(SequenceRuleAdapter.class));

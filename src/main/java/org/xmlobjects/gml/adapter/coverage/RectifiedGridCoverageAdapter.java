@@ -32,7 +32,7 @@ public class RectifiedGridCoverageAdapter extends AbstractFeatureAdapter<Rectifi
 
     @Override
     public void buildChildObject(RectifiedGridCoverage object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "domainSet":
                 case "rectifiedGridDomain":

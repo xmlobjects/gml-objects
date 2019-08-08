@@ -28,7 +28,7 @@ public abstract class AbstractGridAdapter<T extends Grid> extends AbstractGeomet
 
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "limits":
                     object.setLimits(reader.getObjectUsingBuilder(GridLimitsAdapter.class));

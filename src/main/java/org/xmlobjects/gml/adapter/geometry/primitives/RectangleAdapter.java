@@ -31,7 +31,7 @@ public class RectangleAdapter extends AbstractSurfacePatchAdapter<Rectangle> {
 
     @Override
     public void buildChildObject(Rectangle object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI()) && "exterior".equals(name.getLocalPart()))
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI()) && "exterior".equals(name.getLocalPart()))
             object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
     }
 

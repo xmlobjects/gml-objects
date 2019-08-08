@@ -34,7 +34,7 @@ public class RectifiedGridAdapter extends AbstractGridAdapter<RectifiedGrid> {
 
     @Override
     public void buildChildObject(RectifiedGrid object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "origin":
                     object.setOrigin(reader.getObjectUsingBuilder(PointPropertyAdapter.class));

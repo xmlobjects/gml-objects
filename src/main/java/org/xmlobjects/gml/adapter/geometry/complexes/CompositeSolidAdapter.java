@@ -40,7 +40,7 @@ public class CompositeSolidAdapter extends AbstractSolidAdapter<CompositeSolid> 
 
     @Override
     public void buildChildObject(CompositeSolid object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             if ("solidMember".equals(name.getLocalPart()))
                 object.getSolidMembers().add(reader.getObjectUsingBuilder(SolidPropertyAdapter.class));
             else

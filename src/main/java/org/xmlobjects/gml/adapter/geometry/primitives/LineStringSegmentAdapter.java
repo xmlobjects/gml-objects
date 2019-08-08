@@ -36,7 +36,7 @@ public class LineStringSegmentAdapter extends AbstractCurveSegmentAdapter<LineSt
 
     @Override
     public void buildChildObject(LineStringSegment object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "posList":
                     object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));

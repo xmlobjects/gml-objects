@@ -32,7 +32,7 @@ public class PolygonPatchAdapter extends AbstractSurfacePatchAdapter<PolygonPatc
 
     @Override
     public void buildChildObject(PolygonPatch object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "exterior":
                     object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));

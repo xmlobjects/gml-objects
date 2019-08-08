@@ -31,7 +31,7 @@ public class CurveAdapter extends AbstractCurveAdapter<Curve> {
 
     @Override
     public void buildChildObject(Curve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             if ("segments".equals(name.getLocalPart()))
                 object.setSegments(reader.getObjectUsingBuilder(CurveSegmentArrayPropertyAdapter.class));
             else

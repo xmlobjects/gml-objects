@@ -34,7 +34,7 @@ public abstract class AbstractGMLAdapter<T extends AbstractGML> implements Objec
 
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "description":
                     object.setDescription(reader.getObject(StringOrRef.class));

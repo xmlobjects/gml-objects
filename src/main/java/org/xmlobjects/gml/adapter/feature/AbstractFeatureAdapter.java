@@ -21,7 +21,7 @@ public abstract class AbstractFeatureAdapter<T extends AbstractFeature> extends 
 
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "boundedBy":
                     object.setBoundedBy(reader.getObjectUsingBuilder(BoundingShapeAdapter.class));

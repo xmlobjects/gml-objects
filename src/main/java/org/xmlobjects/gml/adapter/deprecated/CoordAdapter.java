@@ -18,7 +18,7 @@ public class CoordAdapter implements ObjectBuilder<Coord> {
 
     @Override
     public void buildChildObject(Coord object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "X":
                     reader.getTextContent().ifDouble(object::setX);

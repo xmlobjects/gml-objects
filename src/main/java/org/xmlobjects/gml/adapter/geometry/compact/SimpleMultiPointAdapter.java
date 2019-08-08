@@ -29,7 +29,7 @@ public class SimpleMultiPointAdapter extends AbstractGeometricAggregateAdapter<S
 
     @Override
     public void buildChildObject(SimpleMultiPoint object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             if ("posList".equals(name.getLocalPart()))
                 object.setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
             else

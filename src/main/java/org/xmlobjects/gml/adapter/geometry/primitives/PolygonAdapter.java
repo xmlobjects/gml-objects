@@ -32,7 +32,7 @@ public class PolygonAdapter extends AbstractSurfaceAdapter<Polygon> {
 
     @Override
     public void buildChildObject(Polygon object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "exterior":
                 case "outerBoundaryIs":

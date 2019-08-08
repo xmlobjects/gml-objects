@@ -31,7 +31,7 @@ public class SurfaceAdapter extends AbstractSurfaceAdapter<Surface> {
 
     @Override
     public void buildChildObject(Surface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
+        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             if ("patches".equals(name.getLocalPart()))
                 object.setPatches(reader.getObjectUsingBuilder(SurfacePatchArrayPropertyAdapter.class));
             else
