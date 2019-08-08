@@ -8,7 +8,6 @@ import org.xmlobjects.gml.model.geometry.compact.SimpleTriangle;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
-import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
 
