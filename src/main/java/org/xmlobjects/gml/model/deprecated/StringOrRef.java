@@ -5,9 +5,11 @@ import org.xmlobjects.gml.model.base.AssociationAttributes;
 import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
+import org.xmlobjects.util.XMLPatterns;
 
 public class StringOrRef extends GMLObject implements AssociationAttributes {
     private String value;
+    private String language;
     private String href;
     private String role;
     private String arcRole;
@@ -36,6 +38,14 @@ public class StringOrRef extends GMLObject implements AssociationAttributes {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = XMLPatterns.LANGUAGE.matcher(language).matches() ? language : null;
     }
 
     public void setReference(AssociationAttributes reference) {

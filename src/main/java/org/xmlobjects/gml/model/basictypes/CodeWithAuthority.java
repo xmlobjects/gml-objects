@@ -10,7 +10,6 @@ public class CodeWithAuthority extends Code {
     }
 
     public CodeWithAuthority(String value, String codeSpace) {
-        this(value);
-        setCodeSpace(codeSpace);
+        super(value, codeSpace);
     }
 }

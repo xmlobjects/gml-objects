@@ -17,7 +17,9 @@ public class BuilderHelper {
 
     public static boolean isGMLBaseNamespace(String namespaceURI) {
         return GMLObjects.GML_3_2_NAMESPACE.equals(namespaceURI)
-                || GMLObjects.GML_3_1_NAMESPACE.equals(namespaceURI);
+                || GMLObjects.GML_3_1_NAMESPACE.equals(namespaceURI)
+                || GMLObjects.GML_3_3_XBT_NAMESPACE.equals(namespaceURI)
+                || GMLObjects.GML_3_3_CE_NAMESPACE.equals(namespaceURI);
     }
 
     public static void buildAssociationAttributes(AssociationAttributes object, Attributes attributes) {

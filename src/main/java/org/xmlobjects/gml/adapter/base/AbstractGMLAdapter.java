@@ -8,10 +8,10 @@ import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
 import org.xmlobjects.gml.adapter.basictypes.CodeWithAuthorityAdapter;
 import org.xmlobjects.gml.adapter.deprecated.MetaDataPropertyAdapter;
-import org.xmlobjects.gml.adapter.deprecated.StringOrRefAdapter;
 import org.xmlobjects.gml.model.base.AbstractGML;
 import org.xmlobjects.gml.model.basictypes.Code;
 import org.xmlobjects.gml.model.deprecated.MetaDataProperty;
+import org.xmlobjects.gml.model.deprecated.StringOrRef;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -37,7 +37,7 @@ public abstract class AbstractGMLAdapter<T extends AbstractGML> implements Objec
         if (BuilderHelper.isGMLBaseNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "description":
-                    object.setDescription(reader.getObjectUsingBuilder(StringOrRefAdapter.class));
+                    object.setDescription(reader.getObject(StringOrRef.class));
                     break;
                 case "descriptionReference":
                     object.setDescriptionReference(reader.getObjectUsingBuilder(ReferenceAdapter.class));
@@ -68,7 +68,7 @@ public abstract class AbstractGMLAdapter<T extends AbstractGML> implements Objec
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "metaDataProperty"), property, MetaDataPropertyAdapter.class, namespaces);
 
         if (object.getDescription() != null)
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "description"), object.getDescription(), StringOrRefAdapter.class, namespaces);
+            writer.writeObject(object.getDescription(), namespaces);
 
         if (GMLObjects.GML_3_2_NAMESPACE.equals(baseNamespace)) {
             if (object.getDescriptionReference() != null)

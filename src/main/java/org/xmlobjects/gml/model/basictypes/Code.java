@@ -1,29 +1,18 @@
 package org.xmlobjects.gml.model.basictypes;
 
-import org.xmlobjects.gml.model.GMLObject;
-
-public class Code extends GMLObject {
-    private String value;
+public class Code extends LanguageString {
     private String codeSpace;
 
     public Code() {
     }
 
     public Code(String value) {
-        this.value = value;
+        super(value);
     }
 
     public Code(String value, String codeSpace) {
-        this.value = value;
+        super(value);
         this.codeSpace = codeSpace;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 
     public String getCodeSpace() {
