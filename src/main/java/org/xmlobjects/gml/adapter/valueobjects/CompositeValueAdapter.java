@@ -5,7 +5,6 @@ import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.valueobjects.CompositeValue;
-import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
 

@@ -5,7 +5,6 @@ import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.model.deprecated.Coord;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
-import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 
 import javax.xml.namespace.QName;
