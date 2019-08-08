@@ -4,7 +4,6 @@ import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -82,13 +81,13 @@ public class DirectPosition extends GMLObject implements SRSReference, Coordinat
 
     @Override
     public List<Double> toCoordinateList3D() {
-        Double[] coordinates = null;
+        List<Double> coordinates = null;
         if (value != null && !value.isEmpty()) {
-            coordinates = new Double[3];
-            for (int i = 0; i < coordinates.length; i++)
-                coordinates[i] = i < value.size() ? value.get(i) : 0d;
+            coordinates = new ArrayList<>(3);
+            for (int i = 0; i < 3; i++)
+                coordinates.add(i < value.size() ? value.get(i) : 0d);
         }
 
-        return coordinates != null ? Arrays.asList(coordinates) : Collections.emptyList();
+        return coordinates != null ? coordinates : Collections.emptyList();
     }
 }

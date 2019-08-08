@@ -4,7 +4,6 @@ import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -92,7 +91,7 @@ public class DirectPositionList extends GMLObject implements SRSReference, Coord
 
     @Override
     public List<Double> toCoordinateList3D() {
-        Double[] coordinates = null;
+        List<Double> coordinates = null;
         if (value != null && !value.isEmpty()) {
             int dim = 3;
 
@@ -106,14 +105,18 @@ public class DirectPositionList extends GMLObject implements SRSReference, Coord
                     dim = srsReference.getSrsDimension();
             }
 
-            coordinates = new Double[(value.size() / dim) * 3];
-            for (int i = 0, j = 0; j < coordinates.length; i += dim, j += 3) {
-                coordinates[j] = value.get(i);
-                coordinates[j + 1] = dim > 1 && i + 1 < value.size() ? value.get(i + 1) : 0d;
-                coordinates[j + 2] = dim > 2 && i + 2 < value.size() ? value.get(i + 2) : 0d;
+            int count = value.size() / dim;
+            if (value.size() > count * dim)
+                count++;
+
+            coordinates = new ArrayList<>(count * 3);
+            for (int i = 0; i < value.size(); i += dim) {
+                coordinates.add(value.get(i));
+                coordinates.add(dim > 1 && i + 1 < value.size() ? value.get(i + 1) : 0d);
+                coordinates.add(dim > 2 && i + 2 < value.size() ? value.get(i + 2) : 0d);
             }
         }
 
-        return coordinates != null ? Arrays.asList(coordinates) : Collections.emptyList();
+        return coordinates != null ? coordinates : Collections.emptyList();
     }
 }
