@@ -12,6 +12,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -25,7 +26,7 @@ import javax.xml.namespace.QName;
 public class TriangleAdapter extends AbstractSurfacePatchAdapter<Triangle> {
 
     @Override
-    public Triangle createObject(QName name) {
+    public Triangle createObject(QName name, Properties properties) {
         return new Triangle();
     }
 
@@ -36,7 +37,7 @@ public class TriangleAdapter extends AbstractSurfacePatchAdapter<Triangle> {
     }
 
     @Override
-    public Element createElement(Triangle object, Namespaces namespaces) {
+    public Element createElement(Triangle object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Triangle");
     }
 

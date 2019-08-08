@@ -15,6 +15,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -29,7 +30,7 @@ import javax.xml.namespace.QName;
 public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<MultiSurface> {
 
     @Override
-    public MultiSurface createObject(QName name) {
+    public MultiSurface createObject(QName name, Properties properties) {
         return new MultiSurface();
     }
 
@@ -52,7 +53,7 @@ public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<Multi
     }
 
     @Override
-    public Element createElement(MultiSurface object, Namespaces namespaces) {
+    public Element createElement(MultiSurface object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "MultiSurface");
     }
 

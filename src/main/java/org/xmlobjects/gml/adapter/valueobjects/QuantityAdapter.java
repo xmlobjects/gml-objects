@@ -16,6 +16,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -31,7 +32,7 @@ public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerialize
     private final MeasureAdapter<Measure> adapter = new MeasureAdapter<>();
 
     @Override
-    public Quantity createObject(QName name) {
+    public Quantity createObject(QName name, Properties properties) {
         return new Quantity();
     }
 
@@ -43,7 +44,7 @@ public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerialize
     }
 
     @Override
-    public Element createElement(Quantity object, Namespaces namespaces) {
+    public Element createElement(Quantity object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Quantity");
     }
 

@@ -12,6 +12,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -25,7 +26,7 @@ import javax.xml.namespace.QName;
 public class ValueArrayAdapter extends AbstractCompositeValueAdapter<ValueArray> {
 
     @Override
-    public ValueArray createObject(QName name) {
+    public ValueArray createObject(QName name, Properties properties) {
         return new ValueArray();
     }
 
@@ -36,7 +37,7 @@ public class ValueArrayAdapter extends AbstractCompositeValueAdapter<ValueArray>
     }
 
     @Override
-    public Element createElement(ValueArray object, Namespaces namespaces) {
+    public Element createElement(ValueArray object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "ValueArray");
     }
 

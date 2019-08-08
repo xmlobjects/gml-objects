@@ -15,6 +15,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -29,7 +30,7 @@ import javax.xml.namespace.QName;
 public class DescriptionAdapter implements ObjectBuilder<StringOrRef>, ObjectSerializer<StringOrRef> {
 
     @Override
-    public StringOrRef createObject(QName name) {
+    public StringOrRef createObject(QName name, Properties properties) {
         return new StringOrRef();
     }
 
@@ -40,7 +41,7 @@ public class DescriptionAdapter implements ObjectBuilder<StringOrRef>, ObjectSer
                 .initializeObject(object, name, attributes, reader);
     }
     @Override
-    public Element createElement(StringOrRef object, Namespaces namespaces) {
+    public Element createElement(StringOrRef object, Namespaces namespaces, Properties properties) {
         return object.getLanguage() != null && namespaces.contains(GMLObjects.GML_3_3_XBT_NAMESPACE) ?
                 Element.of(GMLObjects.GML_3_3_XBT_NAMESPACE, "description") :
                 Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "description");

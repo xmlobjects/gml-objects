@@ -14,6 +14,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -27,7 +28,7 @@ import javax.xml.namespace.QName;
 public class QuantityListAdapter implements ObjectBuilder<QuantityList>, ObjectSerializer<QuantityList> {
 
     @Override
-    public QuantityList createObject(QName name) {
+    public QuantityList createObject(QName name, Properties properties) {
         return new QuantityList();
     }
 
@@ -37,7 +38,7 @@ public class QuantityListAdapter implements ObjectBuilder<QuantityList>, ObjectS
     }
 
     @Override
-    public Element createElement(QuantityList object, Namespaces namespaces) {
+    public Element createElement(QuantityList object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "QuantityList");
     }
 

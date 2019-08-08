@@ -18,6 +18,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -32,7 +33,7 @@ import java.util.List;
 public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerializer<Envelope> {
 
     @Override
-    public Envelope createObject(QName name) {
+    public Envelope createObject(QName name, Properties properties) {
         return new Envelope();
     }
 
@@ -77,7 +78,7 @@ public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerialize
     }
 
     @Override
-    public Element createElement(Envelope object, Namespaces namespaces) {
+    public Element createElement(Envelope object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Envelope");
     }
 

@@ -13,6 +13,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -26,7 +27,7 @@ import javax.xml.namespace.QName;
 public class OrientableSurfaceAdapter extends AbstractSurfaceAdapter<OrientableSurface> {
 
     @Override
-    public OrientableSurface createObject(QName name) {
+    public OrientableSurface createObject(QName name, Properties properties) {
         return new OrientableSurface();
     }
 
@@ -47,7 +48,7 @@ public class OrientableSurfaceAdapter extends AbstractSurfaceAdapter<OrientableS
     }
 
     @Override
-    public Element createElement(OrientableSurface object, Namespaces namespaces) {
+    public Element createElement(OrientableSurface object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "OrientableSurface");
     }
 

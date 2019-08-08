@@ -14,6 +14,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -27,7 +28,7 @@ import javax.xml.namespace.QName;
 public class ShellAdapter extends AbstractSurfaceAdapter<Shell> {
 
     @Override
-    public Shell createObject(QName name) {
+    public Shell createObject(QName name, Properties properties) {
         return new Shell();
     }
 
@@ -48,7 +49,7 @@ public class ShellAdapter extends AbstractSurfaceAdapter<Shell> {
     }
 
     @Override
-    public Element createElement(Shell object, Namespaces namespaces) {
+    public Element createElement(Shell object, Namespaces namespaces, Properties properties) {
         return namespaces.contains(GMLObjects.GML_3_1_NAMESPACE) ?
                 Element.of(GMLObjects.GML_3_1_NAMESPACE, "CompositeSurface") :
                 Element.of(GMLObjects.GML_3_2_NAMESPACE, "Shell");

@@ -18,6 +18,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -31,7 +32,7 @@ import javax.xml.namespace.QName;
 public class LinearRingAdapter extends AbstractRingAdapter<LinearRing> {
 
     @Override
-    public LinearRing createObject(QName name) {
+    public LinearRing createObject(QName name, Properties properties) {
         return new LinearRing();
     }
 
@@ -65,7 +66,7 @@ public class LinearRingAdapter extends AbstractRingAdapter<LinearRing> {
     }
 
     @Override
-    public Element createElement(LinearRing object, Namespaces namespaces) {
+    public Element createElement(LinearRing object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "LinearRing");
     }
 

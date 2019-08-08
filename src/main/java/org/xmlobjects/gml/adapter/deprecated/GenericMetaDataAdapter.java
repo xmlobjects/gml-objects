@@ -10,6 +10,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -23,7 +24,7 @@ import javax.xml.namespace.QName;
 public class GenericMetaDataAdapter extends AbstractMetaDataAdapter<GenericMetaData> {
 
     @Override
-    public GenericMetaData createObject(QName name) {
+    public GenericMetaData createObject(QName name, Properties properties) {
         return new GenericMetaData();
     }
 
@@ -34,7 +35,7 @@ public class GenericMetaDataAdapter extends AbstractMetaDataAdapter<GenericMetaD
     }
 
     @Override
-    public Element createElement(GenericMetaData object, Namespaces namespaces) {
+    public Element createElement(GenericMetaData object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "GenericMetaData");
     }
 

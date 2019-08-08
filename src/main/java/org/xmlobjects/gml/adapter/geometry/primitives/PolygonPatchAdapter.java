@@ -13,6 +13,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -26,7 +27,7 @@ import javax.xml.namespace.QName;
 public class PolygonPatchAdapter extends AbstractSurfacePatchAdapter<PolygonPatch> {
 
     @Override
-    public PolygonPatch createObject(QName name) {
+    public PolygonPatch createObject(QName name, Properties properties) {
         return new PolygonPatch();
     }
 
@@ -45,7 +46,7 @@ public class PolygonPatchAdapter extends AbstractSurfacePatchAdapter<PolygonPatc
     }
 
     @Override
-    public Element createElement(PolygonPatch object, Namespaces namespaces) {
+    public Element createElement(PolygonPatch object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "PolygonPatch");
     }
 

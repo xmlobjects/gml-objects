@@ -15,6 +15,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -29,7 +30,7 @@ import javax.xml.namespace.QName;
 public class CategoryAdapter implements ObjectBuilder<Category>, ObjectSerializer<Category> {
 
     @Override
-    public Category createObject(QName name) {
+    public Category createObject(QName name, Properties properties) {
         return new Category();
     }
 
@@ -41,7 +42,7 @@ public class CategoryAdapter implements ObjectBuilder<Category>, ObjectSerialize
     }
 
     @Override
-    public Element createElement(Category object, Namespaces namespaces) {
+    public Element createElement(Category object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Category");
     }
 

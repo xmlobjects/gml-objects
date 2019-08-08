@@ -5,6 +5,7 @@ import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.model.deprecated.Coord;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 
 import javax.xml.namespace.QName;
@@ -12,7 +13,7 @@ import javax.xml.namespace.QName;
 public class CoordAdapter implements ObjectBuilder<Coord> {
 
     @Override
-    public Coord createObject(QName name) {
+    public Coord createObject(QName name, Properties properties) {
         return new Coord();
     }
 

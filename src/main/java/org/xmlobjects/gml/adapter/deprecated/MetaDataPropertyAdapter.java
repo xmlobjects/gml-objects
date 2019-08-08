@@ -11,6 +11,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Namespaces;
 
@@ -19,7 +20,7 @@ import javax.xml.namespace.QName;
 public class MetaDataPropertyAdapter extends AbstractPropertyAdapter<MetaDataProperty> {
 
     @Override
-    public MetaDataProperty createObject(QName name) {
+    public MetaDataProperty createObject(QName name, Properties properties) {
         return new MetaDataProperty();
     }
 

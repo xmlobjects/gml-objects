@@ -13,6 +13,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -26,7 +27,7 @@ import javax.xml.namespace.QName;
 public class GridCoverageAdapter extends AbstractFeatureAdapter<GridCoverage> {
 
     @Override
-    public GridCoverage createObject(QName name) {
+    public GridCoverage createObject(QName name, Properties properties) {
         return new GridCoverage();
     }
 
@@ -52,7 +53,7 @@ public class GridCoverageAdapter extends AbstractFeatureAdapter<GridCoverage> {
     }
 
     @Override
-    public Element createElement(GridCoverage object, Namespaces namespaces) {
+    public Element createElement(GridCoverage object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "GridCoverage");
     }
 

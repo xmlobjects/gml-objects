@@ -5,6 +5,7 @@ import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.gml.GMLObjects;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.grids.Grid;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
 
@@ -17,12 +18,12 @@ import javax.xml.namespace.QName;
 public class GridAdapter extends AbstractGridAdapter<Grid> {
 
     @Override
-    public Grid createObject(QName name) {
+    public Grid createObject(QName name, Properties properties) {
         return new Grid();
     }
 
     @Override
-    public Element createElement(Grid object, Namespaces namespaces) {
+    public Element createElement(Grid object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Grid");
     }
 }

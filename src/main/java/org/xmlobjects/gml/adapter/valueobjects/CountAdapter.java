@@ -11,6 +11,7 @@ import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -26,7 +27,7 @@ import javax.xml.namespace.QName;
 public class CountAdapter implements ObjectBuilder<Count>, ObjectSerializer<Count> {
 
     @Override
-    public Count createObject(QName name) {
+    public Count createObject(QName name, Properties properties) {
         return new Count();
     }
 
@@ -38,7 +39,7 @@ public class CountAdapter implements ObjectBuilder<Count>, ObjectSerializer<Coun
     }
 
     @Override
-    public Element createElement(Count object, Namespaces namespaces) {
+    public Element createElement(Count object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Count");
     }
 

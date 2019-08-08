@@ -9,6 +9,7 @@ import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.util.XMLPatterns;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
@@ -19,7 +20,7 @@ import javax.xml.namespace.QName;
 public class NameOrNilReasonAdapter implements ObjectBuilder<NameOrNilReason>, ObjectSerializer<NameOrNilReason> {
 
     @Override
-    public NameOrNilReason createObject(QName name) {
+    public NameOrNilReason createObject(QName name, Properties properties) {
         return new NameOrNilReason();
     }
 

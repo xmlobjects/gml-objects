@@ -8,6 +8,7 @@ import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 public class BooleanOrNilReasonListAdapter implements ObjectBuilder<BooleanOrNilReasonList>, ObjectSerializer<BooleanOrNilReasonList> {
 
     @Override
-    public BooleanOrNilReasonList createObject(QName name) {
+    public BooleanOrNilReasonList createObject(QName name, Properties properties) {
         return new BooleanOrNilReasonList();
     }
 

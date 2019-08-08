@@ -16,6 +16,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -29,7 +30,7 @@ import javax.xml.namespace.QName;
 public class SolidAdapter extends AbstractSolidAdapter<Solid> {
 
     @Override
-    public Solid createObject(QName name) {
+    public Solid createObject(QName name, Properties properties) {
         return new Solid();
     }
 
@@ -51,7 +52,7 @@ public class SolidAdapter extends AbstractSolidAdapter<Solid> {
     }
 
     @Override
-    public Element createElement(Solid object, Namespaces namespaces) {
+    public Element createElement(Solid object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Solid");
     }
 

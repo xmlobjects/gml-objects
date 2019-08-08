@@ -13,6 +13,7 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.util.Properties;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
@@ -26,7 +27,7 @@ import javax.xml.namespace.QName;
 public class RectifiedGridCoverageAdapter extends AbstractFeatureAdapter<RectifiedGridCoverage> {
 
     @Override
-    public RectifiedGridCoverage createObject(QName name) {
+    public RectifiedGridCoverage createObject(QName name, Properties properties) {
         return new RectifiedGridCoverage();
     }
 
@@ -52,7 +53,7 @@ public class RectifiedGridCoverageAdapter extends AbstractFeatureAdapter<Rectifi
     }
 
     @Override
-    public Element createElement(RectifiedGridCoverage object, Namespaces namespaces) {
+    public Element createElement(RectifiedGridCoverage object, Namespaces namespaces, Properties properties) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "RectifiedGridCoverage");
     }
 
