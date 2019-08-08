@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class CurveAdapter extends AbstractCurveAdapter<Curve> {
 
     @Override
-    public Curve createObject(QName name, Properties properties) {
+    public Curve createObject(QName name) {
         return new Curve();
     }
 
@@ -41,7 +41,7 @@ public class CurveAdapter extends AbstractCurveAdapter<Curve> {
     }
 
     @Override
-    public Element createElement(Curve object, Namespaces namespaces, Properties properties) {
+    public Element createElement(Curve object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Curve");
     }
 

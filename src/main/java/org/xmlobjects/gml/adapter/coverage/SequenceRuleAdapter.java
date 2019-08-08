@@ -24,7 +24,7 @@ import javax.xml.namespace.QName;
 public class SequenceRuleAdapter implements ObjectBuilder<SequenceRule>, ObjectSerializer<SequenceRule> {
 
     @Override
-    public SequenceRule createObject(QName name, Properties properties) {
+    public SequenceRule createObject(QName name) {
         return new SequenceRule();
     }
 

@@ -19,7 +19,7 @@ import javax.xml.namespace.QName;
 public class DirectPositionListAdapter implements ObjectBuilder<DirectPositionList>, ObjectSerializer<DirectPositionList> {
 
     @Override
-    public DirectPositionList createObject(QName name, Properties properties) {
+    public DirectPositionList createObject(QName name) {
         return new DirectPositionList();
     }
 

@@ -30,7 +30,7 @@ import javax.xml.namespace.QName;
 public class MultiCurveAdapter extends AbstractGeometricAggregateAdapter<MultiCurve> {
 
     @Override
-    public MultiCurve createObject(QName name, Properties properties) {
+    public MultiCurve createObject(QName name) {
         return new MultiCurve();
     }
 
@@ -53,7 +53,7 @@ public class MultiCurveAdapter extends AbstractGeometricAggregateAdapter<MultiCu
     }
 
     @Override
-    public Element createElement(MultiCurve object, Namespaces namespaces, Properties properties) {
+    public Element createElement(MultiCurve object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "MultiCurve");
     }
 

@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class LineStringSegmentArrayPropertyAdapter extends ArrayPropertyAdapter<LineStringSegmentArrayProperty> {
 
     @Override
-    public LineStringSegmentArrayProperty createObject(QName name, Properties properties) {
+    public LineStringSegmentArrayProperty createObject(QName name) {
         return new LineStringSegmentArrayProperty();
     }
 }

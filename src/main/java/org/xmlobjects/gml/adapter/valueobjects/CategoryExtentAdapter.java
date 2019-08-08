@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class CategoryExtentAdapter implements ObjectBuilder<CategoryExtent>, ObjectSerializer<CategoryExtent> {
 
     @Override
-    public CategoryExtent createObject(QName name, Properties properties) {
+    public CategoryExtent createObject(QName name) {
         return new CategoryExtent();
     }
 
@@ -38,7 +38,7 @@ public class CategoryExtentAdapter implements ObjectBuilder<CategoryExtent>, Obj
     }
 
     @Override
-    public Element createElement(CategoryExtent object, Namespaces namespaces, Properties properties) {
+    public Element createElement(CategoryExtent object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "CategoryExtent");
     }
 

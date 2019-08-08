@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class ShellAdapter extends AbstractSurfaceAdapter<Shell> {
 
     @Override
-    public Shell createObject(QName name, Properties properties) {
+    public Shell createObject(QName name) {
         return new Shell();
     }
 
@@ -49,7 +49,7 @@ public class ShellAdapter extends AbstractSurfaceAdapter<Shell> {
     }
 
     @Override
-    public Element createElement(Shell object, Namespaces namespaces, Properties properties) {
+    public Element createElement(Shell object, Namespaces namespaces) {
         return namespaces.contains(GMLObjects.GML_3_1_NAMESPACE) ?
                 Element.of(GMLObjects.GML_3_1_NAMESPACE, "CompositeSurface") :
                 Element.of(GMLObjects.GML_3_2_NAMESPACE, "Shell");

@@ -27,7 +27,7 @@ import javax.xml.namespace.QName;
 public class MultiSurfaceCoverageAdapter extends AbstractFeatureAdapter<MultiSurfaceCoverage> {
 
     @Override
-    public MultiSurfaceCoverage createObject(QName name, Properties properties) {
+    public MultiSurfaceCoverage createObject(QName name) {
         return new MultiSurfaceCoverage();
     }
 
@@ -53,7 +53,7 @@ public class MultiSurfaceCoverageAdapter extends AbstractFeatureAdapter<MultiSur
     }
 
     @Override
-    public Element createElement(MultiSurfaceCoverage object, Namespaces namespaces, Properties properties) {
+    public Element createElement(MultiSurfaceCoverage object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "MultiSurfaceCoverage");
     }
 

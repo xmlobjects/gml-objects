@@ -29,7 +29,7 @@ import javax.xml.namespace.QName;
 public class CompositeCurveAdapter extends AbstractCurveAdapter<CompositeCurve> {
 
     @Override
-    public CompositeCurve createObject(QName name, Properties properties) {
+    public CompositeCurve createObject(QName name) {
         return new CompositeCurve();
     }
 
@@ -50,7 +50,7 @@ public class CompositeCurveAdapter extends AbstractCurveAdapter<CompositeCurve> 
     }
 
     @Override
-    public Element createElement(CompositeCurve object, Namespaces namespaces, Properties properties) {
+    public Element createElement(CompositeCurve object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "CompositeCurve");
     }
 

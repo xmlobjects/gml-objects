@@ -27,7 +27,7 @@ import javax.xml.namespace.QName;
 public class PolygonPatchAdapter extends AbstractSurfacePatchAdapter<PolygonPatch> {
 
     @Override
-    public PolygonPatch createObject(QName name, Properties properties) {
+    public PolygonPatch createObject(QName name) {
         return new PolygonPatch();
     }
 
@@ -46,7 +46,7 @@ public class PolygonPatchAdapter extends AbstractSurfacePatchAdapter<PolygonPatc
     }
 
     @Override
-    public Element createElement(PolygonPatch object, Namespaces namespaces, Properties properties) {
+    public Element createElement(PolygonPatch object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "PolygonPatch");
     }
 

@@ -17,7 +17,7 @@ import javax.xml.namespace.QName;
 public class ReferenceAdapter implements ObjectBuilder<Reference>, ObjectSerializer<Reference> {
 
     @Override
-    public Reference createObject(QName name, Properties properties) {
+    public Reference createObject(QName name) {
         return new Reference();
     }
 

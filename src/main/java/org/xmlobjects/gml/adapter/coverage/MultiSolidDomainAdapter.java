@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class MultiSolidDomainAdapter extends AbstractPropertyAdapter<MultiSolidDomain> {
 
     @Override
-    public MultiSolidDomain createObject(QName name, Properties properties) {
+    public MultiSolidDomain createObject(QName name) {
         return new MultiSolidDomain();
     }
 }

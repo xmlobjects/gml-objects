@@ -24,7 +24,7 @@ import javax.xml.namespace.QName;
 public class NilReasonAdapter implements ObjectBuilder<NilReason>, ObjectSerializer<NilReason> {
 
     @Override
-    public NilReason createObject(QName name, Properties properties) {
+    public NilReason createObject(QName name) {
         return new NilReason();
     }
 
@@ -34,7 +34,7 @@ public class NilReasonAdapter implements ObjectBuilder<NilReason>, ObjectSeriali
     }
 
     @Override
-    public Element createElement(NilReason object, Namespaces namespaces, Properties properties) {
+    public Element createElement(NilReason object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Null");
     }
 

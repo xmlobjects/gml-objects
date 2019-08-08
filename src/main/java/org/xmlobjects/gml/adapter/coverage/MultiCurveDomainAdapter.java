@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class MultiCurveDomainAdapter extends AbstractPropertyAdapter<MultiCurveDomain> {
 
     @Override
-    public MultiCurveDomain createObject(QName name, Properties properties) {
+    public MultiCurveDomain createObject(QName name) {
         return new MultiCurveDomain();
     }
 }

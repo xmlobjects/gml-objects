@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class RectangleAdapter extends AbstractSurfacePatchAdapter<Rectangle> {
 
     @Override
-    public Rectangle createObject(QName name, Properties properties) {
+    public Rectangle createObject(QName name) {
         return new Rectangle();
     }
 
@@ -37,7 +37,7 @@ public class RectangleAdapter extends AbstractSurfacePatchAdapter<Rectangle> {
     }
 
     @Override
-    public Element createElement(Rectangle object, Namespaces namespaces, Properties properties) {
+    public Element createElement(Rectangle object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Rectangle");
     }
 

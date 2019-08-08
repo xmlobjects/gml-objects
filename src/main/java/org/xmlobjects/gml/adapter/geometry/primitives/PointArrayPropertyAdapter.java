@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class PointArrayPropertyAdapter extends GeometryArrayPropertyAdapter<PointArrayProperty> {
 
     @Override
-    public PointArrayProperty createObject(QName name, Properties properties) {
+    public PointArrayProperty createObject(QName name) {
         return new PointArrayProperty();
     }
 }

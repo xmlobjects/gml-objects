@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class MultiPointPropertyAdapter extends GeometryPropertyAdapter<MultiPointProperty> {
 
     @Override
-    public MultiPointProperty createObject(QName name, Properties properties) {
+    public MultiPointProperty createObject(QName name) {
         return new MultiPointProperty();
     }
 }

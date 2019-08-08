@@ -30,7 +30,7 @@ import javax.xml.namespace.QName;
 public class CategoryAdapter implements ObjectBuilder<Category>, ObjectSerializer<Category> {
 
     @Override
-    public Category createObject(QName name, Properties properties) {
+    public Category createObject(QName name) {
         return new Category();
     }
 
@@ -42,7 +42,7 @@ public class CategoryAdapter implements ObjectBuilder<Category>, ObjectSerialize
     }
 
     @Override
-    public Element createElement(Category object, Namespaces namespaces, Properties properties) {
+    public Element createElement(Category object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Category");
     }
 

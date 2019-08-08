@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class DoubleOrNilReasonListAdapter implements ObjectBuilder<DoubleOrNilReasonList>, ObjectSerializer<DoubleOrNilReasonList> {
 
     @Override
-    public DoubleOrNilReasonList createObject(QName name, Properties properties) {
+    public DoubleOrNilReasonList createObject(QName name) {
         return new DoubleOrNilReasonList();
     }
 

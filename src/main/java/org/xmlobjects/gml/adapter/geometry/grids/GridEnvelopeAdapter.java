@@ -22,7 +22,7 @@ import javax.xml.namespace.QName;
 public class GridEnvelopeAdapter implements ObjectBuilder<GridEnvelope>, ObjectSerializer<GridEnvelope> {
 
     @Override
-    public GridEnvelope createObject(QName name, Properties properties) {
+    public GridEnvelope createObject(QName name) {
         return new GridEnvelope();
     }
 

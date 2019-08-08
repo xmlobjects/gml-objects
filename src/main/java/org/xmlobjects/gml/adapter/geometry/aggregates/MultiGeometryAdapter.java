@@ -32,7 +32,7 @@ public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<Mult
     private final GeometryArrayPropertyAdapter<GeometryArrayProperty> arrayPropertyAdapter = new GeometryArrayPropertyAdapter<>();
 
     @Override
-    public MultiGeometry createObject(QName name, Properties properties) {
+    public MultiGeometry createObject(QName name) {
         return new MultiGeometry();
     }
 
@@ -54,7 +54,7 @@ public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<Mult
     }
 
     @Override
-    public Element createElement(MultiGeometry object, Namespaces namespaces, Properties properties) {
+    public Element createElement(MultiGeometry object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "MultiGeometry");
     }
 

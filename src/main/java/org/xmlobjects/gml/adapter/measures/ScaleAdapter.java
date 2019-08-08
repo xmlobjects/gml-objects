@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class ScaleAdapter extends MeasureAdapter<Scale> {
 
     @Override
-    public Scale createObject(QName name, Properties properties) {
+    public Scale createObject(QName name) {
         return new Scale();
     }
 }

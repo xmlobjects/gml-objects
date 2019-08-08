@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class QuantityListAdapter implements ObjectBuilder<QuantityList>, ObjectSerializer<QuantityList> {
 
     @Override
-    public QuantityList createObject(QName name, Properties properties) {
+    public QuantityList createObject(QName name) {
         return new QuantityList();
     }
 
@@ -38,7 +38,7 @@ public class QuantityListAdapter implements ObjectBuilder<QuantityList>, ObjectS
     }
 
     @Override
-    public Element createElement(QuantityList object, Namespaces namespaces, Properties properties) {
+    public Element createElement(QuantityList object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "QuantityList");
     }
 

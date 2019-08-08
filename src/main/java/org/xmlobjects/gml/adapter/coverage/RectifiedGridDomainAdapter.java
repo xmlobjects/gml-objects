@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class RectifiedGridDomainAdapter extends AbstractPropertyAdapter<RectifiedGridDomain> {
 
     @Override
-    public RectifiedGridDomain createObject(QName name, Properties properties) {
+    public RectifiedGridDomain createObject(QName name) {
         return new RectifiedGridDomain();
     }
 }

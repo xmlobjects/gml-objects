@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class CurveArrayPropertyAdapter extends GeometryArrayPropertyAdapter<CurveArrayProperty> {
 
     @Override
-    public CurveArrayProperty createObject(QName name, Properties properties) {
+    public CurveArrayProperty createObject(QName name) {
         return new CurveArrayProperty();
     }
 }

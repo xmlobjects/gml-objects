@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class MultiGeometryPropertyAdapter extends GeometryPropertyAdapter<MultiGeometryProperty> {
 
     @Override
-    public MultiGeometryProperty createObject(QName name, Properties properties) {
+    public MultiGeometryProperty createObject(QName name) {
         return new MultiGeometryProperty();
     }
 }

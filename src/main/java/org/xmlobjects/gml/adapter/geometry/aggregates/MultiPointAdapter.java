@@ -29,7 +29,7 @@ import javax.xml.namespace.QName;
 public class MultiPointAdapter extends AbstractGeometricAggregateAdapter<MultiPoint> {
 
     @Override
-    public MultiPoint createObject(QName name, Properties properties) {
+    public MultiPoint createObject(QName name) {
         return new MultiPoint();
     }
 
@@ -51,7 +51,7 @@ public class MultiPointAdapter extends AbstractGeometricAggregateAdapter<MultiPo
     }
 
     @Override
-    public Element createElement(MultiPoint object, Namespaces namespaces, Properties properties) {
+    public Element createElement(MultiPoint object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "MultiPoint");
     }
 

@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class AngleAdapter extends MeasureAdapter<Angle> {
 
     @Override
-    public Angle createObject(QName name, Properties properties) {
+    public Angle createObject(QName name) {
         return new Angle();
     }
 }

@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class TriangleAdapter extends AbstractSurfacePatchAdapter<Triangle> {
 
     @Override
-    public Triangle createObject(QName name, Properties properties) {
+    public Triangle createObject(QName name) {
         return new Triangle();
     }
 
@@ -37,7 +37,7 @@ public class TriangleAdapter extends AbstractSurfacePatchAdapter<Triangle> {
     }
 
     @Override
-    public Element createElement(Triangle object, Namespaces namespaces, Properties properties) {
+    public Element createElement(Triangle object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Triangle");
     }
 

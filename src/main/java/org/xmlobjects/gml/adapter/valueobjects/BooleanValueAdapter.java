@@ -27,7 +27,7 @@ import javax.xml.namespace.QName;
 public class BooleanValueAdapter implements ObjectBuilder<BooleanValue>, ObjectSerializer<BooleanValue> {
 
     @Override
-    public BooleanValue createObject(QName name, Properties properties) {
+    public BooleanValue createObject(QName name) {
         return new BooleanValue();
     }
 
@@ -39,7 +39,7 @@ public class BooleanValueAdapter implements ObjectBuilder<BooleanValue>, ObjectS
     }
 
     @Override
-    public Element createElement(BooleanValue object, Namespaces namespaces, Properties properties) {
+    public Element createElement(BooleanValue object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Boolean");
     }
 

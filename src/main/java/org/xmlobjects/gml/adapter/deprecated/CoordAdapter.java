@@ -13,7 +13,7 @@ import javax.xml.namespace.QName;
 public class CoordAdapter implements ObjectBuilder<Coord> {
 
     @Override
-    public Coord createObject(QName name, Properties properties) {
+    public Coord createObject(QName name) {
         return new Coord();
     }
 

@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class SolidArrayPropertyAdapter extends GeometryArrayPropertyAdapter<SolidArrayProperty> {
 
     @Override
-    public SolidArrayProperty createObject(QName name, Properties properties) {
+    public SolidArrayProperty createObject(QName name) {
         return new SolidArrayProperty();
     }
 }

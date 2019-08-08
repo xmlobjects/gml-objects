@@ -32,7 +32,7 @@ public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerialize
     private final MeasureAdapter<Measure> adapter = new MeasureAdapter<>();
 
     @Override
-    public Quantity createObject(QName name, Properties properties) {
+    public Quantity createObject(QName name) {
         return new Quantity();
     }
 
@@ -44,7 +44,7 @@ public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerialize
     }
 
     @Override
-    public Element createElement(Quantity object, Namespaces namespaces, Properties properties) {
+    public Element createElement(Quantity object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Quantity");
     }
 

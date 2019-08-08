@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class MultiSurfaceDomainAdapter extends AbstractPropertyAdapter<MultiSurfaceDomain> {
 
     @Override
-    public MultiSurfaceDomain createObject(QName name, Properties properties) {
+    public MultiSurfaceDomain createObject(QName name) {
         return new MultiSurfaceDomain();
     }
 }

@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class ValueAdapter implements ObjectBuilder<Value>, ObjectSerializer<Value> {
 
     @Override
-    public Value createObject(QName name, Properties properties) {
+    public Value createObject(QName name) {
         return new Value();
     }
 

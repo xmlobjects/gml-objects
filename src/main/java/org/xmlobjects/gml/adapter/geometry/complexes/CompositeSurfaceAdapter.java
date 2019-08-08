@@ -29,7 +29,7 @@ import javax.xml.namespace.QName;
 public class CompositeSurfaceAdapter extends AbstractSurfaceAdapter<CompositeSurface> {
 
     @Override
-    public CompositeSurface createObject(QName name, Properties properties) {
+    public CompositeSurface createObject(QName name) {
         return new CompositeSurface();
     }
 
@@ -50,7 +50,7 @@ public class CompositeSurfaceAdapter extends AbstractSurfaceAdapter<CompositeSur
     }
 
     @Override
-    public Element createElement(CompositeSurface object, Namespaces namespaces, Properties properties) {
+    public Element createElement(CompositeSurface object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "CompositeSurface");
     }
 

@@ -20,7 +20,7 @@ import javax.xml.namespace.QName;
 public class RangeParametersAdapter extends AbstractPropertyAdapter<RangeParameters> {
 
     @Override
-    public RangeParameters createObject(QName name, Properties properties) {
+    public RangeParameters createObject(QName name) {
         return new RangeParameters();
     }
 

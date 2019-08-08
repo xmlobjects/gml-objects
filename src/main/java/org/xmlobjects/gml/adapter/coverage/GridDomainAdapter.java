@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class GridDomainAdapter extends AbstractPropertyAdapter<GridDomain> {
 
     @Override
-    public GridDomain createObject(QName name, Properties properties) {
+    public GridDomain createObject(QName name) {
         return new GridDomain();
     }
 }

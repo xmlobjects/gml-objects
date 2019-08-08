@@ -23,7 +23,7 @@ import javax.xml.namespace.QName;
 public class DataBlockAdapter implements ObjectBuilder<DataBlock>, ObjectSerializer<DataBlock> {
 
     @Override
-    public DataBlock createObject(QName name, Properties properties) {
+    public DataBlock createObject(QName name) {
         return new DataBlock();
     }
 

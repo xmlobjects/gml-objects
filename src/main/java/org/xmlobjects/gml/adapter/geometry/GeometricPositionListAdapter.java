@@ -23,7 +23,7 @@ import javax.xml.namespace.QName;
 public class GeometricPositionListAdapter implements ObjectBuilder<GeometricPositionList>, ObjectSerializer<GeometricPositionList> {
 
     @Override
-    public GeometricPositionList createObject(QName name, Properties properties) {
+    public GeometricPositionList createObject(QName name) {
         return new GeometricPositionList();
     }
 

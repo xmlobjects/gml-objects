@@ -21,7 +21,7 @@ public class FeatureArrayPropertyAdapter<T extends FeatureArrayProperty> extends
 
     @SuppressWarnings("unchecked")
     @Override
-    public T createObject(QName name, Properties properties) throws ObjectBuildException {
+    public T createObject(QName name) throws ObjectBuildException {
         return (T) new FeatureArrayProperty<>();
     }
 

@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class GridLengthAdapter extends MeasureAdapter<GridLength> {
 
     @Override
-    public GridLength createObject(QName name, Properties properties) {
+    public GridLength createObject(QName name) {
         return new GridLength();
     }
 }

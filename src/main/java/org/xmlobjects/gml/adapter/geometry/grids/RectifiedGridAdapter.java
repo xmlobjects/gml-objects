@@ -29,7 +29,7 @@ import javax.xml.namespace.QName;
 public class RectifiedGridAdapter extends AbstractGridAdapter<RectifiedGrid> {
 
     @Override
-    public RectifiedGrid createObject(QName name, Properties properties) {
+    public RectifiedGrid createObject(QName name) {
         return new RectifiedGrid();
     }
 
@@ -50,7 +50,7 @@ public class RectifiedGridAdapter extends AbstractGridAdapter<RectifiedGrid> {
         }    }
 
     @Override
-    public Element createElement(RectifiedGrid object, Namespaces namespaces, Properties properties) {
+    public Element createElement(RectifiedGrid object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "RectifiedGrid");
     }
 

@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class SurfacePropertyAdapter extends GeometryPropertyAdapter<SurfaceProperty> {
 
     @Override
-    public SurfaceProperty createObject(QName name, Properties properties) {
+    public SurfaceProperty createObject(QName name) {
         return new SurfaceProperty();
     }
 }

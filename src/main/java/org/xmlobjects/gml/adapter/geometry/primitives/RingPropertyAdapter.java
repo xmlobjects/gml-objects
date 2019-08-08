@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class RingPropertyAdapter extends InlineGeometryPropertyAdapter<RingProperty> {
 
     @Override
-    public RingProperty createObject(QName name, Properties properties) {
+    public RingProperty createObject(QName name) {
         return new RingProperty();
     }
 }

@@ -20,7 +20,7 @@ import javax.xml.namespace.QName;
 public class NameOrNilReasonAdapter implements ObjectBuilder<NameOrNilReason>, ObjectSerializer<NameOrNilReason> {
 
     @Override
-    public NameOrNilReason createObject(QName name, Properties properties) {
+    public NameOrNilReason createObject(QName name) {
         return new NameOrNilReason();
     }
 

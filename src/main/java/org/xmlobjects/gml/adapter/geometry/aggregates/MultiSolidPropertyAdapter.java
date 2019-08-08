@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class MultiSolidPropertyAdapter extends GeometryPropertyAdapter<MultiSolidProperty> {
 
     @Override
-    public MultiSolidProperty createObject(QName name, Properties properties) {
+    public MultiSolidProperty createObject(QName name) {
         return new MultiSolidProperty();
     }
 }

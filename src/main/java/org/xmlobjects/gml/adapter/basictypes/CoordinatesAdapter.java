@@ -16,7 +16,7 @@ import javax.xml.namespace.QName;
 public class CoordinatesAdapter implements ObjectBuilder<Coordinates>, ObjectSerializer<Coordinates> {
 
     @Override
-    public Coordinates createObject(QName name, Properties properties) {
+    public Coordinates createObject(QName name) {
         return new Coordinates();
     }
 

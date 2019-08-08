@@ -33,7 +33,7 @@ import java.util.List;
 public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerializer<Envelope> {
 
     @Override
-    public Envelope createObject(QName name, Properties properties) {
+    public Envelope createObject(QName name) {
         return new Envelope();
     }
 
@@ -78,7 +78,7 @@ public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerialize
     }
 
     @Override
-    public Element createElement(Envelope object, Namespaces namespaces, Properties properties) {
+    public Element createElement(Envelope object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Envelope");
     }
 

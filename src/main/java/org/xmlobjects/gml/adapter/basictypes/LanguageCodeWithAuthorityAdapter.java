@@ -19,7 +19,7 @@ import javax.xml.namespace.QName;
 public class LanguageCodeWithAuthorityAdapter implements ObjectBuilder<CodeWithAuthority>, ObjectSerializer<CodeWithAuthority> {
 
     @Override
-    public CodeWithAuthority createObject(QName name, Properties properties) {
+    public CodeWithAuthority createObject(QName name) {
         return new CodeWithAuthority();
     }
 

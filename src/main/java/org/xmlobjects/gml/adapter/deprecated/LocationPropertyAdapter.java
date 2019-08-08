@@ -22,7 +22,7 @@ import javax.xml.namespace.QName;
 public class LocationPropertyAdapter extends GeometryPropertyAdapter<LocationProperty> {
 
     @Override
-    public LocationProperty createObject(QName name, Properties properties) {
+    public LocationProperty createObject(QName name) {
         return new LocationProperty();
     }
 

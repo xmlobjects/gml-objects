@@ -22,12 +22,12 @@ import javax.xml.namespace.QName;
 public class SimpleRectangleAdapter extends AbstractSimplePolygonAdapter<SimpleRectangle> {
 
     @Override
-    public SimpleRectangle createObject(QName name, Properties properties) {
+    public SimpleRectangle createObject(QName name) {
         return new SimpleRectangle();
     }
 
     @Override
-    public Element createElement(SimpleRectangle object, Namespaces namespaces, Properties properties) {
+    public Element createElement(SimpleRectangle object, Namespaces namespaces) {
         return namespaces.contains(GMLObjects.GML_3_3_CE_NAMESPACE) ?
                 Element.of(GMLObjects.GML_3_3_CE_NAMESPACE, "SimpleRectangle") : null;
     }

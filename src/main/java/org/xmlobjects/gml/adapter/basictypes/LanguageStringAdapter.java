@@ -20,7 +20,7 @@ import javax.xml.namespace.QName;
 public class LanguageStringAdapter implements ObjectBuilder<LanguageString>, ObjectSerializer<LanguageString> {
 
     @Override
-    public LanguageString createObject(QName name, Properties properties) {
+    public LanguageString createObject(QName name) {
         return new LanguageString();
     }
 

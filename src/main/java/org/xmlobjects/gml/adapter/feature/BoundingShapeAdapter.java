@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class BoundingShapeAdapter implements ObjectBuilder<BoundingShape>, ObjectSerializer<BoundingShape> {
 
     @Override
-    public BoundingShape createObject(QName name, Properties properties) {
+    public BoundingShape createObject(QName name) {
         return new BoundingShape();
     }
 

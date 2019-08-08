@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class ValueArrayAdapter extends AbstractCompositeValueAdapter<ValueArray> {
 
     @Override
-    public ValueArray createObject(QName name, Properties properties) {
+    public ValueArray createObject(QName name) {
         return new ValueArray();
     }
 
@@ -37,7 +37,7 @@ public class ValueArrayAdapter extends AbstractCompositeValueAdapter<ValueArray>
     }
 
     @Override
-    public Element createElement(ValueArray object, Namespaces namespaces, Properties properties) {
+    public Element createElement(ValueArray object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "ValueArray");
     }
 

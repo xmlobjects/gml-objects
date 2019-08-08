@@ -20,7 +20,7 @@ import javax.xml.namespace.QName;
 public class MetaDataPropertyAdapter extends AbstractPropertyAdapter<MetaDataProperty> {
 
     @Override
-    public MetaDataProperty createObject(QName name, Properties properties) {
+    public MetaDataProperty createObject(QName name) {
         return new MetaDataProperty();
     }
 

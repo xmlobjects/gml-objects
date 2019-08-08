@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class CountExtentAdapter implements ObjectBuilder<CountExtent>, ObjectSerializer<CountExtent> {
 
     @Override
-    public CountExtent createObject(QName name, Properties properties) {
+    public CountExtent createObject(QName name) {
         return new CountExtent();
     }
 
@@ -38,7 +38,7 @@ public class CountExtentAdapter implements ObjectBuilder<CountExtent>, ObjectSer
     }
 
     @Override
-    public Element createElement(CountExtent object, Namespaces namespaces, Properties properties) {
+    public Element createElement(CountExtent object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "CountExtent");
     }
 

@@ -18,12 +18,12 @@ import javax.xml.namespace.QName;
 public class CompositeValueAdapter extends AbstractCompositeValueAdapter<CompositeValue> {
 
     @Override
-    public CompositeValue createObject(QName name, Properties properties) {
+    public CompositeValue createObject(QName name) {
         return new CompositeValue();
     }
 
     @Override
-    public Element createElement(CompositeValue object, Namespaces namespaces, Properties properties) {
+    public Element createElement(CompositeValue object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "CompositeValue");
     }
 }

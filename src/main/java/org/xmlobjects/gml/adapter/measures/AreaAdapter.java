@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class AreaAdapter extends MeasureAdapter<Area> {
 
     @Override
-    public Area createObject(QName name, Properties properties) {
+    public Area createObject(QName name) {
         return new Area();
     }
 }

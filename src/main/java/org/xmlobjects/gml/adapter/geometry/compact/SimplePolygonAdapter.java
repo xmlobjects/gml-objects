@@ -22,12 +22,12 @@ import javax.xml.namespace.QName;
 public class SimplePolygonAdapter extends AbstractSimplePolygonAdapter<SimplePolygon> {
 
     @Override
-    public SimplePolygon createObject(QName name, Properties properties) {
+    public SimplePolygon createObject(QName name) {
         return new SimplePolygon();
     }
 
     @Override
-    public Element createElement(SimplePolygon object, Namespaces namespaces, Properties properties) {
+    public Element createElement(SimplePolygon object, Namespaces namespaces) {
         return namespaces.contains(GMLObjects.GML_3_3_CE_NAMESPACE) ?
                 Element.of(GMLObjects.GML_3_3_CE_NAMESPACE, "SimplePolygon") : null;
     }

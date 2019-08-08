@@ -21,7 +21,7 @@ import javax.xml.namespace.QName;
 public class ValueArrayPropertyAdapter extends ArrayPropertyAdapter<ValueArrayProperty> {
 
     @Override
-    public ValueArrayProperty createObject(QName name, Properties properties) {
+    public ValueArrayProperty createObject(QName name) {
         return new ValueArrayProperty();
     }
 

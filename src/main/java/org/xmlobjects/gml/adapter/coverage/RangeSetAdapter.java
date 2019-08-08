@@ -24,7 +24,7 @@ import javax.xml.namespace.QName;
 public class RangeSetAdapter implements ObjectBuilder<RangeSet>, ObjectSerializer<RangeSet> {
 
     @Override
-    public RangeSet createObject(QName name, Properties properties) {
+    public RangeSet createObject(QName name) {
         return new RangeSet();
     }
 

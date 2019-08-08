@@ -27,7 +27,7 @@ import javax.xml.namespace.QName;
 public class GridCoverageAdapter extends AbstractFeatureAdapter<GridCoverage> {
 
     @Override
-    public GridCoverage createObject(QName name, Properties properties) {
+    public GridCoverage createObject(QName name) {
         return new GridCoverage();
     }
 
@@ -53,7 +53,7 @@ public class GridCoverageAdapter extends AbstractFeatureAdapter<GridCoverage> {
     }
 
     @Override
-    public Element createElement(GridCoverage object, Namespaces namespaces, Properties properties) {
+    public Element createElement(GridCoverage object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "GridCoverage");
     }
 

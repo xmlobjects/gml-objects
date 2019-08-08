@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class ShellPropertyAdapter extends InlineGeometryPropertyAdapter<ShellProperty> {
 
     @Override
-    public ShellProperty createObject(QName name, Properties properties) {
+    public ShellProperty createObject(QName name) {
         return new ShellProperty();
     }
 }

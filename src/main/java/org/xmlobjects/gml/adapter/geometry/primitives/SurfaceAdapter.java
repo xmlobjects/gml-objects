@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class SurfaceAdapter extends AbstractSurfaceAdapter<Surface> {
 
     @Override
-    public Surface createObject(QName name, Properties properties) {
+    public Surface createObject(QName name) {
         return new Surface();
     }
 
@@ -41,7 +41,7 @@ public class SurfaceAdapter extends AbstractSurfaceAdapter<Surface> {
     }
 
     @Override
-    public Element createElement(Surface object, Namespaces namespaces, Properties properties) {
+    public Element createElement(Surface object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Surface");
     }
 

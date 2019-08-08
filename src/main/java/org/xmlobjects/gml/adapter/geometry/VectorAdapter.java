@@ -19,7 +19,7 @@ import javax.xml.namespace.QName;
 public class VectorAdapter implements ObjectBuilder<Vector>, ObjectSerializer<Vector> {
 
     @Override
-    public Vector createObject(QName name, Properties properties) {
+    public Vector createObject(QName name) {
         return new Vector();
     }
 

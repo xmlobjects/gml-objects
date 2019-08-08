@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class TriangulatedSurfaceAdapter extends AbstractSurfaceAdapter<TriangulatedSurface> {
 
     @Override
-    public TriangulatedSurface createObject(QName name, Properties properties) {
+    public TriangulatedSurface createObject(QName name) {
         return new TriangulatedSurface();
     }
 
@@ -46,7 +46,7 @@ public class TriangulatedSurfaceAdapter extends AbstractSurfaceAdapter<Triangula
     }
 
     @Override
-    public Element createElement(TriangulatedSurface object, Namespaces namespaces, Properties properties) {
+    public Element createElement(TriangulatedSurface object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "TriangulatedSurface");
     }
 

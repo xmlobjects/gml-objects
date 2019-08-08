@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class SurfacePatchArrayPropertyAdapter extends ArrayPropertyAdapter<SurfacePatchArrayProperty> {
 
     @Override
-    public SurfacePatchArrayProperty createObject(QName name, Properties properties) {
+    public SurfacePatchArrayProperty createObject(QName name) {
         return new SurfacePatchArrayProperty();
     }
 }

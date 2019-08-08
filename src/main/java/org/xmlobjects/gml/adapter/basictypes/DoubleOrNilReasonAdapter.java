@@ -18,7 +18,7 @@ import javax.xml.namespace.QName;
 public class DoubleOrNilReasonAdapter implements ObjectBuilder<DoubleOrNilReason>, ObjectSerializer<DoubleOrNilReason> {
 
     @Override
-    public DoubleOrNilReason createObject(QName name, Properties properties) {
+    public DoubleOrNilReason createObject(QName name) {
         return new DoubleOrNilReason();
     }
 

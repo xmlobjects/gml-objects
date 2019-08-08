@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class GeometricPrimitivePropertyAdapter extends GeometryPropertyAdapter<GeometricPrimitiveProperty> {
 
     @Override
-    public GeometricPrimitiveProperty createObject(QName name, Properties properties) {
+    public GeometricPrimitiveProperty createObject(QName name) {
         return new GeometricPrimitiveProperty();
     }
 }

@@ -31,7 +31,7 @@ import javax.xml.namespace.QName;
 public class LineStringSegmentAdapter extends AbstractCurveSegmentAdapter<LineStringSegment> {
 
     @Override
-    public LineStringSegment createObject(QName name, Properties properties) {
+    public LineStringSegment createObject(QName name) {
         return new LineStringSegment();
     }
 
@@ -59,7 +59,7 @@ public class LineStringSegmentAdapter extends AbstractCurveSegmentAdapter<LineSt
     }
 
     @Override
-    public Element createElement(LineStringSegment object, Namespaces namespaces, Properties properties) {
+    public Element createElement(LineStringSegment object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "LineStringSegment");
     }
 

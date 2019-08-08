@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class TriangleArrayPropertyAdapter extends ArrayPropertyAdapter<TriangleArrayProperty> {
 
     @Override
-    public TriangleArrayProperty createObject(QName name, Properties properties) {
+    public TriangleArrayProperty createObject(QName name) {
         return new TriangleArrayProperty();
     }
 }

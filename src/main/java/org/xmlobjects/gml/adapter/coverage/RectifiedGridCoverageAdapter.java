@@ -27,7 +27,7 @@ import javax.xml.namespace.QName;
 public class RectifiedGridCoverageAdapter extends AbstractFeatureAdapter<RectifiedGridCoverage> {
 
     @Override
-    public RectifiedGridCoverage createObject(QName name, Properties properties) {
+    public RectifiedGridCoverage createObject(QName name) {
         return new RectifiedGridCoverage();
     }
 
@@ -53,7 +53,7 @@ public class RectifiedGridCoverageAdapter extends AbstractFeatureAdapter<Rectifi
     }
 
     @Override
-    public Element createElement(RectifiedGridCoverage object, Namespaces namespaces, Properties properties) {
+    public Element createElement(RectifiedGridCoverage object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "RectifiedGridCoverage");
     }
 

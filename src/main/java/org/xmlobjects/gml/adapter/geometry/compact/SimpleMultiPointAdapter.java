@@ -30,7 +30,7 @@ import javax.xml.namespace.QName;
 public class SimpleMultiPointAdapter extends AbstractGeometricAggregateAdapter<SimpleMultiPoint> {
 
     @Override
-    public SimpleMultiPoint createObject(QName name, Properties properties) {
+    public SimpleMultiPoint createObject(QName name) {
         return new SimpleMultiPoint();
     }
 
@@ -45,7 +45,7 @@ public class SimpleMultiPointAdapter extends AbstractGeometricAggregateAdapter<S
     }
 
     @Override
-    public Element createElement(SimpleMultiPoint object, Namespaces namespaces, Properties properties) {
+    public Element createElement(SimpleMultiPoint object, Namespaces namespaces) {
         return namespaces.contains(GMLObjects.GML_3_3_CE_NAMESPACE) ?
                 Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "SimpleMultiPoint") : null;
     }

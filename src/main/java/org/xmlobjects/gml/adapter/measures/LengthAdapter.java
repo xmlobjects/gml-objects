@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class LengthAdapter extends MeasureAdapter<Length> {
 
     @Override
-    public Length createObject(QName name, Properties properties) {
+    public Length createObject(QName name) {
         return new Length();
     }
 }

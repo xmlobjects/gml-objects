@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class BooleanOrNilReasonListAdapter implements ObjectBuilder<BooleanOrNilReasonList>, ObjectSerializer<BooleanOrNilReasonList> {
 
     @Override
-    public BooleanOrNilReasonList createObject(QName name, Properties properties) {
+    public BooleanOrNilReasonList createObject(QName name) {
         return new BooleanOrNilReasonList();
     }
 

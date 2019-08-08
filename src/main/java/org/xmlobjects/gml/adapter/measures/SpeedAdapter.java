@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class SpeedAdapter extends MeasureAdapter<Speed> {
 
     @Override
-    public Speed createObject(QName name, Properties properties) {
+    public Speed createObject(QName name) {
         return new Speed();
     }
 }

@@ -27,7 +27,7 @@ import javax.xml.namespace.QName;
 public class CountAdapter implements ObjectBuilder<Count>, ObjectSerializer<Count> {
 
     @Override
-    public Count createObject(QName name, Properties properties) {
+    public Count createObject(QName name) {
         return new Count();
     }
 
@@ -39,7 +39,7 @@ public class CountAdapter implements ObjectBuilder<Count>, ObjectSerializer<Coun
     }
 
     @Override
-    public Element createElement(Count object, Namespaces namespaces, Properties properties) {
+    public Element createElement(Count object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Count");
     }
 

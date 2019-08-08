@@ -21,7 +21,7 @@ public class MeasureAdapter<T extends Measure> implements ObjectBuilder<T>, Obje
 
     @SuppressWarnings("unchecked")
     @Override
-    public T createObject(QName name, Properties properties) throws ObjectBuildException {
+    public T createObject(QName name) throws ObjectBuildException {
         return (T) new Measure();
     }
 

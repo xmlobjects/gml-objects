@@ -21,7 +21,7 @@ import javax.xml.namespace.QName;
 public class LanguageStringAuxAdapter implements ObjectBuilder<StringOrRef>, ObjectSerializer<StringOrRef> {
 
     @Override
-    public StringOrRef createObject(QName name, Properties properties) {
+    public StringOrRef createObject(QName name) {
         return new StringOrRef();
     }
 

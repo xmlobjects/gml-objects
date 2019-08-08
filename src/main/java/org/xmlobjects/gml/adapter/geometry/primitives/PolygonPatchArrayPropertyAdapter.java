@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class PolygonPatchArrayPropertyAdapter extends ArrayPropertyAdapter<PolygonPatchArrayProperty> {
 
     @Override
-    public PolygonPatchArrayProperty createObject(QName name, Properties properties) {
+    public PolygonPatchArrayProperty createObject(QName name) {
         return new PolygonPatchArrayProperty();
     }
 }

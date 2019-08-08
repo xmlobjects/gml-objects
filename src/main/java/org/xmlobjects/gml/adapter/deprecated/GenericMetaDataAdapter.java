@@ -24,7 +24,7 @@ import javax.xml.namespace.QName;
 public class GenericMetaDataAdapter extends AbstractMetaDataAdapter<GenericMetaData> {
 
     @Override
-    public GenericMetaData createObject(QName name, Properties properties) {
+    public GenericMetaData createObject(QName name) {
         return new GenericMetaData();
     }
 
@@ -35,7 +35,7 @@ public class GenericMetaDataAdapter extends AbstractMetaDataAdapter<GenericMetaD
     }
 
     @Override
-    public Element createElement(GenericMetaData object, Namespaces namespaces, Properties properties) {
+    public Element createElement(GenericMetaData object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "GenericMetaData");
     }
 

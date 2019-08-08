@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class GeometricComplexPropertyAdapter extends GeometryPropertyAdapter<GeometricComplexProperty> {
 
     @Override
-    public GeometricComplexProperty createObject(QName name, Properties properties) {
+    public GeometricComplexProperty createObject(QName name) {
         return new GeometricComplexProperty();
     }
 }

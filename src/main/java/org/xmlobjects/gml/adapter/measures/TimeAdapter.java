@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 public class TimeAdapter extends MeasureAdapter<Time> {
 
     @Override
-    public Time createObject(QName name, Properties properties) {
+    public Time createObject(QName name) {
         return new Time();
     }
 }

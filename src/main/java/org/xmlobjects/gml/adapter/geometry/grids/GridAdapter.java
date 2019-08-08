@@ -18,12 +18,12 @@ import javax.xml.namespace.QName;
 public class GridAdapter extends AbstractGridAdapter<Grid> {
 
     @Override
-    public Grid createObject(QName name, Properties properties) {
+    public Grid createObject(QName name) {
         return new Grid();
     }
 
     @Override
-    public Element createElement(Grid object, Namespaces namespaces, Properties properties) {
+    public Element createElement(Grid object, Namespaces namespaces) {
         return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Grid");
     }
 }
