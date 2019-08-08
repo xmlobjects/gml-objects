@@ -40,7 +40,7 @@ public class DescriptionAdapter implements ObjectBuilder<StringOrRef>, ObjectSer
                 .initializeObject(object, name, attributes, reader);
     }
     @Override
-    public Element createElement(StringOrRef object, Namespaces namespaces) throws ObjectSerializeException {
+    public Element createElement(StringOrRef object, Namespaces namespaces) {
         return object.getLanguage() != null && namespaces.contains(GMLObjects.GML_3_3_XBT_NAMESPACE) ?
                 Element.of(GMLObjects.GML_3_3_XBT_NAMESPACE, "description") :
                 Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "description");
