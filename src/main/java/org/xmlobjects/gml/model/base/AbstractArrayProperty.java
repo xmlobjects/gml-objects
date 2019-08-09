@@ -5,13 +5,13 @@ import org.xmlobjects.gml.model.common.ChildList;
 
 import java.util.List;
 
-public abstract class ArrayProperty<T extends GMLObject> extends Association<T> {
+public abstract class AbstractArrayProperty<T extends GMLObject> extends AbstractAssociation<T> {
     private List<T> objects;
 
-    public ArrayProperty() {
+    public AbstractArrayProperty() {
     }
 
-    public ArrayProperty(List<T> objects) {
+    public AbstractArrayProperty(List<T> objects) {
         setObjects(objects);
     }
 

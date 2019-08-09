@@ -1,11 +1,11 @@
 package org.xmlobjects.gml.model.valueobjects;
 
-import org.xmlobjects.gml.model.base.ArrayProperty;
+import org.xmlobjects.gml.model.base.AbstractArrayProperty;
 import org.xmlobjects.gml.model.base.OwnershipAttributes;
 
 import java.util.List;
 
-public class ValueArrayProperty extends ArrayProperty<Value> implements OwnershipAttributes {
+public class ValueArrayProperty extends AbstractArrayProperty<Value> implements OwnershipAttributes {
     private Boolean owns;
 
     public ValueArrayProperty() {

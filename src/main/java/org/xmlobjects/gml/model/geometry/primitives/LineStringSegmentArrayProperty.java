@@ -1,10 +1,10 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
-import org.xmlobjects.gml.model.base.ArrayProperty;
+import org.xmlobjects.gml.model.base.AbstractArrayProperty;
 
 import java.util.List;
 
-public class LineStringSegmentArrayProperty extends ArrayProperty<LineStringSegment> {
+public class LineStringSegmentArrayProperty extends AbstractArrayProperty<LineStringSegment> {
 
     public LineStringSegmentArrayProperty() {
     }

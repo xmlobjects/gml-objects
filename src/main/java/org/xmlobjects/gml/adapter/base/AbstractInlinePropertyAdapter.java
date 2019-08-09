@@ -5,7 +5,7 @@ import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.GMLObject;
-import org.xmlobjects.gml.model.base.InlineProperty;
+import org.xmlobjects.gml.model.base.AbstractInlineProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -18,7 +18,7 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
-public abstract class InlinePropertyAdapter<T extends InlineProperty> implements ObjectBuilder<T>, ObjectSerializer<T> {
+public abstract class AbstractInlinePropertyAdapter<T extends AbstractInlineProperty> implements ObjectBuilder<T>, ObjectSerializer<T> {
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {

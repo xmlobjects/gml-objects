@@ -5,7 +5,7 @@ import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 
-public abstract class AbstractProperty<T extends GMLObject> extends Association<T> implements AssociationAttributes, OwnershipAttributes {
+public abstract class AbstractProperty<T extends GMLObject> extends AbstractAssociation<T> implements AssociationAttributes, OwnershipAttributes {
     private T object;
     private String href;
     private String role;

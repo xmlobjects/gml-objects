@@ -1,11 +1,11 @@
 package org.xmlobjects.gml.adapter.geometry.primitives;
 
-import org.xmlobjects.gml.adapter.base.ArrayPropertyAdapter;
+import org.xmlobjects.gml.adapter.base.AbstractArrayPropertyAdapter;
 import org.xmlobjects.gml.model.geometry.primitives.LineStringSegmentArrayProperty;
 
 import javax.xml.namespace.QName;
 
-public class LineStringSegmentArrayPropertyAdapter extends ArrayPropertyAdapter<LineStringSegmentArrayProperty> {
+public class LineStringSegmentArrayPropertyAdapter extends AbstractArrayPropertyAdapter<LineStringSegmentArrayProperty> {
 
     @Override
     public LineStringSegmentArrayProperty createObject(QName name) {

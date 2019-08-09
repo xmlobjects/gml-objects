@@ -2,7 +2,7 @@ package org.xmlobjects.gml.adapter.base;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.model.base.ArrayProperty;
+import org.xmlobjects.gml.model.base.AbstractArrayProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -14,7 +14,7 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
-public abstract class ArrayPropertyAdapter<T extends ArrayProperty> implements ObjectBuilder<T>, ObjectSerializer<T> {
+public abstract class AbstractArrayPropertyAdapter<T extends AbstractArrayProperty> implements ObjectBuilder<T>, ObjectSerializer<T> {
 
     @SuppressWarnings("unchecked")
     @Override

@@ -1,11 +1,11 @@
 package org.xmlobjects.gml.model.geometry;
 
-import org.xmlobjects.gml.model.base.ArrayProperty;
+import org.xmlobjects.gml.model.base.AbstractArrayProperty;
 import org.xmlobjects.gml.model.base.OwnershipAttributes;
 
 import java.util.List;
 
-public class GeometryArrayProperty<T extends AbstractGeometry> extends ArrayProperty<T> implements OwnershipAttributes {
+public class GeometryArrayProperty<T extends AbstractGeometry> extends AbstractArrayProperty<T> implements OwnershipAttributes {
     private Boolean owns;
 
     public GeometryArrayProperty() {

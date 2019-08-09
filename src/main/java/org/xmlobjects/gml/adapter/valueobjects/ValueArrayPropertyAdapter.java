@@ -3,7 +3,7 @@ package org.xmlobjects.gml.adapter.valueobjects;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
-import org.xmlobjects.gml.adapter.base.ArrayPropertyAdapter;
+import org.xmlobjects.gml.adapter.base.AbstractArrayPropertyAdapter;
 import org.xmlobjects.gml.model.valueobjects.Value;
 import org.xmlobjects.gml.model.valueobjects.ValueArrayProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -17,7 +17,7 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
-public class ValueArrayPropertyAdapter extends ArrayPropertyAdapter<ValueArrayProperty> {
+public class ValueArrayPropertyAdapter extends AbstractArrayPropertyAdapter<ValueArrayProperty> {
 
     @Override
     public ValueArrayProperty createObject(QName name) {

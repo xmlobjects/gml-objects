@@ -1,12 +1,12 @@
 package org.xmlobjects.gml.model.feature;
 
-import org.xmlobjects.gml.model.base.ArrayProperty;
+import org.xmlobjects.gml.model.base.AbstractArrayProperty;
 import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.common.GenericElement;
 
 import java.util.List;
 
-public class FeatureArrayProperty<T extends AbstractFeature> extends ArrayProperty<T> {
+public class FeatureArrayProperty<T extends AbstractFeature> extends AbstractArrayProperty<T> {
     private List<GenericElement> genericElements;
 
     public FeatureArrayProperty() {

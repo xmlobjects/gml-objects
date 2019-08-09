@@ -1,7 +1,7 @@
 package org.xmlobjects.gml.adapter.feature;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.base.ArrayPropertyAdapter;
+import org.xmlobjects.gml.adapter.base.AbstractArrayPropertyAdapter;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.common.GenericElement;
 import org.xmlobjects.gml.model.feature.FeatureArrayProperty;
@@ -16,7 +16,7 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
-public class FeatureArrayPropertyAdapter<T extends FeatureArrayProperty> extends ArrayPropertyAdapter<T> {
+public class FeatureArrayPropertyAdapter<T extends FeatureArrayProperty> extends AbstractArrayPropertyAdapter<T> {
 
     @SuppressWarnings("unchecked")
     @Override

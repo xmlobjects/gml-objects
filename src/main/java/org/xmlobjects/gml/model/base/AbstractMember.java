@@ -2,7 +2,7 @@ package org.xmlobjects.gml.model.base;
 
 import org.xmlobjects.gml.model.GMLObject;
 
-public abstract class AbstractMember<T extends GMLObject> extends Association<T> implements OwnershipAttributes {
+public abstract class AbstractMember<T extends GMLObject> extends AbstractAssociation<T> implements OwnershipAttributes {
     private T object;
     private Boolean owns;
 
