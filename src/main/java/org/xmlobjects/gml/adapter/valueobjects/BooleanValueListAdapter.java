@@ -4,7 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.BooleanOrNilReasonListAdapter;
 import org.xmlobjects.gml.model.valueobjects.BooleanValueList;
@@ -21,8 +21,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "BooleanList", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
-        @XMLElement(name = "BooleanList", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
+        @XMLElement(name = "BooleanList", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "BooleanList", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class BooleanValueListAdapter implements ObjectBuilder<BooleanValueList>, ObjectSerializer<BooleanValueList> {
 

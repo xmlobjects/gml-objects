@@ -1,7 +1,7 @@
 package org.xmlobjects.gml.adapter.geometry.grids;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.AbstractGeometryAdapter;
@@ -61,7 +61,7 @@ public abstract class AbstractGridAdapter<T extends Grid> extends AbstractGeomet
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "limits"), object.getLimits(), GridLimitsAdapter.class, namespaces);
 
         if (!object.getGridAxisLabels().isEmpty()) {
-            if (GMLObjects.GML_3_2_NAMESPACE.equals(baseNamespace))
+            if (GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace))
                 writer.writeElement(Element.of(baseNamespace, "axisLabels").addTextContent(TextContent.ofList(object.getGridAxisLabels())));
             else {
                 for (String axisName : object.getGridAxisLabels())

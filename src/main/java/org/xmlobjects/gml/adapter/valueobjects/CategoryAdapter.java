@@ -4,7 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
 import org.xmlobjects.gml.model.basictypes.NilReason;
@@ -23,8 +23,8 @@ import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Category", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
-        @XMLElement(name = "Category", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
+        @XMLElement(name = "Category", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Category", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class CategoryAdapter implements ObjectBuilder<Category>, ObjectSerializer<Category> {
 
@@ -49,7 +49,7 @@ public class CategoryAdapter implements ObjectBuilder<Category>, ObjectSerialize
     public void initializeElement(Element element, Category object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.isSetValue())
             writer.getOrCreateSerializer(CodeAdapter.class).initializeElement(element, object, namespaces, writer);
-        else if (object.isSetNilReason() && GMLObjects.GML_3_2_NAMESPACE.equals(SerializerHelper.getGMLBaseNamespace(namespaces))) {
+        else if (object.isSetNilReason() && GMLConstants.GML_3_2_NAMESPACE.equals(SerializerHelper.getGMLBaseNamespace(namespaces))) {
             element.addAttribute("nilReason", object.getNilReason().getValue());
             element.addAttribute(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI, "nil", "true");
         }

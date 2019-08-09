@@ -2,7 +2,7 @@ package org.xmlobjects.gml.adapter.coverage;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.coverage.IncrementOrder;
 import org.xmlobjects.gml.model.coverage.SequenceRule;
@@ -39,7 +39,7 @@ public class SequenceRuleAdapter implements ObjectBuilder<SequenceRule>, ObjectS
         element.addTextContent(object.getValue().toValue());
 
         if (!object.getAxisOrders().isEmpty()) {
-            if (GMLObjects.GML_3_2_NAMESPACE.equals(SerializerHelper.getGMLBaseNamespace(namespaces)))
+            if (GMLConstants.GML_3_2_NAMESPACE.equals(SerializerHelper.getGMLBaseNamespace(namespaces)))
                 element.addAttribute("axisOrder", TextContent.ofList(object.getAxisOrders()));
             else {
                 IncrementOrder order = IncrementOrder.fromAxisOrders(object.getAxisOrders());

@@ -4,7 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.CoordinatesAdapter;
@@ -26,8 +26,8 @@ import javax.xml.namespace.QName;
 import java.util.List;
 
 @XMLElements({
-        @XMLElement(name = "Envelope", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
-        @XMLElement(name = "Envelope", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
+        @XMLElement(name = "Envelope", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Envelope", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerializer<Envelope> {
 

@@ -2,7 +2,7 @@ package org.xmlobjects.gml.adapter.base;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
@@ -28,8 +28,8 @@ public abstract class AbstractGMLAdapter<T extends AbstractGML> implements Objec
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        attributes.getValue(GMLObjects.GML_3_1_NAMESPACE, "id").ifPresent(object::setId);
-        attributes.getValue(GMLObjects.GML_3_2_NAMESPACE, "id").ifPresent(object::setId);
+        attributes.getValue(GMLConstants.GML_3_1_NAMESPACE, "id").ifPresent(object::setId);
+        attributes.getValue(GMLConstants.GML_3_2_NAMESPACE, "id").ifPresent(object::setId);
     }
 
     @Override
@@ -70,7 +70,7 @@ public abstract class AbstractGMLAdapter<T extends AbstractGML> implements Objec
         if (object.getDescription() != null)
             writer.writeObject(object.getDescription(), namespaces);
 
-        if (GMLObjects.GML_3_2_NAMESPACE.equals(baseNamespace)) {
+        if (GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace)) {
             if (object.getDescriptionReference() != null)
                 writer.writeElementUsingSerializer(Element.of(baseNamespace, "descriptionReference"), object.getDescriptionReference(), ReferenceAdapter.class, namespaces);
 

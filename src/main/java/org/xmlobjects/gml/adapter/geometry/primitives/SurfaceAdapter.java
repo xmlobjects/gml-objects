@@ -3,7 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Surface;
@@ -19,8 +19,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Surface", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
-        @XMLElement(name = "Surface", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
+        @XMLElement(name = "Surface", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Surface", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class SurfaceAdapter extends AbstractSurfaceAdapter<Surface> {
 

@@ -2,7 +2,7 @@ package org.xmlobjects.gml.adapter.feature;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.NilReasonAdapter;
@@ -51,7 +51,7 @@ public class BoundingShapeAdapter implements ObjectBuilder<BoundingShape>, Objec
 
     @Override
     public void initializeElement(Element element, BoundingShape object, Namespaces namespaces, XMLWriter writer) {
-        if (object.isSetNilReason() && GMLObjects.GML_3_2_NAMESPACE.equals(SerializerHelper.getGMLBaseNamespace(namespaces))) {
+        if (object.isSetNilReason() && GMLConstants.GML_3_2_NAMESPACE.equals(SerializerHelper.getGMLBaseNamespace(namespaces))) {
             element.addAttribute("nilReason", object.getNilReason().getValue());
             element.addAttribute(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI, "nil", "true");
         }
@@ -64,7 +64,7 @@ public class BoundingShapeAdapter implements ObjectBuilder<BoundingShape>, Objec
         if (object.isSetEnvelope())
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "Envelope"), object.getEnvelope(), EnvelopeAdapter.class, namespaces);
 
-        if (object.isSetNilReason() && GMLObjects.GML_3_1_NAMESPACE.equals(baseNamespace))
+        if (object.isSetNilReason() && GMLConstants.GML_3_1_NAMESPACE.equals(baseNamespace))
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "Null"), object.getNilReason(), NilReasonAdapter.class, namespaces);
     }
 }

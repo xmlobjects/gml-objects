@@ -3,7 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Curve;
@@ -19,8 +19,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "Curve", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
-        @XMLElement(name = "Curve", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
+        @XMLElement(name = "Curve", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "Curve", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class CurveAdapter extends AbstractCurveAdapter<Curve> {
 

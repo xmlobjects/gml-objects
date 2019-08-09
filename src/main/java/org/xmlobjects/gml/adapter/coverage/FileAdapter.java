@@ -2,7 +2,7 @@ package org.xmlobjects.gml.adapter.coverage;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
@@ -59,12 +59,12 @@ public class FileAdapter implements ObjectBuilder<File>, ObjectSerializer<File> 
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "rangeParameters"), object.getRangeParameters(), RangeParametersAdapter.class, namespaces);
 
         if (object.getFileReference() != null) {
-            String localName = GMLObjects.GML_3_2_NAMESPACE.equals(baseNamespace) ? "fileReference" : "fileName";
+            String localName = GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace) ? "fileReference" : "fileName";
             writer.writeElement(Element.of(baseNamespace, localName).addTextContent(object.getFileReference()));
         }
 
         if (object.getFileStructure() != null) {
-            if (GMLObjects.GML_3_2_NAMESPACE.equals(baseNamespace))
+            if (GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace))
                 writer.writeElementUsingSerializer(Element.of(baseNamespace, "fileStructure"), object.getFileStructure(), CodeAdapter.class, namespaces);
             else {
                 FileValueModel fileStructure = FileValueModel.fromValue(object.getFileStructure().getValue());

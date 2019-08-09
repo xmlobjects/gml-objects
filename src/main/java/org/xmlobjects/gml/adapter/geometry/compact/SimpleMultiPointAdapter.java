@@ -3,7 +3,7 @@ package org.xmlobjects.gml.adapter.geometry.compact;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionListAdapter;
@@ -22,9 +22,9 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "SimpleMultiPoint", namespaceURI = GMLObjects.GML_3_3_CE_NAMESPACE),
-        @XMLElement(name = "SimpleMultiPoint", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
-        @XMLElement(name = "SimpleMultiPoint", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
+        @XMLElement(name = "SimpleMultiPoint", namespaceURI = GMLConstants.GML_3_3_CE_NAMESPACE),
+        @XMLElement(name = "SimpleMultiPoint", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "SimpleMultiPoint", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class SimpleMultiPointAdapter extends AbstractGeometricAggregateAdapter<SimpleMultiPoint> {
 
@@ -45,13 +45,13 @@ public class SimpleMultiPointAdapter extends AbstractGeometricAggregateAdapter<S
 
     @Override
     public Element createElement(SimpleMultiPoint object, Namespaces namespaces) {
-        return namespaces.contains(GMLObjects.GML_3_3_CE_NAMESPACE) ?
+        return namespaces.contains(GMLConstants.GML_3_3_CE_NAMESPACE) ?
                 Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "SimpleMultiPoint") : null;
     }
 
     @Override
     public void writeChildElements(SimpleMultiPoint object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        if (namespaces.contains(GMLObjects.GML_3_3_CE_NAMESPACE)) {
+        if (namespaces.contains(GMLConstants.GML_3_3_CE_NAMESPACE)) {
             super.writeChildElements(object, namespaces, writer);
             if (object.getPosList() != null)
                 writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "posList"), object.getPosList(), DirectPositionListAdapter.class, namespaces);

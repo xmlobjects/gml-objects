@@ -1,7 +1,7 @@
 package org.xmlobjects.gml.adapter.geometry.compact;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionListAdapter;
 import org.xmlobjects.gml.adapter.geometry.GeometricPositionListAdapter;
@@ -23,7 +23,7 @@ public abstract class AbstractSimplePolygonAdapter<T extends AbstractSimplePolyg
 
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (GMLObjects.GML_3_2_NAMESPACE.equals(name.getNamespaceURI())) {
+        if (GMLConstants.GML_3_2_NAMESPACE.equals(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "posList":
                     object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));

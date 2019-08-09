@@ -4,7 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.CodeOrNilReasonListAdapter;
 import org.xmlobjects.gml.model.valueobjects.CategoryList;
@@ -21,8 +21,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "CategoryList", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
-        @XMLElement(name = "CategoryList", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
+        @XMLElement(name = "CategoryList", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "CategoryList", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class CategoryListAdapter implements ObjectBuilder<CategoryList>, ObjectSerializer<CategoryList> {
 

@@ -3,7 +3,7 @@ package org.xmlobjects.gml.adapter.coverage;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.feature.AbstractFeatureAdapter;
@@ -20,8 +20,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "MultiSurfaceCoverage", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
-        @XMLElement(name = "MultiSurfaceCoverage", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
+        @XMLElement(name = "MultiSurfaceCoverage", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "MultiSurfaceCoverage", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class MultiSurfaceCoverageAdapter extends AbstractFeatureAdapter<MultiSurfaceCoverage> {
 
@@ -62,7 +62,7 @@ public class MultiSurfaceCoverageAdapter extends AbstractFeatureAdapter<MultiSur
         String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getDomainSet() != null) {
-            String localName = GMLObjects.GML_3_2_NAMESPACE.equals(baseNamespace) ? "domainSet" : "multiSurfaceDomain";
+            String localName = GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace) ? "domainSet" : "multiSurfaceDomain";
             writer.writeElementUsingSerializer(Element.of(baseNamespace, localName), object.getDomainSet(), MultiSurfaceDomainAdapter.class, namespaces);
         }
 

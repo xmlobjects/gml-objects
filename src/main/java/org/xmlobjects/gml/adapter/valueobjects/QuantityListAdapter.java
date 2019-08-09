@@ -4,7 +4,7 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.MeasureOrNilReasonListAdapter;
 import org.xmlobjects.gml.model.valueobjects.QuantityList;
@@ -21,8 +21,8 @@ import org.xmlobjects.xml.Namespaces;
 import javax.xml.namespace.QName;
 
 @XMLElements({
-        @XMLElement(name = "QuantityList", namespaceURI = GMLObjects.GML_3_2_NAMESPACE),
-        @XMLElement(name = "QuantityList", namespaceURI = GMLObjects.GML_3_1_NAMESPACE)
+        @XMLElement(name = "QuantityList", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "QuantityList", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class QuantityListAdapter implements ObjectBuilder<QuantityList>, ObjectSerializer<QuantityList> {
 

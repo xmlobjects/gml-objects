@@ -1,6 +1,6 @@
 package org.xmlobjects.gml.adapter;
 
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.base.AssociationAttributes;
@@ -16,21 +16,21 @@ import org.xmlobjects.xml.Attributes;
 public class BuilderHelper {
 
     public static boolean isGMLNamespace(String namespaceURI) {
-        return GMLObjects.GML_3_2_NAMESPACE.equals(namespaceURI)
-                || GMLObjects.GML_3_1_NAMESPACE.equals(namespaceURI)
-                || GMLObjects.GML_3_3_XBT_NAMESPACE.equals(namespaceURI)
-                || GMLObjects.GML_3_3_CE_NAMESPACE.equals(namespaceURI);
+        return GMLConstants.GML_3_2_NAMESPACE.equals(namespaceURI)
+                || GMLConstants.GML_3_1_NAMESPACE.equals(namespaceURI)
+                || GMLConstants.GML_3_3_XBT_NAMESPACE.equals(namespaceURI)
+                || GMLConstants.GML_3_3_CE_NAMESPACE.equals(namespaceURI);
     }
 
     public static void buildAssociationAttributes(AssociationAttributes object, Attributes attributes) {
-        attributes.getValue(GMLObjects.XLINK_NAMESPACE, "href").ifPresent(object::setHref);
-        attributes.getValue(GMLObjects.XLINK_NAMESPACE, "role").ifPresent(object::setRole);
-        attributes.getValue(GMLObjects.XLINK_NAMESPACE, "arcrole").ifPresent(object::setArcRole);
-        attributes.getValue(GMLObjects.XLINK_NAMESPACE, "title").ifPresent(object::setTitle);
-        attributes.getValue(GMLObjects.XLINK_NAMESPACE, "show").ifPresent(v -> object.setShow(ShowType.fromValue(v)));
-        attributes.getValue(GMLObjects.XLINK_NAMESPACE, "actuate").ifPresent(v -> object.setActuate(ActuateType.fromValue(v)));
-        attributes.getValue(GMLObjects.GML_3_1_NAMESPACE, "remoteSchema").ifPresent(object::setRemoteSchema);
-        attributes.getValue(GMLObjects.GML_3_2_NAMESPACE, "remoteSchema").ifPresent(object::setRemoteSchema);
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "href").ifPresent(object::setHref);
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "role").ifPresent(object::setRole);
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "arcrole").ifPresent(object::setArcRole);
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "title").ifPresent(object::setTitle);
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "show").ifPresent(v -> object.setShow(ShowType.fromValue(v)));
+        attributes.getValue(GMLConstants.XLINK_NAMESPACE, "actuate").ifPresent(v -> object.setActuate(ActuateType.fromValue(v)));
+        attributes.getValue(GMLConstants.GML_3_1_NAMESPACE, "remoteSchema").ifPresent(object::setRemoteSchema);
+        attributes.getValue(GMLConstants.GML_3_2_NAMESPACE, "remoteSchema").ifPresent(object::setRemoteSchema);
         attributes.getValue("nilReason").ifPresent(v -> object.setNilReason(new NilReason(v)));
     }
 

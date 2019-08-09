@@ -2,7 +2,7 @@ package org.xmlobjects.gml.adapter.coverage;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.GMLObjects;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.adapter.BuilderHelper;
 import org.xmlobjects.gml.adapter.SerializerHelper;
 import org.xmlobjects.gml.adapter.deprecated.StringOrRefAdapter;
@@ -54,7 +54,7 @@ public class CoverageFunctionAdapter implements ObjectBuilder<CoverageFunction>,
         String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.isSetMappingRule()) {
-            if (GMLObjects.GML_3_2_NAMESPACE.equals(baseNamespace))
+            if (GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace))
                 writer.writeElementUsingSerializer(Element.of(baseNamespace, "CoverageMappingRule"), object.getMappingRule(), CoverageMappingRuleAdapter.class, namespaces);
             else {
                 StringOrRef value = new StringOrRef(object.getMappingRule().getRuleDefinition());

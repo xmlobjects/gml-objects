@@ -1,6 +1,6 @@
-package org.xmlobjects.gml;
+package org.xmlobjects.gml.util;
 
-public class GMLObjects {
+public class GMLConstants {
     public static final String GML_3_3_XBT_NAMESPACE = "http://www.opengis.net/gml/3.3/xbt";
     public static final String GML_3_3_CE_NAMESPACE = "http://www.opengis.net/gml/3.3/ce";
     public static final String GML_3_2_NAMESPACE = "http://www.opengis.net/gml/3.2";
