@@ -1,9 +1,9 @@
-package org.xmlobjects.gml.adapter.geometry;
+package org.xmlobjects.gml.adapter.base;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.model.GMLObject;
-import org.xmlobjects.gml.model.geometry.InlineGeometryProperty;
+import org.xmlobjects.gml.model.base.AbstractInlineAssociation;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -15,7 +15,7 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
-public abstract class InlineGeometryPropertyAdapter<T extends InlineGeometryProperty> implements ObjectBuilder<T>, ObjectSerializer<T> {
+public abstract class AbstractInlineAssociationAdapter<T extends AbstractInlineAssociation> implements ObjectBuilder<T>, ObjectSerializer<T> {
 
     @SuppressWarnings("unchecked")
     @Override
@@ -26,6 +26,6 @@ public abstract class InlineGeometryPropertyAdapter<T extends InlineGeometryProp
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.getObject() != null)
-            writer.writeObject(object.getObject(), namespaces);
+            writer.writeObject(object, namespaces);
     }
 }

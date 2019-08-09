@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
-import org.xmlobjects.gml.model.geometry.InlineGeometryProperty;
+import org.xmlobjects.gml.model.geometry.AbstractInlineGeometryProperty;
 
-public class ShellProperty extends InlineGeometryProperty<Shell> {
+public class ShellProperty extends AbstractInlineGeometryProperty<Shell> {
 
     public ShellProperty() {
     }

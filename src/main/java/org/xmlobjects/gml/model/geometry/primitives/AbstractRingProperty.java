@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
-import org.xmlobjects.gml.model.geometry.InlineGeometryProperty;
+import org.xmlobjects.gml.model.geometry.AbstractInlineGeometryProperty;
 
-public class AbstractRingProperty extends InlineGeometryProperty<AbstractRing> {
+public class AbstractRingProperty extends AbstractInlineGeometryProperty<AbstractRing> {
 
     public AbstractRingProperty() {
     }
