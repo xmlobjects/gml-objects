@@ -2,8 +2,8 @@ package org.xmlobjects.gml.adapter.base;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.base.AbstractMember;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -22,7 +22,7 @@ public abstract class AbstractMemberAdapter<T extends AbstractMember> implements
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        BuilderHelper.buildOwnershipAttributes(object, attributes);
+        GMLBuilderHelper.buildOwnershipAttributes(object, attributes);
     }
 
     @SuppressWarnings("unchecked")
@@ -33,7 +33,7 @@ public abstract class AbstractMemberAdapter<T extends AbstractMember> implements
 
     @Override
     public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        SerializerHelper.serializeOwnershipAttributes(element, object, namespaces);
+        GMLSerializerHelper.serializeOwnershipAttributes(element, object, namespaces);
     }
 
     @Override

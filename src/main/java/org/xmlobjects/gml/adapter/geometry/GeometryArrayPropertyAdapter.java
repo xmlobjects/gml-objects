@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.adapter.geometry;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.base.AbstractArrayPropertyAdapter;
 import org.xmlobjects.gml.model.geometry.GeometryArrayProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -26,11 +26,11 @@ public class GeometryArrayPropertyAdapter<T extends GeometryArrayProperty> exten
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        BuilderHelper.buildOwnershipAttributes(object, attributes);
+        GMLBuilderHelper.buildOwnershipAttributes(object, attributes);
     }
 
     @Override
     public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        SerializerHelper.serializeOwnershipAttributes(element, object, namespaces);
+        GMLSerializerHelper.serializeOwnershipAttributes(element, object, namespaces);
     }
 }

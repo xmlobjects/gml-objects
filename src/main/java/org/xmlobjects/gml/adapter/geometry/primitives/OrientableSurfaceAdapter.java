@@ -3,11 +3,11 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.basictypes.Sign;
 import org.xmlobjects.gml.model.geometry.primitives.OrientableSurface;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -38,7 +38,7 @@ public class OrientableSurfaceAdapter extends AbstractSurfaceAdapter<OrientableS
 
     @Override
     public void buildChildObject(OrientableSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             if ("baseSurface".equals(name.getLocalPart()))
                 object.setBaseSurface(reader.getObjectUsingBuilder(SurfacePropertyAdapter.class));
             else
@@ -48,7 +48,7 @@ public class OrientableSurfaceAdapter extends AbstractSurfaceAdapter<OrientableS
 
     @Override
     public Element createElement(OrientableSurface object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "OrientableSurface");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "OrientableSurface");
     }
 
     @Override
@@ -64,6 +64,6 @@ public class OrientableSurfaceAdapter extends AbstractSurfaceAdapter<OrientableS
         super.writeChildElements(object, namespaces, writer);
 
         if (object.getBaseSurface() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "baseSurface"), object.getBaseSurface(), SurfacePropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "baseSurface"), object.getBaseSurface(), SurfacePropertyAdapter.class, namespaces);
     }
 }

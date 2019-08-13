@@ -2,12 +2,12 @@ package org.xmlobjects.gml.adapter.coverage;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
 import org.xmlobjects.gml.model.coverage.File;
 import org.xmlobjects.gml.model.coverage.FileValueModel;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -29,7 +29,7 @@ public class FileAdapter implements ObjectBuilder<File>, ObjectSerializer<File> 
 
     @Override
     public void buildChildObject(File object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "rangeParameters":
                     object.setRangeParameters(reader.getObjectUsingBuilder(RangeParametersAdapter.class));
@@ -53,7 +53,7 @@ public class FileAdapter implements ObjectBuilder<File>, ObjectSerializer<File> 
 
     @Override
     public void writeChildElements(File object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getRangeParameters() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "rangeParameters"), object.getRangeParameters(), RangeParametersAdapter.class, namespaces);

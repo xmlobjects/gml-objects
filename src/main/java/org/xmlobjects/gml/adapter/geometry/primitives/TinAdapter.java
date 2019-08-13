@@ -3,13 +3,13 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.GeometricPositionListAdapter;
 import org.xmlobjects.gml.adapter.measures.LengthAdapter;
 import org.xmlobjects.gml.model.geometry.primitives.LineStringSegmentArrayProperty;
 import org.xmlobjects.gml.model.geometry.primitives.Tin;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -34,7 +34,7 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
 
     @Override
     public void buildChildObject(Tin object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "patches":
                 case "trianglePatches":
@@ -61,16 +61,16 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
 
     @Override
     public Element createElement(Tin object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Tin");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Tin");
     }
 
     @Override
     public void writeChildElements(Tin object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getPatches() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "trianglePatches"), object.getPatches(), TriangleArrayPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "trianglePatches"), object.getPatches(), TriangleArrayPropertyAdapter.class, namespaces);
 
         for (LineStringSegmentArrayProperty property : object.getStopLines())
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "stopLines"), property, LineStringSegmentArrayPropertyAdapter.class, namespaces);

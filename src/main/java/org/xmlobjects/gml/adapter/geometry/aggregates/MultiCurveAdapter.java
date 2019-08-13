@@ -3,13 +3,13 @@ package org.xmlobjects.gml.adapter.geometry.aggregates;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.primitives.CurveArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.CurvePropertyAdapter;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiCurve;
 import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -35,7 +35,7 @@ public class MultiCurveAdapter extends AbstractGeometricAggregateAdapter<MultiCu
 
     @Override
     public void buildChildObject(MultiCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "curveMember":
                 case "lineStringMember":
@@ -53,13 +53,13 @@ public class MultiCurveAdapter extends AbstractGeometricAggregateAdapter<MultiCu
 
     @Override
     public Element createElement(MultiCurve object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "MultiCurve");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "MultiCurve");
     }
 
     @Override
     public void writeChildElements(MultiCurve object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (CurveProperty property : object.getCurveMember())
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "curveMember"), property, CurvePropertyAdapter.class, namespaces);

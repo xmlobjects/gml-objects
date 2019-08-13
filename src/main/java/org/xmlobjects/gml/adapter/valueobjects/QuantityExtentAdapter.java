@@ -4,10 +4,10 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.MeasureOrNilReasonListAdapter;
 import org.xmlobjects.gml.model.valueobjects.QuantityExtent;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -38,7 +38,7 @@ public class QuantityExtentAdapter implements ObjectBuilder<QuantityExtent>, Obj
 
     @Override
     public Element createElement(QuantityExtent object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "QuantityExtent");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "QuantityExtent");
     }
 
     @Override

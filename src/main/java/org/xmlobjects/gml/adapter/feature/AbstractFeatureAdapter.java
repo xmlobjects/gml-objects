@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.adapter.feature;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.base.AbstractGMLAdapter;
 import org.xmlobjects.gml.adapter.deprecated.LocationPropertyAdapter;
 import org.xmlobjects.gml.model.feature.AbstractFeature;
@@ -21,7 +21,7 @@ public abstract class AbstractFeatureAdapter<T extends AbstractFeature> extends 
 
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "boundedBy":
                     object.setBoundedBy(reader.getObjectUsingBuilder(BoundingShapeAdapter.class));
@@ -39,7 +39,7 @@ public abstract class AbstractFeatureAdapter<T extends AbstractFeature> extends 
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getBoundedBy() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "boundedBy"), object.getBoundedBy(), BoundingShapeAdapter.class, namespaces);

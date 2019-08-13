@@ -3,10 +3,10 @@ package org.xmlobjects.gml.adapter.valueobjects;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.valueobjects.ValueArray;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -32,17 +32,17 @@ public class ValueArrayAdapter extends AbstractCompositeValueAdapter<ValueArray>
     @Override
     public void initializeObject(ValueArray object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         super.initializeObject(object, name, attributes, reader);
-        BuilderHelper.buildReferenceSystem(object, attributes);
+        GMLBuilderHelper.buildReferenceSystem(object, attributes);
     }
 
     @Override
     public Element createElement(ValueArray object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "ValueArray");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "ValueArray");
     }
 
     @Override
     public void initializeElement(Element element, ValueArray object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.initializeElement(element, object, namespaces, writer);
-        SerializerHelper.serializeReferenceSystem(element, object, namespaces);
+        GMLSerializerHelper.serializeReferenceSystem(element, object, namespaces);
     }
 }

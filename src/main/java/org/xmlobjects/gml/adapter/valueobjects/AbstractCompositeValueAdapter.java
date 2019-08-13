@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.adapter.valueobjects;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.base.AbstractGMLAdapter;
 import org.xmlobjects.gml.model.valueobjects.CompositeValue;
 import org.xmlobjects.gml.model.valueobjects.ValueProperty;
@@ -22,12 +22,12 @@ public abstract class AbstractCompositeValueAdapter<T extends CompositeValue> ex
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         super.initializeObject(object, name, attributes, reader);
-        BuilderHelper.buildAggregationAttributes(object, attributes);
+        GMLBuilderHelper.buildAggregationAttributes(object, attributes);
     }
 
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "valueComponent":
                     object.getValueComponent().add(reader.getObjectUsingBuilder(ValuePropertyAdapter.class));
@@ -45,13 +45,13 @@ public abstract class AbstractCompositeValueAdapter<T extends CompositeValue> ex
     @Override
     public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.initializeElement(element, object, namespaces, writer);
-        SerializerHelper.serializeAggregationAttributes(element, object, namespaces);
+        GMLSerializerHelper.serializeAggregationAttributes(element, object, namespaces);
     }
 
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (ValueProperty property : object.getValueComponent())
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "valueComponent"), property, ValuePropertyAdapter.class, namespaces);

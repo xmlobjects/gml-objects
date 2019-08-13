@@ -4,14 +4,14 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.CoordinatesAdapter;
 import org.xmlobjects.gml.adapter.deprecated.CoordAdapter;
 import org.xmlobjects.gml.model.deprecated.Coord;
 import org.xmlobjects.gml.model.geometry.DirectPosition;
 import org.xmlobjects.gml.model.geometry.Envelope;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -38,12 +38,12 @@ public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerialize
 
     @Override
     public void initializeObject(Envelope object, QName name, Attributes attributes, XMLReader reader) {
-        BuilderHelper.buildSRSReference(object, attributes);
+        GMLBuilderHelper.buildSRSReference(object, attributes);
     }
 
     @Override
     public void buildChildObject(Envelope object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "lowerCorner":
                     object.setLowerCorner(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
@@ -78,17 +78,17 @@ public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerialize
 
     @Override
     public Element createElement(Envelope object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Envelope");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Envelope");
     }
 
     @Override
     public void initializeElement(Element element, Envelope object, Namespaces namespaces, XMLWriter writer) {
-        SerializerHelper.serializeSRSReference(element, object, namespaces);
+        GMLSerializerHelper.serializeSRSReference(element, object, namespaces);
     }
 
     @Override
     public void writeChildElements(Envelope object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getLowerCorner() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "lowerCorner"), object.getLowerCorner(), DirectPositionAdapter.class, namespaces);

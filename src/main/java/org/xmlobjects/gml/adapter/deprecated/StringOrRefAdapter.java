@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.adapter.deprecated;
 
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.deprecated.StringOrRef;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -24,12 +24,12 @@ public class StringOrRefAdapter implements ObjectBuilder<StringOrRef>, ObjectSer
     @Override
     public void initializeObject(StringOrRef object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         reader.getTextContent().ifPresent(object::setValue);
-        BuilderHelper.buildAssociationAttributes(object, attributes);
+        GMLBuilderHelper.buildAssociationAttributes(object, attributes);
     }
 
     @Override
     public void initializeElement(Element element, StringOrRef object, Namespaces namespaces, XMLWriter writer) {
         element.addTextContent(object.getValue());
-        SerializerHelper.serializeAssociationAttributes(element, object, namespaces);
+        GMLSerializerHelper.serializeAssociationAttributes(element, object, namespaces);
     }
 }

@@ -1,6 +1,5 @@
 package org.xmlobjects.gml.adapter;
 
-import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.base.AssociationAttributes;
@@ -11,9 +10,10 @@ import org.xmlobjects.gml.model.geometry.SRSReference;
 import org.xmlobjects.gml.model.valueobjects.ReferenceSystem;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.xml.Attributes;
 
-public class BuilderHelper {
+public class GMLBuilderHelper {
 
     public static boolean isGMLNamespace(String namespaceURI) {
         return GMLConstants.GML_3_2_NAMESPACE.equals(namespaceURI)

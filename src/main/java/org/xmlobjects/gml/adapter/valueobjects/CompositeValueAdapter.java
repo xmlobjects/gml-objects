@@ -2,9 +2,9 @@ package org.xmlobjects.gml.adapter.valueobjects;
 
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.valueobjects.CompositeValue;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
 
@@ -23,6 +23,6 @@ public class CompositeValueAdapter extends AbstractCompositeValueAdapter<Composi
 
     @Override
     public Element createElement(CompositeValue object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "CompositeValue");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "CompositeValue");
     }
 }

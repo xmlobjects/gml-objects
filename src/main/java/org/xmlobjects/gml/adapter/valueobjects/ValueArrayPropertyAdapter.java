@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.adapter.valueobjects;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.base.AbstractArrayPropertyAdapter;
 import org.xmlobjects.gml.model.valueobjects.Value;
 import org.xmlobjects.gml.model.valueobjects.ValueArrayProperty;
@@ -26,7 +26,7 @@ public class ValueArrayPropertyAdapter extends AbstractArrayPropertyAdapter<Valu
 
     @Override
     public void initializeObject(ValueArrayProperty object, QName name, Attributes attributes, XMLReader reader) {
-        BuilderHelper.buildOwnershipAttributes(object, attributes);
+        GMLBuilderHelper.buildOwnershipAttributes(object, attributes);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class ValueArrayPropertyAdapter extends AbstractArrayPropertyAdapter<Valu
 
     @Override
     public void initializeElement(Element element, ValueArrayProperty object, Namespaces namespaces, XMLWriter writer) {
-        SerializerHelper.serializeOwnershipAttributes(element, object, namespaces);
+        GMLSerializerHelper.serializeOwnershipAttributes(element, object, namespaces);
     }
 
     @Override

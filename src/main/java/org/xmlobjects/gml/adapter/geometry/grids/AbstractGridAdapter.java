@@ -1,11 +1,11 @@
 package org.xmlobjects.gml.adapter.geometry.grids;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.AbstractGeometryAdapter;
 import org.xmlobjects.gml.model.geometry.grids.Grid;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -28,7 +28,7 @@ public abstract class AbstractGridAdapter<T extends Grid> extends AbstractGeomet
 
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "limits":
                     object.setLimits(reader.getObjectUsingBuilder(GridLimitsAdapter.class));
@@ -55,7 +55,7 @@ public abstract class AbstractGridAdapter<T extends Grid> extends AbstractGeomet
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getLimits() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "limits"), object.getLimits(), GridLimitsAdapter.class, namespaces);

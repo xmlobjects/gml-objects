@@ -2,9 +2,9 @@ package org.xmlobjects.gml.adapter.geometry.compact;
 
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
-import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.converter.SimplePolygonConverter;
 import org.xmlobjects.gml.model.geometry.compact.SimplePolygon;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;

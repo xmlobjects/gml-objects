@@ -1,7 +1,7 @@
 package org.xmlobjects.gml.adapter.deprecated;
 
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.BuilderHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
 import org.xmlobjects.gml.model.deprecated.Coord;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -18,7 +18,7 @@ public class CoordAdapter implements ObjectBuilder<Coord> {
 
     @Override
     public void buildChildObject(Coord object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "X":
                     reader.getTextContent().ifDouble(object::setX);

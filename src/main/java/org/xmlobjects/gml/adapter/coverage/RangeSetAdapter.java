@@ -2,8 +2,8 @@ package org.xmlobjects.gml.adapter.coverage;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.valueobjects.ValueArrayAdapter;
 import org.xmlobjects.gml.model.coverage.RangeSet;
 import org.xmlobjects.gml.model.valueobjects.AbstractScalarValueList;
@@ -29,7 +29,7 @@ public class RangeSetAdapter implements ObjectBuilder<RangeSet>, ObjectSerialize
 
     @Override
     public void buildChildObject(RangeSet object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "ValueArray":
                     object.getValueArrays().add(reader.getObjectUsingBuilder(ValueArrayAdapter.class));
@@ -51,7 +51,7 @@ public class RangeSetAdapter implements ObjectBuilder<RangeSet>, ObjectSerialize
 
     @Override
     public void writeChildElements(RangeSet object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.isSetValueArrays()) {
             for (ValueArray valueArray : object.getValueArrays())

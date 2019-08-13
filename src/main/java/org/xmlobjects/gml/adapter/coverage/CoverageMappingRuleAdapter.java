@@ -2,8 +2,8 @@ package org.xmlobjects.gml.adapter.coverage;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.base.ReferenceAdapter;
 import org.xmlobjects.gml.model.coverage.CoverageMappingRule;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -27,7 +27,7 @@ public class CoverageMappingRuleAdapter implements ObjectBuilder<CoverageMapping
 
     @Override
     public void buildChildObject(CoverageMappingRule object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "ruleDefinition":
                     reader.getTextContent().ifPresent(object::setRuleDefinition);
@@ -41,7 +41,7 @@ public class CoverageMappingRuleAdapter implements ObjectBuilder<CoverageMapping
 
     @Override
     public void writeChildElements(CoverageMappingRule object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.isSetRuleDefinition())
             writer.writeElement(Element.of(baseNamespace, "ruleDefinition").addTextContent(object.getRuleDefinition()));

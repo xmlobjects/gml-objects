@@ -2,9 +2,9 @@ package org.xmlobjects.gml.adapter.deprecated;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.deprecated.AbstractMetaData;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -27,6 +27,6 @@ public abstract class AbstractMetaDataAdapter<T extends AbstractMetaData> implem
 
     @Override
     public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        element.addAttribute(SerializerHelper.getGMLBaseNamespace(namespaces), "id", object.getId());
+        element.addAttribute(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "id", object.getId());
     }
 }

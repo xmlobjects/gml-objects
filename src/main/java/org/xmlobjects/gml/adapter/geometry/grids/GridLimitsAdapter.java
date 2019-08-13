@@ -2,8 +2,8 @@ package org.xmlobjects.gml.adapter.geometry.grids;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.geometry.grids.GridLimits;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
@@ -26,13 +26,13 @@ public class GridLimitsAdapter implements ObjectBuilder<GridLimits>, ObjectSeria
 
     @Override
     public void buildChildObject(GridLimits object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if ("GridEnvelope".equals(name.getLocalPart()) && BuilderHelper.isGMLNamespace(name.getNamespaceURI()))
+        if ("GridEnvelope".equals(name.getLocalPart()) && GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI()))
             object.setGridEnvelope(reader.getObjectUsingBuilder(GridEnvelopeAdapter.class));
     }
 
     @Override
     public void writeChildElements(GridLimits object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.getGridEnvelope() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "GridEnvelope"), object.getGridEnvelope(), GridEnvelopeAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "GridEnvelope"), object.getGridEnvelope(), GridEnvelopeAdapter.class, namespaces);
     }
 }

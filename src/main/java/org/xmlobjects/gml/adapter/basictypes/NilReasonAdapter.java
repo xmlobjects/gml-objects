@@ -3,9 +3,9 @@ package org.xmlobjects.gml.adapter.basictypes;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.basictypes.NilReason;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -34,7 +34,7 @@ public class NilReasonAdapter implements ObjectBuilder<NilReason>, ObjectSeriali
 
     @Override
     public Element createElement(NilReason object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Null");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Null");
     }
 
     @Override

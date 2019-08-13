@@ -3,13 +3,13 @@ package org.xmlobjects.gml.adapter.geometry.grids;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.VectorAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.PointPropertyAdapter;
 import org.xmlobjects.gml.model.geometry.Vector;
 import org.xmlobjects.gml.model.geometry.grids.RectifiedGrid;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -34,7 +34,7 @@ public class RectifiedGridAdapter extends AbstractGridAdapter<RectifiedGrid> {
 
     @Override
     public void buildChildObject(RectifiedGrid object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "origin":
                     object.setOrigin(reader.getObjectUsingBuilder(PointPropertyAdapter.class));
@@ -50,13 +50,13 @@ public class RectifiedGridAdapter extends AbstractGridAdapter<RectifiedGrid> {
 
     @Override
     public Element createElement(RectifiedGrid object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "RectifiedGrid");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "RectifiedGrid");
     }
 
     @Override
     public void writeChildElements(RectifiedGrid object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getOrigin() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "origin"), object.getOrigin(), PointPropertyAdapter.class, namespaces);

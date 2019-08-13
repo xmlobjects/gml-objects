@@ -2,8 +2,8 @@ package org.xmlobjects.gml.adapter.base;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.base.AbstractProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -22,8 +22,8 @@ public abstract class AbstractPropertyAdapter<T extends AbstractProperty> implem
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        BuilderHelper.buildAssociationAttributes(object, attributes);
-        BuilderHelper.buildOwnershipAttributes(object, attributes);
+        GMLBuilderHelper.buildAssociationAttributes(object, attributes);
+        GMLBuilderHelper.buildOwnershipAttributes(object, attributes);
     }
 
     @SuppressWarnings("unchecked")
@@ -34,8 +34,8 @@ public abstract class AbstractPropertyAdapter<T extends AbstractProperty> implem
 
     @Override
     public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        SerializerHelper.serializeAssociationAttributes(element, object, namespaces);
-        SerializerHelper.serializeOwnershipAttributes(element, object, namespaces);
+        GMLSerializerHelper.serializeAssociationAttributes(element, object, namespaces);
+        GMLSerializerHelper.serializeOwnershipAttributes(element, object, namespaces);
     }
 
     @Override

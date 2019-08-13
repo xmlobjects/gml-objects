@@ -2,8 +2,8 @@ package org.xmlobjects.gml.adapter.coverage;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.coverage.GridFunction;
 import org.xmlobjects.gml.model.coverage.SequenceRuleEnumeration;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -28,7 +28,7 @@ public class GridFunctionAdapter implements ObjectBuilder<GridFunction>, ObjectS
 
     @Override
     public void buildChildObject(GridFunction object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "sequenceRule":
                     object.setSequenceRule(reader.getObjectUsingBuilder(SequenceRuleAdapter.class));
@@ -42,7 +42,7 @@ public class GridFunctionAdapter implements ObjectBuilder<GridFunction>, ObjectS
 
     @Override
     public void writeChildElements(GridFunction object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getSequenceRule() != null
                 && (object.getSequenceRule().getValue() != SequenceRuleEnumeration.LINEAR

@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.adapter.geometry;
 
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.geometry.DirectPosition;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -25,12 +25,12 @@ public class DirectPositionAdapter implements ObjectBuilder<DirectPosition>, Obj
     @Override
     public void initializeObject(DirectPosition object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
         reader.getTextContent().ifDoubleList(object::setValue);
-        BuilderHelper.buildSRSReference(object, attributes);
+        GMLBuilderHelper.buildSRSReference(object, attributes);
     }
 
     @Override
     public void initializeElement(Element element, DirectPosition object, Namespaces namespaces, XMLWriter writer) {
         element.addTextContent(TextContent.ofDoubleList(object.getValue()));
-        SerializerHelper.serializeSRSReference(element, object, namespaces);
+        GMLSerializerHelper.serializeSRSReference(element, object, namespaces);
     }
 }

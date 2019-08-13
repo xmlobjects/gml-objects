@@ -3,13 +3,13 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.CoordinatesAdapter;
 import org.xmlobjects.gml.adapter.deprecated.CoordAdapter;
 import org.xmlobjects.gml.adapter.geometry.DirectPositionAdapter;
 import org.xmlobjects.gml.model.geometry.primitives.Point;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -34,7 +34,7 @@ public class PointAdapter extends AbstractGeometricPrimitiveAdapter<Point> {
 
     @Override
     public void buildChildObject(Point object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "pos":
                     object.setPos(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
@@ -54,7 +54,7 @@ public class PointAdapter extends AbstractGeometricPrimitiveAdapter<Point> {
 
     @Override
     public Element createElement(Point object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Point");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Point");
     }
 
     @Override
@@ -62,6 +62,6 @@ public class PointAdapter extends AbstractGeometricPrimitiveAdapter<Point> {
         super.writeChildElements(object, namespaces, writer);
 
         if (object.getPos() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "pos"), object.getPos(), DirectPositionAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "pos"), object.getPos(), DirectPositionAdapter.class, namespaces);
     }
 }

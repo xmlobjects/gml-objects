@@ -1,17 +1,17 @@
 package org.xmlobjects.gml.adapter;
 
-import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AssociationAttributes;
 import org.xmlobjects.gml.model.base.OwnershipAttributes;
 import org.xmlobjects.gml.model.geometry.SRSInformation;
 import org.xmlobjects.gml.model.geometry.SRSReference;
 import org.xmlobjects.gml.model.valueobjects.ReferenceSystem;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
 import org.xmlobjects.xml.TextContent;
 
-public class SerializerHelper {
+public class GMLSerializerHelper {
 
     public static String getGMLBaseNamespace(Namespaces namespaces) {
         return namespaces.contains(GMLConstants.GML_3_1_NAMESPACE) ?

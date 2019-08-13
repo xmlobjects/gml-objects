@@ -3,11 +3,11 @@ package org.xmlobjects.gml.adapter.coverage;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.feature.AbstractFeatureAdapter;
 import org.xmlobjects.gml.model.coverage.RectifiedGridCoverage;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -32,7 +32,7 @@ public class RectifiedGridCoverageAdapter extends AbstractFeatureAdapter<Rectifi
 
     @Override
     public void buildChildObject(RectifiedGridCoverage object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "domainSet":
                 case "rectifiedGridDomain":
@@ -53,13 +53,13 @@ public class RectifiedGridCoverageAdapter extends AbstractFeatureAdapter<Rectifi
 
     @Override
     public Element createElement(RectifiedGridCoverage object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "RectifiedGridCoverage");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "RectifiedGridCoverage");
     }
 
     @Override
     public void writeChildElements(RectifiedGridCoverage object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getDomainSet() != null) {
             String localName = GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace) ? "domainSet" : "rectifiedGridDomain";

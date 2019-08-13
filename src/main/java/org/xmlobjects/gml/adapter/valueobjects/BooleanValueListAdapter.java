@@ -4,10 +4,10 @@ import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.BooleanOrNilReasonListAdapter;
 import org.xmlobjects.gml.model.valueobjects.BooleanValueList;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -38,7 +38,7 @@ public class BooleanValueListAdapter implements ObjectBuilder<BooleanValueList>,
 
     @Override
     public Element createElement(BooleanValueList object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "BooleanList");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "BooleanList");
     }
 
     @Override

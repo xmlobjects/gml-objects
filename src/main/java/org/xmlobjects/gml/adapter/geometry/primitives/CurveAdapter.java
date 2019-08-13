@@ -3,10 +3,10 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.geometry.primitives.Curve;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -31,7 +31,7 @@ public class CurveAdapter extends AbstractCurveAdapter<Curve> {
 
     @Override
     public void buildChildObject(Curve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             if ("segments".equals(name.getLocalPart()))
                 object.setSegments(reader.getObjectUsingBuilder(CurveSegmentArrayPropertyAdapter.class));
             else
@@ -41,7 +41,7 @@ public class CurveAdapter extends AbstractCurveAdapter<Curve> {
 
     @Override
     public Element createElement(Curve object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Curve");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Curve");
     }
 
     @Override
@@ -49,6 +49,6 @@ public class CurveAdapter extends AbstractCurveAdapter<Curve> {
         super.writeChildElements(object, namespaces, writer);
 
         if (object.getSegments() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "segments"), object.getSegments(), CurveSegmentArrayPropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "segments"), object.getSegments(), CurveSegmentArrayPropertyAdapter.class, namespaces);
     }
 }

@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.adapter.geometry;
 
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.base.AbstractGMLAdapter;
 import org.xmlobjects.gml.model.geometry.AbstractGeometry;
 import org.xmlobjects.serializer.ObjectSerializeException;
@@ -21,12 +21,12 @@ public abstract class AbstractGeometryAdapter<T extends AbstractGeometry> extend
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         super.initializeObject(object, name, attributes, reader);
-        BuilderHelper.buildSRSReference(object, attributes);
+        GMLBuilderHelper.buildSRSReference(object, attributes);
     }
 
     @Override
     public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.initializeElement(element, object, namespaces, writer);
-        SerializerHelper.serializeSRSReference(element, object, namespaces);
+        GMLSerializerHelper.serializeSRSReference(element, object, namespaces);
     }
 }

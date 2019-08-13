@@ -3,13 +3,13 @@ package org.xmlobjects.gml.adapter.geometry.complexes;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.AbstractGeometryAdapter;
 import org.xmlobjects.gml.adapter.geometry.primitives.GeometricPrimitivePropertyAdapter;
 import org.xmlobjects.gml.model.geometry.complexes.GeometricComplex;
 import org.xmlobjects.gml.model.geometry.primitives.GeometricPrimitiveProperty;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -35,12 +35,12 @@ public class GeometricComplexAdapter extends AbstractGeometryAdapter<GeometricCo
     @Override
     public void initializeObject(GeometricComplex object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         super.initializeObject(object, name, attributes, reader);
-        BuilderHelper.buildAggregationAttributes(object, attributes);
+        GMLBuilderHelper.buildAggregationAttributes(object, attributes);
     }
 
     @Override
     public void buildChildObject(GeometricComplex object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             if ("element".equals(name.getLocalPart()))
                 object.getElements().add(reader.getObjectUsingBuilder(GeometricPrimitivePropertyAdapter.class));
             else
@@ -50,19 +50,19 @@ public class GeometricComplexAdapter extends AbstractGeometryAdapter<GeometricCo
 
     @Override
     public Element createElement(GeometricComplex object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "GeometricComplex");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "GeometricComplex");
     }
 
     @Override
     public void initializeElement(Element element, GeometricComplex object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.initializeElement(element, object, namespaces, writer);
-        SerializerHelper.serializeAggregationAttributes(element, object, namespaces);
+        GMLSerializerHelper.serializeAggregationAttributes(element, object, namespaces);
     }
 
     @Override
     public void writeChildElements(GeometricComplex object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        String baseNamespace = SerializerHelper.getGMLBaseNamespace(namespaces);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (GeometricPrimitiveProperty property : object.getElements())
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "element"), property, GeometricPrimitivePropertyAdapter.class, namespaces);

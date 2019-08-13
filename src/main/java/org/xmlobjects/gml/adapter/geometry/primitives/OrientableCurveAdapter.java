@@ -3,11 +3,11 @@ package org.xmlobjects.gml.adapter.geometry.primitives;
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
 import org.xmlobjects.builder.ObjectBuildException;
-import org.xmlobjects.gml.util.GMLConstants;
-import org.xmlobjects.gml.adapter.BuilderHelper;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.basictypes.Sign;
 import org.xmlobjects.gml.model.geometry.primitives.OrientableCurve;
+import org.xmlobjects.gml.util.GMLConstants;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
@@ -38,7 +38,7 @@ public class OrientableCurveAdapter extends AbstractCurveAdapter<OrientableCurve
 
     @Override
     public void buildChildObject(OrientableCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        if (BuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             if ("baseCurve".equals(name.getLocalPart()))
                 object.setBaseCurve(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
             else
@@ -48,7 +48,7 @@ public class OrientableCurveAdapter extends AbstractCurveAdapter<OrientableCurve
 
     @Override
     public Element createElement(OrientableCurve object, Namespaces namespaces) {
-        return Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "OrientableCurve");
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "OrientableCurve");
     }
 
     @Override
@@ -64,6 +64,6 @@ public class OrientableCurveAdapter extends AbstractCurveAdapter<OrientableCurve
         super.writeChildElements(object, namespaces, writer);
 
         if (object.getBaseCurve() != null)
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "baseCurve"), object.getBaseCurve(), CurvePropertyAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "baseCurve"), object.getBaseCurve(), CurvePropertyAdapter.class, namespaces);
     }
 }

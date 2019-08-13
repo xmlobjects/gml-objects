@@ -2,7 +2,7 @@ package org.xmlobjects.gml.adapter.valueobjects;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.adapter.SerializerHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.NilReasonAdapter;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.basictypes.NilReason;
@@ -49,7 +49,7 @@ public class ValueAdapter implements ObjectBuilder<Value>, ObjectSerializer<Valu
         else if (object.isSetGeometry())
             writer.writeObject(object.getGeometry(), namespaces);
         else if (object.isSetNull())
-            writer.writeElementUsingSerializer(Element.of(SerializerHelper.getGMLBaseNamespace(namespaces), "Null"), object.getNull(), NilReasonAdapter.class, namespaces);
+            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Null"), object.getNull(), NilReasonAdapter.class, namespaces);
         else if (object.isSetGenericElement())
             writer.writeDOMElement(object.getGenericElement().getContent());
     }
