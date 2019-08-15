@@ -7,7 +7,6 @@ import org.xmlobjects.gml.adapter.GMLBuilderHelper;
 import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.geometry.GeometryArrayPropertyAdapter;
 import org.xmlobjects.gml.adapter.geometry.GeometryPropertyAdapter;
-import org.xmlobjects.gml.model.geometry.GeometryArrayProperty;
 import org.xmlobjects.gml.model.geometry.GeometryProperty;
 import org.xmlobjects.gml.model.geometry.aggregates.MultiGeometry;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -27,8 +26,6 @@ import javax.xml.namespace.QName;
         @XMLElement(name = "MultiGeometry", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<MultiGeometry> {
-    private final GeometryPropertyAdapter<GeometryProperty> propertyAdapter = new GeometryPropertyAdapter<>();
-    private final GeometryArrayPropertyAdapter<GeometryArrayProperty> arrayPropertyAdapter = new GeometryArrayPropertyAdapter<>();
 
     @Override
     public MultiGeometry createObject(QName name) {
@@ -40,10 +37,10 @@ public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<Mult
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "geometryMember":
-                    object.getGeometryMember().add(reader.getObjectUsingBuilder(propertyAdapter));
+                    object.getGeometryMember().add(reader.getObjectUsingBuilder(GeometryPropertyAdapter.class));
                     break;
                 case "geometryMembers":
-                    object.setGeometryMembers(reader.getObjectUsingBuilder(arrayPropertyAdapter));
+                    object.setGeometryMembers(reader.getObjectUsingBuilder(GeometryArrayPropertyAdapter.class));
                     break;
                 default:
                     super.buildChildObject(object, name, attributes, reader);
@@ -63,9 +60,9 @@ public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<Mult
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         for (GeometryProperty property : object.getGeometryMember())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "geometryMember"), property, propertyAdapter, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "geometryMember"), property, GeometryPropertyAdapter.class, namespaces);
 
         if (object.getGeometryMembers() != null)
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "geometryMembers"), object.getGeometryMembers(), arrayPropertyAdapter, namespaces);
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "geometryMembers"), object.getGeometryMembers(), GeometryArrayPropertyAdapter.class, namespaces);
     }
 }

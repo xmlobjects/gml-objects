@@ -5,7 +5,7 @@ import org.xmlobjects.gml.adapter.GMLBuilderHelper;
 import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.CodeAdapter;
 import org.xmlobjects.gml.adapter.basictypes.NilReasonAdapter;
-import org.xmlobjects.gml.adapter.geometry.GeometryPropertyAdapter;
+import org.xmlobjects.gml.adapter.geometry.AbstractGeometryPropertyAdapter;
 import org.xmlobjects.gml.model.deprecated.LocationProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
@@ -18,7 +18,7 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
-public class LocationPropertyAdapter extends GeometryPropertyAdapter<LocationProperty> {
+public class LocationPropertyAdapter extends AbstractGeometryPropertyAdapter<LocationProperty> {
 
     @Override
     public LocationProperty createObject(QName name) {
