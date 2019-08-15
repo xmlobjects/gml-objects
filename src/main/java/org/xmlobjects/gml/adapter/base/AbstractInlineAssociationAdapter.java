@@ -26,6 +26,6 @@ public abstract class AbstractInlineAssociationAdapter<T extends AbstractInlineA
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.getObject() != null)
-            writer.writeObject(object, namespaces);
+            writer.writeObject(object.getObject(), namespaces);
     }
 }
