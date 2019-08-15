@@ -6,7 +6,6 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.adapter.basictypes.MeasureAdapter;
-import org.xmlobjects.gml.model.basictypes.Measure;
 import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.valueobjects.Quantity;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -28,7 +27,7 @@ import javax.xml.namespace.QName;
         @XMLElement(name = "Quantity", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerializer<Quantity> {
-    private final MeasureAdapter<Measure> adapter = new MeasureAdapter<>();
+    private final MeasureAdapter adapter = new MeasureAdapter();
 
     @Override
     public Quantity createObject(QName name) {
