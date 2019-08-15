@@ -12,6 +12,6 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor 'org.xml-objects:xml-objects:0.2.0'
     api 'org.xml-objects:xml-objects:0.2.0'
+    annotationProcessor 'org.xml-objects:xml-objects:0.2.0'
 }
