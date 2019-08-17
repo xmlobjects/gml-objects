@@ -30,7 +30,7 @@ public abstract class AbstractFeaturePropertyAdapter<T extends FeatureProperty> 
 
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        if (object.getObject() != null)
+        if (object.isSetObject())
             writer.writeObject(object.getObject(), namespaces);
         else if (object.isSetGenericElement())
             writer.writeDOMElement(object.getGenericElement().getContent());

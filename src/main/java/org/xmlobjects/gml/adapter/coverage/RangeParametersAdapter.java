@@ -34,7 +34,7 @@ public class RangeParametersAdapter extends AbstractPropertyAdapter<RangeParamet
 
     @Override
     public void writeChildElements(RangeParameters object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        if (object.getObject() != null)
+        if (object.isSetObject())
             writer.writeObject(object.getObject(), namespaces);
         else if (object.isSetGenericElement())
             writer.writeDOMElement(object.getGenericElement().getContent());

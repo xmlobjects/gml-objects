@@ -4,7 +4,7 @@ import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 
-public class Reference extends AbstractAssociation<AbstractGML> implements AssociationAttributes, OwnershipAttributes {
+public class Reference extends AbstractAssociation implements AssociationAttributes, OwnershipAttributes {
     private String href;
     private String role;
     private String arcRole;
@@ -23,7 +23,8 @@ public class Reference extends AbstractAssociation<AbstractGML> implements Assoc
     }
 
     public Reference(AbstractGML object) {
-        this('#' + object.getId());
+        if (object.getId() != null)
+            href = '#' + object.getId();
     }
 
     public Reference(AssociationAttributes reference) {
@@ -42,8 +43,8 @@ public class Reference extends AbstractAssociation<AbstractGML> implements Assoc
     }
 
     @Override
-    public Class<AbstractGML> getTargetType() {
-        return AbstractGML.class;
+    public Class getTargetType() {
+        return Object.class;
     }
 
     @Override
