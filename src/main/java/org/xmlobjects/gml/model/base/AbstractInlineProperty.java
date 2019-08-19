@@ -2,23 +2,21 @@ package org.xmlobjects.gml.model.base;
 
 import org.xmlobjects.gml.model.GMLObject;
 
-public abstract class AbstractInlineProperty<T extends GMLObject> extends AbstractInlineAssociation<T> implements OwnershipAttributes {
-    private Boolean owns;
+public abstract class AbstractInlineProperty<T extends GMLObject> extends AbstractAssociation<T> {
+    private T object;
 
     public AbstractInlineProperty() {
     }
 
     public AbstractInlineProperty(T object) {
-        super(object);
+        setObject(object);
     }
 
-    @Override
-    public Boolean getOwns() {
-        return owns;
+    public T getObject() {
+        return object;
     }
 
-    @Override
-    public void setOwns(Boolean owns) {
-        this.owns = owns;
+    public void setObject(T object) {
+        this.object = asChild(object);
     }
 }

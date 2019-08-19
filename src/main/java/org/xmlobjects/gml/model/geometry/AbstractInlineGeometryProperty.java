@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.model.geometry;
 
-import org.xmlobjects.gml.model.base.AbstractInlineAssociation;
+import org.xmlobjects.gml.model.base.AbstractInlineProperty;
 
-public abstract class AbstractInlineGeometryProperty<T extends AbstractGeometry> extends AbstractInlineAssociation<T> {
+public abstract class AbstractInlineGeometryProperty<T extends AbstractGeometry> extends AbstractInlineProperty<T> {
 
     public AbstractInlineGeometryProperty() {
     }

@@ -5,7 +5,7 @@ import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.GMLBuilderHelper;
 import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.GMLObject;
-import org.xmlobjects.gml.model.base.AbstractMember;
+import org.xmlobjects.gml.model.base.AbstractInlineOrByReferenceProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -18,11 +18,11 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
-public abstract class AbstractMemberAdapter<T extends AbstractMember> implements ObjectBuilder<T>, ObjectSerializer<T> {
+public abstract class AbstractInlineOrByReferencePropertyAdapter<T extends AbstractInlineOrByReferenceProperty> implements ObjectBuilder<T>, ObjectSerializer<T> {
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        GMLBuilderHelper.buildOwnershipAttributes(object, attributes);
+        GMLBuilderHelper.buildAssociationAttributes(object, attributes);
     }
 
     @SuppressWarnings("unchecked")
@@ -33,7 +33,7 @@ public abstract class AbstractMemberAdapter<T extends AbstractMember> implements
 
     @Override
     public void initializeElement(Element element, T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        GMLSerializerHelper.serializeOwnershipAttributes(element, object, namespaces);
+        GMLSerializerHelper.serializeAssociationAttributes(element, object, namespaces);
     }
 
     @Override
