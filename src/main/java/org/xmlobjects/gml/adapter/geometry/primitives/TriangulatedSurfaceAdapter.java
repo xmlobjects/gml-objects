@@ -53,7 +53,9 @@ public class TriangulatedSurfaceAdapter extends AbstractSurfaceAdapter<Triangula
     public void writeChildElements(TriangulatedSurface object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
 
-        if (object.getPatches() != null)
-            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "trianglePatches"), object.getPatches(), TriangleArrayPropertyAdapter.class, namespaces);
+        if (object.getPatches() != null) {
+            String name = namespaces.contains(GMLConstants.GML_3_2_NAMESPACE) ? "patches" : "trianglePatches";
+            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), name), object.getPatches(), TriangleArrayPropertyAdapter.class, namespaces);
+        }
     }
 }
