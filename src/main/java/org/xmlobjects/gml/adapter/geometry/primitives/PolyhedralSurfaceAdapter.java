@@ -52,10 +52,11 @@ public class PolyhedralSurfaceAdapter extends AbstractSurfaceAdapter<PolyhedralS
     @Override
     public void writeChildElements(PolyhedralSurface object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getPatches() != null) {
-            String name = namespaces.contains(GMLConstants.GML_3_2_NAMESPACE) ? "patches" : "polygonPatches";
-            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), name), object.getPatches(), PolygonPatchArrayPropertyAdapter.class, namespaces);
+            String localName = GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace)  ? "patches" : "polygonPatches";
+            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), localName), object.getPatches(), PolygonPatchArrayPropertyAdapter.class, namespaces);
         }
     }
 }

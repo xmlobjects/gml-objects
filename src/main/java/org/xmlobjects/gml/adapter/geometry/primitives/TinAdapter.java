@@ -70,8 +70,8 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getPatches() != null) {
-            String name = namespaces.contains(GMLConstants.GML_3_2_NAMESPACE) ? "patches" : "trianglePatches";
-            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), name), object.getPatches(), TriangleArrayPropertyAdapter.class, namespaces);
+            String localName = GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace) ? "patches" : "trianglePatches";
+            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), localName), object.getPatches(), TriangleArrayPropertyAdapter.class, namespaces);
         }
 
         for (LineStringSegmentArrayProperty property : object.getStopLines())
