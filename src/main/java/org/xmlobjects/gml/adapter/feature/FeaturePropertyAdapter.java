@@ -1,6 +1,5 @@
 package org.xmlobjects.gml.adapter.feature;
 
-import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.model.feature.FeatureProperty;
 
 import javax.xml.namespace.QName;

@@ -31,7 +31,7 @@ public class FeatureArrayProperty<T extends AbstractFeature> extends AbstractArr
         return genericElements != null && !genericElements.isEmpty();
     }
 
-    public void setGenericElement(List<GenericElement> genericElements) {
+    public void setGenericElements(List<GenericElement> genericElements) {
         this.genericElements = asChild(genericElements);
     }
 

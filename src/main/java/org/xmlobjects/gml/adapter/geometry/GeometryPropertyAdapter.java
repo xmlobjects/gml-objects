@@ -1,6 +1,5 @@
 package org.xmlobjects.gml.adapter.geometry;
 
-import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.model.geometry.GeometryProperty;
 
 import javax.xml.namespace.QName;

@@ -17,6 +17,10 @@ public class FeatureProperty<T extends AbstractFeature> extends AbstractProperty
         super(href);
     }
 
+    public FeatureProperty(GenericElement element) {
+        setGenericElement(element);
+    }
+
     public boolean isSetObject() {
         return getObject() != null;
     }
