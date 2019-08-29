@@ -24,7 +24,7 @@ public class LocalProperties implements Serializable {
         return Objects.equals(get(name), expectedValue);
     }
 
-    public boolean isSet(String name) {
+    public boolean contains(String name) {
         return properties != null && properties.containsKey(name);
     }
 
