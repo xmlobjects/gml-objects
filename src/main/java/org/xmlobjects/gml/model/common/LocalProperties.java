@@ -24,6 +24,10 @@ public class LocalProperties implements Serializable {
         return Objects.equals(get(name), expectedValue);
     }
 
+    public boolean isSet(String name) {
+        return properties != null && properties.containsKey(name);
+    }
+
     public void set(String name, Object value) {
         if (properties == null)
             properties = new HashMap<>();
