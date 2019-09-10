@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Supplier;
 
 public class LocalProperties implements Serializable {
     private Map<String, Object> properties;
@@ -22,6 +23,16 @@ public class LocalProperties implements Serializable {
 
     public boolean getAndCompare(String name, Object expectedValue) {
         return Objects.equals(get(name), expectedValue);
+    }
+
+    public <T> T getOrSet(String name, Class<T> typeOfT, Supplier<T> supplier) {
+        T value = get(name, typeOfT);
+        if (value == null) {
+            value = supplier.get();
+            set(name, value);
+        }
+
+        return value;
     }
 
     public boolean contains(String name) {
