@@ -1,7 +1,6 @@
 package org.xmlobjects.gml.util.copy;
 
 import org.xmlobjects.gml.model.common.ChildList;
-import org.xmlobjects.gml.model.common.LocalProperties;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -129,9 +128,6 @@ public class CopyBuilder {
         cloners.put(URL.class, IDENTITY_CLONER);
         cloners.put(UUID.class, IDENTITY_CLONER);
         cloners.put(Pattern.class, IDENTITY_CLONER);
-
-        // null cloner
-        cloners.put(LocalProperties.class, NULL_CLONER);
 
         // predefined cloners
         cloners.put(ChildList.class, new ChildListCloner());
