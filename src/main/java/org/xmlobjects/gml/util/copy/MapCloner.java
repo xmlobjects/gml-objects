@@ -1,7 +1,6 @@
 package org.xmlobjects.gml.util.copy;
 
 import java.util.Map;
-import java.util.Set;
 
 public class MapCloner<T extends Map> implements Cloner<T> {
 
@@ -19,8 +18,8 @@ public class MapCloner<T extends Map> implements Cloner<T> {
         if (shallowCopy)
             dest.putAll(src);
         else {
-            Set<Map.Entry> entries = src.entrySet();
-            for (Map.Entry entry : entries) {
+            for (Object object : src.entrySet()) {
+                Map.Entry entry = (Map.Entry) object;
                 Object key = entry.getKey();
                 Object value = entry.getValue();
                 dest.put(deepCopy(key, builder), deepCopy(value, builder));
