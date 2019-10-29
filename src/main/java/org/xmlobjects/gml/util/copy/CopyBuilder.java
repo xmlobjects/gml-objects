@@ -26,6 +26,8 @@ public class CopyBuilder {
     private final Cloner<Map> MAP_CLONER = new MapCloner<>();
     private final Cloner<Object[]> ARRAY_CLONER = new ArrayCloner();
 
+    private boolean failOnError;
+
     public CopyBuilder() {
         registerKnownCloners();
     }
@@ -61,6 +63,11 @@ public class CopyBuilder {
         return this;
     }
 
+    public CopyBuilder failOnError(boolean failOnError) {
+        this.failOnError = failOnError;
+        return this;
+    }
+
     @SuppressWarnings("unchecked")
     private <T> T copy(T src, T dest, boolean shallowCopy) {
         if (src == null || src == dest)
@@ -75,8 +82,9 @@ public class CopyBuilder {
             try {
                 Cloner<T> cloner = (Cloner<T>) findCloner(src.getClass());
                 clone = cloner.copy(src, dest, clones, shallowCopy, this);
-            } catch (Exception e) {
-                //
+            } catch (Throwable e) {
+                if (failOnError)
+                    throw new CopyException(e);
             }
         }
 

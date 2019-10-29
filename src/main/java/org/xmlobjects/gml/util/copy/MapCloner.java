@@ -11,7 +11,7 @@ public class MapCloner<T extends Map> implements Cloner<T> {
     @Override
     public T copy(T src, T dest, Map<Object, Object> clones, boolean shallowCopy, CopyBuilder builder) throws Exception {
         if (dest == null)
-            dest = (T) src.getClass().getDeclaredConstructor().newInstance();
+            dest = newInstance(src);
 
         clones.put(src, dest);
 
