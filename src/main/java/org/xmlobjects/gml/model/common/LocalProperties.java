@@ -13,10 +13,10 @@ public class LocalProperties implements Serializable {
         return properties != null ? properties.get(name) : null;
     }
 
-    public <T> T get(String name, Class<T> typeOfT) {
+    public <T> T get(String name, Class<T> type) {
         if (properties != null) {
             Object value = properties.get(name);
-            return value != null && typeOfT.isAssignableFrom(value.getClass()) ? typeOfT.cast(value) : null;
+            return value != null && type.isAssignableFrom(value.getClass()) ? type.cast(value) : null;
         } else
             return null;
     }
@@ -25,8 +25,8 @@ public class LocalProperties implements Serializable {
         return Objects.equals(get(name), expectedValue);
     }
 
-    public <T> T getOrSet(String name, Class<T> typeOfT, Supplier<T> supplier) {
-        T value = get(name, typeOfT);
+    public <T> T getOrSet(String name, Class<T> type, Supplier<T> supplier) {
+        T value = get(name, type);
         if (value == null) {
             value = supplier.get();
             set(name, value);
