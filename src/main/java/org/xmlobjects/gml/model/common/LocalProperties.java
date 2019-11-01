@@ -46,6 +46,10 @@ public class LocalProperties implements Serializable {
         properties.put(name, value);
     }
 
+    public boolean isEmpty() {
+        return properties == null || properties.isEmpty();
+    }
+
     public void remove(String name) {
         if (properties != null)
             properties.remove(name);
