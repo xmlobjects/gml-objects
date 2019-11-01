@@ -15,6 +15,16 @@ public class GeometryProperty<T extends AbstractGeometry> extends AbstractProper
         super(href);
     }
 
+    @Override
+    public T getObject() {
+        return super.getObject();
+    }
+
+    @Override
+    public void setObject(T object) {
+        super.setObject(object);
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public Class<T> getTargetType() {

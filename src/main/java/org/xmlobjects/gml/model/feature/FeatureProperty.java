@@ -21,8 +21,18 @@ public class FeatureProperty<T extends AbstractFeature> extends AbstractProperty
         setGenericElement(element);
     }
 
+    @Override
+    public T getObject() {
+        return super.getObject();
+    }
+
     public boolean isSetObject() {
         return getObject() != null;
+    }
+
+    @Override
+    public void setObject(T object) {
+        super.setObject(object);
     }
 
     public GenericElement getGenericElement() {
