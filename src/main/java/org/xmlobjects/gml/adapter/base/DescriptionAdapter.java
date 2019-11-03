@@ -29,7 +29,7 @@ import javax.xml.namespace.QName;
 public class DescriptionAdapter implements ObjectBuilder<StringOrRef>, ObjectSerializer<StringOrRef> {
 
     @Override
-    public StringOrRef createObject(QName name) {
+    public StringOrRef createObject(QName name) throws ObjectBuildException {
         return new StringOrRef();
     }
 
@@ -40,7 +40,7 @@ public class DescriptionAdapter implements ObjectBuilder<StringOrRef>, ObjectSer
                 .initializeObject(object, name, attributes, reader);
     }
     @Override
-    public Element createElement(StringOrRef object, Namespaces namespaces) {
+    public Element createElement(StringOrRef object, Namespaces namespaces) throws ObjectSerializeException {
         return object.getLanguage() != null && namespaces.contains(GMLConstants.GML_3_3_XBT_NAMESPACE) ?
                 Element.of(GMLConstants.GML_3_3_XBT_NAMESPACE, "description") :
                 Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "description");

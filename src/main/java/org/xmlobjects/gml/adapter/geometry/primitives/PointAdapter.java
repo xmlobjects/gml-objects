@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class PointAdapter extends AbstractGeometricPrimitiveAdapter<Point> {
 
     @Override
-    public Point createObject(QName name) {
+    public Point createObject(QName name) throws ObjectBuildException {
         return new Point();
     }
 
@@ -53,7 +53,7 @@ public class PointAdapter extends AbstractGeometricPrimitiveAdapter<Point> {
     }
 
     @Override
-    public Element createElement(Point object, Namespaces namespaces) {
+    public Element createElement(Point object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Point");
     }
 

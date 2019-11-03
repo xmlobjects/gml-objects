@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class MultiCurveCoverageAdapter extends AbstractFeatureAdapter<MultiCurveCoverage> {
 
     @Override
-    public MultiCurveCoverage createObject(QName name) {
+    public MultiCurveCoverage createObject(QName name) throws ObjectBuildException {
         return new MultiCurveCoverage();
     }
 
@@ -52,7 +52,7 @@ public class MultiCurveCoverageAdapter extends AbstractFeatureAdapter<MultiCurve
     }
 
     @Override
-    public Element createElement(MultiCurveCoverage object, Namespaces namespaces) {
+    public Element createElement(MultiCurveCoverage object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "MultiCurveCoverage");
     }
 

@@ -2,14 +2,17 @@ package org.xmlobjects.gml.adapter.valueobjects;
 
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.valueobjects.BooleanValue;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
@@ -26,24 +29,24 @@ import javax.xml.namespace.QName;
 public class BooleanValueAdapter implements ObjectBuilder<BooleanValue>, ObjectSerializer<BooleanValue> {
 
     @Override
-    public BooleanValue createObject(QName name) {
+    public BooleanValue createObject(QName name) throws ObjectBuildException {
         return new BooleanValue();
     }
 
     @Override
-    public void initializeObject(BooleanValue object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
+    public void initializeObject(BooleanValue object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         reader.getTextContent().ifBoolean(object::setValue);
         if (!object.isSetValue())
             attributes.getValue("nilReason").ifPresent(v -> object.setNilReason(new NilReason(v)));
     }
 
     @Override
-    public Element createElement(BooleanValue object, Namespaces namespaces) {
+    public Element createElement(BooleanValue object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Boolean");
     }
 
     @Override
-    public void initializeElement(Element element, BooleanValue object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, BooleanValue object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.isSetValue())
             element.addTextContent(TextContent.ofBoolean(object.getValue()));
         else if (object.isSetNilReason() && GMLConstants.GML_3_2_NAMESPACE.equals(GMLSerializerHelper.getGMLBaseNamespace(namespaces))) {

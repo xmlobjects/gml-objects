@@ -21,7 +21,7 @@ import javax.xml.namespace.QName;
 public class CoverageMappingRuleAdapter implements ObjectBuilder<CoverageMappingRule>, ObjectSerializer<CoverageMappingRule> {
 
     @Override
-    public CoverageMappingRule createObject(QName name) {
+    public CoverageMappingRule createObject(QName name) throws ObjectBuildException {
         return new CoverageMappingRule();
     }
 

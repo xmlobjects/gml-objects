@@ -20,7 +20,7 @@ import javax.xml.namespace.QName;
 public class LanguageStringAuxAdapter implements ObjectBuilder<StringOrRef>, ObjectSerializer<StringOrRef> {
 
     @Override
-    public StringOrRef createObject(QName name) {
+    public StringOrRef createObject(QName name) throws ObjectBuildException {
         return new StringOrRef();
     }
 

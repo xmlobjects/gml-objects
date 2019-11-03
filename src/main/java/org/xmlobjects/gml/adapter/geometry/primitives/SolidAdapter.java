@@ -29,7 +29,7 @@ import javax.xml.namespace.QName;
 public class SolidAdapter extends AbstractSolidAdapter<Solid> {
 
     @Override
-    public Solid createObject(QName name) {
+    public Solid createObject(QName name) throws ObjectBuildException {
         return new Solid();
     }
 
@@ -51,7 +51,7 @@ public class SolidAdapter extends AbstractSolidAdapter<Solid> {
     }
 
     @Override
-    public Element createElement(Solid object, Namespaces namespaces) {
+    public Element createElement(Solid object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Solid");
     }
 

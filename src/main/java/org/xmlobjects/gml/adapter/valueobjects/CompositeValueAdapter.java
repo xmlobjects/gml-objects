@@ -2,9 +2,11 @@ package org.xmlobjects.gml.adapter.valueobjects;
 
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.valueobjects.CompositeValue;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.xml.Element;
 import org.xmlobjects.xml.Namespaces;
 
@@ -17,12 +19,12 @@ import javax.xml.namespace.QName;
 public class CompositeValueAdapter extends AbstractCompositeValueAdapter<CompositeValue> {
 
     @Override
-    public CompositeValue createObject(QName name) {
+    public CompositeValue createObject(QName name) throws ObjectBuildException {
         return new CompositeValue();
     }
 
     @Override
-    public Element createElement(CompositeValue object, Namespaces namespaces) {
+    public Element createElement(CompositeValue object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "CompositeValue");
     }
 }

@@ -20,7 +20,7 @@ import javax.xml.namespace.QName;
 public class GridLimitsAdapter implements ObjectBuilder<GridLimits>, ObjectSerializer<GridLimits> {
 
     @Override
-    public GridLimits createObject(QName name) {
+    public GridLimits createObject(QName name) throws ObjectBuildException {
         return new GridLimits();
     }
 

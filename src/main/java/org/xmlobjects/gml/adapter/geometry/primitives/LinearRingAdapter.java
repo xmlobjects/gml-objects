@@ -31,7 +31,7 @@ import javax.xml.namespace.QName;
 public class LinearRingAdapter extends AbstractRingAdapter<LinearRing> {
 
     @Override
-    public LinearRing createObject(QName name) {
+    public LinearRing createObject(QName name) throws ObjectBuildException {
         return new LinearRing();
     }
 
@@ -65,7 +65,7 @@ public class LinearRingAdapter extends AbstractRingAdapter<LinearRing> {
     }
 
     @Override
-    public Element createElement(LinearRing object, Namespaces namespaces) {
+    public Element createElement(LinearRing object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "LinearRing");
     }
 

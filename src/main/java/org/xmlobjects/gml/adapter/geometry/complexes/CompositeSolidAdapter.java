@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class CompositeSolidAdapter extends AbstractSolidAdapter<CompositeSolid> {
 
     @Override
-    public CompositeSolid createObject(QName name) {
+    public CompositeSolid createObject(QName name) throws ObjectBuildException {
         return new CompositeSolid();
     }
 
@@ -49,7 +49,7 @@ public class CompositeSolidAdapter extends AbstractSolidAdapter<CompositeSolid> 
     }
 
     @Override
-    public Element createElement(CompositeSolid object, Namespaces namespaces) {
+    public Element createElement(CompositeSolid object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "CompositeSolid");
     }
 

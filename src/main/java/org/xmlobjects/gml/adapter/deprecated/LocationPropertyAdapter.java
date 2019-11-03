@@ -21,7 +21,7 @@ import javax.xml.namespace.QName;
 public class LocationPropertyAdapter extends AbstractGeometryPropertyAdapter<LocationProperty> {
 
     @Override
-    public LocationProperty createObject(QName name) {
+    public LocationProperty createObject(QName name) throws ObjectBuildException {
         return new LocationProperty();
     }
 

@@ -22,7 +22,7 @@ import javax.xml.namespace.QName;
 public class GridFunctionAdapter implements ObjectBuilder<GridFunction>, ObjectSerializer<GridFunction> {
 
     @Override
-    public GridFunction createObject(QName name) {
+    public GridFunction createObject(QName name) throws ObjectBuildException {
         return new GridFunction();
     }
 

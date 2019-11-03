@@ -27,7 +27,7 @@ import javax.xml.namespace.QName;
 public class CountListAdapter implements ObjectBuilder<CountList>, ObjectSerializer<CountList> {
 
     @Override
-    public CountList createObject(QName name) {
+    public CountList createObject(QName name) throws ObjectBuildException {
         return new CountList();
     }
 
@@ -37,7 +37,7 @@ public class CountListAdapter implements ObjectBuilder<CountList>, ObjectSeriali
     }
 
     @Override
-    public Element createElement(CountList object, Namespaces namespaces) {
+    public Element createElement(CountList object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "CountList");
     }
 

@@ -25,12 +25,12 @@ import javax.xml.namespace.QName;
 public class BoundingShapeAdapter implements ObjectBuilder<BoundingShape>, ObjectSerializer<BoundingShape> {
 
     @Override
-    public BoundingShape createObject(QName name) {
+    public BoundingShape createObject(QName name) throws ObjectBuildException {
         return new BoundingShape();
     }
 
     @Override
-    public void initializeObject(BoundingShape object, QName name, Attributes attributes, XMLReader reader) {
+    public void initializeObject(BoundingShape object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         attributes.getValue("nilReason").ifPresent(v -> object.setNilReason(new NilReason(v)));
     }
 
@@ -50,7 +50,7 @@ public class BoundingShapeAdapter implements ObjectBuilder<BoundingShape>, Objec
     }
 
     @Override
-    public void initializeElement(Element element, BoundingShape object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, BoundingShape object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.isSetNilReason() && GMLConstants.GML_3_2_NAMESPACE.equals(GMLSerializerHelper.getGMLBaseNamespace(namespaces))) {
             element.addAttribute("nilReason", object.getNilReason().getValue());
             element.addAttribute(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI, "nil", "true");

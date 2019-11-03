@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class MultiPointCoverageAdapter extends AbstractFeatureAdapter<MultiPointCoverage> {
 
     @Override
-    public MultiPointCoverage createObject(QName name) {
+    public MultiPointCoverage createObject(QName name) throws ObjectBuildException {
         return new MultiPointCoverage();
     }
 
@@ -52,7 +52,7 @@ public class MultiPointCoverageAdapter extends AbstractFeatureAdapter<MultiPoint
     }
 
     @Override
-    public Element createElement(MultiPointCoverage object, Namespaces namespaces) {
+    public Element createElement(MultiPointCoverage object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "MultiPointCoverage");
     }
 

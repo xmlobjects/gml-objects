@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class OrientableCurveAdapter extends AbstractCurveAdapter<OrientableCurve> {
 
     @Override
-    public OrientableCurve createObject(QName name) {
+    public OrientableCurve createObject(QName name) throws ObjectBuildException {
         return new OrientableCurve();
     }
 
@@ -47,7 +47,7 @@ public class OrientableCurveAdapter extends AbstractCurveAdapter<OrientableCurve
     }
 
     @Override
-    public Element createElement(OrientableCurve object, Namespaces namespaces) {
+    public Element createElement(OrientableCurve object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "OrientableCurve");
     }
 

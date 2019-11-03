@@ -29,7 +29,7 @@ import javax.xml.namespace.QName;
 public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<MultiSurface> {
 
     @Override
-    public MultiSurface createObject(QName name) {
+    public MultiSurface createObject(QName name) throws ObjectBuildException {
         return new MultiSurface();
     }
 
@@ -52,7 +52,7 @@ public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<Multi
     }
 
     @Override
-    public Element createElement(MultiSurface object, Namespaces namespaces) {
+    public Element createElement(MultiSurface object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "MultiSurface");
     }
 

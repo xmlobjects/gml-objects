@@ -27,7 +27,7 @@ import javax.xml.namespace.QName;
 public class QuantityExtentAdapter implements ObjectBuilder<QuantityExtent>, ObjectSerializer<QuantityExtent> {
 
     @Override
-    public QuantityExtent createObject(QName name) {
+    public QuantityExtent createObject(QName name) throws ObjectBuildException {
         return new QuantityExtent();
     }
 
@@ -37,7 +37,7 @@ public class QuantityExtentAdapter implements ObjectBuilder<QuantityExtent>, Obj
     }
 
     @Override
-    public Element createElement(QuantityExtent object, Namespaces namespaces) {
+    public Element createElement(QuantityExtent object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "QuantityExtent");
     }
 

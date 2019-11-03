@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class RingAdapter extends AbstractRingAdapter<Ring> {
 
     @Override
-    public Ring createObject(QName name) {
+    public Ring createObject(QName name) throws ObjectBuildException {
         return new Ring();
     }
 
@@ -47,7 +47,7 @@ public class RingAdapter extends AbstractRingAdapter<Ring> {
     }
 
     @Override
-    public Element createElement(Ring object, Namespaces namespaces) {
+    public Element createElement(Ring object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Ring");
     }
 

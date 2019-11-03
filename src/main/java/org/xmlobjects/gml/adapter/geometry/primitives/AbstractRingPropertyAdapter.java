@@ -17,7 +17,7 @@ import javax.xml.namespace.QName;
 public class AbstractRingPropertyAdapter implements ObjectBuilder<AbstractRingProperty>, ObjectSerializer<AbstractRingProperty> {
 
     @Override
-    public AbstractRingProperty createObject(QName name) {
+    public AbstractRingProperty createObject(QName name) throws ObjectBuildException {
         return new AbstractRingProperty();
     }
 

@@ -20,12 +20,12 @@ import javax.xml.namespace.QName;
 public class ValueArrayPropertyAdapter extends AbstractArrayPropertyAdapter<ValueArrayProperty> {
 
     @Override
-    public ValueArrayProperty createObject(QName name) {
+    public ValueArrayProperty createObject(QName name) throws ObjectBuildException {
         return new ValueArrayProperty();
     }
 
     @Override
-    public void initializeObject(ValueArrayProperty object, QName name, Attributes attributes, XMLReader reader) {
+    public void initializeObject(ValueArrayProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         GMLBuilderHelper.buildOwnershipAttributes(object, attributes);
     }
 
@@ -37,7 +37,7 @@ public class ValueArrayPropertyAdapter extends AbstractArrayPropertyAdapter<Valu
     }
 
     @Override
-    public void initializeElement(Element element, ValueArrayProperty object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, ValueArrayProperty object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         GMLSerializerHelper.serializeOwnershipAttributes(element, object, namespaces);
     }
 

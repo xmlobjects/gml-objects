@@ -27,7 +27,7 @@ import javax.xml.namespace.QName;
 public class CategoryListAdapter implements ObjectBuilder<CategoryList>, ObjectSerializer<CategoryList> {
 
     @Override
-    public CategoryList createObject(QName name) {
+    public CategoryList createObject(QName name) throws ObjectBuildException {
         return new CategoryList();
     }
 
@@ -37,7 +37,7 @@ public class CategoryListAdapter implements ObjectBuilder<CategoryList>, ObjectS
     }
 
     @Override
-    public Element createElement(CategoryList object, Namespaces namespaces) {
+    public Element createElement(CategoryList object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "CategoryList");
     }
 

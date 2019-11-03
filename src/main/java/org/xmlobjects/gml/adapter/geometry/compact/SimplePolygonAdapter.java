@@ -2,6 +2,7 @@ package org.xmlobjects.gml.adapter.geometry.compact;
 
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.converter.SimplePolygonConverter;
 import org.xmlobjects.gml.model.geometry.compact.SimplePolygon;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -21,12 +22,12 @@ import javax.xml.namespace.QName;
 public class SimplePolygonAdapter extends AbstractSimplePolygonAdapter<SimplePolygon> {
 
     @Override
-    public SimplePolygon createObject(QName name) {
+    public SimplePolygon createObject(QName name) throws ObjectBuildException {
         return new SimplePolygon();
     }
 
     @Override
-    public Element createElement(SimplePolygon object, Namespaces namespaces) {
+    public Element createElement(SimplePolygon object, Namespaces namespaces) throws ObjectSerializeException {
         return namespaces.contains(GMLConstants.GML_3_3_CE_NAMESPACE) ?
                 Element.of(GMLConstants.GML_3_3_CE_NAMESPACE, "SimplePolygon") : null;
     }

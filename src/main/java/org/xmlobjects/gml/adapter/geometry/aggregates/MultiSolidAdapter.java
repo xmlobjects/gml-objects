@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class MultiSolidAdapter extends AbstractGeometricAggregateAdapter<MultiSolid> {
 
     @Override
-    public MultiSolid createObject(QName name) {
+    public MultiSolid createObject(QName name) throws ObjectBuildException {
         return new MultiSolid();
     }
 
@@ -50,7 +50,7 @@ public class MultiSolidAdapter extends AbstractGeometricAggregateAdapter<MultiSo
     }
 
     @Override
-    public Element createElement(MultiSolid object, Namespaces namespaces) {
+    public Element createElement(MultiSolid object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "MultiSolid");
     }
 

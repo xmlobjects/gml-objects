@@ -2,6 +2,7 @@ package org.xmlobjects.gml.adapter.geometry.compact;
 
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.converter.SimpleTriangleConverter;
 import org.xmlobjects.gml.model.geometry.compact.SimpleTriangle;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -21,12 +22,12 @@ import javax.xml.namespace.QName;
 public class SimpleTriangleAdapter extends AbstractSimplePolygonAdapter<SimpleTriangle> {
 
     @Override
-    public SimpleTriangle createObject(QName name) {
+    public SimpleTriangle createObject(QName name) throws ObjectBuildException {
         return new SimpleTriangle();
     }
 
     @Override
-    public Element createElement(SimpleTriangle object, Namespaces namespaces) {
+    public Element createElement(SimpleTriangle object, Namespaces namespaces) throws ObjectSerializeException {
         return namespaces.contains(GMLConstants.GML_3_3_CE_NAMESPACE) ?
                 Element.of(GMLConstants.GML_3_3_CE_NAMESPACE, "SimpleTriangle") : null;
     }

@@ -2,14 +2,17 @@ package org.xmlobjects.gml.adapter.valueobjects;
 
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.valueobjects.Count;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
@@ -26,24 +29,24 @@ import javax.xml.namespace.QName;
 public class CountAdapter implements ObjectBuilder<Count>, ObjectSerializer<Count> {
 
     @Override
-    public Count createObject(QName name) {
+    public Count createObject(QName name) throws ObjectBuildException {
         return new Count();
     }
 
     @Override
-    public void initializeObject(Count object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
+    public void initializeObject(Count object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         reader.getTextContent().ifInteger(object::setValue);
         if (!object.isSetValue())
             attributes.getValue("nilReason").ifPresent(v -> object.setNilReason(new NilReason(v)));
     }
 
     @Override
-    public Element createElement(Count object, Namespaces namespaces) {
+    public Element createElement(Count object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Count");
     }
 
     @Override
-    public void initializeElement(Element element, Count object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, Count object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.isSetValue())
             element.addTextContent(TextContent.ofInteger(object.getValue()));
         else if (object.isSetNilReason() && GMLConstants.GML_3_2_NAMESPACE.equals(GMLSerializerHelper.getGMLBaseNamespace(namespaces))) {

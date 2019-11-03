@@ -1,12 +1,15 @@
 package org.xmlobjects.gml.adapter.basictypes;
 
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.model.basictypes.BooleanOrNilReason;
 import org.xmlobjects.gml.model.basictypes.BooleanOrNilReasonList;
 import org.xmlobjects.gml.model.basictypes.NilReason;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
@@ -20,12 +23,12 @@ import java.util.stream.Collectors;
 public class BooleanOrNilReasonListAdapter implements ObjectBuilder<BooleanOrNilReasonList>, ObjectSerializer<BooleanOrNilReasonList> {
 
     @Override
-    public BooleanOrNilReasonList createObject(QName name) {
+    public BooleanOrNilReasonList createObject(QName name) throws ObjectBuildException {
         return new BooleanOrNilReasonList();
     }
 
     @Override
-    public void initializeObject(BooleanOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
+    public void initializeObject(BooleanOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         TextContent content = reader.getTextContent();
         for (String item : content.getAsList()) {
             TextContent value = TextContent.of(item);
@@ -37,7 +40,7 @@ public class BooleanOrNilReasonListAdapter implements ObjectBuilder<BooleanOrNil
     }
 
     @Override
-    public void initializeElement(Element element, BooleanOrNilReasonList object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, BooleanOrNilReasonList object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         element.addTextContent(TextContent.ofList(object.getValue().stream()
                 .filter(Objects::nonNull)
                 .map(v -> {

@@ -31,7 +31,7 @@ import javax.xml.namespace.QName;
 public class LineStringAdapter extends AbstractCurveAdapter<LineString> {
 
     @Override
-    public LineString createObject(QName name) {
+    public LineString createObject(QName name) throws ObjectBuildException {
         return new LineString();
     }
 
@@ -65,7 +65,7 @@ public class LineStringAdapter extends AbstractCurveAdapter<LineString> {
     }
 
     @Override
-    public Element createElement(LineString object, Namespaces namespaces) {
+    public Element createElement(LineString object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "LineString");
     }
 

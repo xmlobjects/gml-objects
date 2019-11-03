@@ -2,6 +2,7 @@ package org.xmlobjects.gml.adapter.geometry.compact;
 
 import org.xmlobjects.annotation.XMLElement;
 import org.xmlobjects.annotation.XMLElements;
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.converter.SimpleRectangleConverter;
 import org.xmlobjects.gml.model.geometry.compact.SimpleRectangle;
 import org.xmlobjects.gml.util.GMLConstants;
@@ -21,12 +22,12 @@ import javax.xml.namespace.QName;
 public class SimpleRectangleAdapter extends AbstractSimplePolygonAdapter<SimpleRectangle> {
 
     @Override
-    public SimpleRectangle createObject(QName name) {
+    public SimpleRectangle createObject(QName name) throws ObjectBuildException {
         return new SimpleRectangle();
     }
 
     @Override
-    public Element createElement(SimpleRectangle object, Namespaces namespaces) {
+    public Element createElement(SimpleRectangle object, Namespaces namespaces) throws ObjectSerializeException {
         return namespaces.contains(GMLConstants.GML_3_3_CE_NAMESPACE) ?
                 Element.of(GMLConstants.GML_3_3_CE_NAMESPACE, "SimpleRectangle") : null;
     }

@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class GeometricComplexAdapter extends AbstractGeometryAdapter<GeometricComplex> {
 
     @Override
-    public GeometricComplex createObject(QName name) {
+    public GeometricComplex createObject(QName name) throws ObjectBuildException {
         return new GeometricComplex();
     }
 
@@ -49,7 +49,7 @@ public class GeometricComplexAdapter extends AbstractGeometryAdapter<GeometricCo
     }
 
     @Override
-    public Element createElement(GeometricComplex object, Namespaces namespaces) {
+    public Element createElement(GeometricComplex object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "GeometricComplex");
     }
 

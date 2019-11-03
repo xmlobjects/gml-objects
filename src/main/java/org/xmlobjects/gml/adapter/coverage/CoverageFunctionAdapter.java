@@ -25,7 +25,7 @@ import javax.xml.namespace.QName;
 public class CoverageFunctionAdapter implements ObjectBuilder<CoverageFunction>, ObjectSerializer<CoverageFunction> {
 
     @Override
-    public CoverageFunction createObject(QName name) {
+    public CoverageFunction createObject(QName name) throws ObjectBuildException {
         return new CoverageFunction();
     }
 

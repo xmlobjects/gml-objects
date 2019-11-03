@@ -25,7 +25,7 @@ import javax.xml.namespace.QName;
 public class PolyhedralSurfaceAdapter extends AbstractSurfaceAdapter<PolyhedralSurface> {
 
     @Override
-    public PolyhedralSurface createObject(QName name) {
+    public PolyhedralSurface createObject(QName name) throws ObjectBuildException {
         return new PolyhedralSurface();
     }
 
@@ -45,7 +45,7 @@ public class PolyhedralSurfaceAdapter extends AbstractSurfaceAdapter<PolyhedralS
     }
 
     @Override
-    public Element createElement(PolyhedralSurface object, Namespaces namespaces) {
+    public Element createElement(PolyhedralSurface object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "PolyhedralSurface");
     }
 

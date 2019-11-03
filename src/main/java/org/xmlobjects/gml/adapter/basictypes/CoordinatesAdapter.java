@@ -1,10 +1,13 @@
 package org.xmlobjects.gml.adapter.basictypes;
 
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.model.basictypes.Coordinates;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
@@ -15,12 +18,12 @@ import javax.xml.namespace.QName;
 public class CoordinatesAdapter implements ObjectBuilder<Coordinates>, ObjectSerializer<Coordinates> {
 
     @Override
-    public Coordinates createObject(QName name) {
+    public Coordinates createObject(QName name) throws ObjectBuildException {
         return new Coordinates();
     }
 
     @Override
-    public void initializeObject(Coordinates object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
+    public void initializeObject(Coordinates object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         reader.getTextContent().ifPresent(object::setValue);
         attributes.getValue("decimal").ifPresent(object::setDecimal);
         attributes.getValue("cs").ifPresent(object::setCoordinateSeparator);
@@ -28,7 +31,7 @@ public class CoordinatesAdapter implements ObjectBuilder<Coordinates>, ObjectSer
     }
 
     @Override
-    public void initializeElement(Element element, Coordinates object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, Coordinates object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         element.addTextContent(object.getValue());
 
         if (!object.getDecimal().equals(Coordinates.DEFAULT_DECIMAL))

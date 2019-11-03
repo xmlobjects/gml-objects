@@ -23,7 +23,7 @@ import javax.xml.namespace.QName;
 public class FileAdapter implements ObjectBuilder<File>, ObjectSerializer<File> {
 
     @Override
-    public File createObject(QName name) {
+    public File createObject(QName name) throws ObjectBuildException {
         return new File();
     }
 

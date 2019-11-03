@@ -1,12 +1,15 @@
 package org.xmlobjects.gml.adapter.basictypes;
 
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.model.basictypes.DoubleOrNilReason;
 import org.xmlobjects.gml.model.basictypes.DoubleOrNilReasonList;
 import org.xmlobjects.gml.model.basictypes.NilReason;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Element;
@@ -20,12 +23,12 @@ import java.util.stream.Collectors;
 public class DoubleOrNilReasonListAdapter implements ObjectBuilder<DoubleOrNilReasonList>, ObjectSerializer<DoubleOrNilReasonList> {
 
     @Override
-    public DoubleOrNilReasonList createObject(QName name) {
+    public DoubleOrNilReasonList createObject(QName name) throws ObjectBuildException {
         return new DoubleOrNilReasonList();
     }
 
     @Override
-    public void initializeObject(DoubleOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
+    public void initializeObject(DoubleOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         TextContent content = reader.getTextContent();
         for (String item : content.getAsList()) {
             try {
@@ -37,7 +40,7 @@ public class DoubleOrNilReasonListAdapter implements ObjectBuilder<DoubleOrNilRe
     }
 
     @Override
-    public void initializeElement(Element element, DoubleOrNilReasonList object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, DoubleOrNilReasonList object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         element.addTextContent(TextContent.ofList(object.getValue().stream()
                 .filter(Objects::nonNull)
                 .map(v -> {

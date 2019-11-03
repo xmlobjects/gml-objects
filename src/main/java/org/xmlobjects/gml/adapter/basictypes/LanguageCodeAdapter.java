@@ -18,7 +18,7 @@ import javax.xml.namespace.QName;
 public class LanguageCodeAdapter implements ObjectBuilder<Code>, ObjectSerializer<Code> {
 
     @Override
-    public Code createObject(QName name) {
+    public Code createObject(QName name) throws ObjectBuildException {
         return new Code();
     }
 

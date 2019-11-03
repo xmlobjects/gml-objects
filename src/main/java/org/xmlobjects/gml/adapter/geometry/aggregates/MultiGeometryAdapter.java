@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<MultiGeometry> {
 
     @Override
-    public MultiGeometry createObject(QName name) {
+    public MultiGeometry createObject(QName name) throws ObjectBuildException {
         return new MultiGeometry();
     }
 
@@ -50,7 +50,7 @@ public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<Mult
     }
 
     @Override
-    public Element createElement(MultiGeometry object, Namespaces namespaces) {
+    public Element createElement(MultiGeometry object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "MultiGeometry");
     }
 

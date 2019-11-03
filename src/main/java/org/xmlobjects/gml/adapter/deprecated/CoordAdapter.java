@@ -1,5 +1,6 @@
 package org.xmlobjects.gml.adapter.deprecated;
 
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.GMLBuilderHelper;
 import org.xmlobjects.gml.model.deprecated.Coord;
@@ -12,12 +13,12 @@ import javax.xml.namespace.QName;
 public class CoordAdapter implements ObjectBuilder<Coord> {
 
     @Override
-    public Coord createObject(QName name) {
+    public Coord createObject(QName name) throws ObjectBuildException {
         return new Coord();
     }
 
     @Override
-    public void buildChildObject(Coord object, QName name, Attributes attributes, XMLReader reader) throws XMLReadException {
+    public void buildChildObject(Coord object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "X":

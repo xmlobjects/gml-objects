@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class PolygonAdapter extends AbstractSurfaceAdapter<Polygon> {
 
     @Override
-    public Polygon createObject(QName name) {
+    public Polygon createObject(QName name) throws ObjectBuildException {
         return new Polygon();
     }
 
@@ -50,7 +50,7 @@ public class PolygonAdapter extends AbstractSurfaceAdapter<Polygon> {
     }
 
     @Override
-    public Element createElement(Polygon object, Namespaces namespaces) {
+    public Element createElement(Polygon object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Polygon");
     }
 

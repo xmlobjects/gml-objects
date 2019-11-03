@@ -1,5 +1,6 @@
 package org.xmlobjects.gml.adapter.coverage;
 
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.base.AbstractPropertyAdapter;
 import org.xmlobjects.gml.model.coverage.MultiSurfaceDomain;
 
@@ -8,7 +9,7 @@ import javax.xml.namespace.QName;
 public class MultiSurfaceDomainAdapter extends AbstractPropertyAdapter<MultiSurfaceDomain> {
 
     @Override
-    public MultiSurfaceDomain createObject(QName name) {
+    public MultiSurfaceDomain createObject(QName name) throws ObjectBuildException {
         return new MultiSurfaceDomain();
     }
 }

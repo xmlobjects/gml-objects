@@ -1,5 +1,6 @@
 package org.xmlobjects.gml.adapter.measures;
 
+import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.basictypes.AbstractMeasureAdapter;
 import org.xmlobjects.gml.model.measures.Time;
 
@@ -8,7 +9,7 @@ import javax.xml.namespace.QName;
 public class TimeAdapter extends AbstractMeasureAdapter<Time> {
 
     @Override
-    public Time createObject(QName name) {
+    public Time createObject(QName name) throws ObjectBuildException {
         return new Time();
     }
 }

@@ -17,7 +17,7 @@ import javax.xml.namespace.QName;
 public class ValuePropertyAdapter extends AbstractPropertyAdapter<ValueProperty> {
 
     @Override
-    public ValueProperty createObject(QName name) {
+    public ValueProperty createObject(QName name) throws ObjectBuildException {
         return new ValueProperty();
     }
 

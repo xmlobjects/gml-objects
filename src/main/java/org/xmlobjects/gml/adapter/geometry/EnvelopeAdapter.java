@@ -32,12 +32,12 @@ import java.util.List;
 public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerializer<Envelope> {
 
     @Override
-    public Envelope createObject(QName name) {
+    public Envelope createObject(QName name) throws ObjectBuildException {
         return new Envelope();
     }
 
     @Override
-    public void initializeObject(Envelope object, QName name, Attributes attributes, XMLReader reader) {
+    public void initializeObject(Envelope object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         GMLBuilderHelper.buildSRSReference(object, attributes);
     }
 
@@ -77,12 +77,12 @@ public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerialize
     }
 
     @Override
-    public Element createElement(Envelope object, Namespaces namespaces) {
+    public Element createElement(Envelope object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Envelope");
     }
 
     @Override
-    public void initializeElement(Element element, Envelope object, Namespaces namespaces, XMLWriter writer) {
+    public void initializeElement(Element element, Envelope object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         GMLSerializerHelper.serializeSRSReference(element, object, namespaces);
     }
 

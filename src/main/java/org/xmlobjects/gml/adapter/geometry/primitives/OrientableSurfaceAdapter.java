@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
 public class OrientableSurfaceAdapter extends AbstractSurfaceAdapter<OrientableSurface> {
 
     @Override
-    public OrientableSurface createObject(QName name) {
+    public OrientableSurface createObject(QName name) throws ObjectBuildException {
         return new OrientableSurface();
     }
 
@@ -47,7 +47,7 @@ public class OrientableSurfaceAdapter extends AbstractSurfaceAdapter<OrientableS
     }
 
     @Override
-    public Element createElement(OrientableSurface object, Namespaces namespaces) {
+    public Element createElement(OrientableSurface object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "OrientableSurface");
     }
 

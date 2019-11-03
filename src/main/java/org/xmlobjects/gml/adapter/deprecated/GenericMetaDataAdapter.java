@@ -6,6 +6,7 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.gml.adapter.GMLSerializerHelper;
 import org.xmlobjects.gml.model.deprecated.GenericMetaData;
 import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
@@ -23,7 +24,7 @@ import javax.xml.namespace.QName;
 public class GenericMetaDataAdapter extends AbstractMetaDataAdapter<GenericMetaData> {
 
     @Override
-    public GenericMetaData createObject(QName name) {
+    public GenericMetaData createObject(QName name) throws ObjectBuildException {
         return new GenericMetaData();
     }
 
@@ -34,12 +35,12 @@ public class GenericMetaDataAdapter extends AbstractMetaDataAdapter<GenericMetaD
     }
 
     @Override
-    public Element createElement(GenericMetaData object, Namespaces namespaces) {
+    public Element createElement(GenericMetaData object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "GenericMetaData");
     }
 
     @Override
-    public void writeChildElements(GenericMetaData object, Namespaces namespaces, XMLWriter writer) throws XMLWriteException {
+    public void writeChildElements(GenericMetaData object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.getAnyContent() != null)
             writer.writeMixedContent(object.getAnyContent());
     }

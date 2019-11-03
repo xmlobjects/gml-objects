@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
 
     @Override
-    public Tin createObject(QName name) {
+    public Tin createObject(QName name) throws ObjectBuildException {
         return new Tin();
     }
 
@@ -60,7 +60,7 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
     }
 
     @Override
-    public Element createElement(Tin object, Namespaces namespaces) {
+    public Element createElement(Tin object, Namespaces namespaces) throws ObjectSerializeException {
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "Tin");
     }
 
