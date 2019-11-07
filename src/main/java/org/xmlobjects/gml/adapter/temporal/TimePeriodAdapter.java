@@ -1,0 +1,86 @@
+package org.xmlobjects.gml.adapter.temporal;
+
+import org.xmlobjects.annotation.XMLElement;
+import org.xmlobjects.annotation.XMLElements;
+import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.gml.adapter.GMLBuilderHelper;
+import org.xmlobjects.gml.adapter.GMLSerializerHelper;
+import org.xmlobjects.gml.model.temporal.TimePeriod;
+import org.xmlobjects.gml.util.GMLConstants;
+import org.xmlobjects.serializer.ObjectSerializeException;
+import org.xmlobjects.stream.XMLReadException;
+import org.xmlobjects.stream.XMLReader;
+import org.xmlobjects.stream.XMLWriteException;
+import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.xml.Attributes;
+import org.xmlobjects.xml.Element;
+import org.xmlobjects.xml.Namespaces;
+
+import javax.xml.namespace.QName;
+
+@XMLElements({
+        @XMLElement(name = "TimePeriod", namespaceURI = GMLConstants.GML_3_2_NAMESPACE),
+        @XMLElement(name = "TimePeriod", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
+})
+public class TimePeriodAdapter extends AbstractTimeGeometricPrimitiveAdapter<TimePeriod> {
+
+    @Override
+    public TimePeriod createObject(QName name) throws ObjectBuildException {
+        return new TimePeriod();
+    }
+
+    @Override
+    public void buildChildObject(TimePeriod object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+        if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
+            switch (name.getLocalPart()) {
+                case "beginPosition":
+                    object.setBeginPosition(reader.getObjectUsingBuilder(TimePositionAdapter.class));
+                    break;
+                case "begin":
+                    object.setBegin(reader.getObjectUsingBuilder(TimeInstantPropertyAdapter.class));
+                    break;
+                case "endPosition":
+                    object.setEndPosition(reader.getObjectUsingBuilder(TimePositionAdapter.class));
+                    break;
+                case "end":
+                    object.setEnd(reader.getObjectUsingBuilder(TimeInstantPropertyAdapter.class));
+                    break;
+                case "duration":
+                    object.setDuration(reader.getObjectUsingBuilder(TimeDurationAdapter.class));
+                    break;
+                case "timeInterval":
+                    object.setTimeInterval(reader.getObjectUsingBuilder(TimeIntervalLengthAdapter.class));
+                    break;
+                default:
+                    super.buildChildObject(object, name, attributes, reader);
+                    break;
+            }
+        }
+    }
+
+    @Override
+    public Element createElement(TimePeriod object, Namespaces namespaces) throws ObjectSerializeException {
+        return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "TimePeriod");
+    }
+
+    @Override
+    public void writeChildElements(TimePeriod object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+        super.writeChildElements(object, namespaces, writer);
+        String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
+
+        if (object.isSetBeginPosition())
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "beginPosition"), object.getBeginPosition(), TimePositionAdapter.class, namespaces);
+        else if (object.isSetBegin())
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "begin"), object.getBegin(), TimeInstantPropertyAdapter.class, namespaces);
+
+        if (object.isSetEndPosition())
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "endPosition"), object.getEndPosition(), TimePositionAdapter.class, namespaces);
+        else if (object.isSetEnd())
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "end"), object.getEnd(), TimeInstantPropertyAdapter.class, namespaces);
+
+        if (object.isSetDuration())
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "duration"), object.getDuration(), TimeDurationAdapter.class, namespaces);
+        else if (object.isSetTimeInterval())
+            writer.writeElementUsingSerializer(Element.of(baseNamespace, "timeInterval"), object.getTimeInterval(), TimeIntervalLengthAdapter.class, namespaces);
+    }
+}
