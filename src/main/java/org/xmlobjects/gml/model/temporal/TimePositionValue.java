@@ -1,7 +1,7 @@
 package org.xmlobjects.gml.model.temporal;
 
-import org.xmlobjects.gml.util.copy.CopyBuilder;
-import org.xmlobjects.gml.util.copy.Copyable;
+import org.xmlobjects.util.copy.CopyBuilder;
+import org.xmlobjects.util.copy.Copyable;
 
 public interface TimePositionValue<T> extends Copyable {
     T getValue();

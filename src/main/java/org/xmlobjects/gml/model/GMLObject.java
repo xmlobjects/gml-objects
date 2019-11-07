@@ -1,12 +1,12 @@
 package org.xmlobjects.gml.model;
 
-import org.xmlobjects.gml.model.common.Child;
-import org.xmlobjects.gml.model.common.ChildList;
+import org.xmlobjects.model.Child;
+import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 
 public abstract class GMLObject implements Child {
-    private GMLObject parent;
+    private Child parent;
 
     protected final <T extends Child> T asChild(T child) {
         if (child != null)
@@ -24,12 +24,12 @@ public abstract class GMLObject implements Child {
     }
 
     @Override
-    public final GMLObject getParent() {
+    public final Child getParent() {
         return parent;
     }
 
     @Override
-    public final void setParent(GMLObject parent) {
+    public final void setParent(Child parent) {
         this.parent = parent;
     }
 }

@@ -3,10 +3,10 @@ package org.xmlobjects.gml.model.base;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.basictypes.Code;
 import org.xmlobjects.gml.model.basictypes.CodeWithAuthority;
-import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.common.LocalProperties;
 import org.xmlobjects.gml.model.deprecated.MetaDataProperty;
 import org.xmlobjects.gml.model.deprecated.StringOrRef;
+import org.xmlobjects.model.ChildList;
 
 import java.util.ArrayList;
 import java.util.List;

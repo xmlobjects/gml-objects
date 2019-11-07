@@ -2,10 +2,10 @@ package org.xmlobjects.gml.model.geometry.complexes;
 
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
-import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.geometry.primitives.AbstractSurface;
 import org.xmlobjects.gml.model.geometry.primitives.SurfaceProperty;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
+import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 

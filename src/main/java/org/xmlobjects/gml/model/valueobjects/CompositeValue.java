@@ -3,7 +3,7 @@ package org.xmlobjects.gml.model.valueobjects;
 import org.xmlobjects.gml.model.base.AbstractGML;
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
-import org.xmlobjects.gml.model.common.ChildList;
+import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 

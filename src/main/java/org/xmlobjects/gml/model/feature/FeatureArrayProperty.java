@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.model.feature;
 
 import org.xmlobjects.gml.model.base.AbstractArrayProperty;
-import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.common.GenericElement;
+import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 

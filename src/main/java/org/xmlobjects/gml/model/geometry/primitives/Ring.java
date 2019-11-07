@@ -2,8 +2,8 @@ package org.xmlobjects.gml.model.geometry.primitives;
 
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
-import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
+import org.xmlobjects.model.ChildList;
 
 import java.util.Collection;
 import java.util.Collections;

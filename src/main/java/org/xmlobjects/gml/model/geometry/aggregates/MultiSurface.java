@@ -1,9 +1,9 @@
 package org.xmlobjects.gml.model.geometry.aggregates;
 
-import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.geometry.primitives.SurfaceArrayProperty;
 import org.xmlobjects.gml.model.geometry.primitives.SurfaceProperty;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
+import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 

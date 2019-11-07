@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.model.geometry;
 
 import org.xmlobjects.gml.model.GMLObject;
-import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
+import org.xmlobjects.model.ChildList;
 
 import java.util.Collection;
 import java.util.Collections;

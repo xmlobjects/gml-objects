@@ -1,9 +1,9 @@
 package org.xmlobjects.gml.model.geometry.grids;
 
-import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.geometry.Vector;
 import org.xmlobjects.gml.model.geometry.primitives.PointProperty;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
+import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 

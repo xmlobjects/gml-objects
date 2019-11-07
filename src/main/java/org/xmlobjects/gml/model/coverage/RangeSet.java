@@ -1,9 +1,9 @@
 package org.xmlobjects.gml.model.coverage;
 
 import org.xmlobjects.gml.model.GMLObject;
-import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.valueobjects.AbstractScalarValueList;
 import org.xmlobjects.gml.model.valueobjects.ValueArray;
+import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 

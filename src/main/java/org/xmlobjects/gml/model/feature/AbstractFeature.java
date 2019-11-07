@@ -1,9 +1,9 @@
 package org.xmlobjects.gml.model.feature;
 
 import org.xmlobjects.gml.model.base.AbstractGML;
-import org.xmlobjects.gml.model.common.ChildList;
 import org.xmlobjects.gml.model.common.GenericElement;
 import org.xmlobjects.gml.model.deprecated.LocationProperty;
+import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 

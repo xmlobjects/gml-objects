@@ -1,7 +1,7 @@
 package org.xmlobjects.gml.model.temporal;
 
 import org.xmlobjects.gml.model.GMLObject;
-import org.xmlobjects.gml.util.copy.CopyBuilder;
+import org.xmlobjects.util.copy.CopyBuilder;
 import org.xmlobjects.xml.TextContent;
 
 import javax.xml.datatype.Duration;

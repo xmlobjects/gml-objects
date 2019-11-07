@@ -1,6 +1,6 @@
 package org.xmlobjects.gml.model.temporal;
 
-import org.xmlobjects.gml.model.common.ChildList;
+import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 

@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.geometry;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
 import org.xmlobjects.gml.model.feature.AbstractFeature;
+import org.xmlobjects.model.Child;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -90,7 +91,7 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     @Override
     public SRSReference getInheritedSRSReference() {
         if (srsName == null) {
-            GMLObject parent = this;
+            Child parent = this;
 
             while ((parent = parent.getParent()) != null) {
                 if (parent instanceof AbstractFeature) {
