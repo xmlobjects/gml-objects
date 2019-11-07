@@ -48,6 +48,7 @@ public class TimeInstantAdapter extends AbstractTimeGeometricPrimitiveAdapter<Ti
     public void writeChildElements(TimeInstant object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
 
-        writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "timePosition"), object.getTimePosition(), TimePositionAdapter.class, namespaces);
+        if (object.getTimePosition() != null)
+            writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "timePosition"), object.getTimePosition(), TimePositionAdapter.class, namespaces);
     }
 }
