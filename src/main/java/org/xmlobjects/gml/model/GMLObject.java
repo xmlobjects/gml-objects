@@ -2,10 +2,11 @@ package org.xmlobjects.gml.model;
 
 import org.xmlobjects.model.Child;
 import org.xmlobjects.model.ChildList;
+import org.xmlobjects.util.copy.Copyable;
 
 import java.util.List;
 
-public abstract class GMLObject implements Child {
+public abstract class GMLObject implements Child, Copyable {
     private Child parent;
 
     protected final <T extends Child> T asChild(T child) {
