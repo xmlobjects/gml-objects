@@ -6,8 +6,8 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
 public class CalendarDate implements TimePositionValue<OffsetDateTime> {
-    private final OffsetDateTime date;
-    private final CalenderDateType type;
+    private OffsetDateTime date;
+    private CalenderDateType type;
 
     public CalendarDate(OffsetDateTime date, CalenderDateType type) {
         this.date = date;

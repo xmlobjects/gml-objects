@@ -5,7 +5,7 @@ import java.time.OffsetTime;
 import java.time.ZoneOffset;
 
 public class ClockTime implements TimePositionValue<OffsetTime> {
-    private final OffsetTime clockTime;
+    private OffsetTime clockTime;
 
     public ClockTime(OffsetTime clockTime) {
         this.clockTime = clockTime;

@@ -6,7 +6,7 @@ import org.xmlobjects.gml.model.GMLObject;
 import java.util.Objects;
 
 public class GenericElement extends GMLObject {
-    private final Element content;
+    private Element content;
 
     private GenericElement(Element content) {
         this.content = Objects.requireNonNull(content, "Content must not be null.");
