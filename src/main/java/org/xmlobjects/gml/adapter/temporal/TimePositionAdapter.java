@@ -71,7 +71,10 @@ public class TimePositionAdapter implements ObjectBuilder<TimePosition>, ObjectS
         }
 
         element.addAttribute("calendarEraName", object.getCalendarEraName());
-        element.addAttribute("frame", object.getFrame());
+
+        if (object.isSetFrame())
+            element.addAttribute("frame", object.getFrame());
+
         if (object.getIndeterminatePosition() != null)
             element.addAttribute("indeterminatePosition", object.getIndeterminatePosition().toValue());
     }
