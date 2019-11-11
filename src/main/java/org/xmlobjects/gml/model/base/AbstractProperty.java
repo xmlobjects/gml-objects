@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.model.base;
 
-import org.xmlobjects.gml.model.GMLObject;
+import org.xmlobjects.model.Child;
 
-public abstract class AbstractProperty<T extends GMLObject> extends AbstractInlineOrByReferenceProperty<T> implements OwnershipAttributes {
+public abstract class AbstractProperty<T extends Child> extends AbstractInlineOrByReferenceProperty<T> implements OwnershipAttributes {
     private Boolean owns;
 
     public AbstractProperty() {

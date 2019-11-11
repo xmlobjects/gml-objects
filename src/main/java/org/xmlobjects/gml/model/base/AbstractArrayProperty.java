@@ -1,11 +1,11 @@
 package org.xmlobjects.gml.model.base;
 
-import org.xmlobjects.gml.model.GMLObject;
+import org.xmlobjects.model.Child;
 import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 
-public abstract class AbstractArrayProperty<T extends GMLObject> extends AbstractAssociation<T> {
+public abstract class AbstractArrayProperty<T extends Child> extends AbstractAssociation<T> {
     private List<T> objects;
 
     public AbstractArrayProperty() {

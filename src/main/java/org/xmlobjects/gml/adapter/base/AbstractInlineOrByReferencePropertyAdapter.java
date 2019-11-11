@@ -4,8 +4,8 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.GMLBuilderHelper;
 import org.xmlobjects.gml.adapter.GMLSerializerHelper;
-import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.base.AbstractInlineOrByReferenceProperty;
+import org.xmlobjects.model.Child;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
@@ -28,7 +28,7 @@ public abstract class AbstractInlineOrByReferencePropertyAdapter<T extends Abstr
     @SuppressWarnings("unchecked")
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        object.setObject((GMLObject) reader.getObject(object.getTargetType()));
+        object.setObject((Child) reader.getObject(object.getTargetType()));
     }
 
     @Override

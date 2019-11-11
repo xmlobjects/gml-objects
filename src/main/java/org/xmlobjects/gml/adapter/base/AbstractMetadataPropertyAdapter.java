@@ -4,9 +4,9 @@ import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
 import org.xmlobjects.gml.adapter.GMLBuilderHelper;
 import org.xmlobjects.gml.adapter.GMLSerializerHelper;
-import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.base.AbstractMetadataProperty;
 import org.xmlobjects.gml.model.common.GenericElement;
+import org.xmlobjects.model.Child;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.BuildResult;
@@ -30,7 +30,7 @@ public abstract class AbstractMetadataPropertyAdapter<T extends AbstractMetadata
     @SuppressWarnings("unchecked")
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        BuildResult<GMLObject> result = reader.getObjectOrDOMElement(object.getTargetType());
+        BuildResult<Child> result = reader.getObjectOrDOMElement(object.getTargetType());
         if (result.isSetObject())
             object.setObject(result.getObject());
         else if (result.isSetDOMElement())

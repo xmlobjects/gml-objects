@@ -1,9 +1,9 @@
 package org.xmlobjects.gml.model.base;
 
-import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.common.GenericElement;
+import org.xmlobjects.model.Child;
 
-public abstract class AbstractMetadataProperty<T extends GMLObject> extends AbstractAssociation<T> implements OwnershipAttributes {
+public abstract class AbstractMetadataProperty<T extends Child> extends AbstractAssociation<T> implements OwnershipAttributes {
     private T object;
     private GenericElement genericElement;
     private Boolean owns;

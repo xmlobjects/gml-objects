@@ -1,8 +1,8 @@
 package org.xmlobjects.gml.model.base;
 
-import org.xmlobjects.gml.model.GMLObject;
+import org.xmlobjects.model.Child;
 
-public abstract class AbstractInlineProperty<T extends GMLObject> extends AbstractAssociation<T> {
+public abstract class AbstractInlineProperty<T extends Child> extends AbstractAssociation<T> {
     private T object;
 
     public AbstractInlineProperty() {

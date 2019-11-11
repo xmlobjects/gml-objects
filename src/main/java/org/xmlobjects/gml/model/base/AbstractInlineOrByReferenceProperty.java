@@ -1,11 +1,11 @@
 package org.xmlobjects.gml.model.base;
 
-import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
+import org.xmlobjects.model.Child;
 
-public abstract class AbstractInlineOrByReferenceProperty<T extends GMLObject> extends AbstractAssociation<T> implements AssociationAttributes {
+public abstract class AbstractInlineOrByReferenceProperty<T extends Child> extends AbstractAssociation<T> implements AssociationAttributes {
     private T object;
     private String href;
     private String role;
