@@ -8,8 +8,8 @@ import org.xmlobjects.gml.model.deprecated.StringOrRef;
 import java.util.List;
 
 public interface StandardObjectProperties {
-    List<MetaDataProperty> getMetaDataProperties();
-    void setMetaDataProperties(List<MetaDataProperty> metaDataProperties);
+    List<MetaDataProperty<?>> getMetaDataProperties();
+    void setMetaDataProperties(List<MetaDataProperty<?>> metaDataProperties);
     StringOrRef getDescription();
     void setDescription(StringOrRef description);
     Reference getDescriptionReference();

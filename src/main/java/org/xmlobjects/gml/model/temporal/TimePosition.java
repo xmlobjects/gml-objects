@@ -4,7 +4,7 @@ import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.xml.TextContent;
 
 public class TimePosition extends GMLObject {
-    private TimePositionValue value;
+    private TimePositionValue<?> value;
     private String frame;
     private String calendarEraName;
     private TimeIndeterminateValue indeterminatePosition;
@@ -12,7 +12,7 @@ public class TimePosition extends GMLObject {
     public TimePosition() {
     }
 
-    public TimePosition(TimePositionValue value) {
+    public TimePosition(TimePositionValue<?> value) {
         this.value = value;
     }
 
@@ -20,11 +20,11 @@ public class TimePosition extends GMLObject {
         setValue(value);
     }
 
-    public TimePositionValue getValue() {
+    public TimePositionValue<?> getValue() {
         return value;
     }
 
-    public void setValue(TimePositionValue value) {
+    public void setValue(TimePositionValue<?> value) {
         this.value = value;
     }
 

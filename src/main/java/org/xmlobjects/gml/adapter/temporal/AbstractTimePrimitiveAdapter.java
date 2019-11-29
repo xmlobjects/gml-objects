@@ -33,7 +33,7 @@ public abstract class AbstractTimePrimitiveAdapter<T extends AbstractTimePrimiti
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (RelatedTime property : object.getRelatedTimes())
+        for (RelatedTime<?> property : object.getRelatedTimes())
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "relatedTime"), property, RelatedTimeAdapter.class, namespaces);
     }
 }

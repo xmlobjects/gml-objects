@@ -17,7 +17,7 @@ public class PolyhedralSurface extends Surface {
     }
 
     @Override
-    public void setPatches(SurfacePatchArrayProperty patches) {
+    public void setPatches(SurfacePatchArrayProperty<?> patches) {
         if (!(patches instanceof PolygonPatchArrayProperty))
             throw new IllegalArgumentException("Only a polygon patch array property is allowed.");
 

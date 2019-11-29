@@ -5,10 +5,10 @@ import org.xmlobjects.gml.model.feature.FeatureProperty;
 
 import javax.xml.namespace.QName;
 
-public class FeaturePropertyAdapter extends AbstractFeaturePropertyAdapter<FeatureProperty> {
+public class FeaturePropertyAdapter extends AbstractFeaturePropertyAdapter<FeatureProperty<?>> {
 
     @Override
-    public FeatureProperty createObject(QName name) throws ObjectBuildException {
-        return new FeatureProperty();
+    public FeatureProperty<?> createObject(QName name) throws ObjectBuildException {
+        return new FeatureProperty<>();
     }
 }

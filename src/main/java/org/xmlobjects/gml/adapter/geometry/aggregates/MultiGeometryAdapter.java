@@ -54,13 +54,12 @@ public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<Mult
         return Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "MultiGeometry");
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void writeChildElements(MultiGeometry object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (GeometryProperty property : object.getGeometryMember())
+        for (GeometryProperty<?> property : object.getGeometryMember())
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "geometryMember"), property, GeometryPropertyAdapter.class, namespaces);
 
         if (object.getGeometryMembers() != null)

@@ -15,6 +15,7 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
+@SuppressWarnings("rawtypes")
 public abstract class AbstractInlinePropertyAdapter<T extends AbstractInlineProperty> implements ObjectBuilder<T>, ObjectSerializer<T> {
 
     @SuppressWarnings("unchecked")

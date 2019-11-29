@@ -18,6 +18,7 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
+@SuppressWarnings("rawtypes")
 public abstract class AbstractInlineOrByReferencePropertyAdapter<T extends AbstractInlineOrByReferenceProperty> implements ObjectBuilder<T>, ObjectSerializer<T> {
 
     @Override

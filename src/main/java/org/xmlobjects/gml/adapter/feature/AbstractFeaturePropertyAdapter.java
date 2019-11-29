@@ -16,6 +16,7 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
+@SuppressWarnings("rawtypes")
 public abstract class AbstractFeaturePropertyAdapter<T extends FeatureProperty> extends AbstractPropertyAdapter<T> {
 
     @SuppressWarnings("unchecked")

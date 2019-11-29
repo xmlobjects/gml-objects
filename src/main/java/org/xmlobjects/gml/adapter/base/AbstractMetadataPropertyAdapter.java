@@ -20,6 +20,7 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
+@SuppressWarnings("rawtypes")
 public abstract class AbstractMetadataPropertyAdapter<T extends AbstractMetadataProperty> implements ObjectBuilder<T>, ObjectSerializer<T> {
 
     @Override
@@ -30,7 +31,7 @@ public abstract class AbstractMetadataPropertyAdapter<T extends AbstractMetadata
     @SuppressWarnings("unchecked")
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        BuildResult<Child> result = reader.getObjectOrDOMElement(object.getTargetType());
+        BuildResult<? extends Child> result = reader.getObjectOrDOMElement(object.getTargetType());
         if (result.isSetObject())
             object.setObject(result.getObject());
         else if (result.isSetDOMElement())

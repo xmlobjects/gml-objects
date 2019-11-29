@@ -16,20 +16,20 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
-public class MetaDataPropertyAdapter extends AbstractPropertyAdapter<MetaDataProperty> {
+public class MetaDataPropertyAdapter extends AbstractPropertyAdapter<MetaDataProperty<?>> {
 
     @Override
-    public MetaDataProperty createObject(QName name) throws ObjectBuildException {
-        return new MetaDataProperty();
+    public MetaDataProperty<?> createObject(QName name) throws ObjectBuildException {
+        return new MetaDataProperty<>();
     }
 
     @Override
-    public void initializeObject(MetaDataProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
+    public void initializeObject(MetaDataProperty<?> object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         super.initializeObject(object, name, attributes, reader);
         attributes.getValue("about").ifPresent(object::setAbout);
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
     public void buildChildObject(MetaDataProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         BuildResult<AbstractMetaData> result = reader.getObjectOrDOMElement(AbstractMetaData.class);
@@ -40,7 +40,7 @@ public class MetaDataPropertyAdapter extends AbstractPropertyAdapter<MetaDataPro
     }
 
     @Override
-    public void writeChildElements(MetaDataProperty object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
+    public void writeChildElements(MetaDataProperty<?> object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.isSetObject())
             writer.writeObject(object.getObject(), namespaces);
         else if (object.isSetGenericElement())

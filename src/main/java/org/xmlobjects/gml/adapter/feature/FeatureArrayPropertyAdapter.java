@@ -6,7 +6,7 @@ import org.xmlobjects.gml.model.feature.FeatureArrayProperty;
 
 import javax.xml.namespace.QName;
 
-public class FeatureArrayPropertyAdapter extends AbstractFeatureArrayPropertyAdapter<FeatureArrayProperty<AbstractFeature>> {
+public class FeatureArrayPropertyAdapter extends AbstractFeatureArrayPropertyAdapter<FeatureArrayProperty<?>> {
 
     @Override
     public FeatureArrayProperty<AbstractFeature> createObject(QName name) throws ObjectBuildException {

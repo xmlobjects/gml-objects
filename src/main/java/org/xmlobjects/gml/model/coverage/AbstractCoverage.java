@@ -2,7 +2,7 @@ package org.xmlobjects.gml.model.coverage;
 
 import org.xmlobjects.gml.model.feature.AbstractFeature;
 
-public abstract class AbstractCoverage<T extends AbstractDomainSet> extends AbstractFeature {
+public abstract class AbstractCoverage<T extends AbstractDomainSet<?>> extends AbstractFeature {
     private T domainSet;
     private RangeSet rangeSet;
 

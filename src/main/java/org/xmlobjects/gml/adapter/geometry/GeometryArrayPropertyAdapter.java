@@ -6,7 +6,7 @@ import org.xmlobjects.gml.model.geometry.GeometryArrayProperty;
 
 import javax.xml.namespace.QName;
 
-public class GeometryArrayPropertyAdapter extends AbstractGeometryArrayPropertyAdapter<GeometryArrayProperty<AbstractGeometry>> {
+public class GeometryArrayPropertyAdapter extends AbstractGeometryArrayPropertyAdapter<GeometryArrayProperty<?>> {
 
     @Override
     public GeometryArrayProperty<AbstractGeometry> createObject(QName name) throws ObjectBuildException {

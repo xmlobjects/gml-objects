@@ -8,32 +8,32 @@ import org.xmlobjects.model.ChildList;
 import java.util.List;
 
 public class MultiGeometry extends AbstractGeometricAggregate {
-    private List<GeometryProperty> geometryMember;
-    private GeometryArrayProperty geometryMembers;
+    private List<GeometryProperty<?>> geometryMember;
+    private GeometryArrayProperty<?> geometryMembers;
 
     public MultiGeometry() {
     }
 
-    public MultiGeometry(List<GeometryProperty> geometryMember) {
+    public MultiGeometry(List<GeometryProperty<?>> geometryMember) {
         setGeometryMember(geometryMember);
     }
 
-    public List<GeometryProperty> getGeometryMember() {
+    public List<GeometryProperty<?>> getGeometryMember() {
         if (geometryMember == null)
             geometryMember = new ChildList<>(this);
 
         return geometryMember;
     }
 
-    public void setGeometryMember(List<GeometryProperty> geometryMember) {
+    public void setGeometryMember(List<GeometryProperty<?>> geometryMember) {
         this.geometryMember = asChild(geometryMember);
     }
 
-    public GeometryArrayProperty getGeometryMembers() {
+    public GeometryArrayProperty<?> getGeometryMembers() {
         return geometryMembers;
     }
 
-    public void setGeometryMembers(GeometryArrayProperty geometryMembers) {
+    public void setGeometryMembers(GeometryArrayProperty<?> geometryMembers) {
         this.geometryMembers = asChild(geometryMembers);
     }
 

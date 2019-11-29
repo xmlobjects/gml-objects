@@ -1,6 +1,6 @@
 package org.xmlobjects.gml.model.coverage;
 
-public abstract class AbstractDiscreteCoverage<T extends AbstractDomainSet> extends AbstractCoverage<T> {
+public abstract class AbstractDiscreteCoverage<T extends AbstractDomainSet<?>> extends AbstractCoverage<T> {
     private CoverageFunction coverageFunction;
 
     public AbstractDiscreteCoverage() {

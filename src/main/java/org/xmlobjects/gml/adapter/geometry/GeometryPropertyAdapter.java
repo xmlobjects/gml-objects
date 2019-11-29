@@ -5,10 +5,10 @@ import org.xmlobjects.gml.model.geometry.GeometryProperty;
 
 import javax.xml.namespace.QName;
 
-public class GeometryPropertyAdapter extends AbstractGeometryPropertyAdapter<GeometryProperty> {
+public class GeometryPropertyAdapter extends AbstractGeometryPropertyAdapter<GeometryProperty<?>> {
 
     @Override
-    public GeometryProperty createObject(QName name) throws ObjectBuildException {
+    public GeometryProperty<?> createObject(QName name) throws ObjectBuildException {
         return new GeometryProperty<>();
     }
 }

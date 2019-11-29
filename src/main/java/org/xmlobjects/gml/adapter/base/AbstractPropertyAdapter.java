@@ -15,6 +15,7 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
+@SuppressWarnings("rawtypes")
 public abstract class AbstractPropertyAdapter<T extends AbstractProperty> extends AbstractInlineOrByReferencePropertyAdapter<T> {
 
     @Override

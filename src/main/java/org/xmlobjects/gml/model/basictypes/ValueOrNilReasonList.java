@@ -5,7 +5,7 @@ import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 
-public abstract class ValueOrNilReasonList<T extends ValueOrNilReason> extends GMLObject {
+public abstract class ValueOrNilReasonList<T extends ValueOrNilReason<?>> extends GMLObject {
     private List<T> value;
 
     public ValueOrNilReasonList() {

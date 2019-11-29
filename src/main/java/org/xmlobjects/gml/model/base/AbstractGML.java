@@ -13,7 +13,7 @@ import java.util.List;
 
 public abstract class AbstractGML extends GMLObject implements StandardObjectProperties {
     private String id;
-    private List<MetaDataProperty> metaDataProperties;
+    private List<MetaDataProperty<?>> metaDataProperties;
     private StringOrRef description;
     private Reference descriptionReference;
     private CodeWithAuthority identifier;
@@ -29,7 +29,7 @@ public abstract class AbstractGML extends GMLObject implements StandardObjectPro
     }
 
     @Override
-    public List<MetaDataProperty> getMetaDataProperties() {
+    public List<MetaDataProperty<?>> getMetaDataProperties() {
         if (metaDataProperties == null)
             metaDataProperties = new ChildList<>(this);
 
@@ -37,7 +37,7 @@ public abstract class AbstractGML extends GMLObject implements StandardObjectPro
     }
 
     @Override
-    public void setMetaDataProperties(List<MetaDataProperty> metaDataProperties) {
+    public void setMetaDataProperties(List<MetaDataProperty<?>> metaDataProperties) {
         this.metaDataProperties = asChild(metaDataProperties);
     }
 

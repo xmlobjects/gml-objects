@@ -6,10 +6,10 @@ import org.xmlobjects.gml.model.geometry.primitives.SurfacePatchArrayProperty;
 
 import javax.xml.namespace.QName;
 
-public class SurfacePatchArrayPropertyAdapter extends AbstractArrayPropertyAdapter<SurfacePatchArrayProperty> {
+public class SurfacePatchArrayPropertyAdapter extends AbstractArrayPropertyAdapter<SurfacePatchArrayProperty<?>> {
 
     @Override
-    public SurfacePatchArrayProperty createObject(QName name) throws ObjectBuildException {
-        return new SurfacePatchArrayProperty();
+    public SurfacePatchArrayProperty<?> createObject(QName name) throws ObjectBuildException {
+        return new SurfacePatchArrayProperty<>();
     }
 }

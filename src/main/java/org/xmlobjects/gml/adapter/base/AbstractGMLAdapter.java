@@ -64,7 +64,7 @@ public abstract class AbstractGMLAdapter<T extends AbstractGML> implements Objec
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (MetaDataProperty property : object.getMetaDataProperties())
+        for (MetaDataProperty<?> property : object.getMetaDataProperties())
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "metaDataProperty"), property, MetaDataPropertyAdapter.class, namespaces);
 
         if (object.getDescription() != null)

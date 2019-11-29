@@ -3,20 +3,20 @@ package org.xmlobjects.gml.model.geometry.primitives;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 
 public class Surface extends AbstractSurface {
-    private SurfacePatchArrayProperty patches;
+    private SurfacePatchArrayProperty<?> patches;
 
     public Surface() {
     }
 
-    public Surface(SurfacePatchArrayProperty patches) {
+    public Surface(SurfacePatchArrayProperty<?> patches) {
         setPatches(patches);
     }
 
-    public SurfacePatchArrayProperty getPatches() {
+    public SurfacePatchArrayProperty<?> getPatches() {
         return patches;
     }
 
-    public void setPatches(SurfacePatchArrayProperty patches) {
+    public void setPatches(SurfacePatchArrayProperty<?> patches) {
         this.patches = asChild(patches);
     }
 

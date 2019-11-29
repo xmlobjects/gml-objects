@@ -5,16 +5,16 @@ import org.xmlobjects.model.ChildList;
 import java.util.List;
 
 public abstract class AbstractTimePrimitive extends AbstractTimeObject {
-    private List<RelatedTime> relatedTimes;
+    private List<RelatedTime<?>> relatedTimes;
 
-    public List<RelatedTime> getRelatedTimes() {
+    public List<RelatedTime<?>> getRelatedTimes() {
         if (relatedTimes == null)
             relatedTimes = new ChildList<>(this);
 
         return relatedTimes;
     }
 
-    public void setRelatedTimes(List<RelatedTime> relatedTimes) {
+    public void setRelatedTimes(List<RelatedTime<?>> relatedTimes) {
         this.relatedTimes = asChild(relatedTimes);
     }
 }

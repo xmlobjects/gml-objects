@@ -16,7 +16,7 @@ import org.xmlobjects.xml.Namespaces;
 
 import javax.xml.namespace.QName;
 
-public abstract class AbstractGeometryArrayPropertyAdapter<T extends GeometryArrayProperty> extends AbstractArrayPropertyAdapter<T> {
+public abstract class AbstractGeometryArrayPropertyAdapter<T extends GeometryArrayProperty<?>> extends AbstractArrayPropertyAdapter<T> {
 
     @Override
     public void initializeObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
