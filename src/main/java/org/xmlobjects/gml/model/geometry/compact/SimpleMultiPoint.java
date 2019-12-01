@@ -3,6 +3,7 @@ package org.xmlobjects.gml.model.geometry.compact;
 import org.xmlobjects.gml.model.geometry.DirectPositionList;
 import org.xmlobjects.gml.model.geometry.aggregates.AbstractMultiPoint;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
+import org.xmlobjects.gml.visitor.ObjectVisitor;
 
 public class SimpleMultiPoint extends AbstractMultiPoint {
     private DirectPositionList posList;
@@ -20,6 +21,11 @@ public class SimpleMultiPoint extends AbstractMultiPoint {
 
     public void setPosList(DirectPositionList posList) {
         this.posList = asChild(posList);
+    }
+
+    @Override
+    public void accept(ObjectVisitor visitor) {
+        visitor.visit(this);
     }
 
     @Override

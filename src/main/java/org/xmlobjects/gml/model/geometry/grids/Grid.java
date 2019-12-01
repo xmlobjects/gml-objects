@@ -2,6 +2,7 @@ package org.xmlobjects.gml.model.geometry.grids;
 
 import org.xmlobjects.gml.model.geometry.AbstractGeometry;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
+import org.xmlobjects.gml.visitor.ObjectVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,11 @@ public class Grid extends AbstractGeometry {
     public void setDimension(Integer dimension) {
         if (dimension != null && dimension > 0)
             this.dimension = dimension;
+    }
+
+    @Override
+    public void accept(ObjectVisitor visitor) {
+        visitor.visit(this);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package org.xmlobjects.gml.model.temporal;
 
+import org.xmlobjects.gml.visitor.ObjectVisitor;
+
 public class TimePeriod extends AbstractTimeGeometricPrimitive {
     private TimePosition beginPosition;
     private TimeInstantProperty begin;
@@ -97,5 +99,10 @@ public class TimePeriod extends AbstractTimeGeometricPrimitive {
     public void setTimeInterval(TimeIntervalLength timeInterval) {
         this.timeInterval = asChild(timeInterval);
         duration = null;
+    }
+
+    @Override
+    public void accept(ObjectVisitor visitor) {
+        visitor.visit(this);
     }
 }

@@ -1,5 +1,7 @@
 package org.xmlobjects.gml.model.valueobjects;
 
+import org.xmlobjects.gml.visitor.ObjectVisitor;
+
 import java.util.List;
 
 public class ValueArray extends CompositeValue implements ReferenceSystem {
@@ -31,5 +33,9 @@ public class ValueArray extends CompositeValue implements ReferenceSystem {
     @Override
     public void setUom(String uom) {
         this.uom = uom;
+    }
+
+    public void accept(ObjectVisitor visitor) {
+        visitor.visit(this);
     }
 }

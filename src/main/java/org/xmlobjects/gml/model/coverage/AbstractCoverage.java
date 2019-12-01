@@ -1,6 +1,8 @@
 package org.xmlobjects.gml.model.coverage;
 
 import org.xmlobjects.gml.model.feature.AbstractFeature;
+import org.xmlobjects.gml.visitor.FeatureVisitor;
+import org.xmlobjects.gml.visitor.ObjectVisitor;
 
 public abstract class AbstractCoverage<T extends AbstractDomainSet<?>> extends AbstractFeature {
     private T domainSet;
@@ -13,6 +15,9 @@ public abstract class AbstractCoverage<T extends AbstractDomainSet<?>> extends A
         setDomainSet(domainSet);
         setRangeSet(rangeSet);
     }
+
+    public abstract void accept(ObjectVisitor visitor);
+    public abstract void accept(FeatureVisitor visitor);
 
     public T getDomainSet() {
         return domainSet;

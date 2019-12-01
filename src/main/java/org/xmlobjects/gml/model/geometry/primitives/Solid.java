@@ -1,6 +1,7 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
 import org.xmlobjects.gml.visitor.GeometryVisitor;
+import org.xmlobjects.gml.visitor.ObjectVisitor;
 import org.xmlobjects.model.ChildList;
 
 import java.util.List;
@@ -37,6 +38,11 @@ public class Solid extends AbstractSolid {
 
     public void setInterior(List<ShellProperty> interior) {
         this.interior = asChild(interior);
+    }
+
+    @Override
+    public void accept(ObjectVisitor visitor) {
+        visitor.visit(this);
     }
 
     @Override
