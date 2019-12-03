@@ -8,7 +8,7 @@ import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 
-public class CompositeValue extends AbstractGML implements AggregationAttributes {
+public class CompositeValue extends AbstractGML implements AbstractValue, AggregationAttributes {
     private List<ValueProperty> valueComponent;
     private ValueArrayProperty valueComponents;
     private AggregationType aggregationType;
