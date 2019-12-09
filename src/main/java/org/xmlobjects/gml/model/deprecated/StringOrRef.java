@@ -5,7 +5,7 @@ import org.xmlobjects.gml.model.base.AssociationAttributes;
 import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
-import org.xmlobjects.util.XMLPatterns;
+import org.xmlobjects.util.xml.XMLPatterns;
 
 public class StringOrRef extends GMLObject implements AssociationAttributes {
     private String value;

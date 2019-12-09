@@ -1,7 +1,7 @@
 package org.xmlobjects.gml.model.basictypes;
 
 import org.xmlobjects.gml.model.GMLObject;
-import org.xmlobjects.util.XMLPatterns;
+import org.xmlobjects.util.xml.XMLPatterns;
 
 public class LanguageString extends GMLObject {
     private String value;
