@@ -2,6 +2,7 @@ package org.xmlobjects.gml.model.geometry.primitives;
 
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
+import org.xmlobjects.gml.model.geometry.complexes.CompositeSurface;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
 import org.xmlobjects.model.ChildList;
@@ -16,6 +17,20 @@ public class Shell extends AbstractSurface implements AggregationAttributes {
 
     public Shell(List<SurfaceProperty> surfaceMembers) {
         setSurfaceMembers(surfaceMembers);
+    }
+
+    public Shell(CompositeSurface compositeSurface) {
+        this(compositeSurface.getSurfaceMembers());
+        setId(compositeSurface.getId());
+        setMetaDataProperties(compositeSurface.getMetaDataProperties());
+        setDescription(compositeSurface.getDescription());
+        setDescriptionReference(compositeSurface.getDescriptionReference());
+        setIdentifier(compositeSurface.getIdentifier());
+        setNames(compositeSurface.getNames());
+        setSrsName(compositeSurface.getSrsName());
+        setSrsDimension(compositeSurface.getSrsDimension());
+        setAxisLabels(compositeSurface.getAxisLabels());
+        setUomLabels(compositeSurface.getUomLabels());
     }
 
     public List<SurfaceProperty> getSurfaceMembers() {

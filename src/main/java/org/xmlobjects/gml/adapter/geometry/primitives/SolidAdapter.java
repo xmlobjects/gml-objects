@@ -74,22 +74,8 @@ public class SolidAdapter extends AbstractSolidAdapter<Solid> {
         SurfaceProperty surfaceProperty = reader.getObjectUsingBuilder(SurfacePropertyAdapter.class);
         if (surfaceProperty.getObject() instanceof Shell)
             shell = (Shell) surfaceProperty.getObject();
-        else if (surfaceProperty.getObject() instanceof CompositeSurface) {
-            CompositeSurface compositeSurface = (CompositeSurface) surfaceProperty.getObject();
-            shell = new Shell(compositeSurface.getSurfaceMembers());
-
-            // shallow copy
-            shell.setId(compositeSurface.getId());
-            shell.setMetaDataProperties(compositeSurface.getMetaDataProperties());
-            shell.setDescription(compositeSurface.getDescription());
-            shell.setDescriptionReference(compositeSurface.getDescriptionReference());
-            shell.setIdentifier(compositeSurface.getIdentifier());
-            shell.setNames(compositeSurface.getNames());
-            shell.setSrsName(compositeSurface.getSrsName());
-            shell.setSrsDimension(compositeSurface.getSrsDimension());
-            shell.setAxisLabels(compositeSurface.getAxisLabels());
-            shell.setUomLabels(compositeSurface.getUomLabels());
-        }
+        else if (surfaceProperty.getObject() instanceof CompositeSurface)
+            shell = new Shell((CompositeSurface) surfaceProperty.getObject());
 
         return new ShellProperty(shell);
     }
