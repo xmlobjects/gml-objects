@@ -4,6 +4,7 @@ import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,6 +20,10 @@ public class DirectPosition extends GMLObject implements SRSReference, Coordinat
 
     public DirectPosition(List<Double> value) {
         this.value = value;
+    }
+
+    public DirectPosition(double... value) {
+        Arrays.stream(value).forEach(getValue()::add);
     }
 
     public List<Double> getValue() {

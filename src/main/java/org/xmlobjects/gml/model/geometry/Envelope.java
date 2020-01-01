@@ -117,4 +117,11 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
         } else
             return Collections.emptyList();
     }
+
+    public boolean isEmpty() {
+        return lowerCorner == null
+                || lowerCorner.getValue().isEmpty()
+                || upperCorner == null
+                || upperCorner.getValue().isEmpty();
+    }
 }
