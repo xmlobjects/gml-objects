@@ -165,15 +165,15 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
 
     public boolean contains(List<Double> ordinates) {
         return ordinates != null
-                && isValid()
                 && ordinates.size() == lowerCorner.getValue().size()
+                && isValid()
                 && contains(ordinates, ordinates);
     }
 
     public boolean contains(DirectPosition position) {
         return position != null
-                && isValid()
                 && position.getValue().size() == lowerCorner.getValue().size()
+                && isValid()
                 && contains(position.getValue(), position.getValue());
     }
 
