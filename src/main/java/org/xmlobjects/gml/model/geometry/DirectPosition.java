@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DirectPosition extends GMLObject implements SRSReference, CoordinateListProvider {
     private List<Double> value;
@@ -23,7 +24,8 @@ public class DirectPosition extends GMLObject implements SRSReference, Coordinat
     }
 
     public DirectPosition(double... value) {
-        Arrays.stream(value).forEach(getValue()::add);
+        if (value != null)
+            this.value = Arrays.stream(value).boxed().collect(Collectors.toCollection(ArrayList::new));
     }
 
     public List<Double> getValue() {
