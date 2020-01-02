@@ -6,8 +6,10 @@ import org.xmlobjects.gml.model.feature.AbstractFeature;
 import org.xmlobjects.model.Child;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Envelope extends GMLObject implements SRSReference, CoordinateListProvider {
     private DirectPosition lowerCorner;
@@ -18,11 +20,13 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     private List<String> uomLabels;
 
     public Envelope() {
+        setLowerCorner(new DirectPosition());
+        setUpperCorner(new DirectPosition());
     }
 
     public Envelope(DirectPosition lowerCorner, DirectPosition upperCorner) {
-        setLowerCorner(lowerCorner);
-        setUpperCorner(upperCorner);
+        setLowerCorner(lowerCorner != null ? lowerCorner : new DirectPosition());
+        setUpperCorner(upperCorner != null ? upperCorner : new DirectPosition());
     }
 
     public DirectPosition getLowerCorner() {
@@ -30,7 +34,8 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     }
 
     public void setLowerCorner(DirectPosition lowerCorner) {
-        this.lowerCorner = asChild(lowerCorner);
+        if (lowerCorner != null)
+            this.lowerCorner = asChild(lowerCorner);
     }
 
     public DirectPosition getUpperCorner() {
@@ -38,7 +43,8 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     }
 
     public void setUpperCorner(DirectPosition upperCorner) {
-        this.upperCorner = asChild(upperCorner);
+        if (upperCorner != null)
+            this.upperCorner = asChild(upperCorner);
     }
 
     @Override
@@ -88,6 +94,149 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
         this.uomLabels = uomLabels;
     }
 
+    public boolean isValid() {
+        if (lowerCorner.getValue().isEmpty() || lowerCorner.getValue().size() != upperCorner.getValue().size())
+            return false;
+
+        for (int i = 0; i < lowerCorner.getValue().size(); i++) {
+            if (lowerCorner.getValue().get(i) > upperCorner.getValue().get(i))
+                return false;
+        }
+
+        return true;
+    }
+
+    public boolean isEmpty() {
+        for (int i = 0; i < getDimension(); i++) {
+            if (upperCorner.getValue().get(i) > lowerCorner.getValue().get(i))
+                return false;
+        }
+
+        return true;
+    }
+
+    public int getDimension() {
+        return isValid() ? lowerCorner.getValue().size() : 0;
+    }
+
+    public double getMinimum(int dimension) {
+        if (dimension <= 0 || dimension > getDimension())
+            throw new IndexOutOfBoundsException("Invalid dimension parameter.");
+
+        return lowerCorner.getValue().get(dimension - 1);
+    }
+
+    public double getMaximum(int dimension) {
+        if (dimension <= 0 || dimension > getDimension())
+            throw new IndexOutOfBoundsException("Invalid dimension parameter.");
+
+        return upperCorner.getValue().get(dimension - 1);
+    }
+
+    public double getMedian(int dimension) {
+        if (dimension <= 0 || dimension > getDimension())
+            throw new IndexOutOfBoundsException("Invalid dimension parameter.");
+
+        return (lowerCorner.getValue().get(dimension - 1) + upperCorner.getValue().get(dimension - 1)) / 2;
+    }
+
+    public double getSpan(int dimension) {
+        if (dimension <= 0 || dimension > getDimension())
+            throw new IndexOutOfBoundsException("Invalid dimension parameter.");
+
+        return upperCorner.getValue().get(dimension - 1) - lowerCorner.getValue().get(dimension - 1);
+    }
+
+    public DirectPosition getCenter() {
+        DirectPosition center = null;
+        if (isValid()) {
+            center = new DirectPosition();
+            for (int i = 0; i < lowerCorner.getValue().size(); i++)
+                center.getValue().add((lowerCorner.getValue().get(i) + upperCorner.getValue().get(i)) / 2);
+        }
+
+        return center;
+    }
+
+    public boolean contains(double... ordinates) {
+        return ordinates != null
+                && contains(Arrays.stream(ordinates).boxed().collect(Collectors.toList()));
+    }
+
+    public boolean contains(List<Double> ordinates) {
+        return ordinates != null
+                && isValid()
+                && ordinates.size() == lowerCorner.getValue().size()
+                && contains(ordinates, ordinates);
+    }
+
+    public boolean contains(DirectPosition position) {
+        return position != null
+                && isValid()
+                && position.getValue().size() == lowerCorner.getValue().size()
+                && contains(position.getValue(), position.getValue());
+    }
+
+    public boolean contains(Envelope other) {
+        return other != null
+                && other.getDimension() == getDimension()
+                && contains(other.lowerCorner.getValue(), other.upperCorner.getValue());
+    }
+
+    private boolean contains(List<Double> lowerCorner, List<Double> upperCorner) {
+        for (int i = 0; i < lowerCorner.size(); i++) {
+            if (lowerCorner.get(i) < this.lowerCorner.getValue().get(i)
+                    || upperCorner.get(i) > this.upperCorner.getValue().get(i))
+                return false;
+        }
+
+        return true;
+    }
+
+    public void include(double... ordinates) {
+        if (ordinates != null)
+            include(Arrays.stream(ordinates).boxed().collect(Collectors.toList()));
+    }
+
+    public void include(List<Double> ordinates) {
+        if (ordinates != null && !ordinates.isEmpty())
+            include(ordinates, ordinates);
+    }
+
+    public void include(DirectPosition position) {
+        if (position != null && !position.getValue().isEmpty())
+            include(position.getValue(), position.getValue());
+    }
+
+    public void include(Envelope other) {
+        if (other != null && other.isValid())
+            include(other.lowerCorner.getValue(), other.upperCorner.getValue());
+    }
+
+    private void include(List<Double> lowerCorner, List<Double> upperCorner) {
+        if (!isValid()) {
+            setLowerCorner(new DirectPosition(new ArrayList<>(lowerCorner)));
+            setUpperCorner(new DirectPosition(new ArrayList<>(upperCorner)));
+        } else {
+            int dimension = getDimension();
+            for (int i = 0; i < lowerCorner.size(); i++) {
+                double minimum = lowerCorner.get(i);
+                double maximum = upperCorner.get(i);
+
+                if (i < dimension) {
+                    if (minimum < this.lowerCorner.getValue().get(i))
+                        this.lowerCorner.getValue().set(i, minimum);
+
+                    if (maximum > this.upperCorner.getValue().get(i))
+                        this.upperCorner.getValue().set(i, maximum);
+                } else {
+                    this.lowerCorner.getValue().add(minimum);
+                    this.upperCorner.getValue().add(maximum);
+                }
+            }
+        }
+    }
+
     @Override
     public SRSReference getInheritedSRSReference() {
         if (srsName == null) {
@@ -109,19 +258,12 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
 
     @Override
     public List<Double> toCoordinateList3D() {
-        if (lowerCorner != null && upperCorner != null) {
+        if (isValid()) {
             List<Double> coordinates = new ArrayList<>(6);
             coordinates.addAll(lowerCorner.toCoordinateList3D());
             coordinates.addAll(upperCorner.toCoordinateList3D());
             return coordinates;
         } else
             return Collections.emptyList();
-    }
-
-    public boolean isEmpty() {
-        return lowerCorner == null
-                || lowerCorner.getValue().isEmpty()
-                || upperCorner == null
-                || upperCorner.getValue().isEmpty();
     }
 }
