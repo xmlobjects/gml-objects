@@ -249,7 +249,6 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     public SRSReference getInheritedSRSReference() {
         if (srsName == null) {
             Child parent = this;
-
             while ((parent = parent.getParent()) != null) {
                 if (parent instanceof AbstractFeature) {
                     AbstractFeature feature = (AbstractFeature) parent;
