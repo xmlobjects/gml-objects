@@ -168,8 +168,7 @@ public abstract class GeometryWalker implements GeometryVisitor {
         for (CurveProperty property : new ArrayList<>(multiCurve.getCurveMember()))
             visit(property);
 
-        if (multiCurve.getCurveMembers() != null)
-            visit(multiCurve.getCurveMembers());
+        visit(multiCurve.getCurveMembers());
     }
 
     @Override
@@ -179,8 +178,7 @@ public abstract class GeometryWalker implements GeometryVisitor {
         for (GeometryProperty<?> property : new ArrayList<>(multiGeometry.getGeometryMember()))
             visit(property);
 
-        if (multiGeometry.getGeometryMembers() != null)
-            visit(multiGeometry.getGeometryMembers());
+        visit(multiGeometry.getGeometryMembers());
     }
 
     @Override
@@ -190,8 +188,7 @@ public abstract class GeometryWalker implements GeometryVisitor {
         for (PointProperty property : new ArrayList<>(multiPoint.getPointMember()))
             visit(property);
 
-        if (multiPoint.getPointMembers() != null)
-            visit(multiPoint.getPointMembers());
+        visit(multiPoint.getPointMembers());
     }
 
     @Override
@@ -201,8 +198,7 @@ public abstract class GeometryWalker implements GeometryVisitor {
         for (SolidProperty property : new ArrayList<>(multiSolid.getSolidMember()))
             visit(property);
 
-        if (multiSolid.getSolidMembers() != null)
-            visit(multiSolid.getSolidMembers());
+        visit(multiSolid.getSolidMembers());
     }
 
     @Override
@@ -212,24 +208,21 @@ public abstract class GeometryWalker implements GeometryVisitor {
         for (SurfaceProperty property : new ArrayList<>(multiSurface.getSurfaceMember()))
             visit(property);
 
-        if (multiSurface.getSurfaceMembers() != null)
-            visit(multiSurface.getSurfaceMembers());
+        visit(multiSurface.getSurfaceMembers());
     }
 
     @Override
     public void visit(OrientableCurve orientableCurve) {
         visit((AbstractCurve) orientableCurve);
 
-        if (orientableCurve.getBaseCurve() != null)
-            visit(orientableCurve.getBaseCurve());
+        visit(orientableCurve.getBaseCurve());
     }
 
     @Override
     public void visit(OrientableSurface orientableSurface) {
         visit((AbstractSurface) orientableSurface);
 
-        if (orientableSurface.getBaseSurface() != null)
-            visit(orientableSurface.getBaseSurface());
+        visit(orientableSurface.getBaseSurface());
     }
 
     @Override
@@ -241,8 +234,7 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(Polygon polygon) {
         visit((AbstractSurface) polygon);
 
-        if (polygon.getExterior() != null)
-            visit(polygon.getExterior());
+        visit(polygon.getExterior());
 
         for (AbstractRingProperty property : new ArrayList<>(polygon.getInterior()))
             visit(property);
@@ -257,8 +249,7 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(RectifiedGrid rectifiedGrid) {
         visit((Grid) rectifiedGrid);
 
-        if (rectifiedGrid.getOrigin() != null)
-            visit(rectifiedGrid.getOrigin());
+        visit(rectifiedGrid.getOrigin());
     }
 
     @Override
@@ -301,8 +292,7 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(Solid solid) {
         visit((AbstractSolid) solid);
 
-        if (solid.getExterior() != null)
-            visit(solid.getExterior());
+        visit(solid.getExterior());
 
         for (ShellProperty property : new ArrayList<>(solid.getInterior()))
             visit(property);
@@ -312,8 +302,7 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(Surface surface) {
         visit((AbstractSurface) surface);
 
-        if (surface.getPatches() != null)
-            visit(surface.getPatches());
+        visit(surface.getPatches());
     }
 
     @Override
@@ -329,8 +318,7 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(PolygonPatch polygonPatch) {
         visit((AbstractSurfacePatch) polygonPatch);
 
-        if (polygonPatch.getExterior() != null)
-            visit(polygonPatch.getExterior());
+        visit(polygonPatch.getExterior());
 
         for (AbstractRingProperty property : new ArrayList<>(polygonPatch.getInterior()))
             visit(property);
@@ -339,43 +327,45 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(Rectangle rectangle) {
         visit((AbstractSurfacePatch) rectangle);
 
-        if (rectangle.getExterior() != null)
-            visit(rectangle.getExterior());
+        visit(rectangle.getExterior());
     }
 
     public void visit(Triangle triangle) {
         visit((AbstractSurfacePatch) triangle);
 
-        if (triangle.getExterior() != null)
-            visit(triangle.getExterior());
+        visit(triangle.getExterior());
     }
 
     public void visit(GeometryProperty<?> property) {
-        if (shouldWalk && property.getObject() != null)
+        if (shouldWalk && property != null && property.getObject() != null)
             property.getObject().accept(this);
     }
 
     public void visit(AbstractInlineGeometryProperty<?> property) {
-        if (shouldWalk && property.getObject() != null)
+        if (shouldWalk && property != null && property.getObject() != null)
             property.getObject().accept(this);
     }
 
     public void visit(GeometryArrayProperty<?> property) {
-        for (AbstractGeometry geometry : new ArrayList<>(property.getObjects())) {
-            if (shouldWalk)
-                geometry.accept(this);
+        if (property != null) {
+            for (AbstractGeometry geometry : new ArrayList<>(property.getObjects())) {
+                if (shouldWalk && geometry != null)
+                    geometry.accept(this);
+            }
         }
     }
 
     public void visit(SurfacePatchArrayProperty<?> property) {
-        for (AbstractSurfacePatch patch : property.getObjects()) {
-            if (shouldWalk) {
-                if (patch instanceof PolygonPatch)
-                    visit((PolygonPatch) patch);
-                else if (patch instanceof Rectangle)
-                    visit((Rectangle) patch);
-                else if (patch instanceof Triangle)
-                    visit((Triangle) patch);
+        if (property != null) {
+            for (AbstractSurfacePatch patch : property.getObjects()) {
+                if (shouldWalk) {
+                    if (patch instanceof PolygonPatch)
+                        visit((PolygonPatch) patch);
+                    else if (patch instanceof Rectangle)
+                        visit((Rectangle) patch);
+                    else if (patch instanceof Triangle)
+                        visit((Triangle) patch);
+                }
             }
         }
     }
