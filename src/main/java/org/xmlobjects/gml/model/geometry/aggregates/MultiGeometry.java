@@ -1,5 +1,7 @@
 package org.xmlobjects.gml.model.geometry.aggregates;
 
+import org.xmlobjects.gml.model.geometry.AbstractGeometry;
+import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.model.geometry.GeometryArrayProperty;
 import org.xmlobjects.gml.model.geometry.GeometryProperty;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
@@ -36,6 +38,24 @@ public class MultiGeometry extends AbstractGeometricAggregate {
 
     public void setGeometryMembers(GeometryArrayProperty<?> geometryMembers) {
         this.geometryMembers = asChild(geometryMembers);
+    }
+
+    @Override
+    public Envelope computeEnvelope() {
+        Envelope envelope = new Envelope();
+        if (geometryMember != null) {
+            for (GeometryProperty<?> property : geometryMember) {
+                if (property.getObject() != null)
+                    envelope.include(property.getObject().computeEnvelope());
+            }
+        }
+
+        if (geometryMembers != null) {
+            for (AbstractGeometry geometry : geometryMembers.getObjects())
+                envelope.include(geometry.computeEnvelope());
+        }
+
+        return envelope;
     }
 
     @Override

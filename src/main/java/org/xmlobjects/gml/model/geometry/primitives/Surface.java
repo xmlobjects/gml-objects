@@ -1,5 +1,6 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
+import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
 
@@ -19,6 +20,17 @@ public class Surface extends AbstractSurface {
 
     public void setPatches(SurfacePatchArrayProperty<?> patches) {
         this.patches = asChild(patches);
+    }
+
+    @Override
+    public Envelope computeEnvelope() {
+        Envelope envelope = new Envelope();
+        if (patches != null) {
+            for (AbstractSurfacePatch patch : patches.getObjects())
+                envelope.include(patch.computeEnvelope());
+        }
+
+        return envelope;
     }
 
     @Override

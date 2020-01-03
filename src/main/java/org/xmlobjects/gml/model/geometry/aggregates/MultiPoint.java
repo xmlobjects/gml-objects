@@ -1,5 +1,7 @@
 package org.xmlobjects.gml.model.geometry.aggregates;
 
+import org.xmlobjects.gml.model.geometry.Envelope;
+import org.xmlobjects.gml.model.geometry.primitives.Point;
 import org.xmlobjects.gml.model.geometry.primitives.PointArrayProperty;
 import org.xmlobjects.gml.model.geometry.primitives.PointProperty;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
@@ -36,6 +38,24 @@ public class MultiPoint extends AbstractMultiPoint {
 
     public void setPointMembers(PointArrayProperty pointMembers) {
         this.pointMembers = asChild(pointMembers);
+    }
+
+    @Override
+    public Envelope computeEnvelope() {
+        Envelope envelope = new Envelope();
+        if (pointMember != null) {
+            for (PointProperty property : pointMember) {
+                if (property.getObject() != null)
+                    envelope.include(property.getObject().computeEnvelope());
+            }
+        }
+
+        if (pointMembers != null) {
+            for (Point point : pointMembers.getObjects())
+                envelope.include(point.computeEnvelope());
+        }
+
+        return envelope;
     }
 
     @Override

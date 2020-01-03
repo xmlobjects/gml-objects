@@ -1,6 +1,7 @@
 package org.xmlobjects.gml.model.geometry.grids;
 
 import org.xmlobjects.gml.model.geometry.AbstractGeometry;
+import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
 
@@ -45,6 +46,11 @@ public class Grid extends AbstractGeometry {
     public void setDimension(Integer dimension) {
         if (dimension != null && dimension > 0)
             this.dimension = dimension;
+    }
+
+    @Override
+    public Envelope computeEnvelope() {
+        return new Envelope();
     }
 
     @Override

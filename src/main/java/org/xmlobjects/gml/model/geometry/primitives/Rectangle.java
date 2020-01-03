@@ -1,5 +1,7 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
+import org.xmlobjects.gml.model.geometry.Envelope;
+
 public class Rectangle extends AbstractSurfacePatch {
     private AbstractRingProperty exterior;
 
@@ -24,5 +26,14 @@ public class Rectangle extends AbstractSurfacePatch {
 
     public SurfaceInterpolation getInterpolation() {
         return SurfaceInterpolation.PLANAR;
+    }
+
+    @Override
+    public Envelope computeEnvelope() {
+        Envelope envelope = new Envelope();
+        if (exterior != null && exterior.getObject() != null)
+            envelope.include(exterior.getObject().computeEnvelope());
+
+        return envelope;
     }
 }

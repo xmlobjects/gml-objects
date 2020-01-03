@@ -2,6 +2,7 @@ package org.xmlobjects.gml.model.geometry.primitives;
 
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
+import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.model.geometry.complexes.CompositeSurface;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
@@ -52,6 +53,19 @@ public class Shell extends AbstractSurface implements AggregationAttributes {
     @Override
     public void setAggregationType(AggregationType aggregationType) {
         //
+    }
+
+    @Override
+    public Envelope computeEnvelope() {
+        Envelope envelope = new Envelope();
+        if (surfaceMembers != null) {
+            for (SurfaceProperty property : surfaceMembers) {
+                if (property.getObject() != null)
+                    envelope.include(property.getObject().computeEnvelope());
+            }
+        }
+
+        return envelope;
     }
 
     @Override

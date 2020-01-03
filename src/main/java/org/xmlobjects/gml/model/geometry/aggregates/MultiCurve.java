@@ -1,5 +1,7 @@
 package org.xmlobjects.gml.model.geometry.aggregates;
 
+import org.xmlobjects.gml.model.geometry.Envelope;
+import org.xmlobjects.gml.model.geometry.primitives.AbstractCurve;
 import org.xmlobjects.gml.model.geometry.primitives.CurveArrayProperty;
 import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
@@ -36,6 +38,24 @@ public class MultiCurve extends AbstractGeometricAggregate {
 
     public void setCurveMembers(CurveArrayProperty curveMembers) {
         this.curveMembers = asChild(curveMembers);
+    }
+
+    @Override
+    public Envelope computeEnvelope() {
+        Envelope envelope = new Envelope();
+        if (curveMember != null) {
+            for (CurveProperty property : curveMember) {
+                if (property.getObject() != null)
+                    envelope.include(property.getObject().computeEnvelope());
+            }
+        }
+
+        if (curveMembers != null) {
+            for (AbstractCurve curve : curveMembers.getObjects())
+                envelope.include(curve.computeEnvelope());
+        }
+
+        return envelope;
     }
 
     @Override

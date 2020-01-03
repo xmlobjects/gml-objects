@@ -2,6 +2,7 @@ package org.xmlobjects.gml.model.geometry.complexes;
 
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
+import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.model.geometry.primitives.AbstractSurface;
 import org.xmlobjects.gml.model.geometry.primitives.SurfaceProperty;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
@@ -40,6 +41,19 @@ public class CompositeSurface extends AbstractSurface implements AggregationAttr
     @Override
     public void setAggregationType(AggregationType aggregationType) {
         this.aggregationType = aggregationType;
+    }
+
+    @Override
+    public Envelope computeEnvelope() {
+        Envelope envelope = new Envelope();
+        if (surfaceMembers != null) {
+            for (SurfaceProperty property : surfaceMembers) {
+                if (property.getObject() != null)
+                    envelope.include(property.getObject().computeEnvelope());
+            }
+        }
+
+        return envelope;
     }
 
     @Override

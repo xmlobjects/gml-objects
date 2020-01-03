@@ -1,6 +1,5 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
-import org.xmlobjects.gml.model.common.CoordinateListProvider;
 import org.xmlobjects.gml.model.geometry.DirectPositionList;
 import org.xmlobjects.gml.model.geometry.GeometricPositionList;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
@@ -9,7 +8,7 @@ import org.xmlobjects.gml.visitor.ObjectVisitor;
 import java.util.Collections;
 import java.util.List;
 
-public class LineString extends AbstractCurve implements CoordinateListProvider {
+public class LineString extends AbstractCurve {
     private GeometricPositionList controlPoints;
 
     public LineString() {

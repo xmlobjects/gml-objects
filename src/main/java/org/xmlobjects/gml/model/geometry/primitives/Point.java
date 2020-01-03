@@ -2,6 +2,7 @@ package org.xmlobjects.gml.model.geometry.primitives;
 
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
 import org.xmlobjects.gml.model.geometry.DirectPosition;
+import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
 
@@ -29,6 +30,11 @@ public class Point extends AbstractGeometricPrimitive implements CoordinateListP
     @Override
     public List<Double> toCoordinateList3D() {
         return pos != null ? pos.toCoordinateList3D() : Collections.emptyList();
+    }
+
+    @Override
+    public Envelope computeEnvelope() {
+        return new Envelope().include(toCoordinateList3D());
     }
 
     @Override

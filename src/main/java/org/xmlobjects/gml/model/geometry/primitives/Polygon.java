@@ -1,5 +1,6 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
+import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
 import org.xmlobjects.model.ChildList;
@@ -38,6 +39,15 @@ public class Polygon extends AbstractSurface {
 
     public void setInterior(List<AbstractRingProperty> interior) {
         this.interior = asChild(interior);
+    }
+
+    @Override
+    public Envelope computeEnvelope() {
+        Envelope envelope = new Envelope();
+        if (exterior != null && exterior.getObject() != null)
+            envelope.include(exterior.getObject().computeEnvelope());
+
+        return envelope;
     }
 
     @Override

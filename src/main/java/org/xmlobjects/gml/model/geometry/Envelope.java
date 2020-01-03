@@ -193,24 +193,32 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
         return true;
     }
 
-    public void include(double... ordinates) {
+    public Envelope include(double... ordinates) {
         if (ordinates != null)
             include(Arrays.stream(ordinates).boxed().collect(Collectors.toList()));
+
+        return this;
     }
 
-    public void include(List<Double> ordinates) {
+    public Envelope include(List<Double> ordinates) {
         if (ordinates != null && !ordinates.isEmpty())
             include(ordinates, ordinates);
+
+        return this;
     }
 
-    public void include(DirectPosition position) {
+    public Envelope include(DirectPosition position) {
         if (position != null && !position.getValue().isEmpty())
             include(position.getValue(), position.getValue());
+
+        return this;
     }
 
-    public void include(Envelope other) {
+    public Envelope include(Envelope other) {
         if (other != null && other.isValid())
             include(other.lowerCorner.getValue(), other.upperCorner.getValue());
+
+        return this;
     }
 
     private void include(List<Double> lowerCorner, List<Double> upperCorner) {

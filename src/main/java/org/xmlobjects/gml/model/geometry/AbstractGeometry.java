@@ -1,13 +1,14 @@
 package org.xmlobjects.gml.model.geometry;
 
 import org.xmlobjects.gml.model.base.AbstractGML;
+import org.xmlobjects.gml.model.common.EnvelopeProvider;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractGeometry extends AbstractGML implements SRSReference {
+public abstract class AbstractGeometry extends AbstractGML implements SRSReference, EnvelopeProvider {
     private String srsName;
     private Integer srsDimension;
     private List<String> axisLabels;
