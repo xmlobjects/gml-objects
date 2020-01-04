@@ -2,12 +2,11 @@ package org.xmlobjects.gml.model.geometry.primitives;
 
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
-import org.xmlobjects.gml.model.common.EnvelopeProvider;
 import org.xmlobjects.gml.model.geometry.Envelope;
 
 import java.util.List;
 
-public abstract class AbstractCurveSegment extends GMLObject implements CoordinateListProvider, EnvelopeProvider {
+public abstract class AbstractCurveSegment extends GMLObject implements CoordinateListProvider {
     private Integer numDerivativesAtStart;
     private Integer numDerivativesAtEnd;
     private Integer numDerivativeInterior;
@@ -36,7 +35,6 @@ public abstract class AbstractCurveSegment extends GMLObject implements Coordina
         this.numDerivativeInterior = numDerivativeInterior;
     }
 
-    @Override
     public Envelope computeEnvelope() {
         Envelope envelope = new Envelope();
         List<Double> coordinates = toCoordinateList3D();
