@@ -37,7 +37,7 @@ public abstract class AbstractCoverage<T extends AbstractDomainSet<?>> extends A
     }
 
     @Override
-    public void updateEnvelope(Envelope envelope, EnvelopeOptions options) {
+    protected void updateEnvelope(Envelope envelope, EnvelopeOptions options) {
         if (domainSet != null && domainSet.getObject() instanceof AbstractGeometry) {
             AbstractGeometry geometry = (AbstractGeometry) domainSet.getObject();
             envelope.include(geometry.computeEnvelope());

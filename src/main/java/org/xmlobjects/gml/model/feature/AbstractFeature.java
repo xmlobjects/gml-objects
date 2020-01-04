@@ -1,7 +1,6 @@
 package org.xmlobjects.gml.model.feature;
 
 import org.xmlobjects.gml.model.base.AbstractGML;
-import org.xmlobjects.gml.model.common.EnvelopeProvider;
 import org.xmlobjects.gml.model.common.GenericElement;
 import org.xmlobjects.gml.model.deprecated.LocationProperty;
 import org.xmlobjects.gml.model.geometry.Envelope;
@@ -10,10 +9,12 @@ import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 
-public abstract class AbstractFeature extends AbstractGML implements EnvelopeProvider {
+public abstract class AbstractFeature extends AbstractGML {
     private BoundingShape boundedBy;
     private LocationProperty location;
     private List<GenericElement> genericProperties;
+
+    protected abstract void updateEnvelope(Envelope envelope, EnvelopeOptions options);
 
     public BoundingShape getBoundedBy() {
         return boundedBy;
