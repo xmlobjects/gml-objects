@@ -53,18 +53,16 @@ public class RectifiedGrid extends Grid {
                 Matrix origin = Matrices.newMatrix(this.origin.getObject().toCoordinateList3D(), 3);
                 List<Double> limits = gridEnvelope.toCoordinateList3D();
 
-                double[] lowerCorner = origin
-                        .plus(offsetVectors[0].times(limits.get(0)))
-                        .plus(offsetVectors[1].times(limits.get(1)))
-                        .plus(offsetVectors[2].times(limits.get(2))).getColumnPackedCopy();
-
-                double[] upperCorner = origin
-                        .plus(offsetVectors[0].times(limits.get(3)))
-                        .plus(offsetVectors[1].times(limits.get(4)))
-                        .plus(offsetVectors[2].times(limits.get(5))).getColumnPackedCopy();
-
-                envelope.include(lowerCorner)
-                        .include(upperCorner);
+                for (int x = 0; x < 2; x++) {
+                    for (int y = 0; y < 2; y++) {
+                        for (int z = 0; z < 2; z++) {
+                            envelope.include(origin
+                                    .plus(offsetVectors[0].times(limits.get(x * 3)))
+                                    .plus(offsetVectors[1].times(limits.get(1 + y * 3)))
+                                    .plus(offsetVectors[2].times(limits.get(2 + z * 3))).getColumnPackedCopy());
+                        }
+                    }
+                }
             }
         }
 
