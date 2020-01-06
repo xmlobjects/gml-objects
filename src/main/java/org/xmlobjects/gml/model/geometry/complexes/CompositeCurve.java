@@ -3,11 +3,13 @@ package org.xmlobjects.gml.model.geometry.complexes;
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.geometry.primitives.AbstractCurve;
+import org.xmlobjects.gml.model.geometry.primitives.AbstractCurveSegment;
 import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
 import org.xmlobjects.model.ChildList;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -48,14 +50,29 @@ public class CompositeCurve extends AbstractCurve implements AggregationAttribut
 
     @Override
     public List<Double> toCoordinateList3D() {
-        if (curveMembers != null && !curveMembers.isEmpty())
-            return curveMembers.stream()
-                    .map(CurveProperty::getObject)
-                    .filter(Objects::nonNull)
-                    .map(AbstractCurve::toCoordinateList3D)
-                    .flatMap(Collection::stream)
-                    .collect(Collectors.toList());
-        else
+        if (curveMembers != null && !curveMembers.isEmpty()) {
+            List<Double> coordinates = new ArrayList<>();
+            for (CurveProperty property : curveMembers) {
+                if (property.getObject() != null) {
+                    List<Double> candidates = property.getObject().toCoordinateList3D();
+                    if (!candidates.isEmpty()) {
+                        int size = coordinates.size();
+                        if (size == 0)
+                            coordinates.addAll(candidates);
+                        else {
+                            if (candidates.get(0).doubleValue() == coordinates.get(size - 3).doubleValue()
+                                    && candidates.get(1).doubleValue() == coordinates.get(size - 2).doubleValue()
+                                    && candidates.get(2).doubleValue() == coordinates.get(size - 1).doubleValue())
+                                coordinates.addAll(candidates.subList(3, candidates.size()));
+                            else
+                                coordinates.addAll(candidates);
+                        }
+                    }
+                }
+            }
+
+            return coordinates;
+        } else
             return Collections.emptyList();
     }
 

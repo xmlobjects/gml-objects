@@ -3,11 +3,9 @@ package org.xmlobjects.gml.model.geometry.primitives;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Curve extends AbstractCurve {
     private CurveSegmentArrayProperty segments;
@@ -29,13 +27,27 @@ public class Curve extends AbstractCurve {
 
     @Override
     public List<Double> toCoordinateList3D() {
-        if (segments != null)
-            return segments.getObjects().stream()
-                    .filter(Objects::nonNull)
-                    .map(AbstractCurveSegment::toCoordinateList3D)
-                    .flatMap(Collection::stream)
-                    .collect(Collectors.toList());
-        else
+        if (segments != null) {
+            List<Double> coordinates = new ArrayList<>();
+            for (AbstractCurveSegment segment : segments.getObjects()) {
+                List<Double> candidates = segment.toCoordinateList3D();
+                if (!candidates.isEmpty()) {
+                    int size = coordinates.size();
+                    if (size == 0)
+                        coordinates.addAll(candidates);
+                    else {
+                        if (candidates.get(0).doubleValue() == coordinates.get(size - 3).doubleValue()
+                                && candidates.get(1).doubleValue() == coordinates.get(size - 2).doubleValue()
+                                && candidates.get(2).doubleValue() == coordinates.get(size - 1).doubleValue())
+                            coordinates.addAll(candidates.subList(3, candidates.size()));
+                        else
+                            coordinates.addAll(candidates);
+                    }
+                }
+            }
+
+            return coordinates;
+        } else
             return Collections.emptyList();
     }
 
