@@ -3,18 +3,14 @@ package org.xmlobjects.gml.model.geometry.complexes;
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.model.geometry.primitives.AbstractCurve;
-import org.xmlobjects.gml.model.geometry.primitives.AbstractCurveSegment;
 import org.xmlobjects.gml.model.geometry.primitives.CurveProperty;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
 import org.xmlobjects.model.ChildList;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class CompositeCurve extends AbstractCurve implements AggregationAttributes {
     private List<CurveProperty> curveMembers;
@@ -53,7 +49,7 @@ public class CompositeCurve extends AbstractCurve implements AggregationAttribut
         if (curveMembers != null && !curveMembers.isEmpty()) {
             List<Double> coordinates = new ArrayList<>();
             for (CurveProperty property : curveMembers) {
-                if (property.getObject() != null) {
+                if (property != null && property.getObject() != null) {
                     List<Double> candidates = property.getObject().toCoordinateList3D();
                     if (!candidates.isEmpty()) {
                         int size = coordinates.size();

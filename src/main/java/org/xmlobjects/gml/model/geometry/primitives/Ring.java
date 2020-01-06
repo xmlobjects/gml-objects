@@ -7,11 +7,8 @@ import org.xmlobjects.gml.visitor.ObjectVisitor;
 import org.xmlobjects.model.ChildList;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Ring extends AbstractRing implements AggregationAttributes {
     private List<CurveProperty> curveMembers;
@@ -50,7 +47,7 @@ public class Ring extends AbstractRing implements AggregationAttributes {
         if (curveMembers != null && !curveMembers.isEmpty()) {
             List<Double> coordinates = new ArrayList<>();
             for (CurveProperty property : curveMembers) {
-                if (property.getObject() != null) {
+                if (property != null && property.getObject() != null) {
                     List<Double> candidates = property.getObject().toCoordinateList3D();
                     if (!candidates.isEmpty()) {
                         int size = coordinates.size();
