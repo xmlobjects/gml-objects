@@ -9,7 +9,7 @@ plugins {
 
 group 'org.xmlobjects'
 version '0.9.0'
-description 'A Java XML binding for the OGC Geography Markup Language (GML)'
+description 'A Java mapping for the OGC Geography Markup Language (GML)'
 ext.date = new Date()
 
 java {

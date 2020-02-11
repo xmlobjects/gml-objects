@@ -1,5 +1,5 @@
 /*
- * gml-objects - A Java XML binding for the OGC Geography Markup Language (GML)
+ * gml-objects - A Java mapping for the OGC Geography Markup Language (GML)
  * https://github.com/xmlobjects/gml-objects
  *
  * Copyright 2019-2020 Claus Nagel <claus.nagel@gmail.com>
