@@ -7,7 +7,7 @@ plugins {
     id 'com.jfrog.bintray' version '1.8.4'
 }
 
-group 'org.xmlobjects'
+group 'org.xmlobjects.gml'
 version '0.9.0'
 description 'A Java mapping for the OGC Geography Markup Language (GML)'
 ext.date = new Date()
