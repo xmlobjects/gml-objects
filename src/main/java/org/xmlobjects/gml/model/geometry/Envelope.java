@@ -52,6 +52,10 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
         return lowerCorner;
     }
 
+    public boolean isSetLowerCorner() {
+        return !lowerCorner.getValue().isEmpty();
+    }
+
     public void setLowerCorner(DirectPosition lowerCorner) {
         if (lowerCorner != null)
             this.lowerCorner = asChild(lowerCorner);
@@ -59,6 +63,10 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
 
     public DirectPosition getUpperCorner() {
         return upperCorner;
+    }
+
+    public boolean isSetUpperCorner() {
+        return !upperCorner.getValue().isEmpty();
     }
 
     public void setUpperCorner(DirectPosition upperCorner) {

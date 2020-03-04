@@ -72,9 +72,9 @@ public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerialize
                     break;
                 case "pos":
                     DirectPosition pos = reader.getObjectUsingBuilder(DirectPositionAdapter.class);
-                    if (object.getLowerCorner() == null)
+                    if (!object.isSetLowerCorner())
                         object.setLowerCorner(pos);
-                    else if (object.getUpperCorner() == null)
+                    else if (!object.isSetUpperCorner())
                         object.setUpperCorner(pos);
                     break;
                 case "coordinates":
@@ -86,9 +86,9 @@ public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerialize
                     break;
                 case "coord":
                     Coord coord = reader.getObjectUsingBuilder(CoordAdapter.class);
-                    if (object.getLowerCorner() == null)
+                    if (!object.isSetLowerCorner())
                         object.setLowerCorner(coord.toDirectPosition());
-                    else if (object.getUpperCorner() == null)
+                    else if (!object.isSetUpperCorner())
                         object.setUpperCorner(coord.toDirectPosition());
                     break;
             }
@@ -109,10 +109,10 @@ public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerialize
     public void writeChildElements(Envelope object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        if (object.getLowerCorner() != null)
+        if (object.isSetLowerCorner())
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "lowerCorner"), object.getLowerCorner(), DirectPositionAdapter.class, namespaces);
 
-        if (object.getUpperCorner() != null)
+        if (object.isSetUpperCorner())
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "upperCorner"), object.getUpperCorner(), DirectPositionAdapter.class, namespaces);
     }
 }
