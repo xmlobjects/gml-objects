@@ -31,11 +31,11 @@ public class DefaultIdCreator implements IdCreator {
         prefix = getDefaultPrefix();
     }
 
-    public static synchronized DefaultIdCreator newInstance() {
+    public static DefaultIdCreator newInstance() {
         return new DefaultIdCreator();
     }
 
-    public static synchronized DefaultIdCreator newInstance(String prefix) {
+    public static DefaultIdCreator newInstance(String prefix) {
         return new DefaultIdCreator().withPrefix(prefix);
     }
 
