@@ -56,7 +56,7 @@ public class SimpleRectangleAdapter extends AbstractSimplePolygonAdapter<SimpleR
         if (namespaces.contains(GMLConstants.GML_3_3_CE_NAMESPACE))
             super.writeChildElements(object, namespaces, writer);
         else {
-            SimpleRectangleConverter converter = writer.getProperties().get(SimpleRectangleConverter.class.getName(), SimpleRectangleConverter.class);
+            SimpleRectangleConverter converter = writer.getProperties().get(GMLConstants.SIMPLE_RECTANGLE_CONVERTER, SimpleRectangleConverter.class);
             if (converter != null)
                 writer.writeObject(converter.convert(object), namespaces);
         }

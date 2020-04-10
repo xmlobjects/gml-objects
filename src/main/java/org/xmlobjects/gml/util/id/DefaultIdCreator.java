@@ -19,12 +19,11 @@
 
 package org.xmlobjects.gml.util.id;
 
+import org.xmlobjects.util.xml.XMLPatterns;
+
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class DefaultIdCreator implements IdCreator {
-    private final Matcher matcher = Pattern.compile("[_A-Za-z][-._A-Za-z0-9]*", Pattern.UNICODE_CHARACTER_CLASS).matcher("");
     private String prefix;
 
     private DefaultIdCreator() {
@@ -48,7 +47,7 @@ public class DefaultIdCreator implements IdCreator {
     }
 
     public boolean isValidPrefix(String prefix) {
-        return prefix != null && !matcher.reset(prefix).matches();
+        return prefix != null && XMLPatterns.NCNAME.matcher(prefix).matches();
     }
 
     public DefaultIdCreator withPrefix(String prefix) {

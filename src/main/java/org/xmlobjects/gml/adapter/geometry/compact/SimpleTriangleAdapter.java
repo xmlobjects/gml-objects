@@ -56,7 +56,7 @@ public class SimpleTriangleAdapter extends AbstractSimplePolygonAdapter<SimpleTr
         if (namespaces.contains(GMLConstants.GML_3_3_CE_NAMESPACE))
             super.writeChildElements(object, namespaces, writer);
         else {
-            SimpleTriangleConverter converter = writer.getProperties().get(SimpleTriangleConverter.class.getName(), SimpleTriangleConverter.class);
+            SimpleTriangleConverter converter = writer.getProperties().get(GMLConstants.SIMPLE_TRIANGLE_CONVERTER, SimpleTriangleConverter.class);
             if (converter != null)
                 writer.writeObject(converter.convert(object), namespaces);
         }

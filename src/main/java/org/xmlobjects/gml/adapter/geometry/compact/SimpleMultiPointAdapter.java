@@ -75,7 +75,7 @@ public class SimpleMultiPointAdapter extends AbstractGeometricAggregateAdapter<S
             if (object.getPosList() != null)
                 writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "posList"), object.getPosList(), DirectPositionListAdapter.class, namespaces);
         } else {
-            SimpleMultiPointConverter converter = writer.getProperties().get(SimpleMultiPointConverter.class.getName(), SimpleMultiPointConverter.class);
+            SimpleMultiPointConverter converter = writer.getProperties().get(GMLConstants.SIMPLE_MULTI_POINT_CONVERTER, SimpleMultiPointConverter.class);
             if (converter != null)
                 writer.writeObject(converter.convert(object), namespaces);
         }

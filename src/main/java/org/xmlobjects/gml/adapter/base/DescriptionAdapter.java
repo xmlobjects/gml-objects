@@ -58,6 +58,7 @@ public class DescriptionAdapter implements ObjectBuilder<StringOrRef>, ObjectSer
                 LanguageStringAuxAdapter.class : StringOrRefAdapter.class)
                 .initializeObject(object, name, attributes, reader);
     }
+
     @Override
     public Element createElement(StringOrRef object, Namespaces namespaces) throws ObjectSerializeException {
         return object.getLanguage() != null && namespaces.contains(GMLConstants.GML_3_3_XBT_NAMESPACE) ?

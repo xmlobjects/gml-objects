@@ -56,7 +56,7 @@ public class SimplePolygonAdapter extends AbstractSimplePolygonAdapter<SimplePol
         if (namespaces.contains(GMLConstants.GML_3_3_CE_NAMESPACE))
             super.writeChildElements(object, namespaces, writer);
         else {
-            SimplePolygonConverter converter = writer.getProperties().get(SimplePolygonConverter.class.getName(), SimplePolygonConverter.class);
+            SimplePolygonConverter converter = writer.getProperties().get(GMLConstants.SIMPLE_POLYGON_CONVERTER, SimplePolygonConverter.class);
             if (converter != null)
                 writer.writeObject(converter.convert(object), namespaces);
         }
