@@ -49,6 +49,16 @@ public class TriangulatedSurface extends Surface {
     }
 
     @Override
+    public void addPatch(AbstractSurfacePatch patch) {
+        if (patch instanceof Triangle) {
+            if (getPatches() == null)
+                setPatches(new TriangleArrayProperty());
+
+            super.addPatch(patch);
+        }
+    }
+
+    @Override
     public void accept(ObjectVisitor visitor) {
         visitor.visit(this);
     }

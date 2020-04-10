@@ -41,6 +41,14 @@ public class Surface extends AbstractSurface {
         this.patches = asChild(patches);
     }
 
+    @SuppressWarnings("unchecked")
+    public void addPatch(AbstractSurfacePatch patch) {
+        if (patches == null)
+            setPatches(new SurfacePatchArrayProperty<>());
+
+        ((SurfacePatchArrayProperty<AbstractSurfacePatch>) patches).getObjects().add(patch);
+    }
+
     @Override
     public Envelope computeEnvelope() {
         Envelope envelope = new Envelope();

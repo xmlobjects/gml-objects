@@ -49,6 +49,16 @@ public class PolyhedralSurface extends Surface {
     }
 
     @Override
+    public void addPatch(AbstractSurfacePatch patch) {
+        if (patch instanceof PolygonPatch) {
+            if (getPatches() == null)
+                setPatches(new PolygonPatchArrayProperty());
+
+            super.addPatch(patch);
+        }
+    }
+
+    @Override
     public void accept(ObjectVisitor visitor) {
         visitor.visit(this);
     }
