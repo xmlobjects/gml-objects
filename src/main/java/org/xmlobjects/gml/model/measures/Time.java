@@ -22,4 +22,16 @@ package org.xmlobjects.gml.model.measures;
 import org.xmlobjects.gml.model.basictypes.Measure;
 
 public class Time extends Measure {
+
+    public Time() {
+        super();
+    }
+
+    public Time(Double value) {
+        super(value);
+    }
+
+    public Time(Double value, String uom) {
+        super(value, uom);
+    }
 }
