@@ -46,7 +46,6 @@ import javax.xml.namespace.QName;
         @XMLElement(name = "Quantity", namespaceURI = GMLConstants.GML_3_1_NAMESPACE)
 })
 public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerializer<Quantity> {
-    private final MeasureAdapter adapter = new MeasureAdapter();
 
     @Override
     public Quantity createObject(QName name) throws ObjectBuildException {
@@ -55,7 +54,7 @@ public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerialize
 
     @Override
     public void initializeObject(Quantity object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        adapter.initializeObject(object, name, attributes, reader);
+        reader.getOrCreateBuilder(MeasureAdapter.class).initializeObject(object, name, attributes, reader);
         if (!object.isSetValue())
             attributes.getValue("nilReason").ifPresent(v -> object.setNilReason(new NilReason(v)));
     }
@@ -68,7 +67,7 @@ public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerialize
     @Override
     public void initializeElement(Element element, Quantity object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.isSetValue())
-            adapter.initializeElement(element, object, namespaces, writer);
+            writer.getOrCreateSerializer(MeasureAdapter.class).initializeElement(element, object, namespaces, writer);
         else if (object.isSetNilReason() && GMLConstants.GML_3_2_NAMESPACE.equals(GMLSerializerHelper.getGMLBaseNamespace(namespaces))) {
             element.addAttribute("nilReason", object.getNilReason().getValue());
             element.addAttribute(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI, "nil", "true");
