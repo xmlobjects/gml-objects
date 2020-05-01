@@ -41,12 +41,15 @@ import org.xmlobjects.gml.model.geometry.primitives.OrientableCurve;
 import org.xmlobjects.gml.model.geometry.primitives.OrientableSurface;
 import org.xmlobjects.gml.model.geometry.primitives.Point;
 import org.xmlobjects.gml.model.geometry.primitives.Polygon;
+import org.xmlobjects.gml.model.geometry.primitives.PolygonPatch;
 import org.xmlobjects.gml.model.geometry.primitives.PolyhedralSurface;
+import org.xmlobjects.gml.model.geometry.primitives.Rectangle;
 import org.xmlobjects.gml.model.geometry.primitives.Ring;
 import org.xmlobjects.gml.model.geometry.primitives.Shell;
 import org.xmlobjects.gml.model.geometry.primitives.Solid;
 import org.xmlobjects.gml.model.geometry.primitives.Surface;
 import org.xmlobjects.gml.model.geometry.primitives.Tin;
+import org.xmlobjects.gml.model.geometry.primitives.Triangle;
 import org.xmlobjects.gml.model.geometry.primitives.TriangulatedSurface;
 
 public interface GeometryVisitor {
@@ -67,7 +70,9 @@ public interface GeometryVisitor {
     void visit(OrientableSurface orientableSurface);
     void visit(Point point);
     void visit(Polygon polygon);
+    void visit(PolygonPatch polygonPatch);
     void visit(PolyhedralSurface polyhedralSurface);
+    void visit(Rectangle rectangle);
     void visit(RectifiedGrid rectifiedGrid);
     void visit(Ring ring);
     void visit(Shell shell);
@@ -78,5 +83,6 @@ public interface GeometryVisitor {
     void visit(Solid solid);
     void visit(Surface surface);
     void visit(Tin tin);
+    void visit(Triangle triangle);
     void visit(TriangulatedSurface triangulatedSurface);
 }

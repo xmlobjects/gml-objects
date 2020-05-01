@@ -260,8 +260,25 @@ public abstract class GeometryWalker implements GeometryVisitor {
     }
 
     @Override
+    public void visit(PolygonPatch polygonPatch) {
+        visit((AbstractSurfacePatch) polygonPatch);
+
+        visit(polygonPatch.getExterior());
+
+        for (AbstractRingProperty property : new ArrayList<>(polygonPatch.getInterior()))
+            visit(property);
+    }
+
+    @Override
     public void visit(PolyhedralSurface polyhedralSurface) {
         visit((Surface) polyhedralSurface);
+    }
+
+    @Override
+    public void visit(Rectangle rectangle) {
+        visit((AbstractSurfacePatch) rectangle);
+
+        visit(rectangle.getExterior());
     }
 
     @Override
@@ -330,29 +347,15 @@ public abstract class GeometryWalker implements GeometryVisitor {
     }
 
     @Override
-    public void visit(TriangulatedSurface triangulatedSurface) {
-        visit((Surface) triangulatedSurface);
-    }
-
-    public void visit(PolygonPatch polygonPatch) {
-        visit((AbstractSurfacePatch) polygonPatch);
-
-        visit(polygonPatch.getExterior());
-
-        for (AbstractRingProperty property : new ArrayList<>(polygonPatch.getInterior()))
-            visit(property);
-    }
-
-    public void visit(Rectangle rectangle) {
-        visit((AbstractSurfacePatch) rectangle);
-
-        visit(rectangle.getExterior());
-    }
-
     public void visit(Triangle triangle) {
         visit((AbstractSurfacePatch) triangle);
 
         visit(triangle.getExterior());
+    }
+
+    @Override
+    public void visit(TriangulatedSurface triangulatedSurface) {
+        visit((Surface) triangulatedSurface);
     }
 
     public void visit(GeometryProperty<?> property) {
@@ -377,14 +380,8 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(SurfacePatchArrayProperty<?> property) {
         if (property != null) {
             for (AbstractSurfacePatch patch : property.getObjects()) {
-                if (shouldWalk) {
-                    if (patch instanceof PolygonPatch)
-                        visit((PolygonPatch) patch);
-                    else if (patch instanceof Rectangle)
-                        visit((Rectangle) patch);
-                    else if (patch instanceof Triangle)
-                        visit((Triangle) patch);
-                }
+                if (shouldWalk && patch != null)
+                    patch.accept(this);
             }
         }
     }

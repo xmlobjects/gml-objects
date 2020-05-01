@@ -20,6 +20,8 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
 import org.xmlobjects.gml.model.geometry.Envelope;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
+import org.xmlobjects.gml.visitor.ObjectVisitor;
 import org.xmlobjects.model.ChildList;
 
 import java.util.List;
@@ -69,5 +71,15 @@ public class PolygonPatch extends AbstractSurfacePatch {
             envelope.include(exterior.getObject().computeEnvelope());
 
         return envelope;
+    }
+
+    @Override
+    public void accept(ObjectVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }

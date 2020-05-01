@@ -20,6 +20,8 @@
 package org.xmlobjects.gml.model.geometry.primitives;
 
 import org.xmlobjects.gml.model.geometry.Envelope;
+import org.xmlobjects.gml.visitor.GeometryVisitor;
+import org.xmlobjects.gml.visitor.ObjectVisitor;
 
 public class Triangle extends AbstractSurfacePatch {
     private AbstractRingProperty exterior;
@@ -54,5 +56,15 @@ public class Triangle extends AbstractSurfacePatch {
             envelope.include(exterior.getObject().computeEnvelope());
 
         return envelope;
+    }
+
+    @Override
+    public void accept(ObjectVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }
