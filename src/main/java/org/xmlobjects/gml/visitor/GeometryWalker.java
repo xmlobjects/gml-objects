@@ -19,6 +19,12 @@
 
 package org.xmlobjects.gml.visitor;
 
+import org.xmlobjects.gml.model.base.AbstractArrayProperty;
+import org.xmlobjects.gml.model.base.AbstractAssociation;
+import org.xmlobjects.gml.model.base.AbstractInlineOrByReferenceProperty;
+import org.xmlobjects.gml.model.base.AbstractInlineProperty;
+import org.xmlobjects.gml.model.base.AbstractProperty;
+import org.xmlobjects.gml.model.base.Reference;
 import org.xmlobjects.gml.model.geometry.AbstractGeometry;
 import org.xmlobjects.gml.model.geometry.AbstractInlineGeometryProperty;
 import org.xmlobjects.gml.model.geometry.GeometryArrayProperty;
@@ -358,31 +364,62 @@ public abstract class GeometryWalker implements GeometryVisitor {
         visit((Surface) triangulatedSurface);
     }
 
-    public void visit(GeometryProperty<?> property) {
+    public void visit(AbstractAssociation<?> association) {
+    }
+
+    public void visit(AbstractArrayProperty<?> property) {
+        visit((AbstractAssociation<?>) property);
+
+        if (property != null) {
+            for (Object object : new ArrayList<>(property.getObjects())) {
+                if (shouldWalk && object != null)
+                    visitObject(object);
+            }
+        }
+    }
+
+    public void visit(AbstractInlineOrByReferenceProperty<?> property) {
+        visit((AbstractAssociation<?>) property);
+
         if (shouldWalk && property != null && property.getObject() != null)
-            property.getObject().accept(this);
+            visitObject(property.getObject());
+    }
+
+    public void visit(AbstractProperty<?> property) {
+        visit((AbstractInlineOrByReferenceProperty<?>) property);
+    }
+
+    public void visit(AbstractInlineProperty<?> property) {
+        visit((AbstractAssociation<?>) property);
+
+        if (shouldWalk && property != null && property.getObject() != null)
+            visitObject(property.getObject());
+    }
+
+    public void visit(GeometryProperty<?> property) {
+        visit((AbstractProperty<?>) property);
     }
 
     public void visit(AbstractInlineGeometryProperty<?> property) {
-        if (shouldWalk && property != null && property.getObject() != null)
-            property.getObject().accept(this);
+        visit((AbstractInlineProperty<?>) property);
     }
 
     public void visit(GeometryArrayProperty<?> property) {
-        if (property != null) {
-            for (AbstractGeometry geometry : new ArrayList<>(property.getObjects())) {
-                if (shouldWalk && geometry != null)
-                    geometry.accept(this);
-            }
-        }
+        visit((AbstractArrayProperty<?>) property);
     }
 
     public void visit(SurfacePatchArrayProperty<?> property) {
-        if (property != null) {
-            for (AbstractSurfacePatch patch : property.getObjects()) {
-                if (shouldWalk && patch != null)
-                    patch.accept(this);
-            }
-        }
+        visit((AbstractArrayProperty<?>) property);
+    }
+
+    public void visit(Reference reference) {
+        visit((AbstractAssociation<?>) reference);
+    }
+
+    protected void visitObject(Object object) {
+        if (object instanceof AbstractGeometry)
+            ((AbstractGeometry) object).accept(this);
+        else if (object instanceof AbstractSurfacePatch)
+            ((AbstractSurfacePatch) object).accept(this);
     }
 }

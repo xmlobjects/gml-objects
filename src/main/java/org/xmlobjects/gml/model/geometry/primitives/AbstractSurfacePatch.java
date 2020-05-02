@@ -22,10 +22,8 @@ package org.xmlobjects.gml.model.geometry.primitives;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
-import org.xmlobjects.gml.visitor.ObjectVisitor;
 
 public abstract class AbstractSurfacePatch extends GMLObject {
     public abstract Envelope computeEnvelope();
-    public abstract void accept(ObjectVisitor visitor);
     public abstract void accept(GeometryVisitor visitor);
 }
