@@ -206,12 +206,16 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
 
     public boolean contains(Envelope other) {
         return other != null
-                && other.getDimension() == getDimension()
+                && other.isValid()
                 && contains(other.lowerCorner.getValue(), other.upperCorner.getValue());
     }
 
     private boolean contains(List<Double> lowerCorner, List<Double> upperCorner) {
-        for (int i = 0; i < lowerCorner.size(); i++) {
+        int dimension = Math.min(getDimension(), lowerCorner.size());
+        if (dimension == 0)
+            return false;
+
+        for (int i = 0; i < dimension; i++) {
             if (lowerCorner.get(i) < this.lowerCorner.getValue().get(i)
                     || upperCorner.get(i) > this.upperCorner.getValue().get(i))
                 return false;
