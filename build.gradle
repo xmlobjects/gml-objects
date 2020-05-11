@@ -108,7 +108,7 @@ publishing {
                 }
                 scm {
                     url = 'https://github.com/xmlobjects/gml-objects'
-                    connection = 'https://github.com/xmlobjects/gml-objects.git'
+                    connection = 'scm:git:https://github.com/xmlobjects/gml-objects.git'
                 }
             }
         }
