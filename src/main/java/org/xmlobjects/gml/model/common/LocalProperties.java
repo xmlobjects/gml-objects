@@ -44,6 +44,11 @@ public class LocalProperties implements Serializable {
         return Objects.equals(get(name), expectedValue);
     }
 
+    public <T> T getOrDefault(String name, Class<T> type, Supplier<T> supplier) {
+        T value = get(name, type);
+        return  value != null ? value : supplier.get();
+    }
+
     public <T> T getOrSet(String name, Class<T> type, Supplier<T> supplier) {
         T value = get(name, type);
         if (value == null) {
