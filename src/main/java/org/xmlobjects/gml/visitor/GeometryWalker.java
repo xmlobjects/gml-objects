@@ -82,7 +82,7 @@ import org.xmlobjects.gml.model.geometry.primitives.TriangulatedSurface;
 import java.util.ArrayList;
 
 public abstract class GeometryWalker implements GeometryVisitor {
-    private boolean shouldWalk = true;
+    protected boolean shouldWalk = true;
 
     public boolean shouldWalk() {
         return shouldWalk;
