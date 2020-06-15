@@ -45,7 +45,7 @@ import javax.xml.namespace.QName;
 public class MultiCurveCoverageAdapter extends AbstractFeatureAdapter<MultiCurveCoverage> {
 
     @Override
-    public MultiCurveCoverage createObject(QName name) throws ObjectBuildException {
+    public MultiCurveCoverage createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiCurveCoverage();
     }
 

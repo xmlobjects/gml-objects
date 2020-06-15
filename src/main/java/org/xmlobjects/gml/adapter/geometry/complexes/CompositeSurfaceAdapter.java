@@ -47,7 +47,7 @@ import javax.xml.namespace.QName;
 public class CompositeSurfaceAdapter extends AbstractSurfaceAdapter<CompositeSurface> {
 
     @Override
-    public CompositeSurface createObject(QName name) throws ObjectBuildException {
+    public CompositeSurface createObject(QName name, Object parent) throws ObjectBuildException {
         return new CompositeSurface();
     }
 

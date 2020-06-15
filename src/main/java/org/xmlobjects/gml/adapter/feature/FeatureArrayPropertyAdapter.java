@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class FeatureArrayPropertyAdapter extends AbstractFeatureArrayPropertyAdapter<FeatureArrayProperty<?>> {
 
     @Override
-    public FeatureArrayProperty<AbstractFeature> createObject(QName name) throws ObjectBuildException {
+    public FeatureArrayProperty<AbstractFeature> createObject(QName name, Object parent) throws ObjectBuildException {
         return new FeatureArrayProperty<>();
     }
 }

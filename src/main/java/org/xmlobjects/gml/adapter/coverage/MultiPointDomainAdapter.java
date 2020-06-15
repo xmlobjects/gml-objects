@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class MultiPointDomainAdapter extends AbstractPropertyAdapter<MultiPointDomain> {
 
     @Override
-    public MultiPointDomain createObject(QName name) throws ObjectBuildException {
+    public MultiPointDomain createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiPointDomain();
     }
 }

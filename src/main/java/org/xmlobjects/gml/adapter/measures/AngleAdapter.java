@@ -29,7 +29,7 @@ import javax.xml.namespace.QName;
 public class AngleAdapter extends AbstractMeasureAdapter<Angle> {
 
     @Override
-    public Angle createObject(QName name) throws ObjectBuildException {
+    public Angle createObject(QName name, Object parent) throws ObjectBuildException {
         return new Angle();
     }
 }

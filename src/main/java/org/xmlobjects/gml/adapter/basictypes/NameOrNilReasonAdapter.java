@@ -41,7 +41,7 @@ import javax.xml.namespace.QName;
 public class NameOrNilReasonAdapter implements ObjectBuilder<NameOrNilReason>, ObjectSerializer<NameOrNilReason> {
 
     @Override
-    public NameOrNilReason createObject(QName name) throws ObjectBuildException {
+    public NameOrNilReason createObject(QName name, Object parent) throws ObjectBuildException {
         return new NameOrNilReason();
     }
 

@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class RingPropertyAdapter extends AbstractInlineGeometryPropertyAdapter<RingProperty> {
 
     @Override
-    public RingProperty createObject(QName name) throws ObjectBuildException {
+    public RingProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new RingProperty();
     }
 }

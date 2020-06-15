@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class GeometricComplexPropertyAdapter extends AbstractGeometryPropertyAdapter<GeometricComplexProperty> {
 
     @Override
-    public GeometricComplexProperty createObject(QName name) throws ObjectBuildException {
+    public GeometricComplexProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new GeometricComplexProperty();
     }
 }

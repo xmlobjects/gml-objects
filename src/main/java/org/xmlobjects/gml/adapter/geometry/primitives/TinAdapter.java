@@ -47,7 +47,7 @@ import javax.xml.namespace.QName;
 public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
 
     @Override
-    public Tin createObject(QName name) throws ObjectBuildException {
+    public Tin createObject(QName name, Object parent) throws ObjectBuildException {
         return new Tin();
     }
 

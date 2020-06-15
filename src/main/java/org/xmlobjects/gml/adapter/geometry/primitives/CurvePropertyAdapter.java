@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class CurvePropertyAdapter extends AbstractGeometryPropertyAdapter<CurveProperty> {
 
     @Override
-    public CurveProperty createObject(QName name) throws ObjectBuildException {
+    public CurveProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new CurveProperty();
     }
 }

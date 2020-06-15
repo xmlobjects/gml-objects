@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class MultiSolidPropertyAdapter extends AbstractGeometryPropertyAdapter<MultiSolidProperty> {
 
     @Override
-    public MultiSolidProperty createObject(QName name) throws ObjectBuildException {
+    public MultiSolidProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiSolidProperty();
     }
 }

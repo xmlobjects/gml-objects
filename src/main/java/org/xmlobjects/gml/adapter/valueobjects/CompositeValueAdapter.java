@@ -38,7 +38,7 @@ import javax.xml.namespace.QName;
 public class CompositeValueAdapter extends AbstractCompositeValueAdapter<CompositeValue> {
 
     @Override
-    public CompositeValue createObject(QName name) throws ObjectBuildException {
+    public CompositeValue createObject(QName name, Object parent) throws ObjectBuildException {
         return new CompositeValue();
     }
 

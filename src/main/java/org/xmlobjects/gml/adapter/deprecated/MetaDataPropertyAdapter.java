@@ -38,7 +38,7 @@ import javax.xml.namespace.QName;
 public class MetaDataPropertyAdapter extends AbstractPropertyAdapter<MetaDataProperty<?>> {
 
     @Override
-    public MetaDataProperty<?> createObject(QName name) throws ObjectBuildException {
+    public MetaDataProperty<?> createObject(QName name, Object parent) throws ObjectBuildException {
         return new MetaDataProperty<>();
     }
 

@@ -47,7 +47,7 @@ import javax.xml.namespace.QName;
 public class PointAdapter extends AbstractGeometricPrimitiveAdapter<Point> {
 
     @Override
-    public Point createObject(QName name) throws ObjectBuildException {
+    public Point createObject(QName name, Object parent) throws ObjectBuildException {
         return new Point();
     }
 

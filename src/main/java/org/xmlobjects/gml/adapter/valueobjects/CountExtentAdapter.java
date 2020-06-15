@@ -46,7 +46,7 @@ import javax.xml.namespace.QName;
 public class CountExtentAdapter implements ObjectBuilder<CountExtent>, ObjectSerializer<CountExtent> {
 
     @Override
-    public CountExtent createObject(QName name) throws ObjectBuildException {
+    public CountExtent createObject(QName name, Object parent) throws ObjectBuildException {
         return new CountExtent();
     }
 

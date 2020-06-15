@@ -44,7 +44,7 @@ import javax.xml.namespace.QName;
 public class ValueAdapter implements ObjectBuilder<Value>, ObjectSerializer<Value> {
 
     @Override
-    public Value createObject(QName name) throws ObjectBuildException {
+    public Value createObject(QName name, Object parent) throws ObjectBuildException {
         return new Value();
     }
 

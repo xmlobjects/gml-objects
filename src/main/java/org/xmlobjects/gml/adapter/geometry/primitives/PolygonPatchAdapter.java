@@ -45,7 +45,7 @@ import javax.xml.namespace.QName;
 public class PolygonPatchAdapter extends AbstractSurfacePatchAdapter<PolygonPatch> {
 
     @Override
-    public PolygonPatch createObject(QName name) throws ObjectBuildException {
+    public PolygonPatch createObject(QName name, Object parent) throws ObjectBuildException {
         return new PolygonPatch();
     }
 

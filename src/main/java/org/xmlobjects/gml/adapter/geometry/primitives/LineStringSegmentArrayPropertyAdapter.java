@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class LineStringSegmentArrayPropertyAdapter extends AbstractArrayPropertyAdapter<LineStringSegmentArrayProperty> {
 
     @Override
-    public LineStringSegmentArrayProperty createObject(QName name) throws ObjectBuildException {
+    public LineStringSegmentArrayProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new LineStringSegmentArrayProperty();
     }
 }

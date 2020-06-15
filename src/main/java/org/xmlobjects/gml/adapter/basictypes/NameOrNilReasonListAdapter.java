@@ -45,7 +45,7 @@ import java.util.stream.Collectors;
 public class NameOrNilReasonListAdapter implements ObjectBuilder<NameOrNilReasonList>, ObjectSerializer<NameOrNilReasonList> {
 
     @Override
-    public NameOrNilReasonList createObject(QName name) throws ObjectBuildException {
+    public NameOrNilReasonList createObject(QName name, Object parent) throws ObjectBuildException {
         return new NameOrNilReasonList();
     }
 

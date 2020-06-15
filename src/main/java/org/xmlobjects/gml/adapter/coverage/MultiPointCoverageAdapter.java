@@ -45,7 +45,7 @@ import javax.xml.namespace.QName;
 public class MultiPointCoverageAdapter extends AbstractFeatureAdapter<MultiPointCoverage> {
 
     @Override
-    public MultiPointCoverage createObject(QName name) throws ObjectBuildException {
+    public MultiPointCoverage createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiPointCoverage();
     }
 

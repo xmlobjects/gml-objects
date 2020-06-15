@@ -48,7 +48,7 @@ import javax.xml.namespace.QName;
 public class SolidAdapter extends AbstractSolidAdapter<Solid> {
 
     @Override
-    public Solid createObject(QName name) throws ObjectBuildException {
+    public Solid createObject(QName name, Object parent) throws ObjectBuildException {
         return new Solid();
     }
 

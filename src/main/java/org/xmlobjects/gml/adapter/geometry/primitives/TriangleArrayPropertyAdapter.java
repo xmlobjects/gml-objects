@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class TriangleArrayPropertyAdapter extends AbstractArrayPropertyAdapter<TriangleArrayProperty> {
 
     @Override
-    public TriangleArrayProperty createObject(QName name) throws ObjectBuildException {
+    public TriangleArrayProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new TriangleArrayProperty();
     }
 }

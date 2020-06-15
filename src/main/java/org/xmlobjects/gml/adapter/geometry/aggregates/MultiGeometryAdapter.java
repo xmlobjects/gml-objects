@@ -47,7 +47,7 @@ import javax.xml.namespace.QName;
 public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<MultiGeometry> {
 
     @Override
-    public MultiGeometry createObject(QName name) throws ObjectBuildException {
+    public MultiGeometry createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiGeometry();
     }
 

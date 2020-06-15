@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class MultiSurfacePropertyAdapter extends AbstractGeometryPropertyAdapter<MultiSurfaceProperty> {
 
     @Override
-    public MultiSurfaceProperty createObject(QName name) throws ObjectBuildException {
+    public MultiSurfaceProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiSurfaceProperty();
     }
 }

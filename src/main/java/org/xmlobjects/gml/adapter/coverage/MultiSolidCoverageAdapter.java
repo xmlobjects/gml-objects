@@ -45,7 +45,7 @@ import javax.xml.namespace.QName;
 public class MultiSolidCoverageAdapter extends AbstractFeatureAdapter<MultiSolidCoverage> {
 
     @Override
-    public MultiSolidCoverage createObject(QName name) throws ObjectBuildException {
+    public MultiSolidCoverage createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiSolidCoverage();
     }
 

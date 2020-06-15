@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class MultiGeometryPropertyAdapter extends AbstractGeometryPropertyAdapter<MultiGeometryProperty> {
 
     @Override
-    public MultiGeometryProperty createObject(QName name) throws ObjectBuildException {
+    public MultiGeometryProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiGeometryProperty();
     }
 }

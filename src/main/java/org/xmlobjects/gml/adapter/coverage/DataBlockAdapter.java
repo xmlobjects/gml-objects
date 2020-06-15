@@ -41,7 +41,7 @@ import javax.xml.namespace.QName;
 public class DataBlockAdapter implements ObjectBuilder<DataBlock>, ObjectSerializer<DataBlock> {
 
     @Override
-    public DataBlock createObject(QName name) throws ObjectBuildException {
+    public DataBlock createObject(QName name, Object parent) throws ObjectBuildException {
         return new DataBlock();
     }
 

@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class TimeAdapter extends AbstractMeasureAdapter<Time> {
 
     @Override
-    public Time createObject(QName name) throws ObjectBuildException {
+    public Time createObject(QName name, Object parent) throws ObjectBuildException {
         return new Time();
     }
 }

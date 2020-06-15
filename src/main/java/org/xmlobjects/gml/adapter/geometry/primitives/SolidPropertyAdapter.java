@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class SolidPropertyAdapter extends AbstractGeometryPropertyAdapter<SolidProperty> {
 
     @Override
-    public SolidProperty createObject(QName name) throws ObjectBuildException {
+    public SolidProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new SolidProperty();
     }
 }

@@ -38,7 +38,7 @@ import javax.xml.namespace.QName;
 public class CodeListAdapter implements ObjectBuilder<CodeList>, ObjectSerializer<CodeList> {
 
     @Override
-    public CodeList createObject(QName name) throws ObjectBuildException {
+    public CodeList createObject(QName name, Object parent) throws ObjectBuildException {
         return new CodeList();
     }
 

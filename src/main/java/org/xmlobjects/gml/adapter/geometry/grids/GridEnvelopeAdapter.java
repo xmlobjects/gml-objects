@@ -40,7 +40,7 @@ import javax.xml.namespace.QName;
 public class GridEnvelopeAdapter implements ObjectBuilder<GridEnvelope>, ObjectSerializer<GridEnvelope> {
 
     @Override
-    public GridEnvelope createObject(QName name) throws ObjectBuildException {
+    public GridEnvelope createObject(QName name, Object parent) throws ObjectBuildException {
         return new GridEnvelope();
     }
 

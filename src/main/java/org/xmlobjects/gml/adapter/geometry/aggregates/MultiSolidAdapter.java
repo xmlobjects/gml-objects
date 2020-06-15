@@ -47,7 +47,7 @@ import javax.xml.namespace.QName;
 public class MultiSolidAdapter extends AbstractGeometricAggregateAdapter<MultiSolid> {
 
     @Override
-    public MultiSolid createObject(QName name) throws ObjectBuildException {
+    public MultiSolid createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiSolid();
     }
 

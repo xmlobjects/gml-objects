@@ -50,7 +50,7 @@ import javax.xml.namespace.QName;
 public class LinearRingAdapter extends AbstractRingAdapter<LinearRing> {
 
     @Override
-    public LinearRing createObject(QName name) throws ObjectBuildException {
+    public LinearRing createObject(QName name, Object parent) throws ObjectBuildException {
         return new LinearRing();
     }
 

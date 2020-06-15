@@ -37,7 +37,7 @@ import javax.xml.namespace.QName;
 public class CodeWithAuthorityAdapter implements ObjectBuilder<CodeWithAuthority>, ObjectSerializer<CodeWithAuthority> {
 
     @Override
-    public CodeWithAuthority createObject(QName name) throws ObjectBuildException {
+    public CodeWithAuthority createObject(QName name, Object parent) throws ObjectBuildException {
         return new CodeWithAuthority();
     }
 

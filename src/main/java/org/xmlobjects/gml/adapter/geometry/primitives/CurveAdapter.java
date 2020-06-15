@@ -44,7 +44,7 @@ import javax.xml.namespace.QName;
 public class CurveAdapter extends AbstractCurveAdapter<Curve> {
 
     @Override
-    public Curve createObject(QName name) throws ObjectBuildException {
+    public Curve createObject(QName name, Object parent) throws ObjectBuildException {
         return new Curve();
     }
 

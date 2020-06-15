@@ -39,7 +39,7 @@ import javax.xml.namespace.QName;
 public class BooleanOrNilReasonAdapter implements ObjectBuilder<BooleanOrNilReason>, ObjectSerializer<BooleanOrNilReason> {
 
     @Override
-    public BooleanOrNilReason createObject(QName name) throws ObjectBuildException {
+    public BooleanOrNilReason createObject(QName name, Object parent) throws ObjectBuildException {
         return new BooleanOrNilReason();
     }
 

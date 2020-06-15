@@ -44,7 +44,7 @@ import javax.xml.namespace.QName;
 public class TriangleAdapter extends AbstractSurfacePatchAdapter<Triangle> {
 
     @Override
-    public Triangle createObject(QName name) throws ObjectBuildException {
+    public Triangle createObject(QName name, Object parent) throws ObjectBuildException {
         return new Triangle();
     }
 

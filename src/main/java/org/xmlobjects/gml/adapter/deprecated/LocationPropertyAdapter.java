@@ -40,7 +40,7 @@ import javax.xml.namespace.QName;
 public class LocationPropertyAdapter extends AbstractGeometryPropertyAdapter<LocationProperty> {
 
     @Override
-    public LocationProperty createObject(QName name) throws ObjectBuildException {
+    public LocationProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new LocationProperty();
     }
 

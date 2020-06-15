@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
 public class DoubleOrNilReasonListAdapter implements ObjectBuilder<DoubleOrNilReasonList>, ObjectSerializer<DoubleOrNilReasonList> {
 
     @Override
-    public DoubleOrNilReasonList createObject(QName name) throws ObjectBuildException {
+    public DoubleOrNilReasonList createObject(QName name, Object parent) throws ObjectBuildException {
         return new DoubleOrNilReasonList();
     }
 

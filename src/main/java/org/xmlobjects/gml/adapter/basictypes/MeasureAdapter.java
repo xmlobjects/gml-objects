@@ -27,7 +27,7 @@ import javax.xml.namespace.QName;
 public class MeasureAdapter extends AbstractMeasureAdapter<Measure> {
 
     @Override
-    public Measure createObject(QName name) throws ObjectBuildException {
+    public Measure createObject(QName name, Object parent) throws ObjectBuildException {
         return new Measure();
     }
 }

@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class SolidArrayPropertyAdapter extends AbstractGeometryArrayPropertyAdapter<SolidArrayProperty> {
 
     @Override
-    public SolidArrayProperty createObject(QName name) throws ObjectBuildException {
+    public SolidArrayProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new SolidArrayProperty();
     }
 }

@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
 public class IntegerOrNilReasonListAdapter implements ObjectBuilder<IntegerOrNilReasonList>, ObjectSerializer<IntegerOrNilReasonList> {
 
     @Override
-    public IntegerOrNilReasonList createObject(QName name) throws ObjectBuildException {
+    public IntegerOrNilReasonList createObject(QName name, Object parent) throws ObjectBuildException {
         return new IntegerOrNilReasonList();
     }
 

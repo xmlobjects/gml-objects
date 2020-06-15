@@ -36,7 +36,7 @@ import javax.xml.namespace.QName;
 public class RelatedTimeAdapter extends AbstractTimePrimitivePropertyAdapter<RelatedTime<?>> {
 
     @Override
-    public RelatedTime<?> createObject(QName name) throws ObjectBuildException {
+    public RelatedTime<?> createObject(QName name, Object parent) throws ObjectBuildException {
         return new RelatedTime<>();
     }
 

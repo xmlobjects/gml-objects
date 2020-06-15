@@ -47,7 +47,7 @@ import java.time.OffsetTime;
 public class TimePositionAdapter implements ObjectBuilder<TimePosition>, ObjectSerializer<TimePosition> {
 
     @Override
-    public TimePosition createObject(QName name) throws ObjectBuildException {
+    public TimePosition createObject(QName name, Object parent) throws ObjectBuildException {
         return new TimePosition();
     }
 

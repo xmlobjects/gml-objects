@@ -48,7 +48,7 @@ import javax.xml.namespace.QName;
 public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<MultiSurface> {
 
     @Override
-    public MultiSurface createObject(QName name) throws ObjectBuildException {
+    public MultiSurface createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiSurface();
     }
 

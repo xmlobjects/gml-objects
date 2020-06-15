@@ -38,7 +38,7 @@ import javax.xml.namespace.QName;
 public class GridAdapter extends AbstractGridAdapter<Grid> {
 
     @Override
-    public Grid createObject(QName name) throws ObjectBuildException {
+    public Grid createObject(QName name, Object parent) throws ObjectBuildException {
         return new Grid();
     }
 

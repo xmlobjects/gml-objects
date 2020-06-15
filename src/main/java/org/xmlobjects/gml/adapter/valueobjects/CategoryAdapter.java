@@ -48,7 +48,7 @@ import javax.xml.namespace.QName;
 public class CategoryAdapter implements ObjectBuilder<Category>, ObjectSerializer<Category> {
 
     @Override
-    public Category createObject(QName name) throws ObjectBuildException {
+    public Category createObject(QName name, Object parent) throws ObjectBuildException {
         return new Category();
     }
 

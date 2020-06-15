@@ -44,7 +44,7 @@ import javax.xml.namespace.QName;
 public class PolyhedralSurfaceAdapter extends AbstractSurfaceAdapter<PolyhedralSurface> {
 
     @Override
-    public PolyhedralSurface createObject(QName name) throws ObjectBuildException {
+    public PolyhedralSurface createObject(QName name, Object parent) throws ObjectBuildException {
         return new PolyhedralSurface();
     }
 

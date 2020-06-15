@@ -42,7 +42,7 @@ import javax.xml.namespace.QName;
 public class SequenceRuleAdapter implements ObjectBuilder<SequenceRule>, ObjectSerializer<SequenceRule> {
 
     @Override
-    public SequenceRule createObject(QName name) throws ObjectBuildException {
+    public SequenceRule createObject(QName name, Object parent) throws ObjectBuildException {
         return new SequenceRule();
     }
 

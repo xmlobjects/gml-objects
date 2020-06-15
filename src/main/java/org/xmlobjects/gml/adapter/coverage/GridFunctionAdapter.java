@@ -41,7 +41,7 @@ import javax.xml.namespace.QName;
 public class GridFunctionAdapter implements ObjectBuilder<GridFunction>, ObjectSerializer<GridFunction> {
 
     @Override
-    public GridFunction createObject(QName name) throws ObjectBuildException {
+    public GridFunction createObject(QName name, Object parent) throws ObjectBuildException {
         return new GridFunction();
     }
 

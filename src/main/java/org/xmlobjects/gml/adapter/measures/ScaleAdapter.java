@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class ScaleAdapter extends AbstractMeasureAdapter<Scale> {
 
     @Override
-    public Scale createObject(QName name) throws ObjectBuildException {
+    public Scale createObject(QName name, Object parent) throws ObjectBuildException {
         return new Scale();
     }
 }

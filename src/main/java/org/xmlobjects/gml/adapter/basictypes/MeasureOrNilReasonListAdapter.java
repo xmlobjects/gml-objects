@@ -37,7 +37,7 @@ import javax.xml.namespace.QName;
 public class MeasureOrNilReasonListAdapter implements ObjectBuilder<MeasureOrNilReasonList>, ObjectSerializer<MeasureOrNilReasonList> {
 
     @Override
-    public MeasureOrNilReasonList createObject(QName name) throws ObjectBuildException {
+    public MeasureOrNilReasonList createObject(QName name, Object parent) throws ObjectBuildException {
         return new MeasureOrNilReasonList();
     }
 

@@ -47,7 +47,7 @@ import javax.xml.namespace.QName;
 public class CompositeSolidAdapter extends AbstractSolidAdapter<CompositeSolid> {
 
     @Override
-    public CompositeSolid createObject(QName name) throws ObjectBuildException {
+    public CompositeSolid createObject(QName name, Object parent) throws ObjectBuildException {
         return new CompositeSolid();
     }
 

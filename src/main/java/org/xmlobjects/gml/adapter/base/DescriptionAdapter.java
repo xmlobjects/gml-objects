@@ -48,7 +48,7 @@ import javax.xml.namespace.QName;
 public class DescriptionAdapter implements ObjectBuilder<StringOrRef>, ObjectSerializer<StringOrRef> {
 
     @Override
-    public StringOrRef createObject(QName name) throws ObjectBuildException {
+    public StringOrRef createObject(QName name, Object parent) throws ObjectBuildException {
         return new StringOrRef();
     }
 

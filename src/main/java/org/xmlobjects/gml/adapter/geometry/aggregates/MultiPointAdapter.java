@@ -47,7 +47,7 @@ import javax.xml.namespace.QName;
 public class MultiPointAdapter extends AbstractGeometricAggregateAdapter<MultiPoint> {
 
     @Override
-    public MultiPoint createObject(QName name) throws ObjectBuildException {
+    public MultiPoint createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiPoint();
     }
 

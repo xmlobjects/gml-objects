@@ -50,7 +50,7 @@ import javax.xml.namespace.QName;
 public class LineStringAdapter extends AbstractCurveAdapter<LineString> {
 
     @Override
-    public LineString createObject(QName name) throws ObjectBuildException {
+    public LineString createObject(QName name, Object parent) throws ObjectBuildException {
         return new LineString();
     }
 

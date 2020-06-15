@@ -47,7 +47,7 @@ import javax.xml.namespace.QName;
 public class CompositeCurveAdapter extends AbstractCurveAdapter<CompositeCurve> {
 
     @Override
-    public CompositeCurve createObject(QName name) throws ObjectBuildException {
+    public CompositeCurve createObject(QName name, Object parent) throws ObjectBuildException {
         return new CompositeCurve();
     }
 

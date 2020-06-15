@@ -44,7 +44,7 @@ import javax.xml.namespace.QName;
 public class RectangleAdapter extends AbstractSurfacePatchAdapter<Rectangle> {
 
     @Override
-    public Rectangle createObject(QName name) throws ObjectBuildException {
+    public Rectangle createObject(QName name, Object parent) throws ObjectBuildException {
         return new Rectangle();
     }
 

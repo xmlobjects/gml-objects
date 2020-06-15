@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class MultiCurvePropertyAdapter extends AbstractGeometryPropertyAdapter<MultiCurveProperty> {
 
     @Override
-    public MultiCurveProperty createObject(QName name) throws ObjectBuildException {
+    public MultiCurveProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiCurveProperty();
     }
 }

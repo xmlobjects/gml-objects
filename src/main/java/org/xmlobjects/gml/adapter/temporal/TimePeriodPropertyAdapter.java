@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class TimePeriodPropertyAdapter extends AbstractPropertyAdapter<TimePeriodProperty> {
 
     @Override
-    public TimePeriodProperty createObject(QName name) throws ObjectBuildException {
+    public TimePeriodProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new TimePeriodProperty();
     }
 }

@@ -46,7 +46,7 @@ import javax.xml.namespace.QName;
 public class ShellAdapter extends AbstractSurfaceAdapter<Shell> {
 
     @Override
-    public Shell createObject(QName name) throws ObjectBuildException {
+    public Shell createObject(QName name, Object parent) throws ObjectBuildException {
         return new Shell();
     }
 

@@ -41,7 +41,7 @@ import javax.xml.namespace.QName;
 public class SimpleTriangleAdapter extends AbstractSimplePolygonAdapter<SimpleTriangle> {
 
     @Override
-    public SimpleTriangle createObject(QName name) throws ObjectBuildException {
+    public SimpleTriangle createObject(QName name, Object parent) throws ObjectBuildException {
         return new SimpleTriangle();
     }
 

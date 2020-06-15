@@ -46,7 +46,7 @@ import javax.xml.namespace.QName;
 public class BooleanValueListAdapter implements ObjectBuilder<BooleanValueList>, ObjectSerializer<BooleanValueList> {
 
     @Override
-    public BooleanValueList createObject(QName name) throws ObjectBuildException {
+    public BooleanValueList createObject(QName name, Object parent) throws ObjectBuildException {
         return new BooleanValueList();
     }
 

@@ -39,7 +39,7 @@ import javax.xml.namespace.QName;
 public class IntegerOrNilReasonAdapter implements ObjectBuilder<IntegerOrNilReason>, ObjectSerializer<IntegerOrNilReason> {
 
     @Override
-    public IntegerOrNilReason createObject(QName name) throws ObjectBuildException {
+    public IntegerOrNilReason createObject(QName name, Object parent) throws ObjectBuildException {
         return new IntegerOrNilReason();
     }
 

@@ -45,7 +45,7 @@ import javax.xml.namespace.QName;
 public class OrientableCurveAdapter extends AbstractCurveAdapter<OrientableCurve> {
 
     @Override
-    public OrientableCurve createObject(QName name) throws ObjectBuildException {
+    public OrientableCurve createObject(QName name, Object parent) throws ObjectBuildException {
         return new OrientableCurve();
     }
 

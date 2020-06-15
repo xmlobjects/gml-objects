@@ -47,7 +47,7 @@ import javax.xml.namespace.QName;
 public class GeometricComplexAdapter extends AbstractGeometryAdapter<GeometricComplex> {
 
     @Override
-    public GeometricComplex createObject(QName name) throws ObjectBuildException {
+    public GeometricComplex createObject(QName name, Object parent) throws ObjectBuildException {
         return new GeometricComplex();
     }
 

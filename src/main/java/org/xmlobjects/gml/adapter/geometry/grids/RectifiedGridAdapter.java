@@ -47,7 +47,7 @@ import javax.xml.namespace.QName;
 public class RectifiedGridAdapter extends AbstractGridAdapter<RectifiedGrid> {
 
     @Override
-    public RectifiedGrid createObject(QName name) throws ObjectBuildException {
+    public RectifiedGrid createObject(QName name, Object parent) throws ObjectBuildException {
         return new RectifiedGrid();
     }
 

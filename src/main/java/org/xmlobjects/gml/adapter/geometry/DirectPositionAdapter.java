@@ -40,7 +40,7 @@ import javax.xml.namespace.QName;
 public class DirectPositionAdapter implements ObjectBuilder<DirectPosition>, ObjectSerializer<DirectPosition> {
 
     @Override
-    public DirectPosition createObject(QName name) throws ObjectBuildException {
+    public DirectPosition createObject(QName name, Object parent) throws ObjectBuildException {
         return new DirectPosition();
     }
 

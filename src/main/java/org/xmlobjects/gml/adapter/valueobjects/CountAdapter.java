@@ -48,7 +48,7 @@ import javax.xml.namespace.QName;
 public class CountAdapter implements ObjectBuilder<Count>, ObjectSerializer<Count> {
 
     @Override
-    public Count createObject(QName name) throws ObjectBuildException {
+    public Count createObject(QName name, Object parent) throws ObjectBuildException {
         return new Count();
     }
 

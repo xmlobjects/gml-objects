@@ -44,7 +44,7 @@ import javax.xml.namespace.QName;
 public class BoundingShapeAdapter implements ObjectBuilder<BoundingShape>, ObjectSerializer<BoundingShape> {
 
     @Override
-    public BoundingShape createObject(QName name) throws ObjectBuildException {
+    public BoundingShape createObject(QName name, Object parent) throws ObjectBuildException {
         return new BoundingShape();
     }
 

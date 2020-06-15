@@ -45,7 +45,7 @@ import javax.xml.namespace.QName;
 public class MultiSurfaceCoverageAdapter extends AbstractFeatureAdapter<MultiSurfaceCoverage> {
 
     @Override
-    public MultiSurfaceCoverage createObject(QName name) throws ObjectBuildException {
+    public MultiSurfaceCoverage createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiSurfaceCoverage();
     }
 

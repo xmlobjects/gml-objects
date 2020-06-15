@@ -32,7 +32,7 @@ import javax.xml.namespace.QName;
 public class CoordAdapter implements ObjectBuilder<Coord> {
 
     @Override
-    public Coord createObject(QName name) throws ObjectBuildException {
+    public Coord createObject(QName name, Object parent) throws ObjectBuildException {
         return new Coord();
     }
 

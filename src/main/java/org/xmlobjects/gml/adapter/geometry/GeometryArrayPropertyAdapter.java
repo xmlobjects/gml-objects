@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class GeometryArrayPropertyAdapter extends AbstractGeometryArrayPropertyAdapter<GeometryArrayProperty<?>> {
 
     @Override
-    public GeometryArrayProperty<AbstractGeometry> createObject(QName name) throws ObjectBuildException {
+    public GeometryArrayProperty<AbstractGeometry> createObject(QName name, Object parent) throws ObjectBuildException {
         return new GeometryArrayProperty<>();
     }
 }

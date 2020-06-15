@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class SurfacePatchArrayPropertyAdapter extends AbstractArrayPropertyAdapter<SurfacePatchArrayProperty<?>> {
 
     @Override
-    public SurfacePatchArrayProperty<?> createObject(QName name) throws ObjectBuildException {
+    public SurfacePatchArrayProperty<?> createObject(QName name, Object parent) throws ObjectBuildException {
         return new SurfacePatchArrayProperty<>();
     }
 }

@@ -44,7 +44,7 @@ import javax.xml.namespace.QName;
 public class SurfaceAdapter extends AbstractSurfaceAdapter<Surface> {
 
     @Override
-    public Surface createObject(QName name) throws ObjectBuildException {
+    public Surface createObject(QName name, Object parent) throws ObjectBuildException {
         return new Surface();
     }
 

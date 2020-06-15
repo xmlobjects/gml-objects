@@ -39,7 +39,7 @@ import javax.xml.namespace.QName;
 public class GridLimitsAdapter implements ObjectBuilder<GridLimits>, ObjectSerializer<GridLimits> {
 
     @Override
-    public GridLimits createObject(QName name) throws ObjectBuildException {
+    public GridLimits createObject(QName name, Object parent) throws ObjectBuildException {
         return new GridLimits();
     }
 

@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class MultiSolidDomainAdapter extends AbstractPropertyAdapter<MultiSolidDomain> {
 
     @Override
-    public MultiSolidDomain createObject(QName name) throws ObjectBuildException {
+    public MultiSolidDomain createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiSolidDomain();
     }
 }

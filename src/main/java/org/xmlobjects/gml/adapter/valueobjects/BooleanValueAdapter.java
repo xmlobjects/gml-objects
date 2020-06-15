@@ -48,7 +48,7 @@ import javax.xml.namespace.QName;
 public class BooleanValueAdapter implements ObjectBuilder<BooleanValue>, ObjectSerializer<BooleanValue> {
 
     @Override
-    public BooleanValue createObject(QName name) throws ObjectBuildException {
+    public BooleanValue createObject(QName name, Object parent) throws ObjectBuildException {
         return new BooleanValue();
     }
 

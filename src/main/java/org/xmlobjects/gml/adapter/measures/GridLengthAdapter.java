@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class GridLengthAdapter extends AbstractMeasureAdapter<GridLength> {
 
     @Override
-    public GridLength createObject(QName name) throws ObjectBuildException {
+    public GridLength createObject(QName name, Object parent) throws ObjectBuildException {
         return new GridLength();
     }
 }

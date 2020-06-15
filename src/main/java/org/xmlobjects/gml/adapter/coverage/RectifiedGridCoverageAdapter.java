@@ -45,7 +45,7 @@ import javax.xml.namespace.QName;
 public class RectifiedGridCoverageAdapter extends AbstractFeatureAdapter<RectifiedGridCoverage> {
 
     @Override
-    public RectifiedGridCoverage createObject(QName name) throws ObjectBuildException {
+    public RectifiedGridCoverage createObject(QName name, Object parent) throws ObjectBuildException {
         return new RectifiedGridCoverage();
     }
 

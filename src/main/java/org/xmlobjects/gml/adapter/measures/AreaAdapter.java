@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class AreaAdapter extends AbstractMeasureAdapter<Area> {
 
     @Override
-    public Area createObject(QName name) throws ObjectBuildException {
+    public Area createObject(QName name, Object parent) throws ObjectBuildException {
         return new Area();
     }
 }

@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class GridDomainAdapter extends AbstractPropertyAdapter<GridDomain> {
 
     @Override
-    public GridDomain createObject(QName name) throws ObjectBuildException {
+    public GridDomain createObject(QName name, Object parent) throws ObjectBuildException {
         return new GridDomain();
     }
 }

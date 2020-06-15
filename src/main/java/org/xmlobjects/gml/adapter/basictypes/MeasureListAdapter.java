@@ -38,7 +38,7 @@ import javax.xml.namespace.QName;
 public class MeasureListAdapter implements ObjectBuilder<MeasureList>, ObjectSerializer<MeasureList> {
 
     @Override
-    public MeasureList createObject(QName name) throws ObjectBuildException {
+    public MeasureList createObject(QName name, Object parent) throws ObjectBuildException {
         return new MeasureList();
     }
 

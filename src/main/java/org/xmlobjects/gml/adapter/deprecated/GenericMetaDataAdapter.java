@@ -43,7 +43,7 @@ import javax.xml.namespace.QName;
 public class GenericMetaDataAdapter extends AbstractMetaDataAdapter<GenericMetaData> {
 
     @Override
-    public GenericMetaData createObject(QName name) throws ObjectBuildException {
+    public GenericMetaData createObject(QName name, Object parent) throws ObjectBuildException {
         return new GenericMetaData();
     }
 

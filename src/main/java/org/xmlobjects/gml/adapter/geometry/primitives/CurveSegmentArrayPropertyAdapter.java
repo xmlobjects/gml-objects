@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class CurveSegmentArrayPropertyAdapter extends AbstractArrayPropertyAdapter<CurveSegmentArrayProperty> {
 
     @Override
-    public CurveSegmentArrayProperty createObject(QName name) throws ObjectBuildException {
+    public CurveSegmentArrayProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new CurveSegmentArrayProperty();
     }
 }

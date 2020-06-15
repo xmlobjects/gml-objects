@@ -44,7 +44,7 @@ import javax.xml.namespace.QName;
 public class TimePeriodAdapter extends AbstractTimeGeometricPrimitiveAdapter<TimePeriod> {
 
     @Override
-    public TimePeriod createObject(QName name) throws ObjectBuildException {
+    public TimePeriod createObject(QName name, Object parent) throws ObjectBuildException {
         return new TimePeriod();
     }
 

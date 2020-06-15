@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class PointArrayPropertyAdapter extends AbstractGeometryArrayPropertyAdapter<PointArrayProperty> {
 
     @Override
-    public PointArrayProperty createObject(QName name) throws ObjectBuildException {
+    public PointArrayProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new PointArrayProperty();
     }
 }

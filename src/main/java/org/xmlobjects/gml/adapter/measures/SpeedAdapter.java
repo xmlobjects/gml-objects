@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class SpeedAdapter extends AbstractMeasureAdapter<Speed> {
 
     @Override
-    public Speed createObject(QName name) throws ObjectBuildException {
+    public Speed createObject(QName name, Object parent) throws ObjectBuildException {
         return new Speed();
     }
 }

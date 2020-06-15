@@ -45,7 +45,7 @@ import javax.xml.namespace.QName;
 public class RingAdapter extends AbstractRingAdapter<Ring> {
 
     @Override
-    public Ring createObject(QName name) throws ObjectBuildException {
+    public Ring createObject(QName name, Object parent) throws ObjectBuildException {
         return new Ring();
     }
 

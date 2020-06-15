@@ -44,7 +44,7 @@ import javax.xml.namespace.QName;
 public class TriangulatedSurfaceAdapter extends AbstractSurfaceAdapter<TriangulatedSurface> {
 
     @Override
-    public TriangulatedSurface createObject(QName name) throws ObjectBuildException {
+    public TriangulatedSurface createObject(QName name, Object parent) throws ObjectBuildException {
         return new TriangulatedSurface();
     }
 

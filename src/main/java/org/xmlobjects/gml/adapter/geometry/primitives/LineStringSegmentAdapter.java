@@ -49,7 +49,7 @@ import javax.xml.namespace.QName;
 public class LineStringSegmentAdapter extends AbstractCurveSegmentAdapter<LineStringSegment> {
 
     @Override
-    public LineStringSegment createObject(QName name) throws ObjectBuildException {
+    public LineStringSegment createObject(QName name, Object parent) throws ObjectBuildException {
         return new LineStringSegment();
     }
 

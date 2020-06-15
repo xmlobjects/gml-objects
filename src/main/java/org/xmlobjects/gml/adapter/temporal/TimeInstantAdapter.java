@@ -44,7 +44,7 @@ import javax.xml.namespace.QName;
 public class TimeInstantAdapter extends AbstractTimeGeometricPrimitiveAdapter<TimeInstant> {
 
     @Override
-    public TimeInstant createObject(QName name) throws ObjectBuildException {
+    public TimeInstant createObject(QName name, Object parent) throws ObjectBuildException {
         return new TimeInstant();
     }
 

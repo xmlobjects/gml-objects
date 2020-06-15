@@ -41,7 +41,7 @@ import javax.xml.namespace.QName;
 public class SimplePolygonAdapter extends AbstractSimplePolygonAdapter<SimplePolygon> {
 
     @Override
-    public SimplePolygon createObject(QName name) throws ObjectBuildException {
+    public SimplePolygon createObject(QName name, Object parent) throws ObjectBuildException {
         return new SimplePolygon();
     }
 

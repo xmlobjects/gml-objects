@@ -38,7 +38,7 @@ import javax.xml.namespace.QName;
 public class TimeIntervalLengthAdapter implements ObjectBuilder<TimeIntervalLength>, ObjectSerializer<TimeIntervalLength> {
 
     @Override
-    public TimeIntervalLength createObject(QName name) throws ObjectBuildException {
+    public TimeIntervalLength createObject(QName name, Object parent) throws ObjectBuildException {
         return new TimeIntervalLength();
     }
 

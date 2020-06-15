@@ -38,7 +38,7 @@ import javax.xml.namespace.QName;
 public class TimeDurationAdapter implements ObjectBuilder<TimeDuration>, ObjectSerializer<TimeDuration> {
 
     @Override
-    public TimeDuration createObject(QName name) throws ObjectBuildException {
+    public TimeDuration createObject(QName name, Object parent) throws ObjectBuildException {
         return new TimeDuration();
     }
 

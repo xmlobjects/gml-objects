@@ -44,7 +44,7 @@ import javax.xml.namespace.QName;
 public class ValueArrayAdapter extends AbstractCompositeValueAdapter<ValueArray> {
 
     @Override
-    public ValueArray createObject(QName name) throws ObjectBuildException {
+    public ValueArray createObject(QName name, Object parent) throws ObjectBuildException {
         return new ValueArray();
     }
 

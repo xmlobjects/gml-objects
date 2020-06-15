@@ -51,7 +51,7 @@ import java.util.List;
 public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerializer<Envelope> {
 
     @Override
-    public Envelope createObject(QName name) throws ObjectBuildException {
+    public Envelope createObject(QName name, Object parent) throws ObjectBuildException {
         return new Envelope();
     }
 

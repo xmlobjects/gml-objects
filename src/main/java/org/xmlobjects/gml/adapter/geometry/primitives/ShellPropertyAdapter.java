@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class ShellPropertyAdapter extends AbstractInlineGeometryPropertyAdapter<ShellProperty> {
 
     @Override
-    public ShellProperty createObject(QName name) throws ObjectBuildException {
+    public ShellProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new ShellProperty();
     }
 }

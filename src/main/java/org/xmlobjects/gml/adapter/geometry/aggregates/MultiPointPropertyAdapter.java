@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class MultiPointPropertyAdapter extends AbstractGeometryPropertyAdapter<MultiPointProperty> {
 
     @Override
-    public MultiPointProperty createObject(QName name) throws ObjectBuildException {
+    public MultiPointProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiPointProperty();
     }
 }

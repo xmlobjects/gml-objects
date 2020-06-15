@@ -39,7 +39,7 @@ import javax.xml.namespace.QName;
 public class ValueArrayPropertyAdapter extends AbstractArrayPropertyAdapter<ValueArrayProperty> {
 
     @Override
-    public ValueArrayProperty createObject(QName name) throws ObjectBuildException {
+    public ValueArrayProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new ValueArrayProperty();
     }
 

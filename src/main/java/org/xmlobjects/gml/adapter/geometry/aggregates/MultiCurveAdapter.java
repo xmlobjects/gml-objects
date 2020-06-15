@@ -48,7 +48,7 @@ import javax.xml.namespace.QName;
 public class MultiCurveAdapter extends AbstractGeometricAggregateAdapter<MultiCurve> {
 
     @Override
-    public MultiCurve createObject(QName name) throws ObjectBuildException {
+    public MultiCurve createObject(QName name, Object parent) throws ObjectBuildException {
         return new MultiCurve();
     }
 

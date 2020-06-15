@@ -45,7 +45,7 @@ import javax.xml.namespace.QName;
 public class OrientableSurfaceAdapter extends AbstractSurfaceAdapter<OrientableSurface> {
 
     @Override
-    public OrientableSurface createObject(QName name) throws ObjectBuildException {
+    public OrientableSurface createObject(QName name, Object parent) throws ObjectBuildException {
         return new OrientableSurface();
     }
 

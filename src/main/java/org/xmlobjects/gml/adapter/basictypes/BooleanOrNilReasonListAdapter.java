@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
 public class BooleanOrNilReasonListAdapter implements ObjectBuilder<BooleanOrNilReasonList>, ObjectSerializer<BooleanOrNilReasonList> {
 
     @Override
-    public BooleanOrNilReasonList createObject(QName name) throws ObjectBuildException {
+    public BooleanOrNilReasonList createObject(QName name, Object parent) throws ObjectBuildException {
         return new BooleanOrNilReasonList();
     }
 

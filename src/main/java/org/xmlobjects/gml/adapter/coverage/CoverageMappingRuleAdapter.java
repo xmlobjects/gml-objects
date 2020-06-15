@@ -40,7 +40,7 @@ import javax.xml.namespace.QName;
 public class CoverageMappingRuleAdapter implements ObjectBuilder<CoverageMappingRule>, ObjectSerializer<CoverageMappingRule> {
 
     @Override
-    public CoverageMappingRule createObject(QName name) throws ObjectBuildException {
+    public CoverageMappingRule createObject(QName name, Object parent) throws ObjectBuildException {
         return new CoverageMappingRule();
     }
 

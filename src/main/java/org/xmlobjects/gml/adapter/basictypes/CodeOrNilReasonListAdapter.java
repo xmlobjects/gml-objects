@@ -37,7 +37,7 @@ import javax.xml.namespace.QName;
 public class CodeOrNilReasonListAdapter implements ObjectBuilder<CodeOrNilReasonList>, ObjectSerializer<CodeOrNilReasonList> {
 
     @Override
-    public CodeOrNilReasonList createObject(QName name) throws ObjectBuildException {
+    public CodeOrNilReasonList createObject(QName name, Object parent) throws ObjectBuildException {
         return new CodeOrNilReasonList();
     }
 

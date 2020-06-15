@@ -40,7 +40,7 @@ import javax.xml.namespace.QName;
 public class VectorAdapter implements ObjectBuilder<Vector>, ObjectSerializer<Vector> {
 
     @Override
-    public Vector createObject(QName name) throws ObjectBuildException {
+    public Vector createObject(QName name, Object parent) throws ObjectBuildException {
         return new Vector();
     }
 

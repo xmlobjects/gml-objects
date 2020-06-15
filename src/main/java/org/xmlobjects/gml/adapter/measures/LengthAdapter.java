@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class LengthAdapter extends AbstractMeasureAdapter<Length> {
 
     @Override
-    public Length createObject(QName name) throws ObjectBuildException {
+    public Length createObject(QName name, Object parent) throws ObjectBuildException {
         return new Length();
     }
 }

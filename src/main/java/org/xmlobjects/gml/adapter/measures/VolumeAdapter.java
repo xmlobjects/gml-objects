@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class VolumeAdapter extends AbstractMeasureAdapter<Volume> {
 
     @Override
-    public Volume createObject(QName name) throws ObjectBuildException {
+    public Volume createObject(QName name, Object parent) throws ObjectBuildException {
         return new Volume();
     }
 }

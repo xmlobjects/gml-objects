@@ -48,7 +48,7 @@ import javax.xml.namespace.QName;
 public class QuantityAdapter implements ObjectBuilder<Quantity>, ObjectSerializer<Quantity> {
 
     @Override
-    public Quantity createObject(QName name) throws ObjectBuildException {
+    public Quantity createObject(QName name, Object parent) throws ObjectBuildException {
         return new Quantity();
     }
 

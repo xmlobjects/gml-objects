@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class PolygonPatchArrayPropertyAdapter extends AbstractArrayPropertyAdapter<PolygonPatchArrayProperty> {
 
     @Override
-    public PolygonPatchArrayProperty createObject(QName name) throws ObjectBuildException {
+    public PolygonPatchArrayProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new PolygonPatchArrayProperty();
     }
 }

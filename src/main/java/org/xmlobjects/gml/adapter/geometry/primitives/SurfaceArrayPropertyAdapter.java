@@ -28,7 +28,7 @@ import javax.xml.namespace.QName;
 public class SurfaceArrayPropertyAdapter extends AbstractGeometryArrayPropertyAdapter<SurfaceArrayProperty> {
 
     @Override
-    public SurfaceArrayProperty createObject(QName name) throws ObjectBuildException {
+    public SurfaceArrayProperty createObject(QName name, Object parent) throws ObjectBuildException {
         return new SurfaceArrayProperty();
     }
 }

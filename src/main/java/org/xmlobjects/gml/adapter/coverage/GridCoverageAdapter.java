@@ -45,7 +45,7 @@ import javax.xml.namespace.QName;
 public class GridCoverageAdapter extends AbstractFeatureAdapter<GridCoverage> {
 
     @Override
-    public GridCoverage createObject(QName name) throws ObjectBuildException {
+    public GridCoverage createObject(QName name, Object parent) throws ObjectBuildException {
         return new GridCoverage();
     }
 
