@@ -8,7 +8,7 @@ plugins {
 }
 
 group 'org.xmlobjects.gml'
-version '0.9.1'
+version '0.9.1-b20200619-2337'
 description 'A Java mapping for the OGC Geography Markup Language (GML)'
 ext.date = new Date()
 
@@ -23,9 +23,9 @@ repositories {
 }
 
 dependencies {
-    api 'org.xmlobjects:xml-objects:0.9.1-b20200607-1257'
+    api 'org.xmlobjects:xml-objects:0.9.1-b20200619-2337'
     api 'gov.nist.math:jama:1.0.3'
-    annotationProcessor 'org.xmlobjects:xml-objects:0.9.1-b20200607-1257'
+    annotationProcessor 'org.xmlobjects:xml-objects:0.9.1-b20200619-2337'
 }
 
 javadoc {
