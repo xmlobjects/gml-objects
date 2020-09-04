@@ -4,11 +4,11 @@ plugins {
     id 'java-library'
     id 'distribution'
     id 'maven-publish'
-    id 'com.jfrog.bintray' version '1.8.4'
+    id 'com.jfrog.bintray' version '1.8.5'
 }
 
 group 'org.xmlobjects.gml'
-version '0.9.2-b20200712-1149'
+version '1.0.0-rc.1'
 description 'A Java mapping for the OGC Geography Markup Language (GML)'
 ext.date = new Date()
 
@@ -23,9 +23,9 @@ repositories {
 }
 
 dependencies {
-    api 'org.xmlobjects:xml-objects:0.9.2-b20200712-1149'
+    api 'org.xmlobjects:xml-objects:1.0.0-rc.1'
     api 'gov.nist.math:jama:1.0.3'
-    annotationProcessor 'org.xmlobjects:xml-objects:0.9.2-b20200712-1149'
+    annotationProcessor 'org.xmlobjects:xml-objects:1.0.0-rc.1'
 }
 
 javadoc {
