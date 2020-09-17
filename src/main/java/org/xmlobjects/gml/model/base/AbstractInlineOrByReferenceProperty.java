@@ -54,6 +54,11 @@ public abstract class AbstractInlineOrByReferenceProperty<T extends Child> exten
         this.object = asChild(object);
     }
 
+    public void setObjectIfValid(Child object) {
+        if (getTargetType().isInstance(object))
+            setObject(getTargetType().cast(object));
+    }
+
     public void setReference(AssociationAttributes reference) {
         href = reference.getHref();
         role = reference.getRole();

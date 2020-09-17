@@ -44,4 +44,9 @@ public abstract class AbstractArrayProperty<T extends Child> extends AbstractAss
     public void setObjects(List<T> objects) {
         this.objects = asChild(objects);
     }
+
+    public void addObjectIfValid(Child object) {
+        if (getTargetType().isInstance(object))
+            getObjects().add(getTargetType().cast(object));
+    }
 }

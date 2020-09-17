@@ -38,4 +38,9 @@ public abstract class AbstractInlineProperty<T extends Child> extends AbstractAs
     public void setObject(T object) {
         this.object = asChild(object);
     }
+
+    public void setObjectIfValid(Child object) {
+        if (getTargetType().isInstance(object))
+            setObject(getTargetType().cast(object));
+    }
 }
