@@ -23,7 +23,11 @@ import org.xmlobjects.model.Child;
 import org.xmlobjects.model.ChildList;
 import org.xmlobjects.util.copy.Copyable;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 public abstract class GMLObject implements Child, Copyable {
     private Child parent;
@@ -51,5 +55,49 @@ public abstract class GMLObject implements Child, Copyable {
     @Override
     public final void setParent(Child parent) {
         this.parent = parent;
+    }
+
+    public boolean unsetProperty(Object value) {
+        if (value == null) {
+            return true;
+        }
+
+        Class<?> type = getClass();
+        boolean removed = false;
+
+        do {
+            Field[] fields = type.getDeclaredFields();
+            for (int i = 0; !removed && i < fields.length; i++) {
+                try {
+                    fields[i].setAccessible(true);
+                    Object candidate = fields[i].get(this);
+                    if (candidate == value) {
+                        fields[i].set(this, null);
+                        removed = true;
+                    } else if (candidate instanceof Collection) {
+                        removed = ((Collection<?>) candidate).removeIf(v -> v == value);
+                        if (removed && ((Collection<?>) candidate).isEmpty()) {
+                            fields[i].set(this, null);
+                        }
+                    } else if (candidate instanceof Object[]) {
+                        for (int j = 0; j < Array.getLength(candidate); j++) {
+                            if (Array.get(candidate, j) == value) {
+                                Array.set(candidate, j, null);
+                                removed = true;
+                            }
+                        }
+                    } else if (candidate instanceof Map) {
+                        removed = ((Map<?, ?>) candidate).values().removeIf(v -> v == value);
+                        if (removed && ((Map<?, ?>) candidate).isEmpty()) {
+                            fields[i].set(this, null);
+                        }
+                    }
+                } catch (Throwable e) {
+                    return false;
+                }
+            }
+        } while (!removed && (type = type.getSuperclass()) != Object.class);
+
+        return removed;
     }
 }
