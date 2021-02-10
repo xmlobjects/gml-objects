@@ -38,8 +38,8 @@ public class CompositeCurve extends AbstractCurve implements AggregationAttribut
     public CompositeCurve() {
     }
 
-    public CompositeCurve(List<CurveProperty> curveMember) {
-        setCurveMembers(curveMember);
+    public CompositeCurve(List<CurveProperty> curveMembers) {
+        setCurveMembers(curveMembers);
     }
 
     public List<CurveProperty> getCurveMembers() {

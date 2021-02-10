@@ -37,8 +37,8 @@ public class CompositeSolid extends AbstractSolid implements AggregationAttribut
     public CompositeSolid() {
     }
 
-    public CompositeSolid(List<SolidProperty> curveMember) {
-        setSolidMembers(curveMember);
+    public CompositeSolid(List<SolidProperty> solidMembers) {
+        setSolidMembers(solidMembers);
     }
 
     public List<SolidProperty> getSolidMembers() {
