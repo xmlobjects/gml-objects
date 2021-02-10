@@ -37,8 +37,8 @@ public class CompositeSurface extends AbstractSurface implements AggregationAttr
     public CompositeSurface() {
     }
 
-    public CompositeSurface(List<SurfaceProperty> curveMember) {
-        setSurfaceMembers(curveMember);
+    public CompositeSurface(List<SurfaceProperty> surfaceMembers) {
+        setSurfaceMembers(surfaceMembers);
     }
 
     public List<SurfaceProperty> getSurfaceMembers() {
