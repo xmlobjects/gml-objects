@@ -39,7 +39,7 @@ public class DefaultIdCreator implements IdCreator {
     }
 
     public String getDefaultPrefix() {
-        return "UUID_";
+        return "ID_";
     }
 
     public String getPrefix() {
@@ -57,6 +57,6 @@ public class DefaultIdCreator implements IdCreator {
 
     @Override
     public String createId() {
-        return prefix + UUID.randomUUID().toString();
+        return prefix + UUID.randomUUID();
     }
 }
