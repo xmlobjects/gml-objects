@@ -25,11 +25,7 @@ import org.xmlobjects.gml.model.common.GenericElement;
 import org.xmlobjects.gml.model.feature.AbstractFeature;
 import org.xmlobjects.gml.model.feature.FeatureProperty;
 import org.xmlobjects.serializer.ObjectSerializeException;
-import org.xmlobjects.stream.BuildResult;
-import org.xmlobjects.stream.XMLReadException;
-import org.xmlobjects.stream.XMLReader;
-import org.xmlobjects.stream.XMLWriteException;
-import org.xmlobjects.stream.XMLWriter;
+import org.xmlobjects.stream.*;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Namespaces;
 

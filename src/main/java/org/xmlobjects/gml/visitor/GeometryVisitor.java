@@ -19,11 +19,7 @@
 
 package org.xmlobjects.gml.visitor;
 
-import org.xmlobjects.gml.model.geometry.aggregates.MultiCurve;
-import org.xmlobjects.gml.model.geometry.aggregates.MultiGeometry;
-import org.xmlobjects.gml.model.geometry.aggregates.MultiPoint;
-import org.xmlobjects.gml.model.geometry.aggregates.MultiSolid;
-import org.xmlobjects.gml.model.geometry.aggregates.MultiSurface;
+import org.xmlobjects.gml.model.geometry.aggregates.*;
 import org.xmlobjects.gml.model.geometry.compact.SimpleMultiPoint;
 import org.xmlobjects.gml.model.geometry.compact.SimplePolygon;
 import org.xmlobjects.gml.model.geometry.compact.SimpleRectangle;
@@ -34,23 +30,7 @@ import org.xmlobjects.gml.model.geometry.complexes.CompositeSurface;
 import org.xmlobjects.gml.model.geometry.complexes.GeometricComplex;
 import org.xmlobjects.gml.model.geometry.grids.Grid;
 import org.xmlobjects.gml.model.geometry.grids.RectifiedGrid;
-import org.xmlobjects.gml.model.geometry.primitives.Curve;
-import org.xmlobjects.gml.model.geometry.primitives.LineString;
-import org.xmlobjects.gml.model.geometry.primitives.LinearRing;
-import org.xmlobjects.gml.model.geometry.primitives.OrientableCurve;
-import org.xmlobjects.gml.model.geometry.primitives.OrientableSurface;
-import org.xmlobjects.gml.model.geometry.primitives.Point;
-import org.xmlobjects.gml.model.geometry.primitives.Polygon;
-import org.xmlobjects.gml.model.geometry.primitives.PolygonPatch;
-import org.xmlobjects.gml.model.geometry.primitives.PolyhedralSurface;
-import org.xmlobjects.gml.model.geometry.primitives.Rectangle;
-import org.xmlobjects.gml.model.geometry.primitives.Ring;
-import org.xmlobjects.gml.model.geometry.primitives.Shell;
-import org.xmlobjects.gml.model.geometry.primitives.Solid;
-import org.xmlobjects.gml.model.geometry.primitives.Surface;
-import org.xmlobjects.gml.model.geometry.primitives.Tin;
-import org.xmlobjects.gml.model.geometry.primitives.Triangle;
-import org.xmlobjects.gml.model.geometry.primitives.TriangulatedSurface;
+import org.xmlobjects.gml.model.geometry.primitives.*;
 
 public interface GeometryVisitor {
     void visit(CompositeCurve compositeCurve);

@@ -21,13 +21,7 @@ package org.xmlobjects.gml.adapter.temporal;
 
 import org.xmlobjects.builder.ObjectBuildException;
 import org.xmlobjects.builder.ObjectBuilder;
-import org.xmlobjects.gml.model.temporal.CalendarDate;
-import org.xmlobjects.gml.model.temporal.ClockTime;
-import org.xmlobjects.gml.model.temporal.DateAndTime;
-import org.xmlobjects.gml.model.temporal.OrdinalPosition;
-import org.xmlobjects.gml.model.temporal.TimeCoordinate;
-import org.xmlobjects.gml.model.temporal.TimeIndeterminateValue;
-import org.xmlobjects.gml.model.temporal.TimePosition;
+import org.xmlobjects.gml.model.temporal.*;
 import org.xmlobjects.serializer.ObjectSerializeException;
 import org.xmlobjects.serializer.ObjectSerializer;
 import org.xmlobjects.stream.XMLReadException;
