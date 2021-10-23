@@ -50,17 +50,6 @@ public class Reference extends AbstractAssociation<AbstractGML> implements Assoc
         setReference(reference);
     }
 
-    public void setReference(AssociationAttributes reference) {
-        href = reference.getHref();
-        role = reference.getRole();
-        arcRole = reference.getArcRole();
-        title = reference.getTitle();
-        show = reference.getShow();
-        actuate = reference.getActuate();
-        nilReason = reference.getNilReason();
-        remoteSchema = reference.getRemoteSchema();
-    }
-
     @Override
     public Class<AbstractGML> getTargetType() {
         return AbstractGML.class;

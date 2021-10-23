@@ -41,4 +41,26 @@ public interface AssociationAttributes {
     void setNilReason(NilReason nilReason);
     String getRemoteSchema();
     void setRemoteSchema(String remoteSchema);
+
+    default void setReference(AssociationAttributes reference) {
+        if (reference != null) {
+            setHref(reference.getHref());
+            setRole(reference.getRole());
+            setArcRole(reference.getArcRole());
+            setTitle(reference.getTitle());
+            setShow(reference.getShow());
+            setActuate(reference.getActuate());
+            setNilReason(reference.getNilReason());
+            setRemoteSchema(reference.getRemoteSchema());
+        } else {
+            setHref(null);
+            setRole(null);
+            setArcRole(null);
+            setTitle(null);
+            setShow(null);
+            setActuate(null);
+            setNilReason(null);
+            setRemoteSchema(null);
+        }
+    }
 }
