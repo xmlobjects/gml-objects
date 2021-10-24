@@ -30,7 +30,6 @@ repositories {
 
 dependencies {
     api 'org.xmlobjects:xml-objects:1.0.0-rc.3'
-    api 'gov.nist.math:jama:1.0.3'
     annotationProcessor 'org.xmlobjects:xml-objects:1.0.0-rc.3'
 }
 

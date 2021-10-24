@@ -19,11 +19,11 @@
 
 package org.xmlobjects.gml.model.geometry.grids;
 
-import Jama.Matrix;
 import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.model.geometry.Vector;
 import org.xmlobjects.gml.model.geometry.primitives.PointProperty;
 import org.xmlobjects.gml.util.Matrices;
+import org.xmlobjects.gml.util.jama.Matrix;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
 import org.xmlobjects.model.ChildList;

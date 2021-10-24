@@ -19,8 +19,8 @@
 
 package org.xmlobjects.gml.util;
 
-import Jama.Matrix;
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
+import org.xmlobjects.gml.util.jama.Matrix;
 
 import java.util.List;
 
