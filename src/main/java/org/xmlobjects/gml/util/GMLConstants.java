@@ -34,6 +34,7 @@ public class GMLConstants {
     public static final String GML_3_1_NAMESPACE = "http://www.opengis.net/gml";
     public static final String GML_3_1_SCHEMA_LOCATION = "http://schemas.opengis.net/gml/3.1.1/base/gml.xsd";
     public static final String XLINK_NAMESPACE = "http://www.w3.org/1999/xlink";
+    public static final String XLINK_SCHEMA_LOCATION = "https://www.w3.org/1999/xlink.xsd";
 
     public static final String SIMPLE_POLYGON_CONVERTER = SimplePolygonConverter.class.getName();
     public static final String SIMPLE_RECTANGLE_CONVERTER = SimpleRectangleConverter.class.getName();
