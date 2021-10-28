@@ -351,6 +351,10 @@ public abstract class GeometryWalker implements GeometryVisitor {
             visitObject(property.getObject());
     }
 
+    public void visit(AbstractReference<?> reference) {
+        visit((AbstractAssociation<?>) reference);
+    }
+
     public void visit(GeometryProperty<?> property) {
         visit((AbstractProperty<?>) property);
     }
@@ -365,10 +369,6 @@ public abstract class GeometryWalker implements GeometryVisitor {
 
     public void visit(SurfacePatchArrayProperty<?> property) {
         visit((AbstractArrayProperty<?>) property);
-    }
-
-    public void visit(Reference reference) {
-        visit((AbstractAssociation<?>) reference);
     }
 
     protected void visitObject(Object object) {

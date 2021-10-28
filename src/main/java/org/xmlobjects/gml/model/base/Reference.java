@@ -1,8 +1,8 @@
 /*
- * gml-objects - A Java mapping for the OGC Geography Markup Language (GML)
- * https://github.com/xmlobjects/gml-objects
+ * citygml4j - The Open Source Java API for CityGML
+ * https://github.com/citygml4j
  *
- * Copyright 2019-2020 Claus Nagel <claus.nagel@gmail.com>
+ * Copyright 2013-2021 Claus Nagel <claus.nagel@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,134 +19,25 @@
 
 package org.xmlobjects.gml.model.base;
 
-import org.xmlobjects.gml.model.basictypes.NilReason;
-import org.xmlobjects.gml.model.xlink.ActuateType;
-import org.xmlobjects.gml.model.xlink.ShowType;
-
-public class Reference extends AbstractAssociation<AbstractGML> implements AssociationAttributes, OwnershipAttributes {
-    private String href;
-    private String role;
-    private String arcRole;
-    private String title;
-    private ShowType show;
-    private ActuateType actuate;
-    private NilReason nilReason;
-    private String remoteSchema;
-    private Boolean owns;
+public class Reference extends AbstractReference<AbstractGML> {
 
     public Reference() {
     }
 
     public Reference(String href) {
-        this.href = href;
+        super(href);
     }
 
     public Reference(AbstractGML object) {
-        if (object.getId() != null)
-            href = '#' + object.getId();
+        super(object);
     }
 
     public Reference(AssociationAttributes reference) {
-        setReference(reference);
+        super(reference);
     }
 
     @Override
     public Class<AbstractGML> getTargetType() {
         return AbstractGML.class;
-    }
-
-    @Override
-    public final String getType() {
-        return "simple";
-    }
-
-    @Override
-    public String getHref() {
-        return href;
-    }
-
-    @Override
-    public void setHref(String href) {
-        this.href = href;
-    }
-
-    @Override
-    public String getRole() {
-        return role;
-    }
-
-    @Override
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    @Override
-    public String getArcRole() {
-        return arcRole;
-    }
-
-    @Override
-    public void setArcRole(String arcRole) {
-        this.arcRole = arcRole;
-    }
-
-    @Override
-    public String getTitle() {
-        return title;
-    }
-
-    @Override
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    @Override
-    public ShowType getShow() {
-        return show;
-    }
-
-    @Override
-    public void setShow(ShowType show) {
-        this.show = show;
-    }
-
-    @Override
-    public ActuateType getActuate() {
-        return actuate;
-    }
-
-    @Override
-    public void setActuate(ActuateType actuate) {
-        this.actuate = actuate;
-    }
-
-    @Override
-    public NilReason getNilReason() {
-        return nilReason;
-    }
-
-    @Override
-    public void setNilReason(NilReason nilReason) {
-        this.nilReason = asChild(nilReason);
-    }
-
-    @Override
-    public String getRemoteSchema() {
-        return remoteSchema;
-    }
-
-    @Override
-    public void setRemoteSchema(String remoteSchema) {
-        this.remoteSchema = remoteSchema;
-    }
-
-    @Override
-    public Boolean getOwns() {
-        return owns;
-    }
-
-    @Override
-    public void setOwns(Boolean owns) {
-        this.owns = owns;
     }
 }
