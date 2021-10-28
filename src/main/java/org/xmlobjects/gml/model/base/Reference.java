@@ -1,8 +1,8 @@
 /*
- * citygml4j - The Open Source Java API for CityGML
- * https://github.com/citygml4j
+ * gml-objects - A Java mapping for the OGC Geography Markup Language (GML)
+ * https://github.com/xmlobjects/gml-objects
  *
- * Copyright 2013-2021 Claus Nagel <claus.nagel@gmail.com>
+ * Copyright 2019-2021 Claus Nagel <claus.nagel@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
