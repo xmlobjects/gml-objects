@@ -38,19 +38,17 @@ public abstract class AbstractFeaturePropertyAdapter<T extends FeatureProperty> 
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         BuildResult<AbstractFeature> result = reader.getObjectOrDOMElement(object.getTargetType());
-        if (result.isSetObject()) {
+        if (result.isSetObject())
             object.setObjectIfValid(result.getObject());
-        } else if (result.isSetDOMElement()) {
+        else if (result.isSetDOMElement())
             object.setGenericElement(GenericElement.of(result.getDOMElement()));
-        }
     }
 
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        if (object.isSetObject()) {
+        if (object.isSetObject())
             writer.writeObject(object.getObject(), namespaces);
-        } else if (object.isSetGenericElement()) {
+        else if (object.isSetGenericElement())
             writer.writeDOMElement(object.getGenericElement().getContent());
-        }
     }
 }

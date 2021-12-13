@@ -46,10 +46,6 @@ public abstract class AbstractInlineOrByReferenceProperty<T extends Child> exten
         this.href = href;
     }
 
-    public boolean isSetObject() {
-        return object != null;
-    }
-
     public T getObject() {
         return object;
     }

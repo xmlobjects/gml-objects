@@ -336,7 +336,7 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(AbstractInlineOrByReferenceProperty<?> property) {
         visit((AbstractAssociation<?>) property);
 
-        if (shouldWalk && property != null && property.isSetObject())
+        if (shouldWalk && property != null && property.getObject() != null)
             visitObject(property.getObject());
     }
 

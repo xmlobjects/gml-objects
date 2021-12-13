@@ -34,10 +34,6 @@ public abstract class AbstractArrayProperty<T extends Child> extends AbstractAss
         setObjects(objects);
     }
 
-    public boolean isSetObject() {
-        return objects != null && !objects.isEmpty();
-    }
-
     public List<T> getObjects() {
         if (objects == null) {
             objects = new ChildList<>(this);

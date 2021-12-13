@@ -37,6 +37,10 @@ public class MetaDataProperty<T extends AbstractMetaData> extends AbstractProper
         super(href);
     }
 
+    public boolean isSetObject() {
+        return getObject() != null;
+    }
+
     public GenericElement getGenericElement() {
         return genericElement;
     }

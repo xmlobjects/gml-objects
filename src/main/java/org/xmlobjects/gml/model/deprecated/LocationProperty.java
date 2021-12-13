@@ -48,6 +48,10 @@ public class LocationProperty extends GeometryProperty<AbstractGeometry> {
         super(href);
     }
 
+    public boolean isSetObject() {
+        return getObject() != null;
+    }
+
     @Override
     public void setObject(AbstractGeometry geometry) {
         super.setObject(geometry);
