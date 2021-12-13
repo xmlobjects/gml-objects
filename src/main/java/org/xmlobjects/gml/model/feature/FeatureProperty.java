@@ -45,10 +45,6 @@ public class FeatureProperty<T extends AbstractFeature> extends AbstractProperty
         return super.getObject();
     }
 
-    public boolean isSetObject() {
-        return getObject() != null;
-    }
-
     @Override
     public void setObject(T object) {
         super.setObject(object);

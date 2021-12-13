@@ -41,10 +41,6 @@ public abstract class AbstractFeatureMember<T extends AbstractFeature> extends A
         return super.getObject();
     }
 
-    public boolean isSetObject() {
-        return getObject() != null;
-    }
-
     @Override
     public void setObject(T object) {
         super.setObject(object);

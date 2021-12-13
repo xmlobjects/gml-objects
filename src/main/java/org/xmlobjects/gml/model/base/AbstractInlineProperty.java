@@ -31,6 +31,10 @@ public abstract class AbstractInlineProperty<T extends Child> extends AbstractAs
         setObject(object);
     }
 
+    public boolean isSetObject() {
+        return object != null;
+    }
+
     public T getObject() {
         return object;
     }

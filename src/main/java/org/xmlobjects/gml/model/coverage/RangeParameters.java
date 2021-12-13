@@ -37,10 +37,6 @@ public class RangeParameters extends AbstractProperty<GMLObject> {
         super(href);
     }
 
-    public boolean isSetObject() {
-        return getObject() != null;
-    }
-
     public GenericElement getGenericElement() {
         return genericElement;
     }

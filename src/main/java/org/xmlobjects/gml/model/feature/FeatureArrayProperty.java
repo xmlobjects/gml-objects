@@ -35,10 +35,6 @@ public class FeatureArrayProperty<T extends AbstractFeature> extends AbstractArr
         super(objects);
     }
 
-    public boolean isSetObject() {
-        return !getObjects().isEmpty();
-    }
-
     public List<GenericElement> getGenericElements() {
         if (genericElements == null)
             genericElements = new ChildList<>(this);
