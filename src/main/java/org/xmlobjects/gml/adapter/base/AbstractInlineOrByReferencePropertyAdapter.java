@@ -58,7 +58,7 @@ public abstract class AbstractInlineOrByReferencePropertyAdapter<T extends Abstr
 
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        if (object.getObject() != null)
+        if (object.isSetObject())
             writer.writeObject(object.getObject(), namespaces);
     }
 }

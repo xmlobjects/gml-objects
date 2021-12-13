@@ -49,7 +49,7 @@ public class ValuePropertyAdapter extends AbstractPropertyAdapter<ValueProperty>
 
     @Override
     public void writeChildElements(ValueProperty object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        if (object.getObject() != null)
+        if (object.isSetObject())
             writer.getOrCreateSerializer(ValueAdapter.class).writeChildElements(object.getObject(), namespaces, writer);
     }
 }
