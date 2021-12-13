@@ -55,8 +55,9 @@ public abstract class AbstractInlineOrByReferenceProperty<T extends Child> exten
     }
 
     public void setObjectIfValid(Child object) {
-        if (getTargetType().isInstance(object))
+        if (object == null || getTargetType().isInstance(object)) {
             setObject(getTargetType().cast(object));
+        }
     }
 
     @Override

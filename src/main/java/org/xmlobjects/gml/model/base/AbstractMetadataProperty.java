@@ -51,8 +51,9 @@ public abstract class AbstractMetadataProperty<T extends Child> extends Abstract
     }
 
     public void setObjectIfValid(Child object) {
-        if (getTargetType().isInstance(object))
+        if (object == null || getTargetType().isInstance(object)) {
             setObject(getTargetType().cast(object));
+        }
     }
 
     public GenericElement getGenericElement() {

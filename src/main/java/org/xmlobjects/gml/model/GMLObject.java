@@ -33,8 +33,9 @@ public abstract class GMLObject implements Child, Copyable {
     private Child parent;
 
     protected final <T extends Child> T asChild(T child) {
-        if (child != null)
+        if (child != null) {
             child.setParent(this);
+        }
 
         return child;
     }
@@ -43,8 +44,9 @@ public abstract class GMLObject implements Child, Copyable {
         if (child instanceof ChildList) {
             ((ChildList<T>) child).setParent(this);
             return child;
-        } else
+        } else {
             return child != null ? new ChildList<>(child, this) : null;
+        }
     }
 
     @Override
