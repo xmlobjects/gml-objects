@@ -48,14 +48,14 @@ public class MetaDataPropertyAdapter extends AbstractPropertyAdapter<MetaDataPro
     public void buildChildObject(MetaDataProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         BuildResult<AbstractMetaData> result = reader.getObjectOrDOMElement(AbstractMetaData.class);
         if (result.isSetObject())
-            object.setObjectIfValid(result.getObject());
+            object.setInlineObjectIfValid(result.getObject());
         else if (result.isSetDOMElement())
             object.setGenericElement(GenericElement.of(result.getDOMElement()));
     }
 
     @Override
     public void writeChildElements(MetaDataProperty<?> object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        if (object.isSetObject())
+        if (object.isSetInlineObject())
             writer.writeObject(object.getObject(), namespaces);
         else if (object.isSetGenericElement())
             writer.writeDOMElement(object.getGenericElement().getContent());

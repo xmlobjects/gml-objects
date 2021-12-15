@@ -23,8 +23,10 @@ import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
 import org.xmlobjects.gml.util.id.DefaultIdCreator;
+import org.xmlobjects.model.Child;
 
-public abstract class AbstractReference<T extends AbstractGML> extends AbstractAssociation<T> implements AssociationAttributes, OwnershipAttributes {
+public abstract class AbstractReference<T extends AbstractGML> extends AbstractAssociation<T> implements ResolvableAssociation<T>, OwnershipAttributes {
+    private T referencedObject;
     private String href;
     private String role;
     private String arcRole;
@@ -43,15 +45,45 @@ public abstract class AbstractReference<T extends AbstractGML> extends AbstractA
     }
 
     public AbstractReference(T object) {
-        if (object.getId() == null) {
-            object.setId(DefaultIdCreator.newInstance().createId());
-        }
-
-        href = '#' + object.getId();
+        setReferencedObject(object);
     }
 
     public AbstractReference(AssociationAttributes reference) {
         setReference(reference);
+    }
+
+    public T getReferencedObject() {
+        return referencedObject;
+    }
+
+    @Override
+    public void setReferencedObject(T object) {
+        setReferencedObject(object, true);
+    }
+
+    @Override
+    public void setReferencedObject(T object, boolean updateReference) {
+        referencedObject = object;
+
+        if (updateReference && object != null) {
+            if (object.getId() == null) {
+                object.setId(DefaultIdCreator.newInstance().createId());
+            }
+
+            setHref('#' + object.getId());
+        }
+    }
+
+    @Override
+    public void setReferencedObjectIfValid(Child object) {
+        setReferencedObjectIfValid(object, true);
+    }
+
+    @Override
+    public void setReferencedObjectIfValid(Child object, boolean updateReference) {
+        if (object == null || getTargetType().isInstance(object)) {
+            setReferencedObject(getTargetType().cast(object), updateReference);
+        }
     }
 
     @Override

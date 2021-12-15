@@ -22,10 +22,12 @@ package org.xmlobjects.gml.model.base;
 import org.xmlobjects.gml.model.basictypes.NilReason;
 import org.xmlobjects.gml.model.xlink.ActuateType;
 import org.xmlobjects.gml.model.xlink.ShowType;
+import org.xmlobjects.gml.util.id.DefaultIdCreator;
 import org.xmlobjects.model.Child;
 
-public abstract class AbstractInlineOrByReferenceProperty<T extends Child> extends AbstractAssociation<T> implements AssociationAttributes {
+public abstract class AbstractInlineOrByReferenceProperty<T extends Child> extends AbstractAssociation<T> implements ResolvableAssociation<T> {
     private T object;
+    private T referencedObject;
     private String href;
     private String role;
     private String arcRole;
@@ -39,7 +41,7 @@ public abstract class AbstractInlineOrByReferenceProperty<T extends Child> exten
     }
 
     public AbstractInlineOrByReferenceProperty(T object) {
-        setObject(object);
+        setInlineObject(object);
     }
 
     public AbstractInlineOrByReferenceProperty(String href) {
@@ -47,16 +49,57 @@ public abstract class AbstractInlineOrByReferenceProperty<T extends Child> exten
     }
 
     public T getObject() {
-        return object;
+        return object != null ? object : referencedObject;
     }
 
-    public void setObject(T object) {
+    public boolean isSetInlineObject() {
+        return object != null;
+    }
+
+    public void setInlineObject(T object) {
         this.object = asChild(object);
+        referencedObject = null;
+        href = null;
     }
 
-    public void setObjectIfValid(Child object) {
+    public void setInlineObjectIfValid(Child object) {
         if (object == null || getTargetType().isInstance(object)) {
-            setObject(getTargetType().cast(object));
+            setInlineObject(getTargetType().cast(object));
+        }
+    }
+
+    public boolean isSetReferencedObject() {
+        return referencedObject != null;
+    }
+
+    @Override
+    public void setReferencedObject(T object) {
+        setReferencedObject(object, true);
+    }
+
+    @Override
+    public void setReferencedObject(T object, boolean updateReference) {
+        referencedObject = object;
+        this.object = null;
+
+        if (updateReference && object instanceof AbstractGML) {
+            AbstractGML gml = (AbstractGML) object;
+            if (gml.getId() == null) {
+                gml.setId(DefaultIdCreator.newInstance().createId());
+            }
+
+            setHref('#' + gml.getId());
+        }
+    }
+
+    @Override
+    public void setReferencedObjectIfValid(Child object) {
+        setReferencedObjectIfValid(object, true);
+    }
+
+    public void setReferencedObjectIfValid(Child object, boolean updateReference) {
+        if (object == null || getTargetType().isInstance(object)) {
+            setReferencedObject(getTargetType().cast(object));
         }
     }
 

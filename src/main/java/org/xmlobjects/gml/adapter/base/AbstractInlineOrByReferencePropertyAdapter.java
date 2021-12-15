@@ -48,7 +48,7 @@ public abstract class AbstractInlineOrByReferencePropertyAdapter<T extends Abstr
     @SuppressWarnings("unchecked")
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        object.setObject((Child) reader.getObject(object.getTargetType()));
+        object.setInlineObject((Child) reader.getObject(object.getTargetType()));
     }
 
     @Override
@@ -58,7 +58,7 @@ public abstract class AbstractInlineOrByReferencePropertyAdapter<T extends Abstr
 
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        if (object.getObject() != null)
+        if (object.isSetInlineObject())
             writer.writeObject(object.getObject(), namespaces);
     }
 }

@@ -42,14 +42,14 @@ public class RangeParametersAdapter extends AbstractPropertyAdapter<RangeParamet
     public void buildChildObject(RangeParameters object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         BuildResult<GMLObject> result = reader.getObjectOrDOMElement(GMLObject.class);
         if (result.isSetObject())
-            object.setObject(result.getObject());
+            object.setInlineObject(result.getObject());
         else if (result.isSetDOMElement())
             object.setGenericElement(GenericElement.of(result.getDOMElement()));
     }
 
     @Override
     public void writeChildElements(RangeParameters object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        if (object.isSetObject())
+        if (object.isSetInlineObject())
             writer.writeObject(object.getObject(), namespaces);
         else if (object.isSetGenericElement())
             writer.writeDOMElement(object.getGenericElement().getContent());

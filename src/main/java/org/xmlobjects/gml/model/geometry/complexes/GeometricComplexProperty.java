@@ -28,7 +28,7 @@ public class GeometricComplexProperty extends GeometryProperty<AbstractGeometry>
     }
 
     public GeometricComplexProperty(AbstractGeometry object) {
-        setObject(object);
+        setInlineObject(object);
     }
 
     public GeometricComplexProperty(String href) {
@@ -36,12 +36,24 @@ public class GeometricComplexProperty extends GeometryProperty<AbstractGeometry>
     }
 
     @Override
-    public void setObject(AbstractGeometry object) {
-        if (object instanceof GeometricComplex
+    public void setInlineObject(AbstractGeometry object) {
+        if (isValidObject(object)) {
+            super.setInlineObject(object);
+        }
+    }
+
+    @Override
+    public void setReferencedObject(AbstractGeometry object) {
+        if (isValidObject(object)) {
+            super.setReferencedObject(object);
+        }
+    }
+
+    public boolean isValidObject(AbstractGeometry object) {
+        return object instanceof GeometricComplex
                 || object instanceof CompositeCurve
                 || object instanceof CompositeSurface
-                || object instanceof CompositeSolid)
-            super.setObject(object);
+                || object instanceof CompositeSolid;
     }
 
     public GeometricComplex getGeometricComplex() {
@@ -52,20 +64,12 @@ public class GeometricComplexProperty extends GeometryProperty<AbstractGeometry>
         return getObject() instanceof GeometricComplex;
     }
 
-    public void setGeometricComplex(GeometricComplex geometricComplex) {
-        super.setObject(geometricComplex);
-    }
-
     public CompositeCurve getCompositeCurve() {
         return isSetCompositeCurve() ? (CompositeCurve) getObject() : null;
     }
 
     public boolean isSetCompositeCurve() {
         return getObject() instanceof CompositeCurve;
-    }
-
-    public void setCompositeCurve(CompositeCurve compositeCurve) {
-        super.setObject(compositeCurve);
     }
 
     public CompositeSurface getCompositeSurface() {
@@ -76,19 +80,11 @@ public class GeometricComplexProperty extends GeometryProperty<AbstractGeometry>
         return getObject() instanceof CompositeSurface;
     }
 
-    public void setCompositeSurface(CompositeSurface compositeSurface) {
-        super.setObject(compositeSurface);
-    }
-
     public CompositeSolid getCompositeSolid() {
         return isSetCompositeSolid() ? (CompositeSolid) getObject() : null;
     }
 
     public boolean isSetCompositeSolid() {
         return getObject() instanceof CompositeSolid;
-    }
-
-    public void setCompositeSolid(CompositeSolid compositeSolid) {
-        super.setObject(compositeSolid);
     }
 }

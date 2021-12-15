@@ -39,8 +39,13 @@ public class RelatedTime<T extends AbstractTimePrimitive> extends TimePrimitiveP
     }
 
     @Override
-    public void setObject(T object) {
-        super.setObject(object);
+    public void setInlineObject(T object) {
+        super.setInlineObject(object);
+    }
+
+    @Override
+    public void setReferencedObject(T object) {
+        super.setReferencedObject(object);
     }
 
     public RelativePosition getRelativePosition() {

@@ -53,8 +53,16 @@ public class LocationProperty extends GeometryProperty<AbstractGeometry> {
     }
 
     @Override
-    public void setObject(AbstractGeometry geometry) {
-        super.setObject(geometry);
+    public void setInlineObject(AbstractGeometry geometry) {
+        super.setInlineObject(geometry);
+        locationKeyWord = null;
+        locationString = null;
+        nullReason = null;
+    }
+
+    @Override
+    public void setReferencedObject(AbstractGeometry object) {
+        super.setReferencedObject(object);
         locationKeyWord = null;
         locationString = null;
         nullReason = null;
@@ -70,7 +78,7 @@ public class LocationProperty extends GeometryProperty<AbstractGeometry> {
 
     public void setLocationKeyWord(Code locationKeyWord) {
         this.locationKeyWord = asChild(locationKeyWord);
-        super.setObject(null);
+        super.setInlineObject(null);
         locationString = null;
         nullReason = null;
     }
@@ -85,7 +93,7 @@ public class LocationProperty extends GeometryProperty<AbstractGeometry> {
 
     public void setLocationString(StringOrRef locationString) {
         this.locationString = asChild(locationString);
-        super.setObject(null);
+        super.setInlineObject(null);
         locationKeyWord = null;
         nullReason = null;
     }
@@ -100,7 +108,7 @@ public class LocationProperty extends GeometryProperty<AbstractGeometry> {
 
     public void setNull(NilReason nullReason) {
         this.nullReason = asChild(nullReason);
-        super.setObject(null);
+        super.setInlineObject(null);
         locationKeyWord = null;
         locationString = null;
     }

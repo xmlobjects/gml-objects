@@ -66,7 +66,7 @@ public class LocationPropertyAdapter extends AbstractGeometryPropertyAdapter<Loc
 
     @Override
     public void writeChildElements(LocationProperty object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        if (object.isSetObject())
+        if (object.isSetInlineObject())
             super.writeChildElements(object, namespaces, writer);
         else if (object.isSetLocationKeyWord())
             writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), "LocationKeyWord"), object.getLocationKeyWord(), CodeAdapter.class, namespaces);

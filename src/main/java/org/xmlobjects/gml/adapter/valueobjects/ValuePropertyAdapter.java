@@ -44,12 +44,12 @@ public class ValuePropertyAdapter extends AbstractPropertyAdapter<ValueProperty>
     public void buildChildObject(ValueProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         Value value = new Value();
         reader.getOrCreateBuilder(ValueAdapter.class).buildChildObject(value, name, attributes, reader);
-        object.setObject(value);
+        object.setInlineObject(value);
     }
 
     @Override
     public void writeChildElements(ValueProperty object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        if (object.getObject() != null)
+        if (object.isSetInlineObject())
             writer.getOrCreateSerializer(ValueAdapter.class).writeChildElements(object.getObject(), namespaces, writer);
     }
 }

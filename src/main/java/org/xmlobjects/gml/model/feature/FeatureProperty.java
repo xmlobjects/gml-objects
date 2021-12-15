@@ -50,8 +50,13 @@ public class FeatureProperty<T extends AbstractFeature> extends AbstractProperty
     }
 
     @Override
-    public void setObject(T object) {
-        super.setObject(object);
+    public void setInlineObject(T object) {
+        super.setInlineObject(object);
+    }
+
+    @Override
+    public void setReferencedObject(T object) {
+        super.setReferencedObject(object);
     }
 
     public GenericElement getGenericElement() {
