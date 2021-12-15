@@ -40,7 +40,7 @@ public class RangeParametersAdapter extends AbstractPropertyAdapter<RangeParamet
 
     @Override
     public void buildChildObject(RangeParameters object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        BuildResult<GMLObject> result = reader.getObjectOrDOMElement(GMLObject.class);
+        BuildResult<GMLObject> result = reader.getObjectOrDOMElement(object.getTargetType());
         if (result.isSetObject())
             object.setInlineObject(result.getObject());
         else if (result.isSetDOMElement())

@@ -39,7 +39,7 @@ public abstract class AbstractFeaturePropertyAdapter<T extends FeatureProperty> 
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         BuildResult<AbstractFeature> result = reader.getObjectOrDOMElement(object.getTargetType());
         if (result.isSetObject())
-            object.setInlineObjectIfValid(result.getObject());
+            object.setInlineObject(result.getObject());
         else if (result.isSetDOMElement())
             object.setGenericElement(GenericElement.of(result.getDOMElement()));
     }

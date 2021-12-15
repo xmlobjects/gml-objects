@@ -44,11 +44,12 @@ public class MetaDataPropertyAdapter extends AbstractPropertyAdapter<MetaDataPro
         attributes.getValue("about").ifPresent(object::setAbout);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void buildChildObject(MetaDataProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        BuildResult<AbstractMetaData> result = reader.getObjectOrDOMElement(AbstractMetaData.class);
+        BuildResult<AbstractMetaData> result = reader.getObjectOrDOMElement(object.getTargetType());
         if (result.isSetObject())
-            object.setInlineObjectIfValid(result.getObject());
+            object.setInlineObject(result.getObject());
         else if (result.isSetDOMElement())
             object.setGenericElement(GenericElement.of(result.getDOMElement()));
     }
