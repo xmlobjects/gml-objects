@@ -23,11 +23,12 @@ import org.xmlobjects.gml.model.base.AbstractGML;
 import org.xmlobjects.gml.model.base.AggregationAttributes;
 import org.xmlobjects.gml.model.base.AggregationType;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
+import org.xmlobjects.gml.visitor.VisitableObject;
 import org.xmlobjects.model.ChildList;
 
 import java.util.List;
 
-public class CompositeValue extends AbstractGML implements AbstractValue, AggregationAttributes {
+public class CompositeValue extends AbstractGML implements AbstractValue, AggregationAttributes, VisitableObject {
     private List<ValueProperty> valueComponent;
     private ValueArrayProperty valueComponents;
     private AggregationType aggregationType;
@@ -68,6 +69,7 @@ public class CompositeValue extends AbstractGML implements AbstractValue, Aggreg
         this.aggregationType = aggregationType;
     }
 
+    @Override
     public void accept(ObjectVisitor visitor) {
         visitor.visit(this);
     }

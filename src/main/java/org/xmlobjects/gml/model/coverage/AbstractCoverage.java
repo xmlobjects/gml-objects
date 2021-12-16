@@ -23,9 +23,9 @@ import org.xmlobjects.gml.model.feature.AbstractFeature;
 import org.xmlobjects.gml.model.geometry.AbstractGeometry;
 import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.util.EnvelopeOptions;
-import org.xmlobjects.gml.visitor.ObjectVisitor;
+import org.xmlobjects.gml.visitor.VisitableObject;
 
-public abstract class AbstractCoverage<T extends AbstractDomainSet<?>> extends AbstractFeature {
+public abstract class AbstractCoverage<T extends AbstractDomainSet<?>> extends AbstractFeature implements VisitableObject {
     private T domainSet;
     private RangeSet rangeSet;
 
@@ -36,8 +36,6 @@ public abstract class AbstractCoverage<T extends AbstractDomainSet<?>> extends A
         setDomainSet(domainSet);
         setRangeSet(rangeSet);
     }
-
-    public abstract void accept(ObjectVisitor visitor);
 
     public T getDomainSet() {
         return domainSet;

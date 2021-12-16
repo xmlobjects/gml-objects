@@ -54,6 +54,7 @@ public class ValueArray extends CompositeValue implements ReferenceSystem {
         this.uom = uom;
     }
 
+    @Override
     public void accept(ObjectVisitor visitor) {
         visitor.visit(this);
     }

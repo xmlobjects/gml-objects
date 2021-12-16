@@ -51,6 +51,12 @@ public abstract class GeometryWalker implements GeometryVisitor {
         shouldWalk = true;
     }
 
+    public void visit(Visitable visitable) {
+        if (visitable instanceof VisitableGeometry) {
+            ((VisitableGeometry) visitable).accept(this);
+        }
+    }
+
     public void visit(AbstractGeometry geometry) {
     }
 
@@ -372,9 +378,7 @@ public abstract class GeometryWalker implements GeometryVisitor {
     }
 
     protected void visitObject(Object object) {
-        if (object instanceof AbstractGeometry)
-            ((AbstractGeometry) object).accept(this);
-        else if (object instanceof AbstractSurfacePatch)
-            ((AbstractSurfacePatch) object).accept(this);
+        if (object instanceof VisitableGeometry)
+            ((VisitableGeometry) object).accept(this);
     }
 }

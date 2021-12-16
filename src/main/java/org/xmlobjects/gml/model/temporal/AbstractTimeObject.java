@@ -20,8 +20,7 @@
 package org.xmlobjects.gml.model.temporal;
 
 import org.xmlobjects.gml.model.base.AbstractGML;
-import org.xmlobjects.gml.visitor.ObjectVisitor;
+import org.xmlobjects.gml.visitor.VisitableObject;
 
-public abstract class AbstractTimeObject extends AbstractGML {
-    public abstract void accept(ObjectVisitor visitor);
+public abstract class AbstractTimeObject extends AbstractGML implements VisitableObject {
 }

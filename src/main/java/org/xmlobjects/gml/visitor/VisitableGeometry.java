@@ -17,26 +17,8 @@
  * limitations under the License.
  */
 
-package org.xmlobjects.gml.model.dictionary;
+package org.xmlobjects.gml.visitor;
 
-import org.xmlobjects.gml.model.base.AbstractGML;
-import org.xmlobjects.gml.model.basictypes.CodeWithAuthority;
-import org.xmlobjects.gml.util.id.DefaultIdCreator;
-import org.xmlobjects.gml.visitor.VisitableObject;
-
-public abstract class DefinitionBase extends AbstractGML implements VisitableObject {
-
-    public DefinitionBase() {
-    }
-
-    public DefinitionBase(CodeWithAuthority identifier) {
-        setIdentifier(identifier);
-    }
-
-    @Override
-    public String getId() {
-        return super.getId() != null ?
-                super.getId() :
-                DefaultIdCreator.newInstance().createId();
-    }
+public interface VisitableGeometry extends Visitable {
+    void accept(GeometryVisitor visitor);
 }
