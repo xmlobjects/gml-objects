@@ -59,7 +59,6 @@ public abstract class AbstractInlineOrByReferenceProperty<T extends Child> exten
     public void setInlineObject(T object) {
         this.object = asChild(object);
         referencedObject = null;
-        href = null;
     }
 
     public void setInlineObjectIfValid(Child object) {
@@ -97,6 +96,7 @@ public abstract class AbstractInlineOrByReferenceProperty<T extends Child> exten
         setReferencedObjectIfValid(object, true);
     }
 
+    @Override
     public void setReferencedObjectIfValid(Child object, boolean updateReference) {
         if (object == null || getTargetType().isInstance(object)) {
             setReferencedObject(getTargetType().cast(object));

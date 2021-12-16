@@ -25,7 +25,7 @@ import org.xmlobjects.gml.model.xlink.ShowType;
 import org.xmlobjects.gml.util.id.DefaultIdCreator;
 import org.xmlobjects.model.Child;
 
-public abstract class AbstractReference<T extends AbstractGML> extends AbstractAssociation<T> implements ResolvableAssociation<T>, OwnershipAttributes {
+public abstract class AbstractReference<T extends Child> extends AbstractAssociation<T> implements ResolvableAssociation<T>, OwnershipAttributes {
     private T referencedObject;
     private String href;
     private String role;
@@ -65,12 +65,13 @@ public abstract class AbstractReference<T extends AbstractGML> extends AbstractA
     public void setReferencedObject(T object, boolean updateReference) {
         referencedObject = object;
 
-        if (updateReference && object != null) {
-            if (object.getId() == null) {
-                object.setId(DefaultIdCreator.newInstance().createId());
+        if (updateReference && object instanceof AbstractGML) {
+            AbstractGML gml = (AbstractGML) object;
+            if (gml.getId() == null) {
+                gml.setId(DefaultIdCreator.newInstance().createId());
             }
 
-            setHref('#' + object.getId());
+            setHref('#' + gml.getId());
         }
     }
 
