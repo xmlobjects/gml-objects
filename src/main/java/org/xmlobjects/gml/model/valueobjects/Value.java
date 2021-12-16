@@ -56,7 +56,6 @@ public class Value extends GMLObject {
         genericElement = null;
     }
 
-
     public AbstractGeometry getGeometry() {
         return geometry;
     }
