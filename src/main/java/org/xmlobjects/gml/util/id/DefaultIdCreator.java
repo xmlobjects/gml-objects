@@ -24,14 +24,19 @@ import org.xmlobjects.util.xml.XMLPatterns;
 import java.util.UUID;
 
 public class DefaultIdCreator implements IdCreator {
+    private static DefaultIdCreator instance;
     private String prefix;
 
     private DefaultIdCreator() {
         prefix = getDefaultPrefix();
     }
 
-    public static DefaultIdCreator newInstance() {
-        return new DefaultIdCreator();
+    public static synchronized DefaultIdCreator getInstance() {
+        if (instance == null) {
+            instance = new DefaultIdCreator();
+        }
+
+        return instance;
     }
 
     public static DefaultIdCreator newInstance(String prefix) {

@@ -37,6 +37,6 @@ public abstract class DefinitionBase extends AbstractGML implements VisitableObj
     public String getId() {
         return super.getId() != null ?
                 super.getId() :
-                DefaultIdCreator.newInstance().createId();
+                DefaultIdCreator.getInstance().createId();
     }
 }

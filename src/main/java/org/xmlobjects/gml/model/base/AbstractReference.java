@@ -68,7 +68,7 @@ public abstract class AbstractReference<T extends Child> extends AbstractAssocia
         if (updateReference && object instanceof AbstractGML) {
             AbstractGML gml = (AbstractGML) object;
             if (gml.getId() == null) {
-                gml.setId(DefaultIdCreator.newInstance().createId());
+                gml.setId(DefaultIdCreator.getInstance().createId());
             }
 
             setHref('#' + gml.getId());
