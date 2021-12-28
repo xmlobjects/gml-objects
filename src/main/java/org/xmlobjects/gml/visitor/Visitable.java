@@ -19,5 +19,7 @@
 
 package org.xmlobjects.gml.visitor;
 
-public interface Visitable {
+import org.xmlobjects.model.Child;
+
+public interface Visitable extends Child {
 }

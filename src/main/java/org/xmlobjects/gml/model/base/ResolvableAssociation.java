@@ -23,7 +23,7 @@ import org.xmlobjects.gml.util.reference.ReferenceResolver;
 import org.xmlobjects.gml.visitor.Visitable;
 import org.xmlobjects.model.Child;
 
-public interface ResolvableAssociation<T extends Child> extends AssociationAttributes {
+public interface ResolvableAssociation<T extends Child> extends Child, AssociationAttributes {
     void setReferencedObject(T object);
     void setReferencedObject(T object, boolean updateReference);
     void setReferencedObjectIfValid(Child object);
@@ -36,14 +36,12 @@ public interface ResolvableAssociation<T extends Child> extends AssociationAttri
 
     default T resolveReference(ReferenceResolver resolver) {
         Visitable scope = null;
-        if (this instanceof Child) {
-            Child parent = (Child) this;
-            do {
-                if (parent instanceof Visitable) {
-                    scope = (Visitable) parent;
-                }
-            } while ((parent = parent.getParent()) != null);
-        }
+        Child parent = this;
+        do {
+            if (parent instanceof Visitable) {
+                scope = (Visitable) parent;
+            }
+        } while ((parent = parent.getParent()) != null);
 
         return scope != null ? resolveReference(resolver, scope) : null;
     }
