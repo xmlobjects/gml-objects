@@ -22,12 +22,20 @@ package org.xmlobjects.gml.util.reference;
 import org.xmlobjects.gml.visitor.Visitable;
 import org.xmlobjects.model.Child;
 
+import java.util.Collection;
 import java.util.Map;
 
 public interface ReferenceResolver {
-    Child resolveReference(String reference, Visitable scope);
-    <T extends Child> T resolveReference(String reference, Visitable scope, Class<T> type);
-    void resolveReferences(Visitable scope);
-    Map<String, ? extends Child> getObjectsById(Visitable scope);
-    <T extends Child> Map<String, T> getObjectsById(Visitable scope, Class<T> type);
+    Child resolveReference(String reference, Collection<Visitable> scopes);
+    Child resolveReference(String reference, Visitable... scopes);
+    <T extends Child> T resolveReference(String reference, Class<T> type, Collection<Visitable> scopes);
+    <T extends Child> T resolveReference(String reference, Class<T> type, Visitable... scopes);
+    void resolveReferences(Collection<Visitable> scopes);
+    void resolveReferences(Visitable... scopes);
+    Map<String, ? extends Child> getObjectsById(Collection<Visitable> scopes);
+    Map<String, ? extends Child> getObjectsById(Visitable... scopes);
+    <T extends Child> Map<String, T> getObjectsById(Class<T> type, Collection<Visitable> scopes);
+    <T extends Child> Map<String, T> getObjectsById(Class<T> type, Visitable... scopes);
+    void removeResolvedReferences(Collection<Visitable> scopes);
+    void removeResolvedReferences(Visitable... scopes);
 }

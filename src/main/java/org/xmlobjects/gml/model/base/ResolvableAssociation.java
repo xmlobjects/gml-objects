@@ -23,6 +23,8 @@ import org.xmlobjects.gml.util.reference.ReferenceResolver;
 import org.xmlobjects.gml.visitor.Visitable;
 import org.xmlobjects.model.Child;
 
+import java.util.Collection;
+
 public interface ResolvableAssociation<T extends Child> extends Child, AssociationAttributes {
     boolean isSetReferencedObject();
     void setReferencedObject(T object);
@@ -31,8 +33,12 @@ public interface ResolvableAssociation<T extends Child> extends Child, Associati
     void setReferencedObjectIfValid(Child object, boolean updateReference);
     Class<T> getTargetType();
 
-    default T resolveReference(ReferenceResolver resolver, Visitable scope) {
-        return resolver.resolveReference(getHref(), scope, getTargetType());
+    default T resolveReference(ReferenceResolver resolver, Collection<Visitable> scopes) {
+        return resolver.resolveReference(getHref(), getTargetType(), scopes);
+    }
+
+    default T resolveReference(ReferenceResolver resolver, Visitable... scopes) {
+        return resolver.resolveReference(getHref(), getTargetType(), scopes);
     }
 
     default T resolveReference(ReferenceResolver resolver) {
