@@ -24,6 +24,7 @@ import org.xmlobjects.gml.visitor.Visitable;
 import org.xmlobjects.model.Child;
 
 public interface ResolvableAssociation<T extends Child> extends Child, AssociationAttributes {
+    boolean isSetReferencedObject();
     void setReferencedObject(T object);
     void setReferencedObject(T object, boolean updateReference);
     void setReferencedObjectIfValid(Child object);

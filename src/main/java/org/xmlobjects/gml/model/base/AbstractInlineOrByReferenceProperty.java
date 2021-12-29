@@ -67,6 +67,7 @@ public abstract class AbstractInlineOrByReferenceProperty<T extends Child> exten
         }
     }
 
+    @Override
     public boolean isSetReferencedObject() {
         return referencedObject != null;
     }

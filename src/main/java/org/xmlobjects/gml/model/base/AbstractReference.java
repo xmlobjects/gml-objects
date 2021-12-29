@@ -52,6 +52,11 @@ public abstract class AbstractReference<T extends Child> extends AbstractAssocia
         setReference(reference);
     }
 
+    @Override
+    public boolean isSetReferencedObject() {
+        return referencedObject != null;
+    }
+
     public T getReferencedObject() {
         return referencedObject;
     }
