@@ -103,6 +103,10 @@ public abstract class AbstractGML extends GMLObject implements StandardObjectPro
         this.names = asChild(names);
     }
 
+    public boolean hasLocalProperties() {
+        return localProperties != null && !localProperties.isEmpty();
+    }
+
     public LocalProperties getLocalProperties() {
         if (localProperties == null)
             localProperties = new LocalProperties();
