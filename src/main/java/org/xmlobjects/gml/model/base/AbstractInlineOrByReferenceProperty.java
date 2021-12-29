@@ -49,7 +49,7 @@ public abstract class AbstractInlineOrByReferenceProperty<T extends Child> exten
     }
 
     public T getObject() {
-        return object != null ? object : referencedObject;
+        return referencedObject != null ? referencedObject : object;
     }
 
     public boolean isSetInlineObject() {
