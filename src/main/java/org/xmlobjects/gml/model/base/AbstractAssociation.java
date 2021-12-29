@@ -29,7 +29,7 @@ public abstract class AbstractAssociation<T extends Child> extends GMLObject {
     public abstract Class<T> getTargetType();
 
     public boolean hasLocalProperties() {
-        return localProperties != null && !localProperties.isEmpty();
+        return localProperties != null;
     }
 
     public LocalProperties getLocalProperties() {
