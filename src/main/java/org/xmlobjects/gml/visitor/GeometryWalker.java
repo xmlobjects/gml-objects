@@ -99,24 +99,30 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(CompositeCurve compositeCurve) {
         visit((AbstractCurve) compositeCurve);
 
-        for (CurveProperty property : new ArrayList<>(compositeCurve.getCurveMembers()))
-            visit(property);
+        if (compositeCurve.isSetCurveMembers()) {
+            for (CurveProperty property : new ArrayList<>(compositeCurve.getCurveMembers()))
+                visit(property);
+        }
     }
 
     @Override
     public void visit(CompositeSolid compositeSolid) {
         visit((AbstractSolid) compositeSolid);
 
-        for (SolidProperty property : new ArrayList<>(compositeSolid.getSolidMembers()))
-            visit(property);
+        if (compositeSolid.isSetSolidMembers()) {
+            for (SolidProperty property : new ArrayList<>(compositeSolid.getSolidMembers()))
+                visit(property);
+        }
     }
 
     @Override
     public void visit(CompositeSurface compositeSurface) {
         visit((AbstractSurface) compositeSurface);
 
-        for (SurfaceProperty property : new ArrayList<>(compositeSurface.getSurfaceMembers()))
-            visit(property);
+        if (compositeSurface.isSetSurfaceMembers()) {
+            for (SurfaceProperty property : new ArrayList<>(compositeSurface.getSurfaceMembers()))
+                visit(property);
+        }
     }
 
     @Override
@@ -128,8 +134,10 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(GeometricComplex geometricComplex) {
         visit((AbstractGeometry) geometricComplex);
 
-        for (GeometricPrimitiveProperty property : new ArrayList<>(geometricComplex.getElements()))
-            visit(property);
+        if (geometricComplex.isSetElements()) {
+            for (GeometricPrimitiveProperty property : new ArrayList<>(geometricComplex.getElements()))
+                visit(property);
+        }
     }
 
     @Override
@@ -151,8 +159,10 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(MultiCurve multiCurve) {
         visit((AbstractGeometricAggregate) multiCurve);
 
-        for (CurveProperty property : new ArrayList<>(multiCurve.getCurveMember()))
-            visit(property);
+        if (multiCurve.isSetCurveMember()) {
+            for (CurveProperty property : new ArrayList<>(multiCurve.getCurveMember()))
+                visit(property);
+        }
 
         visit(multiCurve.getCurveMembers());
     }
@@ -161,8 +171,10 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(MultiGeometry multiGeometry) {
         visit((AbstractGeometricAggregate) multiGeometry);
 
-        for (GeometryProperty<?> property : new ArrayList<>(multiGeometry.getGeometryMember()))
-            visit(property);
+        if (multiGeometry.isSetGeometryMember()) {
+            for (GeometryProperty<?> property : new ArrayList<>(multiGeometry.getGeometryMember()))
+                visit(property);
+        }
 
         visit(multiGeometry.getGeometryMembers());
     }
@@ -171,8 +183,10 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(MultiPoint multiPoint) {
         visit((AbstractMultiPoint) multiPoint);
 
-        for (PointProperty property : new ArrayList<>(multiPoint.getPointMember()))
-            visit(property);
+        if (multiPoint.isSetPointMember()) {
+            for (PointProperty property : new ArrayList<>(multiPoint.getPointMember()))
+                visit(property);
+        }
 
         visit(multiPoint.getPointMembers());
     }
@@ -181,8 +195,10 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(MultiSolid multiSolid) {
         visit((AbstractGeometricAggregate) multiSolid);
 
-        for (SolidProperty property : new ArrayList<>(multiSolid.getSolidMember()))
-            visit(property);
+        if (multiSolid.isSetSolidMember()) {
+            for (SolidProperty property : new ArrayList<>(multiSolid.getSolidMember()))
+                visit(property);
+        }
 
         visit(multiSolid.getSolidMembers());
     }
@@ -191,8 +207,10 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(MultiSurface multiSurface) {
         visit((AbstractGeometricAggregate) multiSurface);
 
-        for (SurfaceProperty property : new ArrayList<>(multiSurface.getSurfaceMember()))
-            visit(property);
+        if (multiSurface.isSetSurfaceMember()) {
+            for (SurfaceProperty property : new ArrayList<>(multiSurface.getSurfaceMember()))
+                visit(property);
+        }
 
         visit(multiSurface.getSurfaceMembers());
     }
@@ -222,8 +240,10 @@ public abstract class GeometryWalker implements GeometryVisitor {
 
         visit(polygon.getExterior());
 
-        for (AbstractRingProperty property : new ArrayList<>(polygon.getInterior()))
-            visit(property);
+        if (polygon.isSetInterior()) {
+            for (AbstractRingProperty property : new ArrayList<>(polygon.getInterior()))
+                visit(property);
+        }
     }
 
     @Override
@@ -232,8 +252,10 @@ public abstract class GeometryWalker implements GeometryVisitor {
 
         visit(polygonPatch.getExterior());
 
-        for (AbstractRingProperty property : new ArrayList<>(polygonPatch.getInterior()))
-            visit(property);
+        if (polygonPatch.isSetInterior()) {
+            for (AbstractRingProperty property : new ArrayList<>(polygonPatch.getInterior()))
+                visit(property);
+        }
     }
 
     @Override
@@ -259,16 +281,20 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(Ring ring) {
         visit((AbstractRing) ring);
 
-        for (CurveProperty property : new ArrayList<>(ring.getCurveMembers()))
-            visit(property);
+        if (ring.isSetCurveMembers()) {
+            for (CurveProperty property : new ArrayList<>(ring.getCurveMembers()))
+                visit(property);
+        }
     }
 
     @Override
     public void visit(Shell shell) {
         visit((AbstractSurface) shell);
 
-        for (SurfaceProperty property : new ArrayList<>(shell.getSurfaceMembers()))
-            visit(property);
+        if (shell.isSetSurfaceMembers()) {
+            for (SurfaceProperty property : new ArrayList<>(shell.getSurfaceMembers()))
+                visit(property);
+        }
     }
 
     @Override
@@ -297,8 +323,10 @@ public abstract class GeometryWalker implements GeometryVisitor {
 
         visit(solid.getExterior());
 
-        for (ShellProperty property : new ArrayList<>(solid.getInterior()))
-            visit(property);
+        if (solid.isSetInterior()) {
+            for (ShellProperty property : new ArrayList<>(solid.getInterior()))
+                visit(property);
+        }
     }
 
     @Override
@@ -331,7 +359,7 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(AbstractArrayProperty<?> property) {
         visit((AbstractAssociation<?>) property);
 
-        if (property != null) {
+        if (property != null && property.isSetObjects()) {
             for (Object object : new ArrayList<>(property.getObjects())) {
                 if (shouldWalk && object != null)
                     visitObject(object);

@@ -48,6 +48,10 @@ public class CompositeSolid extends AbstractSolid implements AggregationAttribut
         return solidMembers;
     }
 
+    public boolean isSetSolidMembers() {
+        return solidMembers != null && !solidMembers.isEmpty();
+    }
+
     public void setSolidMembers(List<SolidProperty> solidMembers) {
         this.solidMembers = asChild(solidMembers);
     }

@@ -78,8 +78,10 @@ public class MultiPointAdapter extends AbstractGeometricAggregateAdapter<MultiPo
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (PointProperty property : object.getPointMember())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "pointMember"), property, PointPropertyAdapter.class, namespaces);
+        if (object.isSetPointMember()) {
+            for (PointProperty property : object.getPointMember())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "pointMember"), property, PointPropertyAdapter.class, namespaces);
+        }
 
         if (object.getPointMembers() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "pointMembers"), object.getPointMembers(), PointArrayPropertyAdapter.class, namespaces);

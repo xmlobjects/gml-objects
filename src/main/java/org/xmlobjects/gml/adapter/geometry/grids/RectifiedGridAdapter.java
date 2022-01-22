@@ -80,7 +80,9 @@ public class RectifiedGridAdapter extends AbstractGridAdapter<RectifiedGrid> {
         if (object.getOrigin() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "origin"), object.getOrigin(), PointPropertyAdapter.class, namespaces);
 
-        for (Vector offsetVector : object.getOffsetVectors())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "offsetVector"), offsetVector, VectorAdapter.class, namespaces);
+        if (object.isSetOffsetVectors()) {
+            for (Vector offsetVector : object.getOffsetVectors())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "offsetVector"), offsetVector, VectorAdapter.class, namespaces);
+        }
     }
 }

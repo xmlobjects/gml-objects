@@ -80,8 +80,10 @@ public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<Multi
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (SurfaceProperty property : object.getSurfaceMember())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "surfaceMember"), property, SurfacePropertyAdapter.class, namespaces);
+        if (object.isSetSurfaceMember()) {
+            for (SurfaceProperty property : object.getSurfaceMember())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "surfaceMember"), property, SurfacePropertyAdapter.class, namespaces);
+        }
 
         if (object.getSurfaceMembers() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "surfaceMembers"), object.getSurfaceMembers(), SurfaceArrayPropertyAdapter.class, namespaces);

@@ -54,6 +54,10 @@ public class Grid extends AbstractGeometry {
         return gridAxisLabels;
     }
 
+    public boolean isSetGridAxisLabels() {
+        return gridAxisLabels != null && !gridAxisLabels.isEmpty();
+    }
+
     public void setGridAxisLabels(List<String> gridAxisLabels) {
         this.gridAxisLabels = gridAxisLabels;
     }

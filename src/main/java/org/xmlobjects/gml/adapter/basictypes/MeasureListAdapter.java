@@ -50,7 +50,9 @@ public class MeasureListAdapter implements ObjectBuilder<MeasureList>, ObjectSer
 
     @Override
     public void initializeElement(Element element, MeasureList object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        element.addTextContent(TextContent.ofDoubleList(object.getValue()));
-        element.addAttribute("uom", object.getUom());
+        if (object.isSetValue()) {
+            element.addTextContent(TextContent.ofDoubleList(object.getValue()));
+            element.addAttribute("uom", object.getUom());
+        }
     }
 }

@@ -41,6 +41,10 @@ public abstract class ValueOrNilReasonList<T extends ValueOrNilReason<?>> extend
         return value;
     }
 
+    public boolean isSetValue() {
+        return value != null && !value.isEmpty();
+    }
+
     public void setValue(List<T> value) {
         this.value = asChild(value);
     }

@@ -75,7 +75,9 @@ public class RingAdapter extends AbstractRingAdapter<Ring> {
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (CurveProperty property : object.getCurveMembers())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "curveMember"), property, CurvePropertyAdapter.class, namespaces);
+        if (object.isSetCurveMembers()) {
+            for (CurveProperty property : object.getCurveMembers())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "curveMember"), property, CurvePropertyAdapter.class, namespaces);
+        }
     }
 }

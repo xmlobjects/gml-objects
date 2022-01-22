@@ -57,7 +57,7 @@ public class SequenceRuleAdapter implements ObjectBuilder<SequenceRule>, ObjectS
     public void initializeElement(Element element, SequenceRule object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         element.addTextContent(object.getValue().toValue());
 
-        if (!object.getAxisOrders().isEmpty()) {
+        if (object.isSetAxisOrders()) {
             if (GMLConstants.GML_3_2_NAMESPACE.equals(GMLSerializerHelper.getGMLBaseNamespace(namespaces)))
                 element.addAttribute("axisOrder", TextContent.ofList(object.getAxisOrders()));
             else {

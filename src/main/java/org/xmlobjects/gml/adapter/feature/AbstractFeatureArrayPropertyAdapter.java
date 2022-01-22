@@ -48,7 +48,9 @@ public abstract class AbstractFeatureArrayPropertyAdapter<T extends FeatureArray
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
 
-        for (Object child : object.getGenericElements())
-            writer.writeDOMElement(((GenericElement) child).getContent());
+        if (object.isSetGenericElements()) {
+            for (Object child : object.getGenericElements())
+                writer.writeDOMElement(((GenericElement) child).getContent());
+        }
     }
 }

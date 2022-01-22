@@ -47,6 +47,10 @@ public class MultiSolid extends AbstractGeometricAggregate {
         return solidMember;
     }
 
+    public boolean isSetSolidMember() {
+        return solidMember != null && !solidMember.isEmpty();
+    }
+
     public void setSolidMember(List<SolidProperty> solidMember) {
         this.solidMember = asChild(solidMember);
     }
@@ -69,7 +73,7 @@ public class MultiSolid extends AbstractGeometricAggregate {
             }
         }
 
-        if (solidMembers != null) {
+        if (solidMembers != null && solidMembers.isSetObjects()) {
             for (AbstractSolid solid : solidMembers.getObjects())
                 envelope.include(solid.computeEnvelope());
         }

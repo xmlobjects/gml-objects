@@ -50,7 +50,9 @@ public class CodeListAdapter implements ObjectBuilder<CodeList>, ObjectSerialize
 
     @Override
     public void initializeElement(Element element, CodeList object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        element.addTextContent(TextContent.ofList(object.getValue()));
-        element.addAttribute("codeSpace", object.getCodeSpace());
+        if (object.isSetValue()) {
+            element.addTextContent(TextContent.ofList(object.getValue()));
+            element.addAttribute("codeSpace", object.getCodeSpace());
+        }
     }
 }

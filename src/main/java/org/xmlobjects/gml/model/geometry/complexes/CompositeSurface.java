@@ -48,6 +48,10 @@ public class CompositeSurface extends AbstractSurface implements AggregationAttr
         return surfaceMembers;
     }
 
+    public boolean isSetSurfaceMembers() {
+        return surfaceMembers != null && !surfaceMembers.isEmpty();
+    }
+
     public void setSurfaceMembers(List<SurfaceProperty> surfaceMembers) {
         this.surfaceMembers = asChild(surfaceMembers);
     }

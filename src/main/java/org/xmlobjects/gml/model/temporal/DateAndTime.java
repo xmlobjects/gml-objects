@@ -22,7 +22,7 @@ package org.xmlobjects.gml.model.temporal;
 import java.time.OffsetDateTime;
 
 public class DateAndTime implements TimePositionValue<OffsetDateTime> {
-    private OffsetDateTime dateTime;
+    private final OffsetDateTime dateTime;
 
     public DateAndTime(OffsetDateTime dateTime) {
         this.dateTime = dateTime;

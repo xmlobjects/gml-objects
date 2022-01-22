@@ -97,11 +97,13 @@ public class DictionaryAdapter extends CompositeObjectAdapter<Dictionary> {
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (DefinitionProperty property : object.getDefinitions()) {
-            if (property.getObject() instanceof DefinitionProxy) {
-                writer.writeElementUsingSerializer(Element.of(baseNamespace, "indirectEntry"), property, DefinitionPropertyAdapter.class, namespaces);
-            } else {
-                writer.writeElementUsingSerializer(Element.of(baseNamespace, "dictionaryEntry"), property, DefinitionPropertyAdapter.class, namespaces);
+        if (object.isSetDefinitions()) {
+            for (DefinitionProperty property : object.getDefinitions()) {
+                if (property.getObject() instanceof DefinitionProxy) {
+                    writer.writeElementUsingSerializer(Element.of(baseNamespace, "indirectEntry"), property, DefinitionPropertyAdapter.class, namespaces);
+                } else {
+                    writer.writeElementUsingSerializer(Element.of(baseNamespace, "dictionaryEntry"), property, DefinitionPropertyAdapter.class, namespaces);
+                }
             }
         }
     }

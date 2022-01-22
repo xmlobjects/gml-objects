@@ -47,6 +47,10 @@ public class MultiPoint extends AbstractMultiPoint {
         return pointMember;
     }
 
+    public boolean isSetPointMember() {
+        return pointMember != null && !pointMember.isEmpty();
+    }
+
     public void setPointMember(List<PointProperty> pointMember) {
         this.pointMember = asChild(pointMember);
     }
@@ -69,7 +73,7 @@ public class MultiPoint extends AbstractMultiPoint {
             }
         }
 
-        if (pointMembers != null) {
+        if (pointMembers != null && pointMembers.isSetObjects()) {
             for (Point point : pointMembers.getObjects())
                 envelope.include(point.computeEnvelope());
         }

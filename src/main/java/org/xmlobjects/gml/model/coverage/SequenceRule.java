@@ -50,6 +50,10 @@ public class SequenceRule extends GMLObject {
         return axisOrders;
     }
 
+    public boolean isSetAxisOrders() {
+        return axisOrders != null && !axisOrders.isEmpty();
+    }
+
     public void setAxisOrders(List<String> axisOrders) {
         this.axisOrders = axisOrders;
     }

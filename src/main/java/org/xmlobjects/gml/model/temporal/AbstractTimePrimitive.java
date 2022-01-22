@@ -33,6 +33,10 @@ public abstract class AbstractTimePrimitive extends AbstractTimeObject {
         return relatedTimes;
     }
 
+    public boolean isSetRelatedTimes() {
+        return relatedTimes != null && !relatedTimes.isEmpty();
+    }
+
     public void setRelatedTimes(List<RelatedTime<?>> relatedTimes) {
         this.relatedTimes = asChild(relatedTimes);
     }

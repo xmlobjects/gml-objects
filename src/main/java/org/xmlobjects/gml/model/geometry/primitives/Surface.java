@@ -52,7 +52,7 @@ public class Surface extends AbstractSurface {
     @Override
     public Envelope computeEnvelope() {
         Envelope envelope = new Envelope();
-        if (patches != null) {
+        if (patches != null && patches.isSetObjects()) {
             for (AbstractSurfacePatch patch : patches.getObjects())
                 envelope.include(patch.computeEnvelope());
         }

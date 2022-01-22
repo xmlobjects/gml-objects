@@ -83,7 +83,9 @@ public class CompositeSolidAdapter extends AbstractSolidAdapter<CompositeSolid> 
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (SolidProperty property : object.getSolidMembers())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "solidMember"), property, SolidPropertyAdapter.class, namespaces);
+        if (object.isSetSolidMembers()) {
+            for (SolidProperty property : object.getSolidMembers())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "solidMember"), property, SolidPropertyAdapter.class, namespaces);
+        }
     }
 }

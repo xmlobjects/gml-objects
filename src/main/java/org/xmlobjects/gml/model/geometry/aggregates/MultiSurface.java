@@ -47,6 +47,10 @@ public class MultiSurface extends AbstractGeometricAggregate {
         return surfaceMember;
     }
 
+    public boolean isSetSurfaceMember() {
+        return surfaceMember != null && !surfaceMember.isEmpty();
+    }
+
     public void setSurfaceMember(List<SurfaceProperty> surfaceMember) {
         this.surfaceMember = asChild(surfaceMember);
     }
@@ -69,7 +73,7 @@ public class MultiSurface extends AbstractGeometricAggregate {
             }
         }
 
-        if (surfaceMembers != null) {
+        if (surfaceMembers != null && surfaceMembers.isSetObjects()) {
             for (AbstractSurface surface : surfaceMembers.getObjects())
                 envelope.include(surface.computeEnvelope());
         }

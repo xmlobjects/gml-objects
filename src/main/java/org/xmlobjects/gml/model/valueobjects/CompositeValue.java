@@ -47,6 +47,10 @@ public class CompositeValue extends AbstractGML implements AbstractValue, Aggreg
         return valueComponent;
     }
 
+    public boolean isSetValueComponent() {
+        return valueComponent != null && !valueComponent.isEmpty();
+    }
+
     public void setValueComponent(List<ValueProperty> valueComponent) {
         this.valueComponent = asChild(valueComponent);
     }

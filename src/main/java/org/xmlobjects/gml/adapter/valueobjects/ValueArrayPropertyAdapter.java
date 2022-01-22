@@ -62,7 +62,9 @@ public class ValueArrayPropertyAdapter extends AbstractArrayPropertyAdapter<Valu
 
     @Override
     public void writeChildElements(ValueArrayProperty object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        for (Value child : object.getObjects())
-            writer.getOrCreateSerializer(ValueAdapter.class).writeChildElements(child, namespaces, writer);
+        if (object.isSetObjects()) {
+            for (Value child : object.getObjects())
+                writer.getOrCreateSerializer(ValueAdapter.class).writeChildElements(child, namespaces, writer);
+        }
     }
 }

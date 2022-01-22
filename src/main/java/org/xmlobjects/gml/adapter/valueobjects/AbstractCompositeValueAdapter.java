@@ -72,8 +72,10 @@ public abstract class AbstractCompositeValueAdapter<T extends CompositeValue> ex
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (ValueProperty property : object.getValueComponent())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "valueComponent"), property, ValuePropertyAdapter.class, namespaces);
+        if (object.isSetValueComponent()) {
+            for (ValueProperty property : object.getValueComponent())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "valueComponent"), property, ValuePropertyAdapter.class, namespaces);
+        }
 
         if (object.getValueComponents() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "valueComponents"), object.getValueComponents(), ValueArrayPropertyAdapter.class, namespaces);

@@ -78,8 +78,10 @@ public class MultiGeometryAdapter extends AbstractGeometricAggregateAdapter<Mult
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (GeometryProperty<?> property : object.getGeometryMember())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "geometryMember"), property, GeometryPropertyAdapter.class, namespaces);
+        if (object.isSetGeometryMember()) {
+            for (GeometryProperty<?> property : object.getGeometryMember())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "geometryMember"), property, GeometryPropertyAdapter.class, namespaces);
+        }
 
         if (object.getGeometryMembers() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "geometryMembers"), object.getGeometryMembers(), GeometryArrayPropertyAdapter.class, namespaces);

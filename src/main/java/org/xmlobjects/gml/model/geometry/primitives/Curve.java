@@ -46,7 +46,7 @@ public class Curve extends AbstractCurve {
 
     @Override
     public List<Double> toCoordinateList3D() {
-        if (segments != null) {
+        if (segments != null && segments.isSetObjects()) {
             List<Double> coordinates = new ArrayList<>();
             for (AbstractCurveSegment segment : segments.getObjects()) {
                 if (segment != null) {

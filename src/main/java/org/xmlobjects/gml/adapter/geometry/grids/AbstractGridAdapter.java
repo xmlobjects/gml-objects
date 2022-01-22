@@ -79,7 +79,7 @@ public abstract class AbstractGridAdapter<T extends Grid> extends AbstractGeomet
         if (object.getLimits() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "limits"), object.getLimits(), GridLimitsAdapter.class, namespaces);
 
-        if (!object.getGridAxisLabels().isEmpty()) {
+        if (object.isSetGridAxisLabels()) {
             if (GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace))
                 writer.writeElement(Element.of(baseNamespace, "axisLabels").addTextContent(TextContent.ofList(object.getGridAxisLabels())));
             else {

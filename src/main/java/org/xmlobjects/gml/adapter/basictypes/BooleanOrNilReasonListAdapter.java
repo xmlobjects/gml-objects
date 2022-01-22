@@ -60,15 +60,17 @@ public class BooleanOrNilReasonListAdapter implements ObjectBuilder<BooleanOrNil
 
     @Override
     public void initializeElement(Element element, BooleanOrNilReasonList object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        element.addTextContent(TextContent.ofList(object.getValue().stream()
-                .filter(Objects::nonNull)
-                .map(v -> {
-                    if (v.isSetValue())
-                        return v.getValue().toString();
-                    else if (v.isSetNilReason())
-                        return v.getNilReason().getValue();
-                    else
-                        return null;
-                }).collect(Collectors.toList())));
+        if (object.isSetValue()) {
+            element.addTextContent(TextContent.ofList(object.getValue().stream()
+                    .filter(Objects::nonNull)
+                    .map(v -> {
+                        if (v.isSetValue())
+                            return v.getValue().toString();
+                        else if (v.isSetNilReason())
+                            return v.getNilReason().getValue();
+                        else
+                            return null;
+                    }).collect(Collectors.toList())));
+        }
     }
 }

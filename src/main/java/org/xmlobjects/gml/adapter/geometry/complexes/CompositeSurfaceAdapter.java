@@ -83,7 +83,9 @@ public class CompositeSurfaceAdapter extends AbstractSurfaceAdapter<CompositeSur
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (SurfaceProperty property : object.getSurfaceMembers())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "surfaceMember"), property, SurfacePropertyAdapter.class, namespaces);
+        if (object.isSetSurfaceMembers()) {
+            for (SurfaceProperty property : object.getSurfaceMembers())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "surfaceMember"), property, SurfacePropertyAdapter.class, namespaces);
+        }
     }
 }

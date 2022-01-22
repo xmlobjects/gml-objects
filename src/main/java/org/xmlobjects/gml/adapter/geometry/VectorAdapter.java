@@ -52,7 +52,9 @@ public class VectorAdapter implements ObjectBuilder<Vector>, ObjectSerializer<Ve
 
     @Override
     public void initializeElement(Element element, Vector object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        element.addTextContent(TextContent.ofDoubleList(object.getValue()));
-        GMLSerializerHelper.serializeSRSReference(element, object, namespaces);
+        if (object.isSetValue()) {
+            element.addTextContent(TextContent.ofDoubleList(object.getValue()));
+            GMLSerializerHelper.serializeSRSReference(element, object, namespaces);
+        }
     }
 }

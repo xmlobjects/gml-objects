@@ -81,7 +81,9 @@ public class PolygonAdapter extends AbstractSurfaceAdapter<Polygon> {
         if (object.getExterior() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "exterior"), object.getExterior(), AbstractRingPropertyAdapter.class, namespaces);
 
-        for (AbstractRingProperty property : object.getInterior())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "interior"), property, AbstractRingPropertyAdapter.class, namespaces);
+        if (object.isSetInterior()) {
+            for (AbstractRingProperty property : object.getInterior())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "interior"), property, AbstractRingPropertyAdapter.class, namespaces);
+        }
     }
 }

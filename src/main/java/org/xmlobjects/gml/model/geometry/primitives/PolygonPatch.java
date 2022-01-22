@@ -55,6 +55,10 @@ public class PolygonPatch extends AbstractSurfacePatch {
         return interior;
     }
 
+    public boolean isSetInterior() {
+        return interior != null && !interior.isEmpty();
+    }
+
     public void setInterior(List<AbstractRingProperty> interior) {
         this.interior = asChild(interior);
     }

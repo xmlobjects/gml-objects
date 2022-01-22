@@ -80,8 +80,10 @@ public class MultiCurveAdapter extends AbstractGeometricAggregateAdapter<MultiCu
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (CurveProperty property : object.getCurveMember())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "curveMember"), property, CurvePropertyAdapter.class, namespaces);
+        if (object.isSetCurveMember()) {
+            for (CurveProperty property : object.getCurveMember())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "curveMember"), property, CurvePropertyAdapter.class, namespaces);
+        }
 
         if (object.getCurveMembers() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "curveMembers"), object.getCurveMembers(), CurveArrayPropertyAdapter.class, namespaces);

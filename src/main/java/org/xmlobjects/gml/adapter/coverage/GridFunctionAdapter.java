@@ -65,10 +65,10 @@ public class GridFunctionAdapter implements ObjectBuilder<GridFunction>, ObjectS
 
         if (object.getSequenceRule() != null
                 && (object.getSequenceRule().getValue() != SequenceRuleEnumeration.LINEAR
-                || !object.getSequenceRule().getAxisOrders().isEmpty()))
+                || object.getSequenceRule().isSetAxisOrders()))
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "sequenceRule"), object.getSequenceRule(), SequenceRuleAdapter.class, namespaces);
 
-        if (object.getStartPoints() != null)
+        if (object.isSetStartPoints())
             writer.writeElement(Element.of(baseNamespace, "startPoint").addTextContent(TextContent.ofIntegerList(object.getStartPoints())));
     }
 }

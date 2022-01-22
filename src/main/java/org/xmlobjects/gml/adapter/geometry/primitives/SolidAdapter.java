@@ -82,9 +82,10 @@ public class SolidAdapter extends AbstractSolidAdapter<Solid> {
         if (object.getExterior() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "exterior"), object.getExterior(), ShellPropertyAdapter.class, namespaces);
 
-        for (ShellProperty property : object.getInterior())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "interior"), property, ShellPropertyAdapter.class, namespaces);
-
+        if (object.isSetInterior()) {
+            for (ShellProperty property : object.getInterior())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "interior"), property, ShellPropertyAdapter.class, namespaces);
+        }
     }
 
     private ShellProperty getShellProperty(XMLReader reader) throws ObjectBuildException, XMLReadException {

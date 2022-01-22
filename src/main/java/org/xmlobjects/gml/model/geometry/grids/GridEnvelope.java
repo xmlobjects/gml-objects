@@ -45,6 +45,10 @@ public class GridEnvelope extends GMLObject {
         return low;
     }
 
+    public boolean isSetLow() {
+        return low != null && !low.isEmpty();
+    }
+
     public void setLow(List<Integer> low) {
         this.low = low;
     }
@@ -54,6 +58,10 @@ public class GridEnvelope extends GMLObject {
             high = new ArrayList<>();
 
         return high;
+    }
+
+    public boolean isSetHigh() {
+        return high != null && !high.isEmpty();
     }
 
     public void setHigh(List<Integer> high) {

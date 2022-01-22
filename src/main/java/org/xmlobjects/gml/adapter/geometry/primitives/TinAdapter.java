@@ -93,11 +93,15 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
             writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), localName), object.getPatches(), TriangleArrayPropertyAdapter.class, namespaces);
         }
 
-        for (LineStringSegmentArrayProperty property : object.getStopLines())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "stopLines"), property, LineStringSegmentArrayPropertyAdapter.class, namespaces);
+        if (object.isSetStopLines()) {
+            for (LineStringSegmentArrayProperty property : object.getStopLines())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "stopLines"), property, LineStringSegmentArrayPropertyAdapter.class, namespaces);
+        }
 
-        for (LineStringSegmentArrayProperty property : object.getBreakLines())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "breakLines"), property, LineStringSegmentArrayPropertyAdapter.class, namespaces);
+        if (object.isSetBreakLines()) {
+            for (LineStringSegmentArrayProperty property : object.getBreakLines())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "breakLines"), property, LineStringSegmentArrayPropertyAdapter.class, namespaces);
+        }
 
         if (object.getMaxLength() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "maxLength"), object.getMaxLength(), LengthAdapter.class, namespaces);

@@ -44,7 +44,9 @@ public abstract class AbstractArrayPropertyAdapter<T extends AbstractArrayProper
 
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        for (Object child : object.getObjects())
-            writer.writeObject(child, namespaces);
+        if (object.isSetObjects()) {
+            for (Object child : object.getObjects())
+                writer.writeObject(child, namespaces);
+        }
     }
 }

@@ -40,17 +40,29 @@ public class Shell extends AbstractSurface implements AggregationAttributes {
     }
 
     public Shell(CompositeSurface compositeSurface) {
-        this(compositeSurface.getSurfaceMembers());
+        this(compositeSurface.isSetSurfaceMembers() ? compositeSurface.getSurfaceMembers() : null);
         setId(compositeSurface.getId());
-        setMetaDataProperties(compositeSurface.getMetaDataProperties());
         setDescription(compositeSurface.getDescription());
         setDescriptionReference(compositeSurface.getDescriptionReference());
         setIdentifier(compositeSurface.getIdentifier());
-        setNames(compositeSurface.getNames());
         setSrsName(compositeSurface.getSrsName());
         setSrsDimension(compositeSurface.getSrsDimension());
-        setAxisLabels(compositeSurface.getAxisLabels());
-        setUomLabels(compositeSurface.getUomLabels());
+
+        if (compositeSurface.isSetMetaDataProperties()) {
+            setMetaDataProperties(compositeSurface.getMetaDataProperties());
+        }
+
+        if (compositeSurface.isSetNames()) {
+            setNames(compositeSurface.getNames());
+        }
+
+        if (compositeSurface.isSetAxisLabels()) {
+            setAxisLabels(compositeSurface.getAxisLabels());
+        }
+
+        if (compositeSurface.isSetUomLabels()) {
+            setUomLabels(compositeSurface.getUomLabels());
+        }
     }
 
     public List<SurfaceProperty> getSurfaceMembers() {
@@ -58,6 +70,10 @@ public class Shell extends AbstractSurface implements AggregationAttributes {
             surfaceMembers = new ChildList<>(this);
 
         return surfaceMembers;
+    }
+
+    public boolean isSetSurfaceMembers() {
+        return surfaceMembers != null && !surfaceMembers.isEmpty();
     }
 
     public void setSurfaceMembers(List<SurfaceProperty> surfaceMembers) {

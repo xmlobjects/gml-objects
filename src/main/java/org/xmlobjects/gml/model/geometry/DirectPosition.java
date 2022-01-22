@@ -55,6 +55,10 @@ public class DirectPosition extends GMLObject implements SRSReference, Coordinat
         return value;
     }
 
+    public boolean isSetValue() {
+        return value != null && !value.isEmpty();
+    }
+
     public void setValue(List<Double> value) {
         this.value = value;
     }
@@ -86,6 +90,11 @@ public class DirectPosition extends GMLObject implements SRSReference, Coordinat
     }
 
     @Override
+    public boolean isSetAxisLabels() {
+        return axisLabels != null && !axisLabels.isEmpty();
+    }
+
+    @Override
     public void setAxisLabels(List<String> axisLabels) {
         if (axisLabels == null)
             axisLabels = new ArrayList<>();
@@ -99,6 +108,11 @@ public class DirectPosition extends GMLObject implements SRSReference, Coordinat
             uomLabels = new ArrayList<>();
 
         return uomLabels;
+    }
+
+    @Override
+    public boolean isSetUomLabels() {
+        return uomLabels != null && !uomLabels.isEmpty();
     }
 
     @Override

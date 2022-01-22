@@ -47,6 +47,10 @@ public class MultiGeometry extends AbstractGeometricAggregate {
         return geometryMember;
     }
 
+    public boolean isSetGeometryMember() {
+        return geometryMember != null && !geometryMember.isEmpty();
+    }
+
     public void setGeometryMember(List<GeometryProperty<?>> geometryMember) {
         this.geometryMember = asChild(geometryMember);
     }
@@ -69,7 +73,7 @@ public class MultiGeometry extends AbstractGeometricAggregate {
             }
         }
 
-        if (geometryMembers != null) {
+        if (geometryMembers != null && geometryMembers.isSetObjects()) {
             for (AbstractGeometry geometry : geometryMembers.getObjects())
                 envelope.include(geometry.computeEnvelope());
         }

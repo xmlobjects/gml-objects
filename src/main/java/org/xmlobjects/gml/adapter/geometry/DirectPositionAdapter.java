@@ -52,7 +52,9 @@ public class DirectPositionAdapter implements ObjectBuilder<DirectPosition>, Obj
 
     @Override
     public void initializeElement(Element element, DirectPosition object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        element.addTextContent(TextContent.ofDoubleList(object.getValue()));
-        GMLSerializerHelper.serializeSRSReference(element, object, namespaces);
+        if (object.isSetValue()) {
+            element.addTextContent(TextContent.ofDoubleList(object.getValue()));
+            GMLSerializerHelper.serializeSRSReference(element, object, namespaces);
+        }
     }
 }

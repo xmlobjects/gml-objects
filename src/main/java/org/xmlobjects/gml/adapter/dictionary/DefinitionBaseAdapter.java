@@ -57,10 +57,12 @@ public abstract class DefinitionBaseAdapter<T extends DefinitionBase> extends Ab
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.getIdentifier() != null && namespaces.contains(GMLConstants.GML_3_1_NAMESPACE)) {
             object = copyBuilder.shallowCopy(object);
-            object.setNames(Stream.of(Collections.singletonList(object.getIdentifier()), object.getNames())
-                    .flatMap(Collection::stream)
-                    .collect(Collectors.toList()));
-            object.setIdentifier(null);
+            if (object.getIdentifier() != null) {
+                object.setNames(Stream.of(Collections.singletonList(object.getIdentifier()), object.getNames())
+                        .flatMap(Collection::stream)
+                        .collect(Collectors.toList()));
+                object.setIdentifier(null);
+            }
         }
 
         super.writeChildElements(object, namespaces, writer);

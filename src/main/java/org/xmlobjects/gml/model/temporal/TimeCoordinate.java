@@ -20,7 +20,7 @@
 package org.xmlobjects.gml.model.temporal;
 
 public class TimeCoordinate implements TimePositionValue<Double> {
-    private Double coordinate;
+    private final Double coordinate;
 
     public TimeCoordinate(Double coordinate) {
         this.coordinate = coordinate;

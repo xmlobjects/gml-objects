@@ -42,6 +42,10 @@ public class CodeList extends GMLObject {
         return value;
     }
 
+    public boolean isSetValue() {
+        return value != null && !value.isEmpty();
+    }
+
     public void setValue(List<String> value) {
         this.value = value;
     }

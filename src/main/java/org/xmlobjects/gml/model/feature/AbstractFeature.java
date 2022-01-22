@@ -58,6 +58,10 @@ public abstract class AbstractFeature extends AbstractGML {
         return genericProperties;
     }
 
+    public boolean isSetGenericProperties() {
+        return genericProperties != null && !genericProperties.isEmpty();
+    }
+
     public void setGenericProperties(List<GenericElement> genericProperties) {
         this.genericProperties = asChild(genericProperties);
     }

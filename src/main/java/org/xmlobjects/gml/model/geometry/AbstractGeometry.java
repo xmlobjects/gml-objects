@@ -64,6 +64,11 @@ public abstract class AbstractGeometry extends AbstractGML implements SRSReferen
     }
 
     @Override
+    public boolean isSetAxisLabels() {
+        return axisLabels != null && !axisLabels.isEmpty();
+    }
+
+    @Override
     public void setAxisLabels(List<String> axisLabels) {
         this.axisLabels = axisLabels;
     }
@@ -74,6 +79,11 @@ public abstract class AbstractGeometry extends AbstractGML implements SRSReferen
             uomLabels = new ArrayList<>();
 
         return uomLabels;
+    }
+
+    @Override
+    public boolean isSetUomLabels() {
+        return uomLabels != null && !uomLabels.isEmpty();
     }
 
     @Override

@@ -73,8 +73,13 @@ public class GMLSerializerHelper {
     }
 
     public static void serializeSRSInformation(Element element, SRSInformation object, Namespaces namespaces) {
-        element.addAttribute("axisLabels", TextContent.ofList(object.getAxisLabels()));
-        element.addAttribute("uomLabels", TextContent.ofList(object.getUomLabels()));
+        if (object.isSetAxisLabels()) {
+            element.addAttribute("axisLabels", TextContent.ofList(object.getAxisLabels()));
+        }
+
+        if (object.isSetUomLabels()) {
+            element.addAttribute("uomLabels", TextContent.ofList(object.getUomLabels()));
+        }
     }
 
     public static void serializeReferenceSystem(Element element, ReferenceSystem object, Namespaces namespaces) {

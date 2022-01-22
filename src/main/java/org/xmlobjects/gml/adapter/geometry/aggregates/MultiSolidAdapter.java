@@ -78,8 +78,10 @@ public class MultiSolidAdapter extends AbstractGeometricAggregateAdapter<MultiSo
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (SolidProperty property : object.getSolidMember())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "solidMember"), property, SolidPropertyAdapter.class, namespaces);
+        if (object.isSetSolidMember()) {
+            for (SolidProperty property : object.getSolidMember())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "solidMember"), property, SolidPropertyAdapter.class, namespaces);
+        }
 
         if (object.getSolidMembers() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "solidMembers"), object.getSolidMembers(), SolidArrayPropertyAdapter.class, namespaces);

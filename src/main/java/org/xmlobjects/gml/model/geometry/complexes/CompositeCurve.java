@@ -49,6 +49,10 @@ public class CompositeCurve extends AbstractCurve implements AggregationAttribut
         return curveMembers;
     }
 
+    public boolean isSetCurveMembers() {
+        return curveMembers != null && !curveMembers.isEmpty();
+    }
+
     public void setCurveMembers(List<CurveProperty> curveMembers) {
         this.curveMembers = asChild(curveMembers);
     }

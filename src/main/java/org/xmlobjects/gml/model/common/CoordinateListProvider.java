@@ -31,7 +31,7 @@ public interface CoordinateListProvider {
     static List<Double> reversedCoordinateList(CoordinateListProvider provider) {
         List<Double> coordinates = provider.toCoordinateList3D();
         if (coordinates.size() % 3 != 0)
-            throw new IllegalArgumentException("The size of the posList must be a multiple of 3.");
+            throw new IllegalArgumentException("The size of the coordinate list must be a multiple of 3.");
 
         for (int i = coordinates.size() - 3, j = 0; j < coordinates.size() / 2; i -= 3, j += 3) {
             double x = coordinates.get(j);

@@ -47,6 +47,10 @@ public class MultiCurve extends AbstractGeometricAggregate {
         return curveMember;
     }
 
+    public boolean isSetCurveMember() {
+        return curveMember != null && !curveMember.isEmpty();
+    }
+
     public void setCurveMember(List<CurveProperty> curveMember) {
         this.curveMember = asChild(curveMember);
     }
@@ -69,7 +73,7 @@ public class MultiCurve extends AbstractGeometricAggregate {
             }
         }
 
-        if (curveMembers != null) {
+        if (curveMembers != null && curveMembers.isSetObjects()) {
             for (AbstractCurve curve : curveMembers.getObjects())
                 envelope.include(curve.computeEnvelope());
         }

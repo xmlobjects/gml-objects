@@ -49,6 +49,10 @@ public class RectifiedGrid extends Grid {
         return offsetVectors;
     }
 
+    public boolean isSetOffsetVectors() {
+        return offsetVectors != null && !offsetVectors.isEmpty();
+    }
+
     public void setOffsetVectors(List<Vector> offsetVectors) {
         this.offsetVectors = asChild(offsetVectors);
     }

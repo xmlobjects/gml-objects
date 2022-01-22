@@ -56,6 +56,10 @@ public class Solid extends AbstractSolid {
         return interior;
     }
 
+    public boolean isSetInterior() {
+        return interior != null && !interior.isEmpty();
+    }
+
     public void setInterior(List<ShellProperty> interior) {
         this.interior = asChild(interior);
     }

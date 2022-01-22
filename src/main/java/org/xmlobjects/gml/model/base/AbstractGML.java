@@ -56,6 +56,11 @@ public abstract class AbstractGML extends GMLObject implements StandardObjectPro
     }
 
     @Override
+    public boolean isSetMetaDataProperties() {
+        return metaDataProperties != null && !metaDataProperties.isEmpty();
+    }
+
+    @Override
     public void setMetaDataProperties(List<MetaDataProperty<?>> metaDataProperties) {
         this.metaDataProperties = asChild(metaDataProperties);
     }
@@ -96,6 +101,11 @@ public abstract class AbstractGML extends GMLObject implements StandardObjectPro
             names = asChild(new ArrayList<>());
 
         return names;
+    }
+
+    @Override
+    public boolean isSetNames() {
+        return names != null && !names.isEmpty();
     }
 
     @Override

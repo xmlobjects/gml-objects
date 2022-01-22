@@ -53,7 +53,7 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     }
 
     public boolean isSetLowerCorner() {
-        return !lowerCorner.getValue().isEmpty();
+        return lowerCorner.isSetValue();
     }
 
     public void setLowerCorner(DirectPosition lowerCorner) {
@@ -66,7 +66,7 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     }
 
     public boolean isSetUpperCorner() {
-        return !upperCorner.getValue().isEmpty();
+        return upperCorner.isSetValue();
     }
 
     public void setUpperCorner(DirectPosition upperCorner) {
@@ -101,6 +101,11 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     }
 
     @Override
+    public boolean isSetAxisLabels() {
+        return axisLabels != null && !axisLabels.isEmpty();
+    }
+
+    @Override
     public void setAxisLabels(List<String> axisLabels) {
         if (axisLabels == null)
             axisLabels = new ArrayList<>();
@@ -117,13 +122,21 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     }
 
     @Override
+    public boolean isSetUomLabels() {
+        return uomLabels != null && !uomLabels.isEmpty();
+    }
+
+    @Override
     public void setUomLabels(List<String> uomLabels) {
         this.uomLabels = uomLabels;
     }
 
     public boolean isValid() {
-        if (lowerCorner.getValue().isEmpty() || lowerCorner.getValue().size() != upperCorner.getValue().size())
+        if (!lowerCorner.isSetValue()
+                || !upperCorner.isSetValue()
+                || lowerCorner.getValue().size() != upperCorner.getValue().size()) {
             return false;
+        }
 
         for (int i = 0; i < lowerCorner.getValue().size(); i++) {
             if (lowerCorner.getValue().get(i) > upperCorner.getValue().get(i))
@@ -192,15 +205,15 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
 
     public boolean contains(List<Double> ordinates) {
         return ordinates != null
-                && ordinates.size() == lowerCorner.getValue().size()
                 && isValid()
+                && ordinates.size() == lowerCorner.getValue().size()
                 && contains(ordinates, ordinates);
     }
 
     public boolean contains(DirectPosition position) {
         return position != null
-                && position.getValue().size() == lowerCorner.getValue().size()
                 && isValid()
+                && position.getValue().size() == lowerCorner.getValue().size()
                 && contains(position.getValue(), position.getValue());
     }
 
@@ -239,7 +252,7 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     }
 
     public Envelope include(DirectPosition position) {
-        if (position != null && !position.getValue().isEmpty())
+        if (position != null && position.isSetValue())
             include(position.getValue(), position.getValue());
 
         return this;

@@ -83,7 +83,9 @@ public class GeometricComplexAdapter extends AbstractGeometryAdapter<GeometricCo
         super.writeChildElements(object, namespaces, writer);
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        for (GeometricPrimitiveProperty property : object.getElements())
-            writer.writeElementUsingSerializer(Element.of(baseNamespace, "element"), property, GeometricPrimitivePropertyAdapter.class, namespaces);
+        if (object.isSetElements()) {
+            for (GeometricPrimitiveProperty property : object.getElements())
+                writer.writeElementUsingSerializer(Element.of(baseNamespace, "element"), property, GeometricPrimitivePropertyAdapter.class, namespaces);
+        }
     }
 }

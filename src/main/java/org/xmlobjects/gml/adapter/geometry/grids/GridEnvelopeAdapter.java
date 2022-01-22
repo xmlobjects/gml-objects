@@ -62,10 +62,10 @@ public class GridEnvelopeAdapter implements ObjectBuilder<GridEnvelope>, ObjectS
     public void writeChildElements(GridEnvelope object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
-        if (!object.getLow().isEmpty())
+        if (object.isSetLow())
             writer.writeElement(Element.of(baseNamespace, "low").addTextContent(TextContent.ofIntegerList(object.getLow())));
 
-        if (!object.getHigh().isEmpty())
+        if (object.isSetHigh())
             writer.writeElement(Element.of(baseNamespace, "high").addTextContent(TextContent.ofIntegerList(object.getHigh())));
     }
 }

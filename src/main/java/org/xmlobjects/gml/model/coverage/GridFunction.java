@@ -21,6 +21,7 @@ package org.xmlobjects.gml.model.coverage;
 
 import org.xmlobjects.gml.model.GMLObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GridFunction extends GMLObject {
@@ -39,7 +40,15 @@ public class GridFunction extends GMLObject {
     }
 
     public List<Integer> getStartPoints() {
+        if (startPoints == null) {
+            startPoints = new ArrayList<>();
+        }
+
         return startPoints;
+    }
+
+    public boolean isSetStartPoints() {
+        return startPoints != null && !startPoints.isEmpty();
     }
 
     public void setStartPoints(List<Integer> startPoints) {

@@ -41,6 +41,10 @@ public class Tin extends TriangulatedSurface {
         return stopLines;
     }
 
+    public boolean isSetStopLines() {
+        return stopLines != null && !stopLines.isEmpty();
+    }
+
     public void setStopLines(List<LineStringSegmentArrayProperty> stopLines) {
         this.stopLines = asChild(stopLines);
     }
@@ -50,6 +54,10 @@ public class Tin extends TriangulatedSurface {
             breakLines = new ChildList<>(this);
 
         return breakLines;
+    }
+
+    public boolean isSetBreakLines() {
+        return breakLines != null && !breakLines.isEmpty();
     }
 
     public void setBreakLines(List<LineStringSegmentArrayProperty> breakLines) {

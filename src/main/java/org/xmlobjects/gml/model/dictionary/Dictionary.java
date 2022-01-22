@@ -51,6 +51,10 @@ public class Dictionary extends Definition implements AggregationAttributes {
         return definitions;
     }
 
+    public boolean isSetDefinitions() {
+        return definitions != null && !definitions.isEmpty();
+    }
+
     public void setDefinitions(List<DefinitionProperty> definitions) {
         this.definitions = asChild(definitions);
     }

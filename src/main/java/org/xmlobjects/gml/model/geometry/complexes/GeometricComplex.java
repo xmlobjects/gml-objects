@@ -48,6 +48,10 @@ public class GeometricComplex extends AbstractGeometry implements AggregationAtt
         return elements;
     }
 
+    public boolean isSetElements() {
+        return elements != null && !elements.isEmpty();
+    }
+
     public void setElements(List<GeometricPrimitiveProperty> elements) {
         this.elements = asChild(elements);
     }

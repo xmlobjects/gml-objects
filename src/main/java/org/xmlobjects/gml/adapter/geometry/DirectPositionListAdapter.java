@@ -53,8 +53,10 @@ public class DirectPositionListAdapter implements ObjectBuilder<DirectPositionLi
 
     @Override
     public void initializeElement(Element element, DirectPositionList object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        element.addTextContent(TextContent.ofDoubleList(object.getValue()));
-        element.addAttribute("count", TextContent.ofInteger(object.getCount()));
-        GMLSerializerHelper.serializeSRSReference(element, object, namespaces);
+        if (object.isSetValue()) {
+            element.addTextContent(TextContent.ofDoubleList(object.getValue()));
+            element.addAttribute("count", TextContent.ofInteger(object.getCount()));
+            GMLSerializerHelper.serializeSRSReference(element, object, namespaces);
+        }
     }
 }
