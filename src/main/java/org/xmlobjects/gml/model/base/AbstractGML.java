@@ -114,7 +114,7 @@ public abstract class AbstractGML extends GMLObject implements StandardObjectPro
     }
 
     public boolean hasLocalProperties() {
-        return localProperties != null;
+        return localProperties != null && !localProperties.isEmpty();
     }
 
     public LocalProperties getLocalProperties() {
@@ -122,5 +122,9 @@ public abstract class AbstractGML extends GMLObject implements StandardObjectPro
             localProperties = new LocalProperties();
 
         return localProperties;
+    }
+
+    public void setLocalProperties(LocalProperties localProperties) {
+        this.localProperties = localProperties;
     }
 }
