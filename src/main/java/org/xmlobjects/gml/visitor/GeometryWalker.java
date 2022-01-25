@@ -164,7 +164,9 @@ public abstract class GeometryWalker implements GeometryVisitor {
                 visit(property);
         }
 
-        visit(multiCurve.getCurveMembers());
+        if (multiCurve.getCurveMembers() != null) {
+            visit(multiCurve.getCurveMembers());
+        }
     }
 
     @Override
@@ -176,7 +178,9 @@ public abstract class GeometryWalker implements GeometryVisitor {
                 visit(property);
         }
 
-        visit(multiGeometry.getGeometryMembers());
+        if (multiGeometry.getGeometryMembers() != null) {
+            visit(multiGeometry.getGeometryMembers());
+        }
     }
 
     @Override
@@ -188,7 +192,9 @@ public abstract class GeometryWalker implements GeometryVisitor {
                 visit(property);
         }
 
-        visit(multiPoint.getPointMembers());
+        if (multiPoint.getPointMembers() != null) {
+            visit(multiPoint.getPointMembers());
+        }
     }
 
     @Override
@@ -200,7 +206,9 @@ public abstract class GeometryWalker implements GeometryVisitor {
                 visit(property);
         }
 
-        visit(multiSolid.getSolidMembers());
+        if (multiSolid.getSolidMembers() != null) {
+            visit(multiSolid.getSolidMembers());
+        }
     }
 
     @Override
@@ -212,21 +220,27 @@ public abstract class GeometryWalker implements GeometryVisitor {
                 visit(property);
         }
 
-        visit(multiSurface.getSurfaceMembers());
+        if (multiSurface.getSurfaceMembers() != null) {
+            visit(multiSurface.getSurfaceMembers());
+        }
     }
 
     @Override
     public void visit(OrientableCurve orientableCurve) {
         visit((AbstractCurve) orientableCurve);
 
-        visit(orientableCurve.getBaseCurve());
+        if (orientableCurve.getBaseCurve() != null) {
+            visit(orientableCurve.getBaseCurve());
+        }
     }
 
     @Override
     public void visit(OrientableSurface orientableSurface) {
         visit((AbstractSurface) orientableSurface);
 
-        visit(orientableSurface.getBaseSurface());
+        if (orientableSurface.getBaseSurface() != null) {
+            visit(orientableSurface.getBaseSurface());
+        }
     }
 
     @Override
@@ -238,7 +252,9 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(Polygon polygon) {
         visit((AbstractSurface) polygon);
 
-        visit(polygon.getExterior());
+        if (polygon.getExterior() != null) {
+            visit(polygon.getExterior());
+        }
 
         if (polygon.isSetInterior()) {
             for (AbstractRingProperty property : new ArrayList<>(polygon.getInterior()))
@@ -250,7 +266,9 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(PolygonPatch polygonPatch) {
         visit((AbstractSurfacePatch) polygonPatch);
 
-        visit(polygonPatch.getExterior());
+        if (polygonPatch.getExterior() != null) {
+            visit(polygonPatch.getExterior());
+        }
 
         if (polygonPatch.isSetInterior()) {
             for (AbstractRingProperty property : new ArrayList<>(polygonPatch.getInterior()))
@@ -267,14 +285,18 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(Rectangle rectangle) {
         visit((AbstractSurfacePatch) rectangle);
 
-        visit(rectangle.getExterior());
+        if (rectangle.getExterior() != null) {
+            visit(rectangle.getExterior());
+        }
     }
 
     @Override
     public void visit(RectifiedGrid rectifiedGrid) {
         visit((Grid) rectifiedGrid);
 
-        visit(rectifiedGrid.getOrigin());
+        if (rectifiedGrid.getOrigin() != null) {
+            visit(rectifiedGrid.getOrigin());
+        }
     }
 
     @Override
@@ -321,7 +343,9 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(Solid solid) {
         visit((AbstractSolid) solid);
 
-        visit(solid.getExterior());
+        if (solid.getExterior() != null) {
+            visit(solid.getExterior());
+        }
 
         if (solid.isSetInterior()) {
             for (ShellProperty property : new ArrayList<>(solid.getInterior()))
@@ -333,7 +357,9 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(Surface surface) {
         visit((AbstractSurface) surface);
 
-        visit(surface.getPatches());
+        if (surface.getPatches() != null) {
+            visit(surface.getPatches());
+        }
     }
 
     @Override
@@ -345,7 +371,9 @@ public abstract class GeometryWalker implements GeometryVisitor {
     public void visit(Triangle triangle) {
         visit((AbstractSurfacePatch) triangle);
 
-        visit(triangle.getExterior());
+        if (triangle.getExterior() != null) {
+            visit(triangle.getExterior());
+        }
     }
 
     @Override
