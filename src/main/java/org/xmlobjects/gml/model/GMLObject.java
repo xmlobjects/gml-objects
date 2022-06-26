@@ -60,6 +60,10 @@ public abstract class GMLObject implements Child, Copyable {
     }
 
     public boolean unsetProperty(Object value) {
+        return unsetProperty(value, false);
+    }
+
+    public boolean unsetProperty(Object value, boolean failOnError) {
         if (value == null) {
             return true;
         }
@@ -95,7 +99,11 @@ public abstract class GMLObject implements Child, Copyable {
                         }
                     }
                 } catch (Throwable e) {
-                    return false;
+                    if (failOnError) {
+                        throw new RuntimeException("Failed to unset property " + value + ".", e);
+                    } else {
+                        return false;
+                    }
                 }
             }
         } while (!removed && (type = type.getSuperclass()) != Object.class);
