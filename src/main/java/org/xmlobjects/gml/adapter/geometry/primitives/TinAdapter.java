@@ -106,7 +106,7 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
         if (object.getMaxLength() != null)
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "maxLength"), object.getMaxLength(), LengthAdapter.class, namespaces);
 
-        if (object.getControlPoints().isSetPosList() || object.getControlPoints().isSetGeometricPositions())
+        if (object.isSetControlPoints())
             writer.writeElementUsingSerializer(Element.of(baseNamespace, "controlPoint"), object.getControlPoints(), GeometricPositionListAdapter.class, namespaces);
     }
 }

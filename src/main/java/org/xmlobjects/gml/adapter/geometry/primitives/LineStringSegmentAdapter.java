@@ -83,6 +83,8 @@ public class LineStringSegmentAdapter extends AbstractCurveSegmentAdapter<LineSt
 
     @Override
     public void writeChildElements(LineStringSegment object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
-        writer.getOrCreateSerializer(GeometricPositionListAdapter.class).writeChildElements(object.getControlPoints(), namespaces, writer);
+        if (object.isSetControlPoints()) {
+            writer.getOrCreateSerializer(GeometricPositionListAdapter.class).writeChildElements(object.getControlPoints(), namespaces, writer);
+        }
     }
 }

@@ -91,6 +91,8 @@ public class LineStringAdapter extends AbstractCurveAdapter<LineString> {
     @Override
     public void writeChildElements(LineString object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        writer.getOrCreateSerializer(GeometricPositionListAdapter.class).writeChildElements(object.getControlPoints(), namespaces, writer);
+        if (object.isSetControlPoints()) {
+            writer.getOrCreateSerializer(GeometricPositionListAdapter.class).writeChildElements(object.getControlPoints(), namespaces, writer);
+        }
     }
 }

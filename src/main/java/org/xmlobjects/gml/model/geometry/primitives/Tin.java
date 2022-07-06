@@ -79,6 +79,10 @@ public class Tin extends TriangulatedSurface {
         return controlPoints;
     }
 
+    public boolean isSetControlPoints() {
+        return controlPoints != null;
+    }
+
     public void setControlPoints(GeometricPositionList controlPoints) {
         this.controlPoints = asChild(controlPoints);
     }

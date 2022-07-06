@@ -47,6 +47,10 @@ public abstract class AbstractSimplePolygon extends AbstractSurface {
         return controlPoints;
     }
 
+    public boolean isSetControlPoints() {
+        return controlPoints != null;
+    }
+
     public void setControlPoints(GeometricPositionList controlPoints) {
         this.controlPoints = asChild(controlPoints);
     }

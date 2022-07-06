@@ -91,6 +91,8 @@ public class LinearRingAdapter extends AbstractRingAdapter<LinearRing> {
     @Override
     public void writeChildElements(LinearRing object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         super.writeChildElements(object, namespaces, writer);
-        writer.getOrCreateSerializer(GeometricPositionListAdapter.class).writeChildElements(object.getControlPoints(), namespaces, writer);
+        if (object.isSetControlPoints()) {
+            writer.getOrCreateSerializer(GeometricPositionListAdapter.class).writeChildElements(object.getControlPoints(), namespaces, writer);
+        }
     }
 }

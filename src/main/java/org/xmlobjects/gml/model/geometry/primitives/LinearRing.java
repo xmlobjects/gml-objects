@@ -48,6 +48,10 @@ public class LinearRing extends AbstractRing {
         return controlPoints;
     }
 
+    public boolean isSetControlPoints() {
+        return controlPoints != null;
+    }
+
     public void setControlPoints(GeometricPositionList controlPoints) {
         this.controlPoints = asChild(controlPoints);
     }
