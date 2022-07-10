@@ -26,16 +26,16 @@ import java.util.Collection;
 import java.util.Map;
 
 public interface ReferenceResolver {
-    Child resolveReference(String reference, Collection<Visitable> scopes);
+    Child resolveReference(String reference, Collection<? extends Visitable> scopes);
     Child resolveReference(String reference, Visitable... scopes);
-    <T extends Child> T resolveReference(String reference, Class<T> type, Collection<Visitable> scopes);
+    <T extends Child> T resolveReference(String reference, Class<T> type, Collection<? extends Visitable> scopes);
     <T extends Child> T resolveReference(String reference, Class<T> type, Visitable... scopes);
-    void resolveReferences(Collection<Visitable> scopes);
+    void resolveReferences(Collection<? extends Visitable> scopes);
     void resolveReferences(Visitable... scopes);
-    Map<String, ? extends Child> getObjectsById(Collection<Visitable> scopes);
+    Map<String, ? extends Child> getObjectsById(Collection<? extends Visitable> scopes);
     Map<String, ? extends Child> getObjectsById(Visitable... scopes);
-    <T extends Child> Map<String, T> getObjectsById(Class<T> type, Collection<Visitable> scopes);
+    <T extends Child> Map<String, T> getObjectsById(Class<T> type, Collection<? extends Visitable> scopes);
     <T extends Child> Map<String, T> getObjectsById(Class<T> type, Visitable... scopes);
-    void removeResolvedReferences(Collection<Visitable> scopes);
+    void removeResolvedReferences(Collection<? extends Visitable> scopes);
     void removeResolvedReferences(Visitable... scopes);
 }
