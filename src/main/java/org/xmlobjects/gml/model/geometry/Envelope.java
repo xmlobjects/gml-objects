@@ -225,13 +225,37 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
 
     private boolean contains(List<Double> lowerCorner, List<Double> upperCorner) {
         int dimension = Math.min(getDimension(), lowerCorner.size());
-        if (dimension == 0)
+        if (dimension == 0) {
             return false;
+        }
 
         for (int i = 0; i < dimension; i++) {
             if (lowerCorner.get(i) < this.lowerCorner.getValue().get(i)
-                    || upperCorner.get(i) > this.upperCorner.getValue().get(i))
+                    || upperCorner.get(i) > this.upperCorner.getValue().get(i)) {
                 return false;
+            }
+        }
+
+        return true;
+    }
+
+    public boolean intersects(Envelope other) {
+        return other != null
+                && other.isValid()
+                && intersects(other.lowerCorner.getValue(), other.upperCorner.getValue());
+    }
+
+    private boolean intersects(List<Double> lowerCorner, List<Double> upperCorner) {
+        int dimension = Math.min(getDimension(), lowerCorner.size());
+        if (dimension == 0) {
+            return false;
+        }
+
+        for (int i = 0; i < dimension; i++) {
+            if (lowerCorner.get(i) > this.upperCorner.getValue().get(i)
+                    || upperCorner.get(i) < this.lowerCorner.getValue().get(i)) {
+                return false;
+            }
         }
 
         return true;
