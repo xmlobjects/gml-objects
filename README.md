@@ -42,7 +42,7 @@ project with Maven, add the following code to your `pom.xml`. You may need to ad
 
 ```xml
 <dependency>
-  <groupId>org.xmlobjects</groupId>
+  <groupId>org.xmlobjects.gml</groupId>
   <artifactId>gml-objects</artifactId>
   <version>1.0.0</version>
 </dependency>
@@ -56,6 +56,6 @@ repositories {
 }
 
 dependencies {
-  compile 'org.xmlobjects:gml-objects:1.0.0'
+  compile 'org.xmlobjects.gml:gml-objects:1.0.0'
 }
 ```
