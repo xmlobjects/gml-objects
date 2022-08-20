@@ -37,7 +37,7 @@ start developing with gml-objects. Have fun :-)
 
 ## Maven artifact
 gml-objects is also available as Maven artifact from the
-[Maven Central Repository](https://search.maven.org/artifact/org.xmlobjects/gml-objects). To add gml-objects to your
+[Maven Central Repository](https://search.maven.org/artifact/org.xmlobjects.gml/gml-objects). To add gml-objects to your
 project with Maven, add the following code to your `pom.xml`. You may need to adapt the gml-objects version number.
 
 ```xml
