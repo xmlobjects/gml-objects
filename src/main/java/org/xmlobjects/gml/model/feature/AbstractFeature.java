@@ -67,17 +67,32 @@ public abstract class AbstractFeature extends AbstractGML {
     }
 
     public final Envelope computeEnvelope(EnvelopeOptions options) {
+        Envelope current = boundedBy != null && boundedBy.isSetEnvelope() ?
+                boundedBy.getEnvelope() :
+                null;
+
         if (options.isReuseExistingEnvelopes()
-                && boundedBy != null
-                && boundedBy.isSetEnvelope()
-                && boundedBy.getEnvelope().isValid())
-            return boundedBy.getEnvelope();
+                && current != null
+                && current.isValid()) {
+            return current;
+        }
 
         Envelope envelope = new Envelope();
         updateEnvelope(envelope, options);
 
-        if (options.isSetEnvelopeOnFeatures() && envelope.isValid())
-            setBoundedBy(new BoundingShape(envelope));
+        if (envelope.isValid()) {
+            envelope.setSrsDimension(envelope.getDimension());
+
+            if (current != null) {
+                envelope.setSrsName(current.getSrsName());
+                envelope.setAxisLabels(current.getAxisLabels());
+                envelope.setUomLabels(current.getUomLabels());
+            }
+
+            if (options.isSetEnvelopeOnFeatures()) {
+                setBoundedBy(new BoundingShape(envelope));
+            }
+        }
 
         return envelope;
     }
