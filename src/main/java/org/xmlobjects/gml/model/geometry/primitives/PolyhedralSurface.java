@@ -38,10 +38,11 @@ public class PolyhedralSurface extends Surface {
 
     @Override
     public void setPatches(SurfacePatchArrayProperty<?> patches) {
-        if (!(patches instanceof PolygonPatchArrayProperty))
+        if (patches instanceof PolygonPatchArrayProperty property) {
+            setPatches(property);
+        } else {
             throw new IllegalArgumentException("Only a polygon patch array property is allowed.");
-
-        setPatches((PolygonPatchArrayProperty) patches);
+        }
     }
 
     public void setPatches(PolygonPatchArrayProperty patches) {

@@ -82,8 +82,7 @@ public abstract class AbstractInlineOrByReferenceProperty<T extends Child> exten
         referencedObject = object;
         this.object = null;
 
-        if (updateReference && object instanceof AbstractGML) {
-            AbstractGML gml = (AbstractGML) object;
+        if (updateReference && object instanceof AbstractGML gml) {
             if (gml.getId() == null) {
                 gml.setId(DefaultIdCreator.getInstance().createId());
             }

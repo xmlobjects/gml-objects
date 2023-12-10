@@ -29,14 +29,13 @@ public interface SRSReference extends SRSInformation {
     void setSrsDimension(Integer srsDimension);
 
     default SRSReference getInheritedSRSReference() {
-        if (getSrsName() == null && this instanceof Child) {
-            Child parent = ((Child) this).getParent();
+        if (getSrsName() == null && this instanceof Child child) {
+            Child parent = child.getParent();
             if (parent != null) {
                 do {
-                    if (parent instanceof AbstractGeometry)
-                        return ((AbstractGeometry) parent).getInheritedSRSReference();
-                    else if (parent instanceof AbstractFeature) {
-                        AbstractFeature feature = (AbstractFeature) parent;
+                    if (parent instanceof AbstractGeometry geometry)
+                        return geometry.getInheritedSRSReference();
+                    else if (parent instanceof AbstractFeature feature) {
                         if (feature.getBoundedBy() != null
                                 && feature.getBoundedBy().getEnvelope() != null
                                 && feature.getBoundedBy().getEnvelope().getSrsName() != null)

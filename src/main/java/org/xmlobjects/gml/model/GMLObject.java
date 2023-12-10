@@ -41,8 +41,8 @@ public abstract class GMLObject implements Child, Copyable {
     }
 
     protected final <T extends Child> List<T> asChild(List<T> child) {
-        if (child instanceof ChildList) {
-            ((ChildList<T>) child).setParent(this);
+        if (child instanceof ChildList<T> childList) {
+            childList.setParent(this);
             return child;
         } else {
             return child != null ? new ChildList<>(child, this) : null;
@@ -80,8 +80,8 @@ public abstract class GMLObject implements Child, Copyable {
                     if (candidate == value) {
                         fields[i].set(this, null);
                         removed = true;
-                    } else if (candidate instanceof Collection) {
-                        removed = ((Collection<?>) candidate).removeIf(v -> v == value);
+                    } else if (candidate instanceof Collection<?> collection) {
+                        removed = collection.removeIf(v -> v == value);
                         if (removed && ((Collection<?>) candidate).isEmpty()) {
                             fields[i].set(this, null);
                         }
@@ -92,9 +92,9 @@ public abstract class GMLObject implements Child, Copyable {
                                 removed = true;
                             }
                         }
-                    } else if (candidate instanceof Map) {
-                        removed = ((Map<?, ?>) candidate).values().removeIf(v -> v == value);
-                        if (removed && ((Map<?, ?>) candidate).isEmpty()) {
+                    } else if (candidate instanceof Map<?, ?> map) {
+                        removed = map.values().removeIf(v -> v == value);
+                        if (removed && map.isEmpty()) {
                             fields[i].set(this, null);
                         }
                     }

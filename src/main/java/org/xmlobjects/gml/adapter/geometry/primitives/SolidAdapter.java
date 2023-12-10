@@ -92,10 +92,10 @@ public class SolidAdapter extends AbstractSolidAdapter<Solid> {
         Shell shell = null;
 
         SurfaceProperty surfaceProperty = reader.getObjectUsingBuilder(SurfacePropertyAdapter.class);
-        if (surfaceProperty.getObject() instanceof Shell)
-            shell = (Shell) surfaceProperty.getObject();
-        else if (surfaceProperty.getObject() instanceof CompositeSurface)
-            shell = new Shell((CompositeSurface) surfaceProperty.getObject());
+        if (surfaceProperty.getObject() instanceof Shell surface)
+            shell = surface;
+        else if (surfaceProperty.getObject() instanceof CompositeSurface surface)
+            shell = new Shell(surface);
 
         return new ShellProperty(shell);
     }

@@ -51,12 +51,12 @@ public class ValueAdapter implements ObjectBuilder<Value>, ObjectSerializer<Valu
     @Override
     public void buildChildObject(Value object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         GMLObject child = reader.getObject(GMLObject.class);
-        if (child instanceof AbstractValue)
-            object.setValue((AbstractValue) child);
-        else if (child instanceof AbstractGeometry)
-            object.setGeometry((AbstractGeometry) child);
-        else if (child instanceof NilReason)
-            object.setNull((NilReason) child);
+        if (child instanceof AbstractValue value)
+            object.setValue(value);
+        else if (child instanceof AbstractGeometry geometry)
+            object.setGeometry(geometry);
+        else if (child instanceof NilReason nilReason)
+            object.setNull(nilReason);
         else
             object.setGenericElement(GenericElement.of(reader.getDOMElement()));
     }

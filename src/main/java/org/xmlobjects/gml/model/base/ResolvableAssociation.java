@@ -45,8 +45,8 @@ public interface ResolvableAssociation<T extends Child> extends Child, Associati
         Visitable scope = null;
         Child parent = this;
         do {
-            if (parent instanceof Visitable) {
-                scope = (Visitable) parent;
+            if (parent instanceof Visitable visitable) {
+                scope = visitable;
             }
         } while ((parent = parent.getParent()) != null);
 

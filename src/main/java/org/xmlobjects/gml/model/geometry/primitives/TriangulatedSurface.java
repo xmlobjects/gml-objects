@@ -38,10 +38,11 @@ public class TriangulatedSurface extends Surface {
 
     @Override
     public void setPatches(SurfacePatchArrayProperty<?> patches) {
-        if (!(patches instanceof TriangleArrayProperty))
+        if (patches instanceof TriangleArrayProperty property) {
+            setPatches(property);
+        } else {
             throw new IllegalArgumentException("Only a triangle array property is allowed.");
-
-        setPatches((TriangleArrayProperty) patches);
+        }
     }
 
     public void setPatches(TriangleArrayProperty patches) {
