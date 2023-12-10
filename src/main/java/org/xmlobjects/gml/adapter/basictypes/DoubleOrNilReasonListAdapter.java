@@ -70,7 +70,7 @@ public class DoubleOrNilReasonListAdapter implements ObjectBuilder<DoubleOrNilRe
                             return v.getNilReason().getValue();
                         else
                             return null;
-                    }).collect(Collectors.toList())));
+                    }).toList()));
         }
     }
 }

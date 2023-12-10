@@ -71,8 +71,8 @@ public class GridEnvelope extends GMLObject {
     public Envelope toEnvelope() {
         Envelope envelope = new Envelope();
         if (low != null && high != null && !low.isEmpty() && low.size() == high.size()) {
-            envelope.include(low.stream().map(Double::valueOf).collect(Collectors.toList()));
-            envelope.include(high.stream().map(Double::valueOf).collect(Collectors.toList()));
+            envelope.include(low.stream().map(Double::valueOf).toList());
+            envelope.include(high.stream().map(Double::valueOf).toList());
         }
 
         return envelope;

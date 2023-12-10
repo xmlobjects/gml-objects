@@ -74,7 +74,7 @@ public class NameOrNilReasonListAdapter implements ObjectBuilder<NameOrNilReason
                             return v.getNilReason().getValue();
                         else
                             return null;
-                    }).collect(Collectors.toList())));
+                    }).toList()));
         }
     }
 }

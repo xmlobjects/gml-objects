@@ -80,7 +80,7 @@ public class GeometricPositionList extends GMLObject implements CoordinateListPr
             return geometricPositions.stream()
                     .map(GeometricPosition::toCoordinateList3D)
                     .flatMap(Collection::stream)
-                    .collect(Collectors.toList());
+                    .toList();
         else
             return Collections.emptyList();
     }
