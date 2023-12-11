@@ -70,7 +70,7 @@ public class BooleanOrNilReasonListAdapter implements ObjectBuilder<BooleanOrNil
                             return v.getNilReason().getValue();
                         else
                             return null;
-                    }).toList()));
+                    }).collect(Collectors.toList())));
         }
     }
 }

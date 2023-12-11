@@ -70,7 +70,7 @@ public class IntegerOrNilReasonListAdapter implements ObjectBuilder<IntegerOrNil
                             return v.getNilReason().getValue();
                         else
                             return null;
-                    }).toList()));
+                    }).collect(Collectors.toList())));
         }
     }
 }

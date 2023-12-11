@@ -200,7 +200,7 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
 
     public boolean contains(double... ordinates) {
         return ordinates != null
-                && contains(Arrays.stream(ordinates).boxed().toList());
+                && contains(Arrays.stream(ordinates).boxed().collect(Collectors.toList()));
     }
 
     public boolean contains(List<Double> ordinates) {
@@ -263,7 +263,7 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
 
     public Envelope include(double... ordinates) {
         if (ordinates != null)
-            include(Arrays.stream(ordinates).boxed().toList());
+            include(Arrays.stream(ordinates).boxed().collect(Collectors.toList()));
 
         return this;
     }
