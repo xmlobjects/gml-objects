@@ -1,6 +1,11 @@
 # Changelog
 
 ## [Unreleased]
+### Changed
+- **Breaking:** Java 17 is now the minimum required version for using gml-objects.
+
+### Fixed
+- When computing envelopes, metadata of existing envelopes is now copied to the new envelopes.
 
 ## [1.0.4] - 2023-11-03
 ### Changed
