@@ -22,6 +22,10 @@ package org.xmlobjects.gml.model.temporal;
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.xml.TextContent;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class TimePosition extends GMLObject {
     private TimePositionValue<?> value;
     private String frame;
@@ -49,20 +53,27 @@ public class TimePosition extends GMLObject {
 
     public void setValue(String value) {
         TextContent content = TextContent.of(value);
-        if (content.isDateTime())
+        if (content.isDateTime()) {
             this.value = new DateAndTime(content.getAsDateTime());
-        else if (content.isTime())
-            this.value = new ClockTime(content.getAsTime().toOffsetTime());
-        else if (content.isDate())
+        } else if (content.isTime()) {
+            System.out.println(content.getAsTime());
+            this.value = new ClockTime(content.getAsTime().toLocalTime());
+        } else if (content.isDate()) {
             this.value = new CalendarDate(content.getAsDate(), CalenderDateType.DATE);
-        else if (content.isGYear())
+        } else if (content.isGYear()) {
             this.value = new CalendarDate(content.getAsGYear(), CalenderDateType.YEAR);
-        else if (content.isGYearMonth())
+        } else if (content.isGYearMonth()) {
             this.value = new CalendarDate(content.getAsGYearMonth(), CalenderDateType.YEAR_MONTH);
-        else if (content.isDouble())
+        } else if (content.isDouble()) {
             this.value = new TimeCoordinate(content.getAsDouble());
-        else
-            this.value = new OrdinalPosition(value);
+        } else {
+            try {
+                LocalDate date = LocalDate.parse(value, DateTimeFormatter.ISO_WEEK_DATE);
+                this.value = new CalendarDate(TextContent.of(date.toString()).getAsDate(), CalenderDateType.DATE);
+            } catch (DateTimeParseException e) {
+                this.value = new OrdinalPosition(value);
+            }
+        }
     }
 
     public String getFrame() {
