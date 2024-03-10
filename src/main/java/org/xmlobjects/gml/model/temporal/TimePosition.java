@@ -56,7 +56,6 @@ public class TimePosition extends GMLObject {
         if (content.isDateTime()) {
             this.value = new DateAndTime(content.getAsDateTime());
         } else if (content.isTime()) {
-            System.out.println(content.getAsTime());
             this.value = new ClockTime(content.getAsTime().toLocalTime());
         } else if (content.isDate()) {
             this.value = new CalendarDate(content.getAsDate(), CalenderDateType.DATE);
