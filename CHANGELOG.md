@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [1.1.1] - 2024-07-15
 ### Added
 - Added support for `week-date` in `TimePosition`.
 
