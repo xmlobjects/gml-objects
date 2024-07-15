@@ -68,7 +68,7 @@ public class GeometricPosition extends GMLObject implements CoordinateListProvid
     }
 
     public void setPointProperty(PointProperty pointProperty) {
-        this.pointProperty = asChild( pointProperty);
+        this.pointProperty = asChild(pointProperty);
         pos = null;
     }
 

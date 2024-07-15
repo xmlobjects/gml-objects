@@ -28,15 +28,26 @@ import java.util.List;
 
 public interface StandardObjectProperties {
     List<MetaDataProperty<?>> getMetaDataProperties();
+
     boolean isSetMetaDataProperties();
+
     void setMetaDataProperties(List<MetaDataProperty<?>> metaDataProperties);
+
     StringOrRef getDescription();
+
     void setDescription(StringOrRef description);
+
     Reference getDescriptionReference();
+
     void setDescriptionReference(Reference descriptionReference);
+
     CodeWithAuthority getIdentifier();
+
     void setIdentifier(CodeWithAuthority identifier);
+
     List<Code> getNames();
+
     boolean isSetNames();
+
     void setNames(List<Code> names);
 }

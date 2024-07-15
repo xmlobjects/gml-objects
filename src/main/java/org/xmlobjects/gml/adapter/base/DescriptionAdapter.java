@@ -55,7 +55,7 @@ public class DescriptionAdapter implements ObjectBuilder<StringOrRef>, ObjectSer
     @Override
     public void initializeObject(StringOrRef object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         reader.getOrCreateBuilder(GMLConstants.GML_3_3_XBT_NAMESPACE.equals(name.getNamespaceURI()) ?
-                LanguageStringAuxAdapter.class : StringOrRefAdapter.class)
+                        LanguageStringAuxAdapter.class : StringOrRefAdapter.class)
                 .initializeObject(object, name, attributes, reader);
     }
 
@@ -69,7 +69,7 @@ public class DescriptionAdapter implements ObjectBuilder<StringOrRef>, ObjectSer
     @Override
     public void initializeElement(Element element, StringOrRef object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         writer.getOrCreateSerializer(GMLConstants.GML_3_3_XBT_NAMESPACE.equals(element.getName().getNamespaceURI()) ?
-                LanguageStringAuxAdapter.class : StringOrRefAdapter.class)
+                        LanguageStringAuxAdapter.class : StringOrRefAdapter.class)
                 .initializeElement(element, object, namespaces, writer);
     }
 }

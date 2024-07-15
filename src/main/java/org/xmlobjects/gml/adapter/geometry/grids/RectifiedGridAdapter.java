@@ -65,7 +65,8 @@ public class RectifiedGridAdapter extends AbstractGridAdapter<RectifiedGrid> {
                     super.buildChildObject(object, name, attributes, reader);
                     break;
             }
-        }    }
+        }
+    }
 
     @Override
     public Element createElement(RectifiedGrid object, Namespaces namespaces) throws ObjectSerializeException {

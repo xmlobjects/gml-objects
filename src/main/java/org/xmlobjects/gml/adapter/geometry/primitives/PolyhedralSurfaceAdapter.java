@@ -74,7 +74,7 @@ public class PolyhedralSurfaceAdapter extends AbstractSurfaceAdapter<PolyhedralS
         String baseNamespace = GMLSerializerHelper.getGMLBaseNamespace(namespaces);
 
         if (object.getPatches() != null) {
-            String localName = GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace)  ? "patches" : "polygonPatches";
+            String localName = GMLConstants.GML_3_2_NAMESPACE.equals(baseNamespace) ? "patches" : "polygonPatches";
             writer.writeElementUsingSerializer(Element.of(GMLSerializerHelper.getGMLBaseNamespace(namespaces), localName), object.getPatches(), PolygonPatchArrayPropertyAdapter.class, namespaces);
         }
     }

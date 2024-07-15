@@ -24,8 +24,11 @@ import org.xmlobjects.model.Child;
 
 public interface SRSReference extends SRSInformation {
     String getSrsName();
+
     void setSrsName(String srsName);
+
     Integer getSrsDimension();
+
     void setSrsDimension(Integer srsDimension);
 
     default SRSReference getInheritedSRSReference() {

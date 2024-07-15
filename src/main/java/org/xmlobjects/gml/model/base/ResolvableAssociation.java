@@ -27,10 +27,15 @@ import java.util.Collection;
 
 public interface ResolvableAssociation<T extends Child> extends Child, AssociationAttributes {
     boolean isSetReferencedObject();
+
     void setReferencedObject(T object);
+
     void setReferencedObject(T object, boolean updateReference);
+
     void setReferencedObjectIfValid(Child object);
+
     void setReferencedObjectIfValid(Child object, boolean updateReference);
+
     Class<T> getTargetType();
 
     default T resolveReference(ReferenceResolver resolver, Collection<Visitable> scopes) {
