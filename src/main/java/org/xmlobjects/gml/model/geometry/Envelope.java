@@ -265,24 +265,32 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     public Envelope include(List<Double> ordinates) {
         if (ordinates != null && !ordinates.isEmpty()) {
             int dimension = Math.min(lowerCorner.getValue().size(), upperCorner.getValue().size());
-            for (int i = 0; i < ordinates.size(); i++) {
-                double ordinate = ordinates.get(i);
-                if (i < dimension) {
-                    if (ordinate < lowerCorner.getValue().get(i)) {
-                        lowerCorner.getValue().set(i, ordinate);
-                    }
+            if (dimension == 0) {
+                lowerCorner.setValue(ordinates);
+                upperCorner.setValue(ordinates);
+            } else {
+                for (int i = 0; i < ordinates.size(); i++) {
+                    double ordinate = ordinates.get(i);
+                    if (i < dimension) {
+                        if (ordinate < lowerCorner.getValue().get(i)) {
+                            lowerCorner.getValue().set(i, ordinate);
+                        }
 
-                    if (ordinate > upperCorner.getValue().get(i)) {
-                        upperCorner.getValue().set(i, ordinate);
-                    }
-                } else {
-                    if (dimension > 0) {
-                        lowerCorner.setValue(lowerCorner.getValue().subList(0, i));
-                        upperCorner.setValue(upperCorner.getValue().subList(0, i));
-                    }
+                        if (ordinate > upperCorner.getValue().get(i)) {
+                            upperCorner.getValue().set(i, ordinate);
+                        }
+                    } else {
+                        if (lowerCorner.getValue().size() > i) {
+                            lowerCorner.setValue(lowerCorner.getValue().subList(0, i));
+                        }
 
-                    lowerCorner.getValue().add(ordinate);
-                    upperCorner.getValue().add(ordinate);
+                        if (upperCorner.getValue().size() > i) {
+                            upperCorner.setValue(upperCorner.getValue().subList(0, i));
+                        }
+
+                        lowerCorner.getValue().add(ordinate);
+                        upperCorner.getValue().add(ordinate);
+                    }
                 }
             }
         }
