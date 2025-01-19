@@ -206,10 +206,9 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
     }
 
     public boolean contains(List<Double> ordinates) {
-        if (ordinates != null
-                && hasValidDimension()
-                && ordinates.size() <= lowerCorner.getValue().size()) {
-            for (int i = 0; i < ordinates.size(); i++) {
+        if (ordinates != null && hasValidDimension()) {
+            int dimension = Math.min(ordinates.size(), lowerCorner.getValue().size());
+            for (int i = 0; i < dimension; i++) {
                 if (ordinates.get(i) < lowerCorner.getValue().get(i)
                         || ordinates.get(i) > upperCorner.getValue().get(i)) {
                     return false;
@@ -254,23 +253,18 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
         return this;
     }
 
-    public Envelope include(List<Double> ordinates) {
-        include(ordinates, getDimension());
-        return this;
-    }
-
     public Envelope include(Envelope other) {
         if (other != null && other.hasValidDimension()) {
-            int dimension = getDimension();
-            include(other.lowerCorner.getValue(), dimension);
-            include(other.upperCorner.getValue(), dimension);
+            include(other.lowerCorner.getValue());
+            include(other.upperCorner.getValue());
         }
 
         return this;
     }
 
-    private void include(List<Double> ordinates, int dimension) {
+    public Envelope include(List<Double> ordinates) {
         if (ordinates != null && !ordinates.isEmpty()) {
+            int dimension = Math.min(lowerCorner.getValue().size(), upperCorner.getValue().size());
             for (int i = 0; i < ordinates.size(); i++) {
                 double ordinate = ordinates.get(i);
                 if (i < dimension) {
@@ -282,7 +276,7 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
                         upperCorner.getValue().set(i, ordinate);
                     }
                 } else {
-                    if (!isEmpty() && lowerCorner.getValue().size() != upperCorner.getValue().size()) {
+                    if (dimension > 0) {
                         lowerCorner.setValue(lowerCorner.getValue().subList(0, i));
                         upperCorner.setValue(upperCorner.getValue().subList(0, i));
                     }
@@ -292,6 +286,8 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
                 }
             }
         }
+
+        return this;
     }
 
     @Override
