@@ -264,7 +264,7 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
 
     public Envelope include(List<Double> ordinates) {
         if (ordinates != null && !ordinates.isEmpty()) {
-            int dimension = Math.min(lowerCorner.getValue().size(), upperCorner.getValue().size());
+            int dimension = !isEmpty() ? Math.min(lowerCorner.getValue().size(), upperCorner.getValue().size()) : 0;
             if (dimension == 0) {
                 lowerCorner.setValue(new ArrayList<>(ordinates));
                 upperCorner.setValue(new ArrayList<>(ordinates));
