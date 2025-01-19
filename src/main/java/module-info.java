@@ -38,7 +38,7 @@ module org.xmlobjects.gml {
     exports org.xmlobjects.gml.model.xlink;
     exports org.xmlobjects.gml.util;
     exports org.xmlobjects.gml.util.id;
-    exports org.xmlobjects.gml.util.jama;
+    exports org.xmlobjects.gml.util.matrix;
     exports org.xmlobjects.gml.util.reference;
     exports org.xmlobjects.gml.visitor;
 

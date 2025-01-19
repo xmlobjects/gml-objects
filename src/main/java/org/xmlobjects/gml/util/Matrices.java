@@ -20,7 +20,7 @@
 package org.xmlobjects.gml.util;
 
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
-import org.xmlobjects.gml.util.jama.Matrix;
+import org.xmlobjects.gml.util.matrix.Matrix;
 
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class Matrices {
     }
 
     private static List<Double> applyTransformation(List<Double> coordinates, Matrix matrix) {
-        if ((matrix.getRowDimension() != 3 && matrix.getRowDimension() != 4) || matrix.getColumnDimension() != 4) {
+        if ((matrix.getRows() != 3 && matrix.getRows() != 4) || matrix.getColumns() != 4) {
             throw new IllegalArgumentException("A 3D transformation requires either a 3x4 or a 4x4 matrix.");
         }
 

@@ -23,7 +23,7 @@ import org.xmlobjects.gml.model.geometry.Envelope;
 import org.xmlobjects.gml.model.geometry.Vector;
 import org.xmlobjects.gml.model.geometry.primitives.PointProperty;
 import org.xmlobjects.gml.util.Matrices;
-import org.xmlobjects.gml.util.jama.Matrix;
+import org.xmlobjects.gml.util.matrix.Matrix;
 import org.xmlobjects.gml.visitor.GeometryVisitor;
 import org.xmlobjects.gml.visitor.ObjectVisitor;
 import org.xmlobjects.model.ChildList;
@@ -82,7 +82,7 @@ public class RectifiedGrid extends Grid {
                             envelope.include(origin
                                     .plus(offsetVectors[0].times(limits.get(x * 3)))
                                     .plus(offsetVectors[1].times(limits.get(1 + y * 3)))
-                                    .plus(offsetVectors[2].times(limits.get(2 + z * 3))).getColumnPackedCopy());
+                                    .plus(offsetVectors[2].times(limits.get(2 + z * 3))).toColumnMajor());
                         }
                     }
                 }
