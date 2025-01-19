@@ -8,9 +8,9 @@ plugins {
     id 'io.github.gradle-nexus.publish-plugin' version '2.0.0'
 }
 
-group 'org.xmlobjects.gml'
-version '1.1.2'
-description 'A Java mapping for the OGC Geography Markup Language (GML)'
+group = 'org.xmlobjects.gml'
+version = '1.1.2'
+description = 'A Java mapping for the OGC Geography Markup Language (GML)'
 ext.date = new Date()
 
 java {
@@ -27,23 +27,23 @@ tasks.named('compileJava') {
 
 repositories {
     maven {
-        url 'https://oss.sonatype.org/content/repositories/snapshots/'
+        url = 'https://oss.sonatype.org/content/repositories/snapshots/'
     }
     mavenCentral()
 }
 
 dependencies {
-    api 'org.xmlobjects:xml-objects:1.1.2'
-    annotationProcessor 'org.xmlobjects:xml-objects:1.1.2'
+    api 'org.xmlobjects:xml-objects:1.1.3'
+    annotationProcessor 'org.xmlobjects:xml-objects:1.1.3'
 }
 
 javadoc {
     options {
-        overview "$projectDir/build/tmp/javadoc/overview.html"
-        header "$project.name $project.version"
+        overview = "$projectDir/build/tmp/javadoc/overview.html"
+        header = "$project.name $project.version"
         bottom """
             <a target="_blank" href="https://github.com/xmlobjects/gml-objects/issues">Report a bug or suggest an enhancement</a><br />
-            $project.name is open source and licensed under the <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a><br />
+            ${project.name} is open source and licensed under the <a target="_blank" href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a><br />
             Official website and more information at: <a target="_blank" href="https://github.com/xmlobjects/gml-objects">https://github.com/xmlobjects/gml-objects</a><br />
             Copyright &copy; 2013-${date.format('yyyy')}<br />
             Claus Nagel &lt;claus.nagel@gmail.com&gt;
@@ -57,8 +57,8 @@ javadoc {
             from 'resources/javadoc/overview.html'
             into "$projectDir/build/tmp/javadoc"
             filter(ReplaceTokens, tokens: [
-                    name: project.name,
-                    version: project.version
+                    name: name,
+                    version: version
             ])
         }
     }
