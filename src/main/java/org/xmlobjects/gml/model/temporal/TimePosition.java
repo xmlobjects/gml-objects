@@ -20,11 +20,11 @@
 package org.xmlobjects.gml.model.temporal;
 
 import org.xmlobjects.gml.model.GMLObject;
+import org.xmlobjects.gml.util.GMLPatterns;
 import org.xmlobjects.xml.TextContent;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+import java.time.LocalTime;
 
 public class TimePosition extends GMLObject {
     private TimePositionValue<?> value;
@@ -66,10 +66,11 @@ public class TimePosition extends GMLObject {
         } else if (content.isDouble()) {
             this.value = new TimeCoordinate(content.getAsDouble());
         } else {
-            try {
-                LocalDate date = LocalDate.parse(value, DateTimeFormatter.ISO_WEEK_DATE);
-                this.value = new CalendarDate(TextContent.of(date.toString()).getAsDate(), CalenderDateType.DATE);
-            } catch (DateTimeParseException e) {
+            this.value = getAsWeekDate(value);
+            if (this.value == null) {
+                this.value = getAsTime(value);
+            }
+            if (this.value == null) {
                 this.value = new OrdinalPosition(value);
             }
         }
@@ -141,5 +142,22 @@ public class TimePosition extends GMLObject {
 
     public boolean isTimeCoordinate() {
         return value instanceof TimeCoordinate;
+    }
+
+    private CalendarDate getAsWeekDate(String value) {
+        try {
+            LocalDate date = LocalDate.parse(value, GMLPatterns.ISO_WEEK_DATE);
+            return new CalendarDate(TextContent.of(date.toString()).getAsDate(), CalenderDateType.DATE);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private ClockTime getAsTime(String value) {
+        try {
+            return new ClockTime(LocalTime.parse(value, GMLPatterns.ISO_TIME));
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
