@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- Fixed parsing of `TimePosition` values to support more ISO 8601 compliant representations.
+- Fixed `include` method of `Envelope` to correctly handle empty envelopes.
 
 ## [1.1.4] - 2025-01-19
 ### Changed
