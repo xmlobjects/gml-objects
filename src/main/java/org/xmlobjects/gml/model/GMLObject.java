@@ -82,7 +82,7 @@ public abstract class GMLObject implements Child, Copyable {
                         removed = true;
                     } else if (candidate instanceof Collection<?> collection) {
                         removed = collection.removeIf(v -> v == value);
-                        if (removed && ((Collection<?>) candidate).isEmpty()) {
+                        if (removed && collection.isEmpty()) {
                             fields[i].set(this, null);
                         }
                     } else if (candidate instanceof Object[]) {
