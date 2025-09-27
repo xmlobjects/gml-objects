@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [1.1.6] - 2025-09-27
+### Changed
+- Updated xml-objects to 1.1.6.
+
 ## [1.1.5] - 2025-03-03
 ### Fixed
 - Fixed parsing of `TimePosition` values to support more ISO 8601 compliant representations.
@@ -50,7 +54,8 @@
 ## [1.0.0] - 2022-08-20
 This is the initial release of gml-objects.
 
-[Unreleased]: https://github.com/xmlobjects/gml-objects/compare/v1.1.5...HEAD
+[Unreleased]: https://github.com/xmlobjects/gml-objects/compare/v1.1.6...HEAD
+[1.1.6]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.1.6
 [1.1.5]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.1.5
 [1.1.4]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.1.4
 [1.1.2]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.1.2
