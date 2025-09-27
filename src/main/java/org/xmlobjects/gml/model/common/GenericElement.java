@@ -27,10 +27,7 @@ import org.xmlobjects.util.copy.Copyable;
 import java.util.Objects;
 
 public class GenericElement extends GMLObject {
-    private Element content;
-
-    private GenericElement() {
-    }
+    private final Element content;
 
     private GenericElement(Element content) {
         this.content = Objects.requireNonNull(content, "Content must not be null.");
