@@ -1,6 +1,6 @@
 ![build](https://img.shields.io/github/actions/workflow/status/xmlobjects/gml-objects/gml-objects-build.yml?logo=Gradle)
 ![release](https://img.shields.io/github/v/release/xmlobjects/gml-objects?display_name=tag)
-[![maven](https://maven-badges.herokuapp.com/maven-central/org.xmlobjects.gml/gml-objects/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.xmlobjects.gml/gml-objects)
+![maven](https://img.shields.io/maven-central/v/org.xmlobjects.gml/gml-objects)
 [![license](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # gml-objects
