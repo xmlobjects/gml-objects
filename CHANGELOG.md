@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+### Fixed
+- Prevent `NullPointerException` when parsing empty nil-reason list types, such as `BooleanOrNilReasonList`,
+  `DoubleOrNilReasonList`, `IntegerOrNilReasonList`, `MeasureOrNilReasonList`, and `NameOrNilReasonList`.
 
 ## [1.1.6] - 2025-09-27
 ### Changed

@@ -39,6 +39,7 @@ import org.xmlobjects.xml.Namespaces;
 import org.xmlobjects.xml.TextContent;
 
 import javax.xml.namespace.QName;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -51,14 +52,16 @@ public class NameOrNilReasonListAdapter implements ObjectBuilder<NameOrNilReason
 
     @Override
     public void initializeObject(NameOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        TextContent content = reader.getTextContent();
-        for (String item : content.getAsList()) {
-            if (NilReasonEnumeration.fromValue(item) != null
-                    || GMLPatterns.OTHER_VALUE.matcher(item).matches()
-                    || !XMLPatterns.NAME.matcher(item).matches())
-                object.getValue().add(new NameOrNilReason(new NilReason(item)));
-            else
-                object.getValue().add(new NameOrNilReason(item));
+        List<String> values = reader.getTextContent().getAsList();
+        if (values != null && !values.isEmpty()) {
+            for (String item : values) {
+                if (NilReasonEnumeration.fromValue(item) != null
+                        || GMLPatterns.OTHER_VALUE.matcher(item).matches()
+                        || !XMLPatterns.NAME.matcher(item).matches())
+                    object.getValue().add(new NameOrNilReason(new NilReason(item)));
+                else
+                    object.getValue().add(new NameOrNilReason(item));
+            }
         }
     }
 

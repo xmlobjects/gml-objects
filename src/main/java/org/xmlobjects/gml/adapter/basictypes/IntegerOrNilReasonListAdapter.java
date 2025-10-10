@@ -36,6 +36,7 @@ import org.xmlobjects.xml.Namespaces;
 import org.xmlobjects.xml.TextContent;
 
 import javax.xml.namespace.QName;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -48,12 +49,14 @@ public class IntegerOrNilReasonListAdapter implements ObjectBuilder<IntegerOrNil
 
     @Override
     public void initializeObject(IntegerOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        TextContent content = reader.getTextContent();
-        for (String item : content.getAsList()) {
-            try {
-                object.getValue().add(new IntegerOrNilReason(Integer.parseInt(item)));
-            } catch (Throwable e) {
-                object.getValue().add(new IntegerOrNilReason(new NilReason(item)));
+        List<String> values = reader.getTextContent().getAsList();
+        if (values != null && !values.isEmpty()) {
+            for (String item : values) {
+                try {
+                    object.getValue().add(new IntegerOrNilReason(Integer.parseInt(item)));
+                } catch (Throwable e) {
+                    object.getValue().add(new IntegerOrNilReason(new NilReason(item)));
+                }
             }
         }
     }

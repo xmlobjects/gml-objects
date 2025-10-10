@@ -36,6 +36,7 @@ import org.xmlobjects.xml.Namespaces;
 import org.xmlobjects.xml.TextContent;
 
 import javax.xml.namespace.QName;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -48,13 +49,15 @@ public class BooleanOrNilReasonListAdapter implements ObjectBuilder<BooleanOrNil
 
     @Override
     public void initializeObject(BooleanOrNilReasonList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
-        TextContent content = reader.getTextContent();
-        for (String item : content.getAsList()) {
-            TextContent value = TextContent.of(item);
-            if (value.isBoolean())
-                object.getValue().add(new BooleanOrNilReason(value.getAsBoolean()));
-            else
-                object.getValue().add(new BooleanOrNilReason(new NilReason(item)));
+        List<String> values = reader.getTextContent().getAsList();
+        if (values != null && !values.isEmpty()) {
+            for (String item : values) {
+                TextContent value = TextContent.of(item);
+                if (value.isBoolean())
+                    object.getValue().add(new BooleanOrNilReason(value.getAsBoolean()));
+                else
+                    object.getValue().add(new BooleanOrNilReason(new NilReason(item)));
+            }
         }
     }
 
