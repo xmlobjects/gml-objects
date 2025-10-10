@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+
+## [1.1.7] - 2025-10-10
 ### Fixed
 - Prevent `NullPointerException` when parsing empty nil-reason list types, such as `BooleanOrNilReasonList`,
   `DoubleOrNilReasonList`, `IntegerOrNilReasonList`, `MeasureOrNilReasonList`, and `NameOrNilReasonList`.
@@ -57,7 +59,8 @@
 ## [1.0.0] - 2022-08-20
 This is the initial release of gml-objects.
 
-[Unreleased]: https://github.com/xmlobjects/gml-objects/compare/v1.1.6...HEAD
+[Unreleased]: https://github.com/xmlobjects/gml-objects/compare/v1.1.7...HEAD
+[1.1.7]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.1.7
 [1.1.6]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.1.6
 [1.1.5]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.1.5
 [1.1.4]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.1.4
