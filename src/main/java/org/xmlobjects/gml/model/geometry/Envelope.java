@@ -317,13 +317,20 @@ public class Envelope extends GMLObject implements SRSReference, CoordinateListP
 
     @Override
     public List<Double> toCoordinateList3D() {
-        if (!isEmpty()) {
-            List<Double> coordinates = new ArrayList<>(6);
-            coordinates.addAll(lowerCorner.toCoordinateList3D());
-            coordinates.addAll(upperCorner.toCoordinateList3D());
-            return coordinates;
-        } else
+        if (isEmpty()) {
             return Collections.emptyList();
+        }
+
+        List<Double> lower = lowerCorner.toCoordinateList3D();
+        List<Double> upper = upperCorner.toCoordinateList3D();
+        if (lower.isEmpty() || upper.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        List<Double> coordinates = new ArrayList<>(6);
+        coordinates.addAll(lower);
+        coordinates.addAll(upper);
+        return coordinates;
     }
 
     private boolean hasValidDimension() {
