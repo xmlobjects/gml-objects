@@ -19,12 +19,15 @@
 
 package org.xmlobjects.gml.util.matrix;
 
+import org.xmlobjects.util.copy.CopyBuilder;
+import org.xmlobjects.util.copy.Copyable;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Matrix implements Serializable {
+public class Matrix implements Copyable, Serializable {
     final double[][] elements;
     final int rows, columns;
 
@@ -352,6 +355,16 @@ public class Matrix implements Serializable {
 
     public Matrix copy() {
         return new Matrix(this);
+    }
+
+    @Override
+    public Copyable shallowCopy(CopyBuilder builder) {
+        return new Matrix(elements, rows, columns);
+    }
+
+    @Override
+    public Copyable deepCopy(CopyBuilder builder) {
+        return copy();
     }
 
     private void checkDimensions(Matrix matrix) {

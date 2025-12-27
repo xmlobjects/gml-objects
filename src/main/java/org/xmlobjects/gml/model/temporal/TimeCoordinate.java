@@ -19,6 +19,9 @@
 
 package org.xmlobjects.gml.model.temporal;
 
+import org.xmlobjects.util.copy.CopyBuilder;
+import org.xmlobjects.util.copy.Copyable;
+
 public class TimeCoordinate implements TimePositionValue<Double> {
     private final Double coordinate;
 
@@ -29,5 +32,15 @@ public class TimeCoordinate implements TimePositionValue<Double> {
     @Override
     public Double getValue() {
         return coordinate;
+    }
+
+    @Override
+    public Copyable shallowCopy(CopyBuilder builder) {
+        return new TimeCoordinate(coordinate);
+    }
+
+    @Override
+    public Copyable deepCopy(CopyBuilder builder) {
+        return new TimeCoordinate(coordinate);
     }
 }

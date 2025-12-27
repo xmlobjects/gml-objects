@@ -19,6 +19,9 @@
 
 package org.xmlobjects.gml.model.temporal;
 
+import org.xmlobjects.util.copy.CopyBuilder;
+import org.xmlobjects.util.copy.Copyable;
+
 import java.time.OffsetDateTime;
 
 public class DateAndTime implements TimePositionValue<OffsetDateTime> {
@@ -31,5 +34,15 @@ public class DateAndTime implements TimePositionValue<OffsetDateTime> {
     @Override
     public OffsetDateTime getValue() {
         return dateTime;
+    }
+
+    @Override
+    public Copyable shallowCopy(CopyBuilder builder) {
+        return new DateAndTime(dateTime);
+    }
+
+    @Override
+    public Copyable deepCopy(CopyBuilder builder) {
+        return new DateAndTime(dateTime);
     }
 }

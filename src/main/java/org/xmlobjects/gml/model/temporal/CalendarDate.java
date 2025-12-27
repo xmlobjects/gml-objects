@@ -19,6 +19,9 @@
 
 package org.xmlobjects.gml.model.temporal;
 
+import org.xmlobjects.util.copy.CopyBuilder;
+import org.xmlobjects.util.copy.Copyable;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
@@ -84,5 +87,15 @@ public class CalendarDate implements TimePositionValue<OffsetDateTime> {
 
     public boolean isYearMonth() {
         return type == CalenderDateType.YEAR_MONTH;
+    }
+
+    @Override
+    public Copyable shallowCopy(CopyBuilder builder) {
+        return new CalendarDate(date, type);
+    }
+
+    @Override
+    public Copyable deepCopy(CopyBuilder builder) {
+        return new CalendarDate(date, type);
     }
 }

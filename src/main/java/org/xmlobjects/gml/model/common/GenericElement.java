@@ -50,7 +50,12 @@ public class GenericElement extends GMLObject {
     }
 
     @Override
+    public Copyable shallowCopy(CopyBuilder builder) {
+        return new GenericElement(content);
+    }
+
+    @Override
     public Copyable deepCopy(CopyBuilder builder) {
-        return super.deepCopy(builder.withClone(content, () -> content.cloneNode(true)));
+        return new GenericElement((Element) content.cloneNode(true));
     }
 }

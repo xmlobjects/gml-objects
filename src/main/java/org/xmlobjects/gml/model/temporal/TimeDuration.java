@@ -54,6 +54,6 @@ public class TimeDuration extends GMLObject {
 
     @Override
     public Copyable deepCopy(CopyBuilder builder) {
-        return super.deepCopy(builder.withSelfCopy(value));
+        return new TimeDuration(value);
     }
 }
