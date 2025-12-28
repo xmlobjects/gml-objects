@@ -20,6 +20,7 @@
 package org.xmlobjects.gml.model.temporal;
 
 import org.xmlobjects.util.copy.CopyBuilder;
+import org.xmlobjects.util.copy.CopyContext;
 import org.xmlobjects.util.copy.Copyable;
 
 import java.time.OffsetDateTime;
@@ -37,12 +38,12 @@ public class DateAndTime implements TimePositionValue<OffsetDateTime>, Copyable 
     }
 
     @Override
-    public Copyable shallowCopy(CopyBuilder builder) {
+    public Copyable shallowCopy(CopyBuilder builder, CopyContext context) {
         return new DateAndTime(dateTime);
     }
 
     @Override
-    public Copyable deepCopy(CopyBuilder builder) {
+    public Copyable deepCopy(CopyBuilder builder, CopyContext context) {
         return new DateAndTime(dateTime);
     }
 }

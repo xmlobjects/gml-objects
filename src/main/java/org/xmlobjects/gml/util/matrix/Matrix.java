@@ -20,6 +20,7 @@
 package org.xmlobjects.gml.util.matrix;
 
 import org.xmlobjects.util.copy.CopyBuilder;
+import org.xmlobjects.util.copy.CopyContext;
 import org.xmlobjects.util.copy.Copyable;
 
 import java.io.Serializable;
@@ -358,12 +359,12 @@ public class Matrix implements Copyable, Serializable {
     }
 
     @Override
-    public Copyable shallowCopy(CopyBuilder builder) {
+    public Copyable shallowCopy(CopyBuilder builder, CopyContext context) {
         return new Matrix(elements, rows, columns);
     }
 
     @Override
-    public Copyable deepCopy(CopyBuilder builder) {
+    public Copyable deepCopy(CopyBuilder builder, CopyContext context) {
         return copy();
     }
 

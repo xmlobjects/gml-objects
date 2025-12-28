@@ -21,6 +21,7 @@ package org.xmlobjects.gml.model.temporal;
 
 import org.xmlobjects.gml.model.GMLObject;
 import org.xmlobjects.util.copy.CopyBuilder;
+import org.xmlobjects.util.copy.CopyContext;
 import org.xmlobjects.util.copy.Copyable;
 import org.xmlobjects.xml.TextContent;
 
@@ -53,7 +54,7 @@ public class TimeDuration extends GMLObject implements Copyable {
     }
 
     @Override
-    public Copyable deepCopy(CopyBuilder builder) {
+    public Copyable deepCopy(CopyBuilder builder, CopyContext context) {
         return new TimeDuration(value);
     }
 }
