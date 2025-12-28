@@ -26,7 +26,7 @@ import org.xmlobjects.xml.TextContent;
 
 import javax.xml.datatype.Duration;
 
-public class TimeDuration extends GMLObject {
+public class TimeDuration extends GMLObject implements Copyable {
     private Duration value;
 
     public TimeDuration() {

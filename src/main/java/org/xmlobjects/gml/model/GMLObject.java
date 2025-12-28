@@ -21,15 +21,15 @@ package org.xmlobjects.gml.model;
 
 import org.xmlobjects.model.Child;
 import org.xmlobjects.model.ChildList;
-import org.xmlobjects.util.copy.Copyable;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public abstract class GMLObject implements Child, Copyable {
+public abstract class GMLObject implements Child, Serializable {
     private Child parent;
 
     protected final <T extends Child> T asChild(T child) {

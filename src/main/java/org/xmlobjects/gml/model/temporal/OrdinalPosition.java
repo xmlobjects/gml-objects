@@ -22,7 +22,7 @@ package org.xmlobjects.gml.model.temporal;
 import org.xmlobjects.util.copy.CopyBuilder;
 import org.xmlobjects.util.copy.Copyable;
 
-public class OrdinalPosition implements TimePositionValue<String> {
+public class OrdinalPosition implements TimePositionValue<String>, Copyable {
     private final String ordinalEra;
 
     public OrdinalPosition(String ordinalEra) {

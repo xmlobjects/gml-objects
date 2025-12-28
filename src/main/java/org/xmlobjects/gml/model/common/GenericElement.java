@@ -26,7 +26,7 @@ import org.xmlobjects.util.copy.Copyable;
 
 import java.util.Objects;
 
-public class GenericElement extends GMLObject {
+public class GenericElement extends GMLObject implements Copyable {
     private final Element content;
 
     private GenericElement(Element content) {

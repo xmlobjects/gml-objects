@@ -22,7 +22,7 @@ package org.xmlobjects.gml.model.temporal;
 import org.xmlobjects.util.copy.CopyBuilder;
 import org.xmlobjects.util.copy.Copyable;
 
-public class TimeCoordinate implements TimePositionValue<Double> {
+public class TimeCoordinate implements TimePositionValue<Double>, Copyable {
     private final Double coordinate;
 
     public TimeCoordinate(Double coordinate) {

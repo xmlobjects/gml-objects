@@ -24,7 +24,7 @@ import org.xmlobjects.util.copy.Copyable;
 
 import java.time.OffsetDateTime;
 
-public class DateAndTime implements TimePositionValue<OffsetDateTime> {
+public class DateAndTime implements TimePositionValue<OffsetDateTime>, Copyable {
     private final OffsetDateTime dateTime;
 
     public DateAndTime(OffsetDateTime dateTime) {

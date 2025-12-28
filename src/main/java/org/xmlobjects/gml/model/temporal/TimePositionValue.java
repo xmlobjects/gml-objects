@@ -19,8 +19,8 @@
 
 package org.xmlobjects.gml.model.temporal;
 
-import org.xmlobjects.util.copy.Copyable;
+import java.io.Serializable;
 
-public interface TimePositionValue<T> extends Copyable {
+public interface TimePositionValue<T> extends Serializable {
     T getValue();
 }

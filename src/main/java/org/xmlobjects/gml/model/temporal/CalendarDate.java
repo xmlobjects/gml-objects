@@ -27,7 +27,7 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
-public class CalendarDate implements TimePositionValue<OffsetDateTime> {
+public class CalendarDate implements TimePositionValue<OffsetDateTime>, Copyable {
     private final OffsetDateTime date;
     private final CalenderDateType type;
 

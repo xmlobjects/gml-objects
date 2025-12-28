@@ -26,7 +26,7 @@ import java.time.LocalTime;
 import java.time.OffsetTime;
 import java.time.ZoneOffset;
 
-public class ClockTime implements TimePositionValue<OffsetTime> {
+public class ClockTime implements TimePositionValue<OffsetTime>, Copyable {
     private final OffsetTime clockTime;
 
     public ClockTime(OffsetTime clockTime) {
