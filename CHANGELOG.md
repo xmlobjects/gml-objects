@@ -4,6 +4,7 @@
 
 ## [1.3.0] - 2025-12-29
 ### Changed
+- Removed `Copyable` interface from `GMLObject`.
 - Updated xml-objects to 1.3.0.
 
 ## [1.2.0] - 2025-11-20
