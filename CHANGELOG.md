@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [1.3.0] - 2025-12-29
+### Changed
+- Updated xml-objects to 1.3.0.
+
 ## [1.2.0] - 2025-11-20
 ### Changed
 - Updated xml-objects to 1.2.0.
@@ -63,7 +67,8 @@
 ## [1.0.0] - 2022-08-20
 This is the initial release of gml-objects.
 
-[Unreleased]: https://github.com/xmlobjects/gml-objects/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/xmlobjects/gml-objects/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.3.0
 [1.2.0]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.2.0
 [1.1.7]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.1.7
 [1.1.6]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.1.6
