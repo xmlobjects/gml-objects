@@ -5,15 +5,15 @@
 
 package org.xmlobjects.gml.model.temporal;
 
-import org.xmlobjects.util.copy.CopyBuilder;
-import org.xmlobjects.util.copy.CopyContext;
-import org.xmlobjects.util.copy.Copyable;
+import org.xmlobjects.copy.CopyContext;
+import org.xmlobjects.copy.CopyMode;
+import org.xmlobjects.copy.Copyable;
 
 import java.time.LocalTime;
 import java.time.OffsetTime;
 import java.time.ZoneOffset;
 
-public class ClockTime implements TimePositionValue<OffsetTime>, Copyable {
+public class ClockTime implements TimePositionValue<OffsetTime>, Copyable<ClockTime> {
     private final OffsetTime clockTime;
 
     public ClockTime(OffsetTime clockTime) {
@@ -30,12 +30,7 @@ public class ClockTime implements TimePositionValue<OffsetTime>, Copyable {
     }
 
     @Override
-    public Copyable shallowCopy(CopyBuilder builder, CopyContext context) {
-        return new ClockTime(clockTime);
-    }
-
-    @Override
-    public Copyable deepCopy(CopyBuilder builder, CopyContext context) {
+    public ClockTime newInstance(CopyMode mode, CopyContext context) {
         return new ClockTime(clockTime);
     }
 }

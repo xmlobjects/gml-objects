@@ -6,6 +6,8 @@
 package org.xmlobjects.gml.adapter.dictionary;
 
 import org.xmlobjects.builder.ObjectBuildException;
+import org.xmlobjects.copy.Copier;
+import org.xmlobjects.copy.CopierBuilder;
 import org.xmlobjects.gml.adapter.base.AbstractGMLAdapter;
 import org.xmlobjects.gml.adapter.basictypes.CodeWithAuthorityAdapter;
 import org.xmlobjects.gml.model.dictionary.DefinitionBase;
@@ -15,7 +17,6 @@ import org.xmlobjects.stream.XMLReadException;
 import org.xmlobjects.stream.XMLReader;
 import org.xmlobjects.stream.XMLWriteException;
 import org.xmlobjects.stream.XMLWriter;
-import org.xmlobjects.util.copy.CopyBuilder;
 import org.xmlobjects.xml.Attributes;
 import org.xmlobjects.xml.Namespaces;
 
@@ -26,7 +27,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public abstract class DefinitionBaseAdapter<T extends DefinitionBase> extends AbstractGMLAdapter<T> {
-    private final CopyBuilder copyBuilder = new CopyBuilder();
+    private final Copier copier = CopierBuilder.newCopier();
 
     @Override
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
@@ -42,7 +43,7 @@ public abstract class DefinitionBaseAdapter<T extends DefinitionBase> extends Ab
     @Override
     public void writeChildElements(T object, Namespaces namespaces, XMLWriter writer) throws ObjectSerializeException, XMLWriteException {
         if (object.getIdentifier() != null && namespaces.contains(GMLConstants.GML_3_1_NAMESPACE)) {
-            object = copyBuilder.shallowCopy(object);
+            object = copier.shallowCopy(object);
             if (object.getIdentifier() != null) {
                 object.setNames(Stream.of(Collections.singletonList(object.getIdentifier()), object.getNames())
                         .flatMap(Collection::stream)

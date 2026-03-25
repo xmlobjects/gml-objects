@@ -5,16 +5,16 @@
 
 package org.xmlobjects.gml.model.temporal;
 
-import org.xmlobjects.util.copy.CopyBuilder;
-import org.xmlobjects.util.copy.CopyContext;
-import org.xmlobjects.util.copy.Copyable;
+import org.xmlobjects.copy.CopyContext;
+import org.xmlobjects.copy.CopyMode;
+import org.xmlobjects.copy.Copyable;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
-public class CalendarDate implements TimePositionValue<OffsetDateTime>, Copyable {
+public class CalendarDate implements TimePositionValue<OffsetDateTime>, Copyable<CalendarDate> {
     private final OffsetDateTime date;
     private final CalenderDateType type;
 
@@ -77,12 +77,7 @@ public class CalendarDate implements TimePositionValue<OffsetDateTime>, Copyable
     }
 
     @Override
-    public Copyable shallowCopy(CopyBuilder builder, CopyContext context) {
-        return new CalendarDate(date, type);
-    }
-
-    @Override
-    public Copyable deepCopy(CopyBuilder builder, CopyContext context) {
+    public CalendarDate newInstance(CopyMode mode, CopyContext context) {
         return new CalendarDate(date, type);
     }
 }

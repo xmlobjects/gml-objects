@@ -5,11 +5,11 @@
 
 package org.xmlobjects.gml.model.temporal;
 
-import org.xmlobjects.util.copy.CopyBuilder;
-import org.xmlobjects.util.copy.CopyContext;
-import org.xmlobjects.util.copy.Copyable;
+import org.xmlobjects.copy.CopyContext;
+import org.xmlobjects.copy.CopyMode;
+import org.xmlobjects.copy.Copyable;
 
-public class OrdinalPosition implements TimePositionValue<String>, Copyable {
+public class OrdinalPosition implements TimePositionValue<String>, Copyable<OrdinalPosition> {
     private final String ordinalEra;
 
     public OrdinalPosition(String ordinalEra) {
@@ -22,12 +22,7 @@ public class OrdinalPosition implements TimePositionValue<String>, Copyable {
     }
 
     @Override
-    public Copyable shallowCopy(CopyBuilder builder, CopyContext context) {
-        return new OrdinalPosition(ordinalEra);
-    }
-
-    @Override
-    public Copyable deepCopy(CopyBuilder builder, CopyContext context) {
+    public OrdinalPosition newInstance(CopyMode mode, CopyContext context) {
         return new OrdinalPosition(ordinalEra);
     }
 }

@@ -6,14 +6,11 @@
 package org.xmlobjects.gml.model.temporal;
 
 import org.xmlobjects.gml.model.GMLObject;
-import org.xmlobjects.util.copy.CopyBuilder;
-import org.xmlobjects.util.copy.CopyContext;
-import org.xmlobjects.util.copy.Copyable;
 import org.xmlobjects.xml.TextContent;
 
 import javax.xml.datatype.Duration;
 
-public class TimeDuration extends GMLObject implements Copyable {
+public class TimeDuration extends GMLObject {
     private Duration value;
 
     public TimeDuration() {
@@ -37,10 +34,5 @@ public class TimeDuration extends GMLObject implements Copyable {
 
     public void setValue(String value) {
         this.value = TextContent.of(value).getAsDuration();
-    }
-
-    @Override
-    public Copyable deepCopy(CopyBuilder builder, CopyContext context) {
-        return new TimeDuration(value);
     }
 }

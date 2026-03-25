@@ -5,16 +5,16 @@
 
 package org.xmlobjects.gml.util.matrix;
 
-import org.xmlobjects.util.copy.CopyBuilder;
-import org.xmlobjects.util.copy.CopyContext;
-import org.xmlobjects.util.copy.Copyable;
+import org.xmlobjects.copy.CopyContext;
+import org.xmlobjects.copy.CopyMode;
+import org.xmlobjects.copy.Copyable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Matrix implements Copyable, Serializable {
+public class Matrix implements Copyable<Matrix>, Serializable {
     final double[][] elements;
     final int rows, columns;
 
@@ -345,13 +345,11 @@ public class Matrix implements Copyable, Serializable {
     }
 
     @Override
-    public Copyable shallowCopy(CopyBuilder builder, CopyContext context) {
-        return new Matrix(elements, rows, columns);
-    }
-
-    @Override
-    public Copyable deepCopy(CopyBuilder builder, CopyContext context) {
-        return copy();
+    public Matrix newInstance(CopyMode mode, CopyContext context) {
+        return switch (mode) {
+            case SHALLOW -> new Matrix(elements, rows, columns);
+            case DEEP -> new Matrix(this);
+        };
     }
 
     private void checkDimensions(Matrix matrix) {
