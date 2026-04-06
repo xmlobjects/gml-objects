@@ -5,13 +5,17 @@
 
 package org.xmlobjects.gml.model.common;
 
+import org.xmlobjects.copy.CopyContext;
+import org.xmlobjects.copy.CopyMode;
+import org.xmlobjects.copy.Copyable;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-public class LocalProperties implements Serializable {
+public class LocalProperties implements Copyable<LocalProperties>, Serializable {
     private Map<String, Object> properties;
 
     public Object get(String name) {
@@ -68,5 +72,10 @@ public class LocalProperties implements Serializable {
     public void clear() {
         if (properties != null)
             properties.clear();
+    }
+
+    @Override
+    public LocalProperties newInstance(CopyMode mode, CopyContext context) {
+        return context.isRoot() ? new LocalProperties() : null;
     }
 }
