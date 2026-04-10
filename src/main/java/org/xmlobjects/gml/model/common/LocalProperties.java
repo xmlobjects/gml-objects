@@ -6,7 +6,6 @@
 package org.xmlobjects.gml.model.common;
 
 import org.xmlobjects.copy.CopyContext;
-import org.xmlobjects.copy.CopyMode;
 import org.xmlobjects.copy.Copyable;
 
 import java.io.Serializable;
@@ -26,8 +25,9 @@ public class LocalProperties implements Copyable<LocalProperties>, Serializable 
         if (properties != null) {
             Object value = properties.get(name);
             return value != null && type.isAssignableFrom(value.getClass()) ? type.cast(value) : null;
-        } else
+        } else {
             return null;
+        }
     }
 
     public boolean getAndCompare(String name, Object expectedValue) {
@@ -54,8 +54,9 @@ public class LocalProperties implements Copyable<LocalProperties>, Serializable 
     }
 
     public void set(String name, Object value) {
-        if (properties == null)
+        if (properties == null) {
             properties = new HashMap<>();
+        }
 
         properties.put(name, value);
     }
@@ -65,17 +66,29 @@ public class LocalProperties implements Copyable<LocalProperties>, Serializable 
     }
 
     public void remove(String name) {
-        if (properties != null)
+        if (properties != null) {
             properties.remove(name);
+        }
     }
 
     public void clear() {
-        if (properties != null)
+        if (properties != null) {
             properties.clear();
+        }
     }
 
     @Override
-    public LocalProperties newInstance(CopyMode mode, CopyContext context) {
-        return context.isRoot() ? new LocalProperties() : null;
+    public void shallowCopyTo(LocalProperties dest, CopyContext context) {
+        if (properties != null) {
+            dest.properties = new HashMap<>(properties);
+        }
+    }
+
+    @Override
+    public void deepCopyTo(LocalProperties dest, CopyContext context) {
+        if (properties != null) {
+            dest.properties = new HashMap<>(properties.size());
+            properties.forEach((name, value) -> dest.properties.put(name, context.deepCopy(value)));
+        }
     }
 }
