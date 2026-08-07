@@ -2,11 +2,16 @@
 
 ## [Unreleased]
 
+### Changed
+- **Breaking:** `GMLConstants` now uses `https` URLs for the default GML schema locations.
+
 ## [2.0.1] - 2026-04-16
+
 ### Changed
 - Updated to xml-objects 2.0.1.
 
 ## [2.0.0] - 2026-03-31
+
 ### Changed
 - **Breaking:** Updated to xml-objects 2.0.0.
   - Removes the `CopyBuilder` class and the entire `org.xmlobjects.util.copy` package in favor of the
@@ -14,29 +19,35 @@
     powerful and flexible copy framework.
 
 ## [1.3.0] - 2025-12-29
+
 ### Changed
 - Removed `Copyable` interface from `GMLObject`.
 - Updated xml-objects to 1.3.0.
 
 ## [1.2.0] - 2025-11-20
+
 ### Changed
 - Updated xml-objects to 1.2.0.
 
 ## [1.1.7] - 2025-10-10
+
 ### Fixed
 - Prevent `NullPointerException` when parsing empty nil-reason list types, such as `BooleanOrNilReasonList`,
   `DoubleOrNilReasonList`, `IntegerOrNilReasonList`, `MeasureOrNilReasonList`, and `NameOrNilReasonList`.
 
 ## [1.1.6] - 2025-09-27
+
 ### Changed
 - Updated xml-objects to 1.1.6.
 
 ## [1.1.5] - 2025-03-03
+
 ### Fixed
 - Fixed parsing of `TimePosition` values to support more ISO 8601 compliant representations.
 - Fixed `include` method of `Envelope` to correctly handle empty envelopes.
 
 ## [1.1.4] - 2025-01-19
+
 ### Changed
 - Simplified internal matrix API and moved it to the `org.xmlobjects.gml.util.matrix` package.
 - Updated xml-objects to 1.1.4.
@@ -46,14 +57,17 @@
 - The `include` method of `Envelope` is more robust against invalid input.
 
 ## [1.1.2] - 2024-12-01
+
 ### Changed
 - Updated xml-objects to 1.1.2.
 
 ## [1.1.1] - 2024-07-15
+
 ### Added
 - Added support for `week-date` in `TimePosition`.
 
 ## [1.1.0] - 2024-01-29
+
 ### Changed
 - **Breaking:** Java 17 is now the minimum required version for using gml-objects.
 
@@ -61,22 +75,27 @@
 - When computing envelopes, metadata of existing envelopes is now copied to the new envelopes.
 
 ## [1.0.4] - 2023-11-03
+
 ### Changed
 - Updated xml-objects to 1.0.4.
 
 ## [1.0.3] - 2023-04-04
+
 ### Changed
 - Updated xml-objects to 1.0.3.
 
 ## [1.0.2] - 2023-02-06
+
 ### Changed
 - Updated xml-objects to 1.0.2.
 
 ## [1.0.1] - 2022-09-08
+
 ### Changed
 - Updated xml-objects to 1.0.1.
 
 ## [1.0.0] - 2022-08-20
+
 This is the initial release of gml-objects.
 
 [Unreleased]: https://github.com/xmlobjects/gml-objects/compare/v2.0.1...HEAD
