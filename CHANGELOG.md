@@ -4,6 +4,7 @@
 
 ### Changed
 - **Breaking:** `GMLConstants` now uses `https` URLs for the default GML schema locations.
+- Updated to xml-objects 2.0.2.
 
 ## [2.0.1] - 2026-04-16
 
