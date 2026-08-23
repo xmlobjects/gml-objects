@@ -2,22 +2,24 @@
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-08-23
+
 ### Changed
 - **Breaking:** `GMLConstants` now uses `https` URLs for the default GML schema locations.
-- Updated to xml-objects 2.0.2.
+- Updated xml-objects to 2.0.2.
 
 ## [2.0.1] - 2026-04-16
 
 ### Changed
-- Updated to xml-objects 2.0.1.
+- Updated xml-objects to 2.0.1.
 
 ## [2.0.0] - 2026-03-31
 
 ### Changed
 - **Breaking:** Updated to xml-objects 2.0.0.
-  - Removes the `CopyBuilder` class and the entire `org.xmlobjects.util.copy` package in favor of the
-    standalone [object-copier](https://github.com/xmlobjects/object-copier) library, which provides a more
-    powerful and flexible copy framework.
+- Removed the `CopyBuilder` class and the entire `org.xmlobjects.util.copy` package in favor of the
+  standalone [object-copier](https://github.com/xmlobjects/object-copier) library, which provides a more
+  powerful and flexible copy framework.
 
 ## [1.3.0] - 2025-12-29
 
@@ -99,7 +101,8 @@
 
 This is the initial release of gml-objects.
 
-[Unreleased]: https://github.com/xmlobjects/gml-objects/compare/v2.0.1...HEAD
+[Unreleased]: https://github.com/xmlobjects/gml-objects/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/xmlobjects/gml-objects/releases/tag/v2.1.0
 [2.0.1]: https://github.com/xmlobjects/gml-objects/releases/tag/v2.0.1
 [2.0.0]: https://github.com/xmlobjects/gml-objects/releases/tag/v2.0.0
 [1.3.0]: https://github.com/xmlobjects/gml-objects/releases/tag/v1.3.0
