@@ -55,7 +55,7 @@ public class GMLBuilderHelper {
 
     public static void buildSRSInformation(SRSInformation object, Attributes attributes) {
         attributes.getValue("axisLabels").ifList(object::setAxisLabels);
-        attributes.getValue("uomLabels").ifList(object::setAxisLabels);
+        attributes.getValue("uomLabels").ifList(object::setUomLabels);
     }
 
     public static void buildReferenceSystem(ReferenceSystem object, Attributes attributes) {

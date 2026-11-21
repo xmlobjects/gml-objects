@@ -72,6 +72,9 @@ public class DirectPosition extends GMLObject implements SRSReference, Coordinat
 
     @Override
     public List<String> getAxisLabels() {
+        if (axisLabels == null)
+            axisLabels = new ArrayList<>();
+
         return axisLabels;
     }
 
@@ -82,9 +85,6 @@ public class DirectPosition extends GMLObject implements SRSReference, Coordinat
 
     @Override
     public void setAxisLabels(List<String> axisLabels) {
-        if (axisLabels == null)
-            axisLabels = new ArrayList<>();
-
         this.axisLabels = axisLabels;
     }
 
