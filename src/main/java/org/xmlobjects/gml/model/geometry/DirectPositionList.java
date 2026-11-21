@@ -6,6 +6,8 @@
 package org.xmlobjects.gml.model.geometry;
 
 import org.xmlobjects.gml.model.GMLObject;
+import org.xmlobjects.gml.model.feature.AbstractFeature;
+import org.xmlobjects.model.Child;
 import org.xmlobjects.gml.model.common.CoordinateListProvider;
 
 import java.util.ArrayList;
@@ -124,12 +126,12 @@ public class DirectPositionList extends GMLObject implements SRSReference, Coord
 
             if (srsDimension != null)
                 dim = srsDimension;
-            else if (count != null)
+            else if (count != null && count <= value.size())
                 dim = value.size() / count;
             else {
-                SRSReference srsReference = getInheritedSRSReference();
-                if (srsReference.getSrsDimension() != null)
-                    dim = srsReference.getSrsDimension();
+                Integer inheritedDimension = getInheritedSrsDimension();
+                if (inheritedDimension != null)
+                    dim = inheritedDimension;
             }
 
             int count = value.size() / dim;
@@ -145,5 +147,22 @@ public class DirectPositionList extends GMLObject implements SRSReference, Coord
         }
 
         return coordinates != null ? coordinates : Collections.emptyList();
+    }
+
+    private Integer getInheritedSrsDimension() {
+        // the nearest ancestor that declares an srsDimension defines the dimension, independent of
+        // where the srsName is declared
+        for (Child parent = getParent(); parent != null; parent = parent.getParent()) {
+            if (parent instanceof SRSReference reference && reference.getSrsDimension() != null) {
+                return reference.getSrsDimension();
+            } else if (parent instanceof AbstractFeature feature
+                    && feature.getBoundedBy() != null
+                    && feature.getBoundedBy().getEnvelope() != null
+                    && feature.getBoundedBy().getEnvelope().getSrsDimension() != null) {
+                return feature.getBoundedBy().getEnvelope().getSrsDimension();
+            }
+        }
+
+        return null;
     }
 }

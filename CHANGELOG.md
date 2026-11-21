@@ -5,6 +5,13 @@
 ### Changed
 - **Breaking:** Java 21 is now the minimum required version for using gml-objects.
 
+### Fixed
+- Fixed reading of the `uomLabels` attribute, which overwrote `axisLabels` instead.
+- `DirectPosition.getAxisLabels()` no longer returns `null`.
+- The dimension of a `posList` without `srsDimension` is now taken from the nearest parent geometry or feature
+  envelope that declares an `srsDimension`, independent of where `srsName` is declared.
+- Fixed an `ArithmeticException` for a `posList` whose `count` is larger than the number of values.
+
 ## [2.1.0] - 2026-08-23
 
 ### Changed
