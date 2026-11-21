@@ -42,7 +42,10 @@ public class TimePosition extends GMLObject {
         if (content.isDateTime()) {
             this.value = new DateAndTime(content.getAsDateTime());
         } else if (content.isTime()) {
-            this.value = new ClockTime(content.getAsTime().toLocalTime());
+            // keep the offset if the value has one; values without offset are read as UTC as before
+            this.value = hasOffset(content.get()) ?
+                    new ClockTime(content.getAsTime().toOffsetTime()) :
+                    new ClockTime(content.getAsTime().toLocalTime());
         } else if (content.isDate()) {
             this.value = new CalendarDate(content.getAsDate(), CalenderDateType.DATE);
         } else if (content.isGYear()) {
@@ -137,6 +140,11 @@ public class TimePosition extends GMLObject {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    private boolean hasOffset(String value) {
+        String trimmed = value.trim();
+        return trimmed.endsWith("Z") || trimmed.matches(".*[+-][0-9]{2}:[0-9]{2}$");
     }
 
     private ClockTime getAsTime(String value) {
