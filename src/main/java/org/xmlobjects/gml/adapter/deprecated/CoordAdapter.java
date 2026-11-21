@@ -26,15 +26,9 @@ public class CoordAdapter implements ObjectBuilder<Coord> {
     public void buildChildObject(Coord object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "X":
-                    reader.getTextContent().ifDouble(object::setX);
-                    break;
-                case "Y":
-                    reader.getTextContent().ifDouble(object::setY);
-                    break;
-                case "Z":
-                    reader.getTextContent().ifDouble(object::setZ);
-                    break;
+                case "X" -> reader.getTextContent().ifDouble(object::setX);
+                case "Y" -> reader.getTextContent().ifDouble(object::setY);
+                case "Z" -> reader.getTextContent().ifDouble(object::setZ);
             }
         }
     }

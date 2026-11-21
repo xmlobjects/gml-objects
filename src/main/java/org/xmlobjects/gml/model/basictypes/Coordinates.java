@@ -65,7 +65,7 @@ public class Coordinates extends GMLObject implements CoordinateListProvider {
 
     public DirectPosition toDirectPosition() {
         List<List<Double>> coordinates = toCoordinateList(false);
-        return new DirectPosition(!coordinates.isEmpty() ? coordinates.get(0) : new ArrayList<>());
+        return new DirectPosition(!coordinates.isEmpty() ? coordinates.getFirst() : new ArrayList<>());
     }
 
     public List<DirectPosition> toDirectPositions() {

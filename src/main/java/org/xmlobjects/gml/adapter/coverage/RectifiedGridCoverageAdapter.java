@@ -39,19 +39,10 @@ public class RectifiedGridCoverageAdapter extends AbstractFeatureAdapter<Rectifi
     public void buildChildObject(RectifiedGridCoverage object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "domainSet":
-                case "rectifiedGridDomain":
-                    object.setDomainSet(reader.getObjectUsingBuilder(RectifiedGridDomainAdapter.class));
-                    break;
-                case "rangeSet":
-                    object.setRangeSet(reader.getObjectUsingBuilder(RangeSetAdapter.class));
-                    break;
-                case "coverageFunction":
-                    object.setCoverageFunction(reader.getObjectUsingBuilder(CoverageFunctionAdapter.class));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "domainSet", "rectifiedGridDomain" -> object.setDomainSet(reader.getObjectUsingBuilder(RectifiedGridDomainAdapter.class));
+                case "rangeSet" -> object.setRangeSet(reader.getObjectUsingBuilder(RangeSetAdapter.class));
+                case "coverageFunction" -> object.setCoverageFunction(reader.getObjectUsingBuilder(CoverageFunctionAdapter.class));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

@@ -50,33 +50,29 @@ public class EnvelopeAdapter implements ObjectBuilder<Envelope>, ObjectSerialize
     public void buildChildObject(Envelope object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "lowerCorner":
-                    object.setLowerCorner(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
-                    break;
-                case "upperCorner":
-                    object.setUpperCorner(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
-                    break;
-                case "pos":
+                case "lowerCorner" -> object.setLowerCorner(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
+                case "upperCorner" -> object.setUpperCorner(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
+                case "pos" -> {
                     DirectPosition pos = reader.getObjectUsingBuilder(DirectPositionAdapter.class);
                     if (!object.isSetLowerCorner())
                         object.setLowerCorner(pos);
                     else if (!object.isSetUpperCorner())
                         object.setUpperCorner(pos);
-                    break;
-                case "coordinates":
+                }
+                case "coordinates" -> {
                     List<DirectPosition> positions = reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPositions();
                     if (positions.size() > 1) {
-                        object.setLowerCorner(positions.get(0));
+                        object.setLowerCorner(positions.getFirst());
                         object.setUpperCorner(positions.get(1));
                     }
-                    break;
-                case "coord":
+                }
+                case "coord" -> {
                     Coord coord = reader.getObjectUsingBuilder(CoordAdapter.class);
                     if (!object.isSetLowerCorner())
                         object.setLowerCorner(coord.toDirectPosition());
                     else if (!object.isSetUpperCorner())
                         object.setUpperCorner(coord.toDirectPosition());
-                    break;
+                }
             }
         }
     }

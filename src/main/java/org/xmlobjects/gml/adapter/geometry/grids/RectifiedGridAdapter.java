@@ -41,15 +41,9 @@ public class RectifiedGridAdapter extends AbstractGridAdapter<RectifiedGrid> {
     public void buildChildObject(RectifiedGrid object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "origin":
-                    object.setOrigin(reader.getObjectUsingBuilder(PointPropertyAdapter.class));
-                    break;
-                case "offsetVector":
-                    object.getOffsetVectors().add(reader.getObjectUsingBuilder(VectorAdapter.class));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "origin" -> object.setOrigin(reader.getObjectUsingBuilder(PointPropertyAdapter.class));
+                case "offsetVector" -> object.getOffsetVectors().add(reader.getObjectUsingBuilder(VectorAdapter.class));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

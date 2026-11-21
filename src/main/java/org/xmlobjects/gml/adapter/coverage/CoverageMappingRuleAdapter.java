@@ -34,12 +34,8 @@ public class CoverageMappingRuleAdapter implements ObjectBuilder<CoverageMapping
     public void buildChildObject(CoverageMappingRule object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "ruleDefinition":
-                    reader.getTextContent().ifPresent(object::setRuleDefinition);
-                    break;
-                case "ruleReference":
-                    object.setRuleReference(reader.getObjectUsingBuilder(ReferenceAdapter.class));
-                    break;
+                case "ruleDefinition" -> reader.getTextContent().ifPresent(object::setRuleDefinition);
+                case "ruleReference" -> object.setRuleReference(reader.getObjectUsingBuilder(ReferenceAdapter.class));
             }
         }
     }

@@ -35,15 +35,9 @@ public class GeometricPositionListAdapter implements ObjectBuilder<GeometricPosi
     public void buildChildObject(GeometricPositionList object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "posList":
-                    object.setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
-                    break;
-                case "pos":
-                    object.getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
-                    break;
-                case "pointProperty":
-                    object.getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
-                    break;
+                case "posList" -> object.setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
+                case "pos" -> object.getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
+                case "pointProperty" -> object.getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
             }
         }
     }

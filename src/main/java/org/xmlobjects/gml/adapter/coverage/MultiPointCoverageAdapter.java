@@ -39,19 +39,10 @@ public class MultiPointCoverageAdapter extends AbstractFeatureAdapter<MultiPoint
     public void buildChildObject(MultiPointCoverage object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "domainSet":
-                case "multiPointDomain":
-                    object.setDomainSet(reader.getObjectUsingBuilder(MultiPointDomainAdapter.class));
-                    break;
-                case "rangeSet":
-                    object.setRangeSet(reader.getObjectUsingBuilder(RangeSetAdapter.class));
-                    break;
-                case "coverageFunction":
-                    object.setCoverageFunction(reader.getObjectUsingBuilder(CoverageFunctionAdapter.class));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "domainSet", "multiPointDomain" -> object.setDomainSet(reader.getObjectUsingBuilder(MultiPointDomainAdapter.class));
+                case "rangeSet" -> object.setRangeSet(reader.getObjectUsingBuilder(RangeSetAdapter.class));
+                case "coverageFunction" -> object.setCoverageFunction(reader.getObjectUsingBuilder(CoverageFunctionAdapter.class));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

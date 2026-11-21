@@ -35,18 +35,10 @@ public abstract class AbstractGridAdapter<T extends Grid> extends AbstractGeomet
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "limits":
-                    object.setLimits(reader.getObjectUsingBuilder(GridLimitsAdapter.class));
-                    break;
-                case "axisLabels":
-                    reader.getTextContent().ifList(object::setGridAxisLabels);
-                    break;
-                case "axisName":
-                    reader.getTextContent().ifPresent(object.getGridAxisLabels()::add);
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "limits" -> object.setLimits(reader.getObjectUsingBuilder(GridLimitsAdapter.class));
+                case "axisLabels" -> reader.getTextContent().ifList(object::setGridAxisLabels);
+                case "axisName" -> reader.getTextContent().ifPresent(object.getGridAxisLabels()::add);
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

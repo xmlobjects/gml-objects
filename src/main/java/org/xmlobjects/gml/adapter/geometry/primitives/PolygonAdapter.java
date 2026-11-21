@@ -39,17 +39,9 @@ public class PolygonAdapter extends AbstractSurfaceAdapter<Polygon> {
     public void buildChildObject(Polygon object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "exterior":
-                case "outerBoundaryIs":
-                    object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
-                    break;
-                case "interior":
-                case "innerBoundaryIs":
-                    object.getInterior().add(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "exterior", "outerBoundaryIs" -> object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
+                case "interior", "innerBoundaryIs" -> object.getInterior().add(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

@@ -42,16 +42,9 @@ public class MultiCurveAdapter extends AbstractGeometricAggregateAdapter<MultiCu
     public void buildChildObject(MultiCurve object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "curveMember":
-                case "lineStringMember":
-                    object.getCurveMember().add(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
-                    break;
-                case "curveMembers":
-                    object.setCurveMembers(reader.getObjectUsingBuilder(CurveArrayPropertyAdapter.class));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "curveMember", "lineStringMember" -> object.getCurveMember().add(reader.getObjectUsingBuilder(CurvePropertyAdapter.class));
+                case "curveMembers" -> object.setCurveMembers(reader.getObjectUsingBuilder(CurveArrayPropertyAdapter.class));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

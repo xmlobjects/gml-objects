@@ -36,20 +36,14 @@ public class RangeSetAdapter implements ObjectBuilder<RangeSet>, ObjectSerialize
     public void buildChildObject(RangeSet object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "ValueArray":
-                    object.getValueArrays().add(reader.getObjectUsingBuilder(ValueArrayAdapter.class));
-                    break;
-                case "DataBlock":
-                    object.setDataBlock(reader.getObjectUsingBuilder(DataBlockAdapter.class));
-                    break;
-                case "File":
-                    object.setFile(reader.getObjectUsingBuilder(FileAdapter.class));
-                    break;
-                default:
+                case "ValueArray" -> object.getValueArrays().add(reader.getObjectUsingBuilder(ValueArrayAdapter.class));
+                case "DataBlock" -> object.setDataBlock(reader.getObjectUsingBuilder(DataBlockAdapter.class));
+                case "File" -> object.setFile(reader.getObjectUsingBuilder(FileAdapter.class));
+                default -> {
                     AbstractScalarValueList value = reader.getObject(AbstractScalarValueList.class);
                     if (value != null)
                         object.getScalarValueLists().add(value);
-                    break;
+                }
             }
         }
     }

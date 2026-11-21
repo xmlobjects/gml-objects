@@ -41,18 +41,10 @@ public class PointAdapter extends AbstractGeometricPrimitiveAdapter<Point> {
     public void buildChildObject(Point object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "pos":
-                    object.setPos(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
-                    break;
-                case "coordinates":
-                    object.setPos(reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPosition());
-                    break;
-                case "coord":
-                    object.setPos(reader.getObjectUsingBuilder(CoordAdapter.class).toDirectPosition());
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "pos" -> object.setPos(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
+                case "coordinates" -> object.setPos(reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPosition());
+                case "coord" -> object.setPos(reader.getObjectUsingBuilder(CoordAdapter.class).toDirectPosition());
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

@@ -41,25 +41,12 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
     public void buildChildObject(Tin object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "patches":
-                case "trianglePatches":
-                    object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
-                    break;
-                case "stopLines":
-                    object.getStopLines().add(reader.getObjectUsingBuilder(LineStringSegmentArrayPropertyAdapter.class));
-                    break;
-                case "breakLines":
-                    object.getBreakLines().add(reader.getObjectUsingBuilder(LineStringSegmentArrayPropertyAdapter.class));
-                    break;
-                case "maxLength":
-                    object.setMaxLength(reader.getObjectUsingBuilder(LengthAdapter.class));
-                    break;
-                case "controlPoint":
-                    object.setControlPoints(reader.getObjectUsingBuilder(GeometricPositionListAdapter.class));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "patches", "trianglePatches" -> object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
+                case "stopLines" -> object.getStopLines().add(reader.getObjectUsingBuilder(LineStringSegmentArrayPropertyAdapter.class));
+                case "breakLines" -> object.getBreakLines().add(reader.getObjectUsingBuilder(LineStringSegmentArrayPropertyAdapter.class));
+                case "maxLength" -> object.setMaxLength(reader.getObjectUsingBuilder(LengthAdapter.class));
+                case "controlPoint" -> object.setControlPoints(reader.getObjectUsingBuilder(GeometricPositionListAdapter.class));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

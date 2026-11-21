@@ -38,13 +38,8 @@ public class TriangulatedSurfaceAdapter extends AbstractSurfaceAdapter<Triangula
     public void buildChildObject(TriangulatedSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "patches":
-                case "trianglePatches":
-                    object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "patches", "trianglePatches" -> object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

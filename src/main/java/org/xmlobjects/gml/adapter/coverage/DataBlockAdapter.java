@@ -35,15 +35,9 @@ public class DataBlockAdapter implements ObjectBuilder<DataBlock>, ObjectSeriali
     public void buildChildObject(DataBlock object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "rangeParameters":
-                    object.setRangeParameters(reader.getObjectUsingBuilder(RangeParametersAdapter.class));
-                    break;
-                case "tupleList":
-                    object.setTupleList(reader.getObjectUsingBuilder(CoordinatesAdapter.class));
-                    break;
-                case "doubleOrNilReasonTupleList":
-                    object.setDoubleOrNilReasonTupleList(reader.getObjectUsingBuilder(DoubleOrNilReasonListAdapter.class));
-                    break;
+                case "rangeParameters" -> object.setRangeParameters(reader.getObjectUsingBuilder(RangeParametersAdapter.class));
+                case "tupleList" -> object.setTupleList(reader.getObjectUsingBuilder(CoordinatesAdapter.class));
+                case "doubleOrNilReasonTupleList" -> object.setDoubleOrNilReasonTupleList(reader.getObjectUsingBuilder(DoubleOrNilReasonListAdapter.class));
             }
         }
     }

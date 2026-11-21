@@ -51,15 +51,9 @@ public class TimePositionAdapter implements ObjectBuilder<TimePosition>, ObjectS
         } else if (object.isCalendarDate()) {
             CalendarDate date = object.asCalendarDate();
             switch (date.getType()) {
-                case YEAR:
-                    element.addTextContent(TextContent.ofGYear(date.getValue()));
-                    break;
-                case YEAR_MONTH:
-                    element.addTextContent(TextContent.ofGYearMonth(date.getValue()));
-                    break;
-                default:
-                    element.addTextContent(TextContent.ofDate(date.getValue()));
-                    break;
+                case YEAR -> element.addTextContent(TextContent.ofGYear(date.getValue()));
+                case YEAR_MONTH -> element.addTextContent(TextContent.ofGYearMonth(date.getValue()));
+                default -> element.addTextContent(TextContent.ofDate(date.getValue()));
             }
         } else if (object.isTimeCoordinate()) {
             TimeCoordinate timeCoordinate = object.asTimeCoordinate();

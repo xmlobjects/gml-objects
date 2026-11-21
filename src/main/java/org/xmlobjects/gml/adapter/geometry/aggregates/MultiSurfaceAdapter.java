@@ -42,16 +42,9 @@ public class MultiSurfaceAdapter extends AbstractGeometricAggregateAdapter<Multi
     public void buildChildObject(MultiSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "surfaceMember":
-                case "polygonMember":
-                    object.getSurfaceMember().add(reader.getObjectUsingBuilder(SurfacePropertyAdapter.class));
-                    break;
-                case "surfaceMembers":
-                    object.setSurfaceMembers(reader.getObjectUsingBuilder(SurfaceArrayPropertyAdapter.class));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "surfaceMember", "polygonMember" -> object.getSurfaceMember().add(reader.getObjectUsingBuilder(SurfacePropertyAdapter.class));
+                case "surfaceMembers" -> object.setSurfaceMembers(reader.getObjectUsingBuilder(SurfaceArrayPropertyAdapter.class));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

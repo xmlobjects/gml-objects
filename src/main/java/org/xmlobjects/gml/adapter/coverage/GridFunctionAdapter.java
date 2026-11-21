@@ -35,12 +35,8 @@ public class GridFunctionAdapter implements ObjectBuilder<GridFunction>, ObjectS
     public void buildChildObject(GridFunction object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "sequenceRule":
-                    object.setSequenceRule(reader.getObjectUsingBuilder(SequenceRuleAdapter.class));
-                    break;
-                case "startPoint":
-                    reader.getTextContent().ifIntegerList(object::setStartPoints);
-                    break;
+                case "sequenceRule" -> object.setSequenceRule(reader.getObjectUsingBuilder(SequenceRuleAdapter.class));
+                case "startPoint" -> reader.getTextContent().ifIntegerList(object::setStartPoints);
             }
         }
     }

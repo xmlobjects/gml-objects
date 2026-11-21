@@ -42,15 +42,9 @@ public class SolidAdapter extends AbstractSolidAdapter<Solid> {
     public void buildChildObject(Solid object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "exterior":
-                    object.setExterior(getShellProperty(reader));
-                    break;
-                case "interior":
-                    object.getInterior().add(getShellProperty(reader));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "exterior" -> object.setExterior(getShellProperty(reader));
+                case "interior" -> object.getInterior().add(getShellProperty(reader));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

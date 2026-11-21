@@ -28,15 +28,9 @@ public abstract class AbstractFeatureAdapter<T extends AbstractFeature> extends 
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "boundedBy":
-                    object.setBoundedBy(reader.getObjectUsingBuilder(BoundingShapeAdapter.class));
-                    break;
-                case "location":
-                    object.setLocation(reader.getObjectUsingBuilder(LocationPropertyAdapter.class));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "boundedBy" -> object.setBoundedBy(reader.getObjectUsingBuilder(BoundingShapeAdapter.class));
+                case "location" -> object.setLocation(reader.getObjectUsingBuilder(LocationPropertyAdapter.class));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

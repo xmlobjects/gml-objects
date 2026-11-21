@@ -38,13 +38,8 @@ public class PolyhedralSurfaceAdapter extends AbstractSurfaceAdapter<PolyhedralS
     public void buildChildObject(PolyhedralSurface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "patches":
-                case "polygonPatches":
-                    object.setPatches(reader.getObjectUsingBuilder(PolygonPatchArrayPropertyAdapter.class));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "patches", "polygonPatches" -> object.setPatches(reader.getObjectUsingBuilder(PolygonPatchArrayPropertyAdapter.class));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

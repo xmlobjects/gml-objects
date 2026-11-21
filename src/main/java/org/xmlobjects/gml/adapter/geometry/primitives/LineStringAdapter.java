@@ -44,27 +44,16 @@ public class LineStringAdapter extends AbstractCurveAdapter<LineString> {
     public void buildChildObject(LineString object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "posList":
-                    object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
-                    break;
-                case "pos":
-                    object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
-                    break;
-                case "pointProperty":
-                case "pointRep":
-                    object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
-                    break;
-                case "coordinates":
+                case "posList" -> object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
+                case "pos" -> object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
+                case "pointProperty", "pointRep" -> object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
+                case "coordinates" -> {
                     reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPositions().stream()
                             .map(GeometricPosition::new)
                             .forEach(object.getControlPoints().getGeometricPositions()::add);
-                    break;
-                case "coord":
-                    object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(CoordAdapter.class).toDirectPosition()));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                }
+                case "coord" -> object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(CoordAdapter.class).toDirectPosition()));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }

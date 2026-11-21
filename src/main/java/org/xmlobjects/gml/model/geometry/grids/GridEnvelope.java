@@ -10,7 +10,6 @@ import org.xmlobjects.gml.model.geometry.Envelope;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GridEnvelope extends GMLObject {
     private List<Integer> low;
@@ -57,8 +56,8 @@ public class GridEnvelope extends GMLObject {
     public Envelope toEnvelope() {
         Envelope envelope = new Envelope();
         if (low != null && high != null && !low.isEmpty() && low.size() == high.size()) {
-            envelope.include(low.stream().map(Double::valueOf).collect(Collectors.toList()));
-            envelope.include(high.stream().map(Double::valueOf).collect(Collectors.toList()));
+            envelope.include(low.stream().map(Double::valueOf).toList());
+            envelope.include(high.stream().map(Double::valueOf).toList());
         }
 
         return envelope;

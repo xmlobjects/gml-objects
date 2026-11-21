@@ -38,18 +38,14 @@ public class CoverageFunctionAdapter implements ObjectBuilder<CoverageFunction>,
     public void buildChildObject(CoverageFunction object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "MappingRule":
+                case "MappingRule" -> {
                     StringOrRef value = reader.getObjectUsingBuilder(StringOrRefAdapter.class);
                     object.setMappingRule(new CoverageMappingRule(value.getValue()));
                     if (value.getHref() != null)
                         object.getMappingRule().setRuleReference(new Reference(value));
-                    break;
-                case "CoverageMappingRule":
-                    object.setMappingRule(reader.getObjectUsingBuilder(CoverageMappingRuleAdapter.class));
-                    break;
-                case "GridFunction":
-                    object.setGridFunction(reader.getObjectUsingBuilder(GridFunctionAdapter.class));
-                    break;
+                }
+                case "CoverageMappingRule" -> object.setMappingRule(reader.getObjectUsingBuilder(CoverageMappingRuleAdapter.class));
+                case "GridFunction" -> object.setGridFunction(reader.getObjectUsingBuilder(GridFunctionAdapter.class));
             }
         }
     }

@@ -55,7 +55,7 @@ public class RectifiedGrid extends Grid {
 
             if (dimension > 0 && offsetVectors.size() >= dimension) {
                 Matrix[] offsetVectors = new Matrix[3];
-                offsetVectors[0] = Matrices.newMatrix(this.offsetVectors.get(0).toCoordinateList3D(), 3);
+                offsetVectors[0] = Matrices.newMatrix(this.offsetVectors.getFirst().toCoordinateList3D(), 3);
                 offsetVectors[1] = dimension >= 2 ? Matrices.newMatrix(this.offsetVectors.get(1).toCoordinateList3D(), 3) : new Matrix(3, 1, 0);
                 offsetVectors[2] = dimension >= 3 ? Matrices.newMatrix(this.offsetVectors.get(2).toCoordinateList3D(), 3) : new Matrix(3, 1, 0);
 

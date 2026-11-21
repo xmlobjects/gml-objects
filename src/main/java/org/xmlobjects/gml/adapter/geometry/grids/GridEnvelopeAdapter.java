@@ -34,12 +34,8 @@ public class GridEnvelopeAdapter implements ObjectBuilder<GridEnvelope>, ObjectS
     public void buildChildObject(GridEnvelope object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "low":
-                    reader.getTextContent().ifIntegerList(object::setLow);
-                    break;
-                case "high":
-                    reader.getTextContent().ifIntegerList(object::setHigh);
-                    break;
+                case "low" -> reader.getTextContent().ifIntegerList(object::setLow);
+                case "high" -> reader.getTextContent().ifIntegerList(object::setHigh);
             }
         }
     }

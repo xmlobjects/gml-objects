@@ -34,18 +34,10 @@ public class LocationPropertyAdapter extends AbstractGeometryPropertyAdapter<Loc
     public void buildChildObject(LocationProperty object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "LocationKeyWord":
-                    object.setLocationKeyWord(reader.getObjectUsingBuilder(CodeAdapter.class));
-                    break;
-                case "LocationString":
-                    object.setLocationString(reader.getObjectUsingBuilder(StringOrRefAdapter.class));
-                    break;
-                case "Null":
-                    object.setNull(reader.getObjectUsingBuilder(NilReasonAdapter.class));
-                    break;
-                default:
-                    super.buildChildObject(object, name, attributes, reader);
-                    break;
+                case "LocationKeyWord" -> object.setLocationKeyWord(reader.getObjectUsingBuilder(CodeAdapter.class));
+                case "LocationString" -> object.setLocationString(reader.getObjectUsingBuilder(StringOrRefAdapter.class));
+                case "Null" -> object.setNull(reader.getObjectUsingBuilder(NilReasonAdapter.class));
+                default -> super.buildChildObject(object, name, attributes, reader);
             }
         }
     }
