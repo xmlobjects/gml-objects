@@ -51,7 +51,7 @@ public class DictionaryAdapter extends CompositeObjectAdapter<Dictionary> {
     public void buildChildObject(Dictionary object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "dictionaryEntry", "indirectEntry" -> {
+                case "dictionaryEntry", "definitionMember", "indirectEntry" -> {
                     DefinitionProperty property = reader.getObjectUsingBuilder(DefinitionPropertyAdapter.class);
                     if (property.getObject() instanceof DefinitionProxy) {
                         property.setReference(null);

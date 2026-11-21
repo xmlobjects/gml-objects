@@ -11,6 +11,9 @@
 - The dimension of a `posList` without `srsDimension` is now taken from the nearest parent geometry or feature
   envelope that declares an `srsDimension`, independent of where `srsName` is declared.
 - Fixed an `ArithmeticException` for a `posList` whose `count` is larger than the number of values.
+- Writing a definition as GML 3.1 no longer changes the parent of its identifier and names.
+- Clock times in `gml:timePosition` keep their time zone offset when read.
+- `gml:definitionMember` entries of GML 3.1 dictionaries are now read.
 
 ## [2.1.0] - 2026-08-23
 
