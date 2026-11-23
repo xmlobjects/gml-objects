@@ -41,8 +41,10 @@ public class MultiSolidAdapter extends AbstractGeometricAggregateAdapter<MultiSo
     public void buildChildObject(MultiSolid object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "solidMember" -> object.getSolidMember().add(reader.getObjectUsingBuilder(SolidPropertyAdapter.class));
-                case "solidMembers" -> object.setSolidMembers(reader.getObjectUsingBuilder(SolidArrayPropertyAdapter.class));
+                case "solidMember" ->
+                        object.getSolidMember().add(reader.getObjectUsingBuilder(SolidPropertyAdapter.class));
+                case "solidMembers" ->
+                        object.setSolidMembers(reader.getObjectUsingBuilder(SolidArrayPropertyAdapter.class));
                 default -> super.buildChildObject(object, name, attributes, reader);
             }
         }

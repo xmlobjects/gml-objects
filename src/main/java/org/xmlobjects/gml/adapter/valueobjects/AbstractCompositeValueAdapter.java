@@ -34,8 +34,10 @@ public abstract class AbstractCompositeValueAdapter<T extends CompositeValue> ex
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "valueComponent" -> object.getValueComponent().add(reader.getObjectUsingBuilder(ValuePropertyAdapter.class));
-                case "valueComponents" -> object.setValueComponents(reader.getObjectUsingBuilder(ValueArrayPropertyAdapter.class));
+                case "valueComponent" ->
+                        object.getValueComponent().add(reader.getObjectUsingBuilder(ValuePropertyAdapter.class));
+                case "valueComponents" ->
+                        object.setValueComponents(reader.getObjectUsingBuilder(ValueArrayPropertyAdapter.class));
                 default -> super.buildChildObject(object, name, attributes, reader);
             }
         }

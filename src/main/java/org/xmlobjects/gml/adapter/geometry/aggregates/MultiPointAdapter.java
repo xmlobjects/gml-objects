@@ -41,8 +41,10 @@ public class MultiPointAdapter extends AbstractGeometricAggregateAdapter<MultiPo
     public void buildChildObject(MultiPoint object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "pointMember" -> object.getPointMember().add(reader.getObjectUsingBuilder(PointPropertyAdapter.class));
-                case "pointMembers" -> object.setPointMembers(reader.getObjectUsingBuilder(PointArrayPropertyAdapter.class));
+                case "pointMember" ->
+                        object.getPointMember().add(reader.getObjectUsingBuilder(PointPropertyAdapter.class));
+                case "pointMembers" ->
+                        object.setPointMembers(reader.getObjectUsingBuilder(PointArrayPropertyAdapter.class));
                 default -> super.buildChildObject(object, name, attributes, reader);
             }
         }

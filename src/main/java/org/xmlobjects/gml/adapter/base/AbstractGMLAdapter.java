@@ -42,10 +42,12 @@ public abstract class AbstractGMLAdapter<T extends AbstractGML> implements Objec
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "description" -> object.setDescription(reader.getObject(StringOrRef.class));
-                case "descriptionReference" -> object.setDescriptionReference(reader.getObjectUsingBuilder(ReferenceAdapter.class));
+                case "descriptionReference" ->
+                        object.setDescriptionReference(reader.getObjectUsingBuilder(ReferenceAdapter.class));
                 case "identifier" -> object.setIdentifier(reader.getObjectUsingBuilder(CodeWithAuthorityAdapter.class));
                 case "name" -> object.getNames().add(reader.getObjectUsingBuilder(CodeAdapter.class));
-                case "metaDataProperty" -> object.getMetaDataProperties().add(reader.getObjectUsingBuilder(MetaDataPropertyAdapter.class));
+                case "metaDataProperty" ->
+                        object.getMetaDataProperties().add(reader.getObjectUsingBuilder(MetaDataPropertyAdapter.class));
             }
         }
     }

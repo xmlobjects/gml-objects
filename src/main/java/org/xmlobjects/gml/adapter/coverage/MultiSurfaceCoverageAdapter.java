@@ -39,9 +39,11 @@ public class MultiSurfaceCoverageAdapter extends AbstractFeatureAdapter<MultiSur
     public void buildChildObject(MultiSurfaceCoverage object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "domainSet", "multiSurfaceDomain" -> object.setDomainSet(reader.getObjectUsingBuilder(MultiSurfaceDomainAdapter.class));
+                case "domainSet", "multiSurfaceDomain" ->
+                        object.setDomainSet(reader.getObjectUsingBuilder(MultiSurfaceDomainAdapter.class));
                 case "rangeSet" -> object.setRangeSet(reader.getObjectUsingBuilder(RangeSetAdapter.class));
-                case "coverageFunction" -> object.setCoverageFunction(reader.getObjectUsingBuilder(CoverageFunctionAdapter.class));
+                case "coverageFunction" ->
+                        object.setCoverageFunction(reader.getObjectUsingBuilder(CoverageFunctionAdapter.class));
                 default -> super.buildChildObject(object, name, attributes, reader);
             }
         }

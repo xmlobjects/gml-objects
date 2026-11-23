@@ -38,9 +38,12 @@ public class SurfaceAdapter extends AbstractSurfaceAdapter<Surface> {
     public void buildChildObject(Surface object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "patches" -> object.setPatches(reader.getObjectUsingBuilder(SurfacePatchArrayPropertyAdapter.class));
-                case "trianglePatches" -> object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
-                case "polygonPatches" -> object.setPatches(reader.getObjectUsingBuilder(PolygonPatchArrayPropertyAdapter.class));
+                case "patches" ->
+                        object.setPatches(reader.getObjectUsingBuilder(SurfacePatchArrayPropertyAdapter.class));
+                case "trianglePatches" ->
+                        object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
+                case "polygonPatches" ->
+                        object.setPatches(reader.getObjectUsingBuilder(PolygonPatchArrayPropertyAdapter.class));
                 default -> super.buildChildObject(object, name, attributes, reader);
             }
         }

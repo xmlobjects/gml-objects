@@ -38,12 +38,14 @@ public class TimePeriodAdapter extends AbstractTimeGeometricPrimitiveAdapter<Tim
     public void buildChildObject(TimePeriod object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "beginPosition" -> object.setBeginPosition(reader.getObjectUsingBuilder(TimePositionAdapter.class));
+                case "beginPosition" ->
+                        object.setBeginPosition(reader.getObjectUsingBuilder(TimePositionAdapter.class));
                 case "begin" -> object.setBegin(reader.getObjectUsingBuilder(TimeInstantPropertyAdapter.class));
                 case "endPosition" -> object.setEndPosition(reader.getObjectUsingBuilder(TimePositionAdapter.class));
                 case "end" -> object.setEnd(reader.getObjectUsingBuilder(TimeInstantPropertyAdapter.class));
                 case "duration" -> object.setDuration(reader.getObjectUsingBuilder(TimeDurationAdapter.class));
-                case "timeInterval" -> object.setTimeInterval(reader.getObjectUsingBuilder(TimeIntervalLengthAdapter.class));
+                case "timeInterval" ->
+                        object.setTimeInterval(reader.getObjectUsingBuilder(TimeIntervalLengthAdapter.class));
                 default -> super.buildChildObject(object, name, attributes, reader);
             }
         }

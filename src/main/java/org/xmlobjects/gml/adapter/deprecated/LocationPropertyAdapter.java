@@ -35,7 +35,8 @@ public class LocationPropertyAdapter extends AbstractGeometryPropertyAdapter<Loc
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "LocationKeyWord" -> object.setLocationKeyWord(reader.getObjectUsingBuilder(CodeAdapter.class));
-                case "LocationString" -> object.setLocationString(reader.getObjectUsingBuilder(StringOrRefAdapter.class));
+                case "LocationString" ->
+                        object.setLocationString(reader.getObjectUsingBuilder(StringOrRefAdapter.class));
                 case "Null" -> object.setNull(reader.getObjectUsingBuilder(NilReasonAdapter.class));
                 default -> super.buildChildObject(object, name, attributes, reader);
             }

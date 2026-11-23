@@ -40,7 +40,8 @@ public class PolygonPatchAdapter extends AbstractSurfacePatchAdapter<PolygonPatc
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "exterior" -> object.setExterior(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
-                case "interior" -> object.getInterior().add(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
+                case "interior" ->
+                        object.getInterior().add(reader.getObjectUsingBuilder(AbstractRingPropertyAdapter.class));
             }
         }
     }

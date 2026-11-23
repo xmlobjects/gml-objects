@@ -36,7 +36,8 @@ public class FileAdapter implements ObjectBuilder<File>, ObjectSerializer<File> 
     public void buildChildObject(File object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "rangeParameters" -> object.setRangeParameters(reader.getObjectUsingBuilder(RangeParametersAdapter.class));
+                case "rangeParameters" ->
+                        object.setRangeParameters(reader.getObjectUsingBuilder(RangeParametersAdapter.class));
                 case "fileName", "fileReference" -> reader.getTextContent().ifPresent(object::setFileReference);
                 case "fileStructure" -> object.setFileStructure(reader.getObjectUsingBuilder(CodeAdapter.class));
                 case "mimeType" -> reader.getTextContent().ifPresent(object::setMimeType);

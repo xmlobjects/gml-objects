@@ -36,4 +36,23 @@ public interface SRSReference extends SRSInformation {
 
         return this;
     }
+
+    default Integer getInheritedSrsDimension() {
+        if (getSrsDimension() != null) {
+            return getSrsDimension();
+        } else if (this instanceof Child child) {
+            for (Child parent = child.getParent(); parent != null; parent = parent.getParent()) {
+                if (parent instanceof SRSReference reference && reference.getSrsDimension() != null) {
+                    return reference.getSrsDimension();
+                } else if (parent instanceof AbstractFeature feature
+                        && feature.getBoundedBy() != null
+                        && feature.getBoundedBy().getEnvelope() != null
+                        && feature.getBoundedBy().getEnvelope().getSrsDimension() != null) {
+                    return feature.getBoundedBy().getEnvelope().getSrsDimension();
+                }
+            }
+        }
+
+        return null;
+    }
 }

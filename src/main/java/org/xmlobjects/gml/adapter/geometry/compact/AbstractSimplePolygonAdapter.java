@@ -30,9 +30,12 @@ public abstract class AbstractSimplePolygonAdapter<T extends AbstractSimplePolyg
     public void buildChildObject(T object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLConstants.GML_3_2_NAMESPACE.equals(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "posList" -> object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
-                case "pos" -> object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
-                case "pointProperty" -> object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
+                case "posList" ->
+                        object.getControlPoints().setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
+                case "pos" ->
+                        object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
+                case "pointProperty" ->
+                        object.getControlPoints().getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
                 default -> super.buildChildObject(object, name, attributes, reader);
             }
         }

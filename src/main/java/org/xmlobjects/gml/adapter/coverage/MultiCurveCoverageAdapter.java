@@ -39,9 +39,11 @@ public class MultiCurveCoverageAdapter extends AbstractFeatureAdapter<MultiCurve
     public void buildChildObject(MultiCurveCoverage object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "domainSet", "multiCurveDomain" -> object.setDomainSet(reader.getObjectUsingBuilder(MultiCurveDomainAdapter.class));
+                case "domainSet", "multiCurveDomain" ->
+                        object.setDomainSet(reader.getObjectUsingBuilder(MultiCurveDomainAdapter.class));
                 case "rangeSet" -> object.setRangeSet(reader.getObjectUsingBuilder(RangeSetAdapter.class));
-                case "coverageFunction" -> object.setCoverageFunction(reader.getObjectUsingBuilder(CoverageFunctionAdapter.class));
+                case "coverageFunction" ->
+                        object.setCoverageFunction(reader.getObjectUsingBuilder(CoverageFunctionAdapter.class));
                 default -> super.buildChildObject(object, name, attributes, reader);
             }
         }

@@ -42,7 +42,8 @@ public class PointAdapter extends AbstractGeometricPrimitiveAdapter<Point> {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "pos" -> object.setPos(reader.getObjectUsingBuilder(DirectPositionAdapter.class));
-                case "coordinates" -> object.setPos(reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPosition());
+                case "coordinates" ->
+                        object.setPos(reader.getObjectUsingBuilder(CoordinatesAdapter.class).toDirectPosition());
                 case "coord" -> object.setPos(reader.getObjectUsingBuilder(CoordAdapter.class).toDirectPosition());
                 default -> super.buildChildObject(object, name, attributes, reader);
             }

@@ -42,7 +42,6 @@ public class TimePosition extends GMLObject {
         if (content.isDateTime()) {
             this.value = new DateAndTime(content.getAsDateTime());
         } else if (content.isTime()) {
-            // keep the offset if the value has one; values without offset are read as UTC as before
             this.value = hasOffset(content.get()) ?
                     new ClockTime(content.getAsTime().toOffsetTime()) :
                     new ClockTime(content.getAsTime().toLocalTime());

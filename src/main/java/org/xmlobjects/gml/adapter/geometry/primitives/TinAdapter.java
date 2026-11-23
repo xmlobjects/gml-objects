@@ -41,11 +41,15 @@ public class TinAdapter extends AbstractSurfaceAdapter<Tin> {
     public void buildChildObject(Tin object, QName name, Attributes attributes, XMLReader reader) throws ObjectBuildException, XMLReadException {
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
-                case "patches", "trianglePatches" -> object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
-                case "stopLines" -> object.getStopLines().add(reader.getObjectUsingBuilder(LineStringSegmentArrayPropertyAdapter.class));
-                case "breakLines" -> object.getBreakLines().add(reader.getObjectUsingBuilder(LineStringSegmentArrayPropertyAdapter.class));
+                case "patches", "trianglePatches" ->
+                        object.setPatches(reader.getObjectUsingBuilder(TriangleArrayPropertyAdapter.class));
+                case "stopLines" ->
+                        object.getStopLines().add(reader.getObjectUsingBuilder(LineStringSegmentArrayPropertyAdapter.class));
+                case "breakLines" ->
+                        object.getBreakLines().add(reader.getObjectUsingBuilder(LineStringSegmentArrayPropertyAdapter.class));
                 case "maxLength" -> object.setMaxLength(reader.getObjectUsingBuilder(LengthAdapter.class));
-                case "controlPoint" -> object.setControlPoints(reader.getObjectUsingBuilder(GeometricPositionListAdapter.class));
+                case "controlPoint" ->
+                        object.setControlPoints(reader.getObjectUsingBuilder(GeometricPositionListAdapter.class));
                 default -> super.buildChildObject(object, name, attributes, reader);
             }
         }

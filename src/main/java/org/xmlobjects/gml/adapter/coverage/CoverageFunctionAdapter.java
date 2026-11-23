@@ -44,7 +44,8 @@ public class CoverageFunctionAdapter implements ObjectBuilder<CoverageFunction>,
                     if (value.getHref() != null)
                         object.getMappingRule().setRuleReference(new Reference(value));
                 }
-                case "CoverageMappingRule" -> object.setMappingRule(reader.getObjectUsingBuilder(CoverageMappingRuleAdapter.class));
+                case "CoverageMappingRule" ->
+                        object.setMappingRule(reader.getObjectUsingBuilder(CoverageMappingRuleAdapter.class));
                 case "GridFunction" -> object.setGridFunction(reader.getObjectUsingBuilder(GridFunctionAdapter.class));
             }
         }

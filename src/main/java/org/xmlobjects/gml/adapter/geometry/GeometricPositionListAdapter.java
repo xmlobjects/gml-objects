@@ -36,8 +36,10 @@ public class GeometricPositionListAdapter implements ObjectBuilder<GeometricPosi
         if (GMLBuilderHelper.isGMLNamespace(name.getNamespaceURI())) {
             switch (name.getLocalPart()) {
                 case "posList" -> object.setPosList(reader.getObjectUsingBuilder(DirectPositionListAdapter.class));
-                case "pos" -> object.getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
-                case "pointProperty" -> object.getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
+                case "pos" ->
+                        object.getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(DirectPositionAdapter.class)));
+                case "pointProperty" ->
+                        object.getGeometricPositions().add(new GeometricPosition(reader.getObjectUsingBuilder(PointPropertyAdapter.class)));
             }
         }
     }

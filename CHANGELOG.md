@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-11-23
+
 ### Changed
 - **Breaking:** Java 21 is now the minimum required version for using gml-objects.
 
@@ -113,7 +115,8 @@
 
 This is the initial release of gml-objects.
 
-[Unreleased]: https://github.com/xmlobjects/gml-objects/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/xmlobjects/gml-objects/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/xmlobjects/gml-objects/releases/tag/v3.0.0
 [2.1.0]: https://github.com/xmlobjects/gml-objects/releases/tag/v2.1.0
 [2.0.1]: https://github.com/xmlobjects/gml-objects/releases/tag/v2.0.1
 [2.0.0]: https://github.com/xmlobjects/gml-objects/releases/tag/v2.0.0
